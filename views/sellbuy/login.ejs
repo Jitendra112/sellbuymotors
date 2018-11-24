@@ -1,0 +1,145 @@
+  <%- include ../sellbuylayouts/header.ejs %>
+    <div class="col-md-4">
+      <div id="signup" class="popupContainer bg-white">
+        <header class="popupHeader p-3 text-uppercase">
+            <span class="header_title font-weight-bold c-dark">Login</span>
+        </header>
+        <div class="card-body">
+            <!-- Social Login -->						
+            <!-- Username & Password Login form -->
+            <div class="user_login">
+                <form id="login_form" action="/user_login" method="post">
+                    <div class="form-group">
+                        <input type="text" class="form-control rounded-0" name="user_name" id="user_name" placeholder="username or email address" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control rounded-0" name="password" id="password" placeholder="password" />
+                    </div>
+                    <div class="checkbox form-group">
+                        <input id="remember" type="checkbox" />
+                        <label for="remember">Remember me on this computer</label>
+                    </div>
+                    <div class="action_btns form-group">
+                        <button type="submit" class="btn btn-primary btn-md btn-block">Login</button>
+                    </div>
+                    <div class="form-group mb-0 text-center">
+                        <p>Sign in with your social network</p>
+                        <ul class="list-inline footer-social mb-2">
+                            <!-- <li class="list-inline-item"><a href="/google"><i class="fa fa-google-plus pr-3"></i></a></li> -->
+                            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                            
+                        </ul>
+                        <div class="border border-top-0 c-brd-light my-3">
+                        Don't have an account <a href="/registration" class="register_form c-primary">Sign Up</a>
+                        </div>
+                    </div>  
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
+ <%- include ../sellbuylayouts/footer.ejs %>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    
+    
+
+
+
+     <script>
+   
+     $(document).on('submit','#login_form',function(e){
+       // alert('ok');
+                    e.preventDefault();
+                    if($('#user_name').val() == ''){
+                     alert('User Name or Email Address is Required!!');
+                     document.getElementById("user_name").focus();
+                     return false;
+
+                    
+                    }else if($('#password').val() == ''){
+                        
+                       alert('Password is Required!!');
+                       document.getElementById("password").focus();
+                      return false;
+
+                    }else{ 
+                    var formData = new FormData(this);  
+                    console.log()                
+                    $.post({
+                        type:'POST',
+                        url:$(this).attr('action'),
+                        data:formData,
+                        cashe:false,
+                        contentType:false,
+                        processData:false,                      
+                        success:function(data){
+                         //  alert(data)
+                         if(data.success = 1){
+                            alert(data.message);
+                            window.location.href = "http://localhost:3000/sellcar";
+
+                          }else{
+
+                            alert(data.message);
+                            location.reload();
+
+                          }},
+
+                        
+                       
+                    },'json');
+                 }
+                 
+                });
+
+
+  function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+           var id = profile.getId();
+           var email = profile.getEmail();
+           var name = profile.getName();
+           var base_url = window.location.origin;
+            
+             $.get(base_url + '/google_login?id=' + id + '&sid=' + email +'&vid=' + name ,function(res){
+                       
+                        if(res.success = 1){
+                        
+                        window.location.href = "http://sellbuymotors.co.uk/sellcar";
+                                        
+                        }else{
+
+
+                          console.log('here')
+
+                        }
+                    },'json');   
+
+
+
+
+
+
+
+
+
+}
+     
+      </script>
+
+      <script>
+    function signOut() {
+    console.log('User signed out.');
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      window.location.href = "http://sellbuymotors.co.uk/login";
+      console.log('User signed out.');
+    });
+  }
+</script>
+</body>
+</html>

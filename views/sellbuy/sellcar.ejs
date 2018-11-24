@@ -1,0 +1,742 @@
+<%- include ../sellbuylayouts/header.ejs %>
+<section>
+    <div class="background-image-maker gradient gradient-lr"></div>
+    <div class="holder-image">
+        <img src="images/bg2.jpg" alt="" class="img-fluid d-none" />
+    </div>
+    <div class="black-overlay overlay-full"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 justify-content-center text-center">
+                <h1 class="text-white c-font-weight-700">Sell car</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Page Inner-->
+
+<!-- Breadcrumb -->
+<section class="py-0 h-0">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-10 col-sm-5 col-lg-3 text-center">
+                <ol class="breadcrumb justify-content-center mb-0 c-bg-primary text-white py-3 position-relative">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Sell car</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Breadcrumb -->
+
+<!-- Sell Car -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-xl-5 mb-5 mb-xl-0 align-self-center">
+                <h1 class="c-font-weight-300 c-line-height-1_2"> Sell your used car at <span class="c-primary c-font-weight-700">Guaranteed</span> best price</h1>
+                <ul class="list-unstyled service-list text-white mb-0">
+                    <li class="list-one mb-3">
+                        <div class="media d-block d-sm-flex c-bg-primary p-3 p-sm-2 text-center text-sm-left">
+                            <h2 class="rounded-circle bg-white list-icon d-sm-flex mr-sm-4 mb-0 text-center mx-auto mb-3 mb-sm-0"><span class="lnr lnr-magic-wand"></span></h2>
+                            <div class="media-body align-self-center">
+                                <h5 class="mb-1 text-white">It's all Free!</h5>
+                                Cras ultricies mi eu turpis
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-two mb-3">
+                        <div class="media d-block d-sm-flex c-bg-primary p-3 p-sm-2 text-center text-sm-left">
+                            <h2 class="rounded-circle bg-white list-icon d-sm-flex mr-sm-4 mb-0 text-center mx-auto mb-3 mb-sm-0"><span class="lnr lnr-users"></span></h2>
+                            <div class="media-body align-self-center">
+                                <h5 class="mb-1 text-white">Genuie Buyers</h5>
+                                Cras ultricies mi eu turpis
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-three">
+                        <div class="media d-block d-sm-flex c-bg-primary p-3 p-sm-2 text-center text-sm-left">
+                            <h2 class="rounded-circle bg-white list-icon d-sm-flex mr-sm-4 mb-0 text-center mx-auto mb-3 mb-sm-0"><span class="lnr lnr-alarm"></span></h2>
+                            <div class="media-body align-self-center">
+                                <h5 class="mb-1 text-white">Instant Notifications</h5>
+                                Cras ultricies mi eu turpis
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12 col-xl-6 ml-auto text-center text-xl-right">
+                <img src="images/sell-car.png" alt="" class="img-fluid" />
+            </div> 
+        </div>
+    </div>
+</section>
+<!-- End Sell Car -->
+
+<!-- Post Ad -->
+<section class="pt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-7">
+                <h3>Post Your Ad</h3>
+                <p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12">
+                <div class="card c-brd-light condition">
+                    <div class="card-body">
+                         <form id="my_post" action="/save_post" method="post">
+                        <div class="row">
+                            <div class="col-12 col-sm-6 col-lg-4">
+                               
+                                <label class="c-dark">Make Year</label>
+                                <div class="form-group">
+                                    <select class="form-control rounded" name="make_year" id="make_year">
+                                       <option value="" selected="selected">(Any)</option>
+                                         <% var d = new Date();
+                                          for (var i=1950;i<=d.getFullYear();i++) { %>
+                                          <option value="<%= i %>"><%= i %></option>
+                                          <%}%>
+                                    </select>
+                                </div>
+                            </div>  
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <label class="c-dark">Mileage</label>
+                                <div class="form-group">
+                                    <select class="form-control rounded" name="mileage">
+                                     <option value="" selected="selected">(Any)</option>
+
+                                        <option value="0">Up to 0 miles</option>
+
+                                        <option value="100">Up to 100 miles </option>
+
+                                        <option value="500">Up to 500 miles</option>
+
+                                        <option value="5000">Up to 5,000 miles </option>
+
+                                        <option value="10000">Up to 10,000 miles</option>
+
+                                        <option value="15000">Up to 15,000 miles</option>
+
+                                        <option value="20000">Up to 20,000 miles</option>
+                
+                                       <option value="25000">Up to 25,000 miles </option>
+                
+                                        <option value="30000">Up to 30,000 miles </option>
+                
+                                        <option value="35000">Up to 35,000 miles</option>
+                
+                                       <option value="40000">Up to 40,000 miles</option>
+                
+                                       <option value="45000">Up to 45,000 miles</option>
+                
+                                       <option value="50000">Up to 50,000 miles </option>
+                
+                                       <option value="60000">Up to 60,000 miles </option>
+                
+                                       <option value="70000">Up to 70,000 miles</option>
+                
+                                       <option value="80000">Up to 80,000 miles</option>
+                
+                                       <option value="90000">Up to 90,000 miles</option>
+                
+                                       <option value="100000">Up to 100,000 miles</option>
+                
+                                       <option value="125000">Up to 125,000 miles</option>
+                
+                                       <option value="150000">Up to 150,000 miles</option>
+                
+                                       <option value="200000">Up to 200,000 miles</option>
+                 
+                                    </select>
+                                </div>
+                            </div>  
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <label class="c-dark">Make</label>
+                                <div class="form-group">
+                                    <select class="form-control rounded" name="make" id="formmake">
+                                         <option value="" selected="selected">(Any)</option>
+                                      
+                                    </select>
+                                </div>
+                            </div>  
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <label class="c-dark">Model</label>
+                                <div class="form-group">
+                                    <select class="form-control rounded" name="model" id="formmodel">
+                                         <option value="" selected="selected">(Any)</option></select>
+                                       
+                                    </select>
+                                </div>
+                            </div>  
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <label class="c-dark">Variant</label>
+                                <div class="form-group">
+                                    <select class="form-control rounded" name="varient" id="model_variant">
+
+                                      <option value="" selected="selected">(Any)</option>
+<!-- 
+                                        <option value="Hatchback">Hatchback</option>
+
+                                        <option value="SUV">SUV</option>
+
+                                        <option value="Minivan">Minivan</option>
+
+                                        <option value="Pickup">Pickup</option>
+
+                                        <option value="Coupe Car">Coupe Car</option>
+
+                                        <option value="Convertible">Convertible</option> -->
+                                    </select>
+                                </div>
+                            </div>  
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <label class="c-dark">Colour</label>
+                                <div class="form-group">
+                                    <select class="form-control rounded" name="color">
+
+                                        <option value="" selected="selected">(Any)</option>
+
+                                        <option value="Beige">Beige</option>
+
+                                        <option value="Black">Black</option>
+
+                                        <option value="Bronze">Bronze</option>
+
+                                        <option value="Brown">Brown</option>
+
+                                        <option value="Burgundy">Burgundy</option>
+
+                                        <option value="Blue">Blue</option>
+
+                                        <option value="Gold">Gold</option>
+
+                                        <option value="Gray">Gray</option>
+
+                                        <option value="Green">Green</option>
+
+                                        <option value="Indigo">Indigo</option>
+
+                                        <option value="Magenta">Magenta</option>
+
+                                        <option value="Maroon">Maroon</option>  
+
+                                        <option value="Multicolour">Multicolour</option>
+
+                                        <option value="Navy">Navy</option>
+
+                                        <option value="Orange">Orange</option>
+
+                                        <option value="Pink">Pink</option>
+
+                                        <option value="Purple">Purple</option>
+
+                                        <option value="Red">Red</option>
+
+                                        <option value="Silver">Silver</option>
+
+                                        <option value="Turquoise">Turquoise</option>
+
+                                        <option value="Unlisted">Unlisted</option>
+
+                                        <option value="Violet">Violet</option>
+
+                                        <option value="White">White</option>
+
+                                        <option value="Yellow">Yellow</option>
+                                        
+                                    </select>
+                                </div>
+                            </div> 
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <label class="c-dark">Body type</label>
+                                <div class="form-group">
+                                    <select class="form-control rounded" name="body_type">
+
+                                       <option value="" selected="selected">(Any)</option>
+
+                                        <option value="Convertible">Convertible</option>
+
+                                        <option value="Coupe">Coupe</option>
+
+                                        <option value="Estate">Estate</option>
+
+                                        <option value="Hatchback">Hatchback</option>
+
+                                        <option value="MPV">MPV</option>
+
+                                        <option value="Pickup">Pickup</option> 
+
+                                        <option value="SUV">SUV</option>
+
+                                        <option value="Saloon">Saloon</option>
+
+                                        <option value="Unlisted">Unlisted</option>
+                                    </select>
+                                </div>
+                            </div>  
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <label class="c-dark">Fuel Type</label>
+                                <div class="form-group">
+                                    <select class="form-control rounded" name="fuel_type">
+
+                                        <option value="" selected="selected">(Any)</option>
+
+                                        <option value="Bi Fuel">Bi Fuel</option>
+
+                                        <option value="Diesel">Diesel</option>
+
+                                        <option value="Electric">Electric</option>
+
+                                        <option value="Hybrid – Diesel/Electric">Hybrid – Diesel/Electric</option>
+
+                                <option value="Hybrid – Diesel/Electric Plug-in">Hybrid – Diesel/Electric Plug-in</option>
+
+                                        <option value="Hybrid – Petrol/Electric">Hybrid – Petrol/Electric</option>
+
+                                <option value="Hybrid – Petrol/Electric Plug-in">Hybrid – Petrol/Electric Plug-in</option>
+
+                                        <option value="Petrol">Petrol</option>
+
+                                        <option value="Petrol Ethanol">Petrol Ethanol</option>
+
+                                        <option value="Unlisted">Unlisted</option>
+
+                                    </select>
+                                </div>
+                            </div> 
+                             <div class="col-12 col-sm-6 col-lg-4">
+                                <label class="c-dark">Engine size</label>
+                                <div class="form-group">
+                                    <select class="form-control rounded" name="engine_size">
+
+                                        <option value="" selected="selected">(Any)</option>
+
+                                        <option value="0">0L </option>
+                
+                                        <option value="1.0">1.0L</option>
+                
+                                        <option value="1.2">1.2L</option>
+                
+                                        <option value="1.4">1.4L </option>
+                
+                                        <option value="1.6">1.6L </option>
+                
+                                        <option value="1.8">1.8L</option>
+                
+                                        <option value="1.9">1.9L </option>
+                
+                                        <option value="2.0">2.0L </option>
+                
+                                        <option value="2.2">2.2L </option>
+                
+                                        <option value="2.4">2.4L </option>
+                
+                                        <option value="2.6">2.6L</option>
+                
+                                        <option value="3.0">3.0L </option>
+                
+                                        <option value="3.5">3.5L </option>
+                
+                                        <option value="4.0">4.0L</option>
+                
+                                        <option value="4.5">4.5L </option>
+                
+                                        <option value="5.0">5.0L </option>
+                
+                                        <option value="5.5">5.5L</option>
+                
+                                        <option value="6.0">6.0L </option>
+                
+                                        <option value="6.5">6.5L </option>
+                
+                                        <option value="7.0">7.0L </option>
+                
+                                    </select>
+                                </div>
+                            </div>  
+                             <div class="col-12 col-sm-6 col-lg-4">
+                                <label class="c-dark">Fuel Consumption</label>
+                                <div class="form-group">
+                                    <select class="form-control rounded" name="fuel_consumption">
+
+                                        <option value="" selected="selected">(Any)</option>
+
+                                        <option value="30+ mpg">30+ mpg</option>
+                
+                                        <option value="40+ mpg">40+ mpg</option>
+                
+                                        <option value="50+ mp">50+ mp</option>
+                
+                                        <option value="60+ mpg">60+ mpg</option>
+                
+                                      
+                
+                                    </select>
+                                </div>
+                            </div> 
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <label class="c-dark">Acceleration</label>
+                                <div class="form-group">
+                                    <select class="form-control rounded" name="acceleration">
+
+                                        <option value="" selected="selected">(Any)</option>
+
+                                        <option value="0-5s (0-60mph)">0-5s (0-60mph)</option>
+                
+                                        <option value="0-8s (0-60mph)">0-8s (0-60mph)</option>
+                
+                                        <option value="8-12s (0-60mph)">8-12s (0-60mph)</option>
+                
+                                        <option value="12s+ (0-60mph)">12s+ (0-60mph)</option>
+                
+                                      
+                
+                                    </select>
+                                </div>
+                            </div>  
+                             <div class="col-12 col-sm-6 col-lg-4">
+                                <label class="c-dark">Gearbox</label>
+                                <div class="form-group">
+                                    <select class="form-control rounded" name="gearbox">
+
+                                        <option value="" selected="selected">(Any)</option>
+
+                                        <option value="Automatic">Automatic</option>
+                
+                                        <option value="Manual">Manual</option>
+                
+                                        <option value="Semi-Automatic">Semi-Automatic</option>
+                
+                                        <option value="Unlisted">Unlisted</option>
+                
+                                    </select>
+                                </div>
+                            </div>  
+                             <div class="col-12 col-sm-6 col-lg-4">
+                                <label class="c-dark">Drivetrain</label>
+                                <div class="form-group">
+                                    <select class="form-control rounded" name="drivetrain">
+
+                                        <option value="" selected="selected">(Any)</option>
+
+                                        <option value="All Wheel Drive">All Wheel Drive</option>
+                
+                                        <option value="Four Wheel Drive">Four Wheel Drive</option> 
+                
+                                        <option value="Front Wheel Drive">Front Wheel Drive</option>
+                
+                                        <option value="Rear Wheel Drive">Rear Wheel Drive</option>
+                
+                                    </select>
+                                </div>
+                            </div> 
+                              <div class="col-12 col-sm-6 col-lg-4">
+                                <label class="c-dark">CO<sub>2</sub> Emissions</label>
+                                <div class="form-group">
+                                    <select class="form-control rounded" name="emissions">
+
+                                        <option value="" selected="selected">(Any)</option>
+
+                                        <option value="Up to 75 g / km CO2">Up to 75 g / km CO2</option>
+                
+                                        <option value="Up to 100 g / km CO2">Up to 100 g / km CO2</option>
+                
+                                        <option value="Up to 110 g / km CO2">Up to 110 g / km CO2</option>
+                
+                                        <option value="Up to 120 g / km CO2">Up to 120 g / km CO2</option>
+
+                                        <option value="Up to 130 g / km CO2">Up to 130 g / km CO2</option>
+                
+                                        <option value="Up to 140 g / km CO2">Up to 140 g / km CO2</option>
+                
+                                        <option value="Up to 150 g / km CO2">Up to 150 g / km CO2</option>
+                
+                                        <option value="Up to 165 g / km CO2">Up to 165 g / km CO2</option>
+
+                                        <option value="Up to 175 g / km CO2">Up to 175 g / km CO2</option>
+                
+                                        <option value="Up to 185 g / km CO2">Up to 185 g / km CO2</option>
+                
+                                        <option value="Up to 200 g / km CO2">Up to 200 g / km CO2</option>
+
+                                        <option value="Up to 225 g / km CO2">Up to 225 g / km CO2</option>
+                
+                                        <option value="255 g / km +">255 g / km +</option>
+                
+                                      
+                
+                                    </select>
+                                </div>
+                            </div>
+                             <div class="col-12 col-sm-6 col-lg-4">
+                                <label class="c-dark">Doors</label>
+                                <div class="form-group">
+                                    <select class="form-control rounded" name="doors">
+
+                                        <option value="" selected="selected">(Any)</option>
+
+                                        <option value="0 doors">0 doors</option>
+                
+                                        <option value="2 doors">2 doors</option>
+                
+                                        <option value="3 doors">3 doors</option>
+                
+                                        <option value="4 doors">4 doors</option>
+
+                                        <option value="5 doors">5 doors</option>
+                
+                                        <option value="6 doors">6 doors</option>
+                
+                                        <option value="7 doors">7 doors</option>
+                                      
+                
+                                    </select>
+                                </div>
+                            </div>
+                             <div class="col-12 col-sm-6 col-lg-4">
+                                <label class="c-dark">Seats</label>
+                                <div class="form-group">
+                                    <select class="form-control rounded" name="seats">
+
+                                        
+                                        <option value="" selected="selected">(Any)</option>
+                
+                                        <option value="1">1</option>
+                
+                                        <option value="2">2</option>
+                
+                                        <option value="3">3</option>
+                
+                                        <option value="4">4</option>
+                
+                                        <option value="5">5</option>
+                
+                                        <option value="6">6</option>
+                
+                                        <option value="7">7</option>
+                
+                                        <option value="8">8</option>
+                
+                                        <option value="9">9</option>
+                
+                                        <option value="10">10</option>
+                 
+                                        <option value="11">11</option>
+                
+                                        <option value="12">12</option>
+                
+                                        <option value="13">13</option>
+                
+                                        <option value="16">16</option>
+                                      
+                
+                                    </select>
+                                </div>
+                            </div>
+                              <div class="col-12 col-sm-6 col-lg-4">
+                                <label class="c-dark">Insurance Group</label>
+                                <div class="form-group">
+                                    <select class="form-control rounded" name="insurance_group">
+
+                                        
+                                        <option value="" selected="selected">(Any)</option>
+                
+                                        <option value="Up to 10">Up to 10</option>
+                
+                                        <option value="Up to 20">Up to 20</option>
+                
+                                        <option value="Up to 30">Up to 30</option>
+                
+                                        <option value="Up to 40">Up to 40</option>
+                
+                
+                                    </select>
+                                </div>
+                            </div>
+                             <div class="col-12 col-sm-6 col-lg-4">
+                                <label class="c-dark">Annual tax</label>
+                                <div class="form-group">
+                                    <select class="form-control rounded" name="annual_tax">
+
+                                        
+                                        <option value="" selected="selected">(Any)</option>
+                
+                                        <option value="€0">€0</option>
+                
+                                        <option value="Up to €20">Up to €20</option>
+                
+                                        <option value="Up to €30">Up to €30</option>
+                
+                                        <option value="Up to €110">Up to €110</option>
+
+                                        <option value="Up to €130">Up to €130</option>
+                
+                                        <option value="Up to €145">Up to €145</option>
+                
+                                        <option value="Up to €185">Up to €185</option>
+
+                                        <option value="Up to €210">Up to €210</option>
+                                        
+                                        <option value="Up to €230">Up to €230</option>
+                
+                                        <option value="Up to €270">Up to €270</option>
+                
+                                        <option value="Up to €295">Up to €295</option>
+
+                                         <option value="Up to €500">Up to €500</option>
+
+                                          <option value="€500+">€500+</option>
+                
+                
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <label class="c-dark">Private & trade</label>
+                                <div class="form-group">
+                                    <select class="form-control rounded" name="private_trade">
+
+                                        
+                                        <option value="" selected="selected">(Any)</option>
+                
+                                        <option value="Private adverts">Private adverts</option>
+                
+                                        <option value="Trade adverts">Trade adverts</option>
+
+                
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <label class="c-dark">Owner</label>
+                                <div class="form-group">
+                                    <select class="form-control rounded" name="owner">
+                                        <option value="" selected="selected">(Any)</option>
+                                        <option value="first owner">First Owner</option>
+                                        <option value="second owner">Second Owner</option>
+                                        <option value="third owner">Third Owner</option>
+                                    </select>
+                                </div>
+                            </div> 
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <label class="c-dark">Price Expectation</label>
+                                <div class="form-group position-relative">
+                                    <select class="form-control rounded pl-4" name="price_expect">
+                                        <option value="12,50,000">e.g. 12,50,000</option>
+                                        <option value="11,00,000">e.g. 11,00,000</option>
+                                        <option value="10,00,000">e.g. 10,00,000</option>
+                                        <option value="9,50,000">e.g. 9,00,000</option>
+                                        <option value="7,00,000">e.g. 7,00,000</option>
+                                        <option value="5,00,000">e.g. 5,00,000</option>
+                                    </select>
+                                    <small>Twelve Lakh Fifty Thousand Dollar Only</small>
+                                    <div class="price position-absolute c-dark"><i class="fa fa-euro"></i></div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-8">
+                                <div class='row'>
+                                    <div class='col-12 col-lg-3 col-xl-2 align-self-end'>
+                                        <span class="good"><i class="fa fa-euro"></i> 1.25 Lakh <br /> Good Condition</span>
+                                    </div>
+                                    <div class='col-12 col-lg-6 col-xl-7  mb-3 mb-lg-0'>
+                                        <img src="images/condition.png" alt="" class="img-fluid" />
+                                    </div>
+                                    <div class='col-12 col-lg-3 col-xl-3 align-self-end'>
+                                        <span class="superb"><i class="fa fa-euro"></i> 13.50 Lakh <br /> Superb Condition</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-4"></div>
+                            <div class="col-12 col-sm-4 col-lg-2 ml-auto mt-3 mt-sm-0">
+                                <button type="submit"  class="btn btn-primary btn-md btn-block text-uppercase" >Next</button> 
+                            </div>
+                        
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+ <%- include ../sellbuylayouts/footer.ejs %>  
+<script>
+</script>
+
+
+
+
+
+
+<script>
+    var serviceUrl ;
+    var makesArray ;
+    function show_make(){
+       var serviceUrl = 'http://localhost:3000/motors-filter-search?make='+$('#formmake').val()+'&model='+$('#formmodel').val()+'&varient='+$('#model_variant').val();
+       $.get(serviceUrl,function(res){
+        makesArray = res;
+           // $('#formmodel').html('')
+            $.each(res,function(key , value){
+            // console.log(value)
+                $('#formmake').append('<option value="'+value.Value+'" data-key="'+key+'">'+value.Name+'</option>')
+            })
+       },'json')
+    }
+$(document).on('change','#formmake' , function(){
+      var res = makesArray[$('#formmake').find(':selected').data('key')].Models;
+      $('#formmodel').html('')
+       $.each(res,function(key , value){
+    //            console.log(value)
+                $('#formmodel').append('<option value="'+value.Value+'" data-key="'+key+'">'+value.Name+'</option>')
+            })
+       var res = makesArray[$('#formmake').find(':selected').data('key')].Trims;
+         $('#model_variant').html('')
+       $.each(res,function(key , value){
+    //            console.log(value)
+                $('#model_variant').append('<option value="'+value.Value+'" data-key="'+key+'">'+value.Name+'</option>')
+            })
+
+    })
+     show_make();
+</script>
+ 
+   
+
+ <script>
+   
+     $(document).on('submit','#my_post',function(e){
+        e.preventDefault();
+        var formData = new FormData(this);  
+        console.log()                
+        $.post({
+        type:'POST',
+        url:$(this).attr('action'),
+        data:formData,
+        cashe:false,
+        contentType:false,
+        processData:false,                      
+        success:function(data){
+           //   alert(data.message)
+         if(data.success = 1){
+         window.location.href = "http://localhost:3000/sellcars#link";
+
+      }else{
+        location.reload();
+
+      }
+    },
+       
+                            
+       
+   
+        },'json');
+                
+                 
+    });
+
+
+
+            </script>

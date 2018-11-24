@@ -1,0 +1,158 @@
+<%- include ../sellbuylayouts/header.ejs %>
+<!-- End Header-->        <!-- Page Inner-->
+        <section>
+            <div class="background-image-maker gradient gradient-lr"></div>
+            <div class="holder-image">
+                <img src="images/bg2.jpg" alt="" class="img-fluid d-none" />
+            </div>
+            <div class="black-overlay overlay-full"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-12 justify-content-center text-center">
+                        <h1 class="text-white c-font-weight-700">Sell car</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Page Inner-->
+        
+        <!-- Breadcrumb -->
+        <section class="py-0 h-0">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-10 col-sm-5 col-lg-3 text-center">
+                        <ol class="breadcrumb justify-content-center mb-0 c-bg-primary text-white py-3 position-relative">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Sell car</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Breadcrumb -->
+        
+        <!-- Sell Car -->
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-xl-5 mb-5 mb-xl-0 align-self-center">
+                        <h1 class="c-font-weight-300 c-line-height-1_2"> Sell your used car at <span class="c-primary c-font-weight-700">Guaranteed</span> best price</h1>
+                        <ul class="list-unstyled service-list text-white mb-0">
+                            <li class="list-one mb-3">
+                                <div class="media d-block d-sm-flex c-bg-primary p-3 p-sm-2 text-center text-sm-left">
+                                    <h2 class="rounded-circle bg-white list-icon d-sm-flex mr-sm-4 mb-0 text-center mx-auto mb-3 mb-sm-0"><span class="lnr lnr-magic-wand"></span></h2>
+                                    <div class="media-body align-self-center">
+                                        <h5 class="mb-1 text-white">It's all Free!</h5>
+                                        Cras ultricies mi eu turpis
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-two mb-3">
+                                <div class="media d-block d-sm-flex c-bg-primary p-3 p-sm-2 text-center text-sm-left">
+                                    <h2 class="rounded-circle bg-white list-icon d-sm-flex mr-sm-4 mb-0 text-center mx-auto mb-3 mb-sm-0"><span class="lnr lnr-users"></span></h2>
+                                    <div class="media-body align-self-center">
+                                        <h5 class="mb-1 text-white">Genuie Buyers</h5>
+                                        Cras ultricies mi eu turpis
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-three">
+                                <div class="media d-block d-sm-flex c-bg-primary p-3 p-sm-2 text-center text-sm-left">
+                                    <h2 class="rounded-circle bg-white list-icon d-sm-flex mr-sm-4 mb-0 text-center mx-auto mb-3 mb-sm-0"><span class="lnr lnr-alarm"></span></h2>
+                                    <div class="media-body align-self-center">
+                                        <h5 class="mb-1 text-white">Instant Notifications</h5>
+                                        Cras ultricies mi eu turpis
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-xl-6 ml-auto text-center text-xl-right">
+                        <img src="images/sell-car.png" alt="" class="img-fluid" />
+                    </div> 
+                </div>
+            </div>
+        </section>
+        <!-- End Sell Car -->
+        
+        <!-- Post Ad -->
+        <section class="pt-0" id="link">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-7">
+                        <h3>Post Your Ad</h3>
+                        <p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-12">
+                        <div class="card c-brd-light condition">
+                            <div class="card-body">
+                                <div class="row">
+                                    <!-- <div class="col-12 col-sm-4">
+                                        <label class="c-dark">Cover Photo</label>
+                                        <div class="form-group">
+                                            <input type="file" class="choose form-control" />
+                                        </div>
+                                    </div>  -->
+                                    <div class="col-12 col-sm-12">
+                                        <label class="c-dark">Gallery</label>
+                                        <div class="form-group text-center">
+            <form action="/upload_images" id="uploadform"  enctype="multipart/form-data"  method="post">
+                                                <div class="d-table w-100 h-100 ">
+                                                    <div class="d-table-cell align-middle">
+                                                        <div class="dz-default dz-message">
+                                                           <input type="file" name="carPhoto" class="custom-file-input" multiple/>
+                                                            <h5 class="mb-2 c-light"><i class="fa fa-plus"></i></h5>
+                                                            <span id="myspan"> Add Photo</span>
+                                                            <span id = "status"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            
+                                        </div>
+                                    </div> 
+                                    <div class="col-12 col-sm-4 col-lg-2 mr-auto mt-3 mt-sm-0">
+                                        <a href="/sellcar" class="btn btn-secondary btn-md btn-block text-uppercase">Back</a>  
+                                    </div>
+                                    <div class="col-12 col-sm-4 col-lg-2 ml-auto mt-3 mt-sm-0">
+                                        <button type="submit" class="btn btn-primary btn-md btn-block text-uppercase">Public Listing</button>  
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Post Ad -->
+<%- include ../sellbuylayouts/footer.ejs %>          
+
+ <script>
+  $(document).on('submit','#uploadform' ,function(e) {
+    
+       e.preventDefault();
+        var formData = new FormData(this);  
+       // alert(formData);
+        console.log(formData)                
+        $.ajax({
+        type:'POST',
+        url:$(this).attr('action'),
+        data:formData,
+        cashe:false,
+        contentType:false,
+        processData:false,                      
+        success:function(data){
+           //   alert(data.message)
+         //console.log(data);
+
+      },
+       
+                            
+       
+   
+        },'json');
+     
+});
+</script>

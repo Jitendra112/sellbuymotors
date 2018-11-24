@@ -1,0 +1,115 @@
+     
+
+      <!-- Footer Top -->
+      <section class="footer c-bg-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-3 mb-4 mb-lg-0">
+                    <h6 class="text-white">About-Us</h6>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu..
+
+</p>
+                    
+                </div>
+                <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+                    <div class="row">
+                        <div class="col-12 col-sm-4 mb-4 mb-sm-0">
+                            <h6 class="text-white">Brands</h6>
+                            <ul class="list-unstyled footer-links mb-0">
+                                <li><a href="search-cars?onesearchad=All&make=Bmw"><i class="fa fa-angle-right pr-2"></i> BMW</a></li>
+                                <li><a href="search-cars?onesearchad=All&make=Mercedes-Benz"><i class="fa fa-angle-right pr-2"></i> Mercedes</a></li>
+                                <li><a href="search-cars?onesearchad=All&make=Lamborghini"><i class="fa fa-angle-right pr-2"></i> Lamborghini</a></li>
+                                <li><a href="search-cars?onesearchad=All&make=Audi"><i class="fa fa-angle-right pr-2"></i> Audi</a></li>
+                                <li><a href="search-cars?onesearchad=All&make=Porsche"><i class="fa fa-angle-right pr-2"></i> Porsche</a></li>
+                                <li><a href="search-cars?onesearchad=All&make=Ford"><i class="fa fa-angle-right pr-2"></i> Ford</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-sm-4 mb-4 mb-sm-0">
+                            <h6 class="text-white">Overview</h6>
+                            <ul class="list-unstyled footer-links mb-0">
+                                <li><a href="#"><i class="fa fa-angle-right pr-2"></i> About Us</a></li>
+                                <li><a href="#"><i class="fa fa-angle-right pr-2"></i> Feedback</a></li>
+                                <li><a href="#"><i class="fa fa-angle-right pr-2"></i> Contact Us</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                            <h6 class="text-white">Other</h6>
+                            <ul class="list-unstyled footer-links mb-0">
+                                <li><a href="#"><i class="fa fa-angle-right pr-2"></i> Careers</a></li>
+                                <li><a href="#"><i class="fa fa-angle-right pr-2"></i> Customer Care</a></li>
+                                <li><a href="#"><i class="fa fa-angle-right pr-2"></i> Privacy Policy</a></li>
+                                <li><a href="#"><i class="fa fa-angle-right pr-2"></i> Terms & Conditions</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-3">
+                    <h6 class="text-white">Contact Info</h6>
+                    <p>Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim aliquam.</p>
+                    <ul class="list-unstyled footer-address mb-0">
+                        
+                        <li><a href="mailto:info@sellbuymotors.co.uk"><i class="fa fa-envelope pr-2"></i> info@sellbuymotors.co.uk</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Footer Top-->
+    
+    <!-- Footer Bottom -->
+    <section class="footer-bottom c-bg-dark py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-8 text-lg-left text-center mb-3 mb-lg-0">
+                    <span class="copyright">Copyright &copy; 2018 Powered By <a href="#">Sellbuymotosr.co.uk</a>  All Rights Reserved.</span>
+                </div>
+                <div class="col-12 col-lg-4 text-lg-right text-center footer-noborder">
+                    <ul class="list-inline footer-social mb-0">
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook pr-3"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter pr-3"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin pr-3"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-youtube-play pr-3"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-pinterest-p pr-3"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Footer Bottom -->
+    
+    <!-- Top To Bottom-->
+    <div class="scrollup">
+        <img src="/images/up-arrow.svg" class="img-fluid" />
+    </div>
+    <!-- End Top To Bottom-->
+  
+  
+    <!-- End Login /Register Form-->
+    
+    <!-- jQuery -->
+    <script src="/js/plugins.min.js"></script>
+    <script src="/js/common.js"></script>
+     <script src="/js/jquery-3.3.1.min.js"></script>
+     <script>
+    function signOut() {
+   // console.log('User signed out.');
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      window.location.href = "http://sellbuymotors.co.uk/login";
+      console.log('User signed out.');
+    });
+  }
+
+  function onLoad() {
+      gapi.load('auth2', function() {
+        gapi.auth2.init();
+      });
+    }
+
+</script>
+<script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+</body>
+
+</html>

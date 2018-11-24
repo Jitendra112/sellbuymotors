@@ -1,0 +1,80 @@
+
+
+       <!DOCTYPE html>
+       <html lang="en">
+       <head>
+               <meta charset="utf-8">
+               <meta http-equiv="X-UA-Compatible" content="IE=edge">
+               <meta name="viewport" content="width=device-width, initial-scale=1">
+
+               <title>SellBuyMotors</title>  
+
+<meta name="google-signin-client_id" content="488295508798-pb9c5nqsvotv5jp2j0juhjst4iipmq1j.apps.googleusercontent.com">
+                 <script src="https://apis.google.com/js/platform.js" async defer></script>
+                 
+               <!-- Favicon -->
+               <link rel="icon" type="image/png" href="images/favicon.ico">
+              
+               <!--Plugin CSS-->
+               <link href="/css/plugins.min.css" rel="stylesheet">
+       
+               <script src="https://apis.google.com/js/platform.js" async defer></script>
+               
+               <!--main Css-->
+               <link href="/css/main.min.css" rel="stylesheet">
+           </head>
+           <body> 
+               <!-- Header-->
+               <header id="header-fix" class="main-header">
+                   <div class="top-bar py-lg-0 py-2">
+                       <div class="container">
+                           <div class="row">
+                               <div class="col-12 col-md-6 text-center text-md-left align-self-center">
+                                   <ul class="list-inline mb-0 no-border">
+                                       <li class="list-inline-item"><a href="mailto:info@sellbuymotors.co.uk"><i class="fa fa-envelope pr-1"></i> info@sellbuymotors.co.uk</a></li>
+                                   </ul> 
+                               </div> 
+                               <div class="col-12 col-md-6 text-center text-md-right">
+                                   <div class="top-right">
+                                       <ul class="list-inline mb-0 no-border">
+                                        <% if(locals.udata) { %>
+                                           <li class="list-inline-item"><i class="fa fa-user pr-1"></i> <a href="#" class="c-primary login_form"><%= locals.udata[0].user_name %></a> | <a href="/logout" class="register_form c-primary" onclick="signOut();" >Logout </a></li>
+                                          <% } else { %>
+                                            <li class="list-inline-item"><i class="fa fa-user pr-1"></i> <a href="/login" class="c-primary login_form"> Login </a> Or <a href="/registration" class="register_form c-primary"> Register </a></li>
+                                          <% } %>
+                                           
+                                       </ul>
+                                   </div>
+                               </div>
+                           </div>
+                       </div> 
+                   </div>
+                   <div class="container">
+                       <nav class="navbar navbar-expand-lg navbar-light py-lg-0 py-3 px-0">
+                           <a class="navbar-brand" href="index.php"><img src="images/logo-v1.png" alt="" class="img-fluid" /></a>
+                           <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                               <span class="navbar-toggler-icon"></span>
+                               <span class="navbar-toggler-icon"></span>
+                               <span class="navbar-toggler-icon"></span>
+                           </button>
+                           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                             <ul class="navbar-nav ml-auto mr-lg-4 mt-4 mt-lg-0">
+                               <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/search-cars?onesearchad=New">New-Cars</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/search-cars?onesearchad=Used">Used-Cars</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/search-cars?onesearchad=All">All-Cars</a></li>
+                              
+                             </ul>
+                             <form class="form-inline my-2 my-lg-0">
+                                   <a href="sell-car.php" class="btn btn-primary my-2 my-sm-0 btn-sm">Sell Car</a>
+                                   <div class="form-group position-relative mb-0">
+                                       <input class="form-control ml-sm-2 rounded-0" type="search" placeholder="Search">
+                                       <div class="search position-absolute">
+                                           <a href="#"><i class="fa fa-search"></i></a>
+                                       </div>
+                                   </div>
+                             </form>
+                           </div>
+                       </nav>
+                   </div>
+               </header>

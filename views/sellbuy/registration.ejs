@@ -1,0 +1,135 @@
+<%- include ../sellbuylayouts/header.ejs %>
+<div class="container">
+ <div class="myclass">
+    <div id="signup" class="popupContainer bg-white">
+        <header class="popupHeader p-3 text-uppercase">
+            <span class="header_title font-weight-bold c-dark">REGISTER</span>
+        </header>
+       
+        <div class="card-body">
+
+            <!-- Register Form -->
+            <div class="user_register">
+                <form action="/register" id="myform" method="post">
+                    <div class="form-group">
+             <input type="text" class="form-control rounded-0" id="user_name" name="user_name" placeholder="Username" />
+                    </div>
+                    <div class="form-group">
+             <input type="email" class="form-control rounded-0" id="email_address" name="email_address" placeholder="Email Address" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control rounded-0" id="password" name="password" placeholder="Password" />
+                    </div>
+                     <div class="form-group">
+                        <select  class="form-control rounded-0" id="country" name="country">
+                          
+                          <option value="">Choose Country</option>
+                           <% if (locals.data) { %>
+                           <% locals.data.forEach(function(cl){%>
+                           <option value="<%= cl.id %>"><%= cl.name %></option>
+                           <% }) %>
+                           <% } %>
+                        </select>
+                    </div>
+                     <div class="form-group">
+                        <select  class="form-control rounded-0" id="State" name="State">
+                          <option value="">Choose State</option>
+                          
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control rounded-0" id="postal_code" name="postal_code" placeholder="Postal Code" />
+                    </div>
+                   
+                    <div class="checkbox form-group">
+                        <input id="send_updates" type="checkbox" />
+                        <label for="send_updates">Send me occasional email updates</label>
+                    </div>
+                    <div class="action_btns form-group">
+                        <button type="submit" class="btn btn-primary btn-md btn-block">Register</button>
+                    </div>
+                    <div class="form-group mb-0 text-center">
+                      
+                        <div class="border border-top-0 c-brd-light my-3">
+                        Already have an account <a href="/login" class="login_form c-primary">Sign In</a>
+                    </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+  </div>
+ <%- include ../sellbuylayouts/footer.ejs %>
+   
+    <script src="js/jquery-3.3.1.min.js"></script>
+     <script>
+   
+     $(document).on('submit','#myform',function(e){
+       // alert('ok');
+                    e.preventDefault();
+                    var user = $('#user_name').val();
+                    if(user == ''){
+                     alert('User Name is Required');
+                     document.getElementById("user_name").focus();
+                     return false;
+
+                    }else if($('#email_address').val() == ''){
+
+                       alert('Email is Required');
+                      document.getElementById("email_address").focus();
+                      return false;
+
+                    }else if($('#password').val() == ''){
+
+                       alert('Password is Required');
+                       document.getElementById("password").focus();
+                      return false;
+
+                    }else if($('#postal_code').val() == ''){
+
+                       alert('Postal Code is Required');
+                       document.getElementById("postal_code").focus();
+                      return false;
+
+                     }else{ 
+                    var formData = new FormData(this);  
+                    console.log()                
+                    $.post({
+                        type:'POST',
+                        url:$(this).attr('action'),
+                        data:formData,
+                        cashe:false,
+                        contentType:false,
+                        processData:false,                      
+                        success:function(data){
+                         //  alert(data)
+                            alert(data.message);
+                            window.location.href = "http://sellbuymotors.co.uk/login";
+                        },
+                        error:function(data){
+                            
+                            alert(data.message);
+                            location.reload();
+                        }
+                    },'json');
+                 }
+                 
+                });
+
+  $(document).on('change','#country',function(){
+   // alert('ok');
+  
+  var html = '';
+  $.get('/show_states?id='+$(this).val(),function(res){
+    $.each(res,function(key,val){
+      html += '<option value="'+val.id+'">'+val.name+'</option>';
+    })
+      $('#State').html(html)
+  },'json')
+})
+
+      </script>
+    </body>
+
+   </html>

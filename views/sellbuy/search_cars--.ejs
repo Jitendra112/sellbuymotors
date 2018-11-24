@@ -1,0 +1,688 @@
+<%- include ../sellbuylayouts/header.ejs %>
+
+<style>
+    .col-md-4{
+        float: left;
+    }
+    #loading{
+        position: fixed;
+        z-index: 99;
+    }
+</style>
+<section>
+    <div class="background-image-maker gradient gradient-lr"></div>
+    <div class="holder-image">
+        <img src="images/bg2.jpg" alt="" class="img-fluid d-none" />
+    </div>
+    <div class="black-overlay overlay-full"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 justify-content-center text-center">
+                <h1 class="text-white c-font-weight-700" id="search_type">List Cars Listing</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Page Inner-->
+
+<!-- Breadcrumb -->
+<section class="py-0 h-0">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-10 col-sm-5 col-lg-3 text-center">
+                <ol class="breadcrumb justify-content-center mb-0 c-bg-primary text-white py-3 position-relative">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Car Listing</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Breadcrumb -->
+
+<!-- List Without Sidebar -->
+<section>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-3 filter-border">
+            <div class="row">
+                <div class="col-12 col-sm-12">
+                    <div class="card c-brd-light car-box mb-5">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">Postal Code</label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control rounded" id="postal_code"/>
+                                    </div>
+                                </div> 
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">Radius</label>
+                                    <div class="form-group">
+                                        <select class="form-control rounded" id="radius">
+                                            <option value="1500">Distance(National)</option>
+                                        </select>
+                                    </div>
+                                </div>  
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">Make</label>
+                                    <div class="form-group">
+                                        <select class="form-control" id="make">
+
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">Model</label>
+                                    <div class="form-group">
+                                        <select class="form-control" id="model">
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">Model Variant</label>
+                                    <div class="form-group">
+                                        <select class="form-control rounded" id="aggregatedTrim">
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">Price</label>
+                                    <div class="form-group">
+                                        <select class="form-control rounded" id="sort">
+                                            <option value="sponsored">Total Price</option>
+                                            <option value="monthly-price-asc">Monthly Price</option>
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">Price From</label>
+                                    <div class="form-group">
+                                        <select class="form-control rounded" id="price_from">
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">Price To</label>
+                                    <div class="form-group">
+                                        <select class="form-control rounded" id="price_to">
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">Year From</label>
+                                    <div class="form-group">
+                                        <select class="form-control rounded" id="year_from">
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">Year To</label>
+                                    <div class="form-group">
+                                        <select class="form-control rounded" id="year_to">
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">Mileage From</label>
+                                    <div class="form-group">
+                                        <select class="form-control rounded" id="mileage_from">
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">Mileage To</label>
+                                    <div class="form-group">
+                                        <select class="form-control rounded" id="mileage_to">
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">Body Type</label>
+                                    <div class="form-group">
+                                        <select class="form-control rounded" id="body_type">
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">Fuel Type</label>
+                                    <div class="form-group">
+                                        <select class="form-control rounded" id="fuel_type">
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">Engine Size From</label>
+                                    <div class="form-group">
+                                        <select class="form-control rounded" id="maximum-badge-engine-size">
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">Engine Size To</label>
+                                    <div class="form-group">
+                                        <select class="form-control rounded" id="minimum-badge-engine-size">
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">Fuel Consumption</label>
+                                    <div class="form-group">
+                                        <select class="form-control rounded" id="fuel_consumption">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">Acceleration</label>
+                                    <div class="form-group">
+                                        <select class="form-control rounded" id="zero-to-60">
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">Gearbox</label>
+                                    <div class="form-group">
+                                        <select class="form-control rounded" id="transmission">
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">Drivetrain</label>
+                                    <div class="form-group">
+                                        <select class="form-control rounded" id="drivetrain">
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">Co 2 Emission</label>
+                                    <div class="form-group">
+                                        <select class="form-control rounded" id="co2-emissions-cars">
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">Doors</label>
+                                    <div class="form-group">
+                                        <select class="form-control rounded" id="quantity-of-doors">
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">Min Seats</label>
+                                    <div class="form-group">
+                                        <select class="form-control rounded" id="minimum-seats">
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">Max Seats</label>
+                                    <div class="form-group">
+                                        <select class="form-control rounded" id="maximum-seats">
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">InsuranceGroup</label>
+                                    <div class="form-group">
+                                        <select class="form-control rounded" id="insuranceGroup">
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">Annual Tax</label>
+                                    <div class="form-group">
+                                        <select class="form-control rounded" id="annual-tax-cars">
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">Colour</label>
+                                    <div class="form-group">
+                                        <select class="form-control rounded" id="colour">
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                    <label class="c-dark">Private & Trade</label>
+                                    <div class="form-group">
+                                        <select class="form-control rounded" id="seller-type">
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="col-12 col-md-4 col-xl-12">
+                                    <label class="mb-4"></label>
+                                    <div class="form-group mb-0">
+                                        <a href="#" class="btn btn-primary btn-md btn-block text-uppercase">Search</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="container">
+                <div class="col-12 col-lg-12">
+                    <div class="row mb-4">
+                        <div class="col-12 col-md-5 col-xl-6 align-self-center">
+                            <p class="mb-0" id="foundCar">Finding</p>
+                        </div>
+                        <div class="col-12 col-md-5 col-xl-6 align-self-center" id="loading" style="display:none;">
+                            <img src="/images/preloader.gif" style="height:100% ;width:100%"/>
+                        </div>
+                    </div>
+                    <div class="card car-listing-full mb-4" id="ProductShow">
+                        <!--                        <div class="row">
+                                                    <div class="col-12 col-lg-4 h-283">
+                                                        <div class="position-relative">
+                                                            <a href="#">
+                                                                <div class="background-image-maker rounded-left h-283"></div>
+                                                                <div class="holder-image">
+                                                                    <img src="dist/images/img7.jpg" alt="" class="img-fluid d-none" />
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-lg-5 align-self-center">
+                                                        <div class="p-4 p-lg-0">
+                                                            <h6 class="mb-2"><a href="listing-details.php">Land Rover Discovery XXV</a></h6>
+                                                            <ul class="list-unstyled mb-2 c-line-height-2_5">
+                                                                <li><h6 class="c-primary mb-0"><small class="c-light">Price</small> $41,300 </h6></li>
+                                                                <li><i class="fa fa-map-marker pr-1"></i> South City, New York</li>
+                                                            </ul>
+                                                            <ul class="list-inline">
+                                                                <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-calendar pr-1"></i> 2015 </a></li>
+                                                                <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-clock pr-1"></i> 35,000</a></li>
+                                                                <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-fuel pr-1"></i>  Petrol </a></li>
+                                                                <li class="list-inline-item"><a href="#" class="c-light"><i class="flaticon-transport-2 pr-1"></i>  Auto </a></li>
+                                                            </ul>
+                                                            <a href="listing-details.php" class="btn btn-outline-primary text-uppercase btn-lg c-font-weight-700" tabindex="-1">View Details</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-lg-3">
+                                                        <div class="border border-right-0 border-top-0 border-bottom-0 c-brd-light py-4">
+                                                            <table class="table mb-0 c-line-height-1 c-brd-light">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td class="c-dark c-font-weight-600 b-r">Body Type:</td>
+                                                                        <td>SUV</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="c-dark c-font-weight-600 b-r">Brand:</td>
+                                                                        <td>Land Rover</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="c-dark c-font-weight-600 b-r">Model:</td>
+                                                                        <td>2015</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="c-dark c-font-weight-600 b-r">Fuel Type:</td>
+                                                                        <td>Diesel</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="c-dark c-font-weight-600 b-r">Transmission:</td>
+                                                                        <td>Automatic</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="c-dark c-font-weight-600 b-r">Color:</td>
+                                                                        <td>Silver</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-12 col-sm-12">
+                            <ul class="pagination mb-0 text-center text-uppercase justify-content-center">
+                                <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-left pr-1"></i> Prev</a></li>
+                                <li class="page-item d-none d-sm-inline-block"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item d-none d-sm-inline-block active"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item d-none d-sm-inline-block"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#"> Next <i class="fa fa-angle-right pl-1"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<!-- End List Without Sidebar -->
+ <%- include ../sellbuylayouts/footer.ejs %>  
+<script>
+    var base_url = window.location.origin;
+    $('#search_type').text(GetParameterValues('onesearchad') + ' Cars');
+    function removeURLParameter(parameter) {
+        var url = window.location.search;
+        var urlparts = url.split('?');
+        if (urlparts.length >= 2) {
+            var prefix = encodeURIComponent(parameter) + '=';
+            var pars = urlparts[1].split(/[&;]/g);
+            for (var i = pars.length; i-- > 0; ) {
+                //idiom for string.startsWith
+                if (pars[i].lastIndexOf(prefix, 0) !== -1) {
+                    pars.splice(i, 1);
+                }
+            }
+            url = urlparts[0] + '?' + pars.join('&');
+            var new_url = "/search-cars?type=" + GetParameterValues('type') + url;
+            window.history.pushState("data", "Title", url);
+        } else {
+            var new_url = "/search-cars?type=" + GetParameterValues('type') + url;
+            window.history.pushState("data", "Title", url);
+        }
+    }
+    function GetParameterValues(param) {
+        var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for (var i = 0; i < url.length; i++) {
+            var urlparam = url[i].split('=');
+            if (urlparam[0] == param) {
+                return urlparam[1];
+            }
+        }
+    }
+    function get_filter_value(param) {
+        var value = $('#' + param).val();
+        if (value == undefined) {
+            value = GetParameterValues(param);
+        }
+        if (value == undefined) {
+            value = '';
+        }
+        return value;
+    }
+    function search_results() {
+        var formData = {
+            postal_code: get_filter_value('postal_code'),
+            make: get_filter_value('make'),
+            model: get_filter_value('model'),
+            radius: get_filter_value('radius'),
+            aggregatedTrim: get_filter_value('aggregatedTrim'),
+            onesearchad: get_filter_value('onesearchad'),
+            sort: get_filter_value('sort'),
+            price_from: get_filter_value('price_from'),
+            price_to: get_filter_value('price_to'),
+            year_from: get_filter_value('year_from'),
+            year_to: get_filter_value('year_to'),
+            mileage_from: get_filter_value('mileage_from'),
+            mileage_to: get_filter_value('mileage_to'),
+            body_type: get_filter_value('body_type'),
+            fuel_type: get_filter_value('fuel_type'),
+            minimum_badge_engine_size: get_filter_value('minimum-badge-engine-size'),
+            maximum_badge_engine_size: get_filter_value('maximum-badge-engine-size'),
+            fuel_consumption: get_filter_value('fuel_consumption'),
+            zero_to_60: get_filter_value('zero-to-60'),
+            transmission: get_filter_value('transmission'),
+            drivetrain: get_filter_value('drivetrain'),
+            co2_emissions_cars: get_filter_value('co2-emissions-cars'),
+            quantity_of_doors: get_filter_value('quantity-of-doors'),
+            minimum_seats: get_filter_value('minimum-seats'),
+            maximum_seats: get_filter_value('maximum-seats'),
+            insuranceGroup: get_filter_value('insuranceGroup'),
+            annual_tax_cars: get_filter_value('annual-tax-cars'),
+            colour: get_filter_value('colour'),
+            seller_type: get_filter_value('seller-type'),
+        }
+        console.log(formData)
+        var url = base_url + '/auto-search-results';
+        $('#loading').css('display', 'block')
+        $.get(url, formData, function (data) {
+            $('#ProductShow').html('')
+            $.each(data.cars, function (index, value) {
+                var ab = '';
+                $(' <ul class="list-inline">' + value.listings + '</ul>').find('li').each(function (i, elem) {
+                    ab += '<li>' + $.trim($(this).text()) + '</li>';
+                });
+                $('#ProductShow').append('<div class="product-bar"><div class="col-md-4 h-283"><div class="position-relative">\n\
+ <a href="http://sellbuymotors.co.uk/productView/' + value.product_id + '"><div class="background-image-maker rounded-left h-283" style="background-image: url(&quot;' + value.image + ';);"></div>\n\
+<div class="holder-image"><img src="' + value.image + '" alt="" class="img-fluid d-none">\n\
+</div></a></div></div>' +
+                        '<div class="col-md-4 title-products align-self-center">' +
+                        '<div class="p-4 p-lg-0">' +
+                        '<h6 class="mb-2"><a href="http://sellbuymotors.co.uk/productView/' + value.product_id + '">' + value.name + '</a></h6>' +
+                        ' <ul class="list-unstyled mb-2 c-line-height-2_5">' +
+                        ' <li><h6 class="mb-0"><small class="c-light">Price</small> ' + value.price + ' </h6></li>' +
+                        '</ul><p>' + value.description.substr(0, 250) +'</p>'+
+                        '<a href="http://sellbuymotors.co.uk/productView/' + value.product_id + '" class="btn btn-outline-primary text-uppercase btn-lg c-font-weight-700" tabindex="-1">' +
+                        ' View Details' +
+                        ' </a>' +
+                        '</div>' +
+                        ' </div>' +
+                        '<div class="col-md-4 listind-detail">' +
+                        ' <div class="border border-right-0 border-top-0 border-bottom-0 c-brd-light py-4">' +
+                        ' <ul class="list-inline"><h1>Features</h1>' + ab +
+                        '</ul>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>');
+            });
+            $('#foundCar').text(data.html1.count)
+            $('#radius').html('<option value="1500">Distance(National)</option>')
+            $('<div>' + data.html1.fields[0].html + '</div>').find('div').each(function (key, value) {
+                $('#radius').append('<option value="' + $(this).data('selected-value') + '">' + $(this).data('selected-display-name') + '</option>')
+            })
+            $('#make').html('<option value="">Any</option>')
+            $('<div>' + data.html1.fields[1].html + '</div>').find('div').each(function (key, value) {
+                $('#make').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('.term').text() + $(this).find('.count').text() + '</option>')
+            })
+            $('#model').html('<option value="">Any</option>')
+            $('<div>' + data.html1.fields[2].html + '</div>').find('div').each(function (key, value) {
+                $('#model').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('.term').text() + $(this).find('.count').text() + '</option>')
+            })
+            $('#aggregatedTrim').html('<option value="">Any</option>')
+            $('<div>' + data.html1.fields[3].html + '</div>').find('div').each(function (key, value) {
+                $('#aggregatedTrim').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('.term').text() + $(this).find('.count').text() + '</option>')
+            })
+            $('#price_from').html('')
+            $('<div>' + data.html1.fields[4].minField.html + '</div>').find('option').each(function (key, value) {
+                $('#price_from').append('<option value="' + $(this).val() + '">' + $(this).text() + '</option>')
+            })
+            $('#price_to').html('')
+            $('<div>' + data.html1.fields[4].maxField.html + '</div>').find('option').each(function (key, value) {
+                $('#price_to').append('<option value="' + $(this).val() + '">' + $(this).text() + '</option>')
+            })
+            $('#year_from').html('')
+            $('<div>' + data.html1.fields[5].minField.html + '</div>').find('option').each(function (key, value) {
+                $('#year_from').append('<option value="' + $(this).val() + '">' + $(this).text() + '</option>')
+            })
+            $('#year_to').html('')
+            $('<div>' + data.html1.fields[5].maxField.html + '</div>').find('option').each(function (key, value) {
+                $('#year_to').append('<option value="' + $(this).val() + '">' + $(this).text() + '</option>')
+            })
+            $('#mileage_from').html('')
+            $('<div>' + data.html1.fields[6].minField.html + '</div>').find('option').each(function (key, value) {
+                $('#mileage_from').append('<option value="' + $(this).val() + '">' + $(this).text() + '</option>')
+            })
+            $('#mileage_to').html('')
+            $('<div>' + data.html1.fields[6].maxField.html + '</div>').find('option').each(function (key, value) {
+                $('#mileage_to').append('<option value="' + $(this).val() + '">' + $(this).text() + '</option>')
+            })
+            $('#body_type').html('<option value="">Any</option>')
+            $('<div>' + data.html1.fields[7].html + '</div>').find('div').each(function (key, value) {
+                $('#body_type').append('<option value="' + $(this).find('label').data('selected-value') + '">' + $(this).find('label').data('selected-display-name') + $(this).find('.count').text() + '</option>')
+            })
+            $('#fuel_type').html('<option value="">Any</option>')
+            $('<div>' + data.html1.fields[8].html + '</div>').find('div').each(function (key, value) {
+                $('#fuel_type').append('<option value="' + $(this).find('label').data('selected-value') + '">' + $(this).find('label').data('selected-display-name') + $(this).find('.count').text() + '</option>')
+            })
+            $('#maximum-badge-engine-size').html('')
+            $('<div>' + data.html1.fields[9].maxField.html + '</div>').find('option').each(function (key, value) {
+                $('#maximum-badge-engine-size').append('<option value="' + $(this).val() + '">' + $(this).text() + '</option>')
+            })
+            $('#minimum-badge-engine-size').html('')
+            $('<div>' + data.html1.fields[9].minField.html + '</div>').find('option').each(function (key, value) {
+                $('#minimum-badge-engine-size').append('<option value="' + $(this).val() + '">' + $(this).text() + '</option>')
+            })
+//            console.log(data.html1.fields[10].html)
+            $('#fuel_consumption').html('<option value="">Any</option>')
+            $('<div>' + data.html1.fields[10].html + '</div>').find('div').each(function (key, value) {
+                $('#fuel_consumption').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text() + '</option>')
+            })
+            $('#zero-to-60').html('<option value="">Any</option>')
+            $('<div>' + data.html1.fields[11].html + '</div>').find('div').each(function (key, value) {
+                $('#zero-to-60').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text() + '</option>')
+            })
+            $('#transmission').html('<option value="">Any</option>')
+            $('<div>' + data.html1.fields[12].html + '</div>').find('div').each(function (key, value) {
+                $('#transmission').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text() + '</option>')
+            })
+            $('#drivetrain').html('<option value="">Any</option>')
+            $('<div>' + data.html1.fields[13].html + '</div>').find('div').each(function (key, value) {
+                $('#drivetrain').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text() + '</option>')
+            })
+            $('#co2-emissions-cars').html('<option value="">Any</option>')
+            $('<div>' + data.html1.fields[14].html + '</div>').find('div').each(function (key, value) {
+                $('#co2-emissions-cars').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text() + '</option>')
+            })
+            $('#quantity-of-doors').html('<option value="">Any</option>')
+            $('<div>' + data.html1.fields[15].html + '</div>').find('div').each(function (key, value) {
+                $('#quantity-of-doors').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text() + '</option>')
+            })
+            $('#minimum-seats').html('')
+            $('<div>' + data.html1.fields[16].minField.html + '</div>').find('option').each(function (key, value) {
+                $('#minimum-seats').append('<option value="' + $(this).val() + '">' + $(this).text() + '</option>')
+            })
+            $('#maximum-seats').html('')
+            $('<div>' + data.html1.fields[16].maxField.html + '</div>').find('option').each(function (key, value) {
+                $('#maximum-seats').append('<option value="' + $(this).val() + '">' + $(this).text() + '</option>')
+            })
+            $('#insuranceGroup').html('')
+            $('<div>' + data.html1.fields[17].html + '</div>').find('div').each(function (key, value) {
+                $('#insuranceGroup').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text() + '</option>')
+            })
+            $('#annual-tax-cars').html('<option value="">Any</option>')
+            $('<div>' + data.html1.fields[18].html + '</div>').find('div').each(function (key, value) {
+                $('#annual-tax-cars').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text() + '</option>')
+            })
+            $('#colour').html('<option value="">Any</option>')
+            $('<div>' + data.html1.fields[19].html + '</div>').find('div').each(function (key, value) {
+                $('#colour').append('<option value="' + $(this).find('.term').text() + '">' + $(this).find('.term').text() + $(this).find('.count').text() + '</option>')
+            })
+            $('#seller-type').html('<option value="">Any</option>')
+            $('<div>' + data.html1.fields[20].html + '</div>').find('div').each(function (key, value) {
+                $('#seller-type').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('.term').text() + $(this).find('.count').text() + '</option>')
+            })
+            $('#loading').css('display', 'none')
+            $('#radius').val(formData.radius)
+            $('#make').val(formData.make.replace("%20", " "))
+            $('#model').val(formData.model.replace("%20", " "))
+            $('#aggregatedTrim').val(formData.aggregatedTrim.replace("%20", " "))
+            $('#sort').val(formData.sort)
+            $('#price_from').val(formData.price_from)
+            $('#price_to').val(formData.price_to)
+            $('#postal_code').val(formData.postal_code)
+            $('#year_from').val(formData.year_from)
+            $('#year_to').val(formData.year_to)
+            $('#mileage_from').val(formData.mileage_from)
+            $('#mileage_to').val(formData.mileage_to)
+            $('#body_type').val(formData.body_type)
+            $('#fuel_type').val(formData.fuel_type)
+            $('#maximum-badge-engine-size').val(formData.maximum_badge_engine_size)
+            $('#minimum-badge-engine-size').val(formData.minimum_badge_engine_size)
+            $('#fuel_consumption').val(formData.fuel_consumption)
+            $('#zero-to-60').val(formData.zero_to_60)
+            $('#transmission').val(formData.transmission)
+            $('#drivetrain').val(formData.drivetrain)
+            $('#co2-emissions-cars').val(formData.co2_emissions_cars)
+            $('#quantity-of-doors').val(formData.quantity_of_doors)
+            $('#minimum-seats').val(formData.minimum_seats)
+            $('#maximum-seats').val(formData.maximum_seats)
+            $('#annual-tax-cars').val(formData.annual_tax_cars)
+            $('#colour').val(formData.colour)
+            $('#seller-type').val(formData.seller_type)
+//            console.log(formData)
+            var c_url = '';
+            $.each(formData, function (key, value) {
+                if (value == null)
+                    c_url += '&' + key + '=';
+                else
+                    c_url += '&' + key + '=' + value;
+            });
+            var new_url = "/search-cars?onesearchad=" + GetParameterValues('onesearchad') + c_url;
+            window.history.pushState("data", "Title", new_url);
+//            more_products(formData)
+        }, 'json')
+    }
+    function more_products(formData) {
+//        var formData = {
+//            make: get_filter_value('make'),
+//            model: get_filter_value('model'),
+//            radius: get_filter_value('radius'),
+//            aggregatedTrim: get_filter_value('aggregatedTrim'),
+//        }
+        var url = base_url + '/mot-search';
+        $.get(url, formData, function (data) {
+            var html = '';
+            $.each(data, function (key, value) {
+                if (value.ObjectType == 'UsedVehicleResult') {
+//                    console.log(value)
+                    html += '<div class="product-bar">\n\
+                                <div class="col-md-4 h-283">\n\
+                                    <div class="position-relative">\n\
+                                        <a href="productView/' + value.VehicleId + '">\n\
+                                            <div class="background-image-maker rounded-left h-283" style="background-image: url(&quot;' + value.MainImage.Normal + ';);">\n\
+                                            </div>\n\
+                                            <div class="holder-image">\n\
+                                                <img src="' + value.MainImage.Normal + '" alt="" class="img-fluid d-none">\n\
+                                            </div>\n\
+                                        </a>\n\
+                                    </div>\n\
+                                </div>\n\
+                                <div class="col-md-4 title-products align-self-center">\n\
+                                    <div class="p-4 p-lg-0">\n\
+                                        <h6 class="mb-2">\n\
+                                            <a href="productView/' + value.VehicleId + '">' + value.Title + '\n\
+                                            </a>\n\
+                                        </h6>\n\
+                                         <ul class="list-unstyled mb-2 c-line-height-2_5"> \n\
+                                            <li><h6 class="mb-0"><small class="c-light">Price</small> ' + value.GBPPrice + '</h6></li>\n\
+                                        </ul>\n\
+                                        ' + value.Variant + ' …\n\
+                                        <a href="productView/' + value.VehicleId + '" class="btn btn-outline-primary text-uppercase btn-lg c-font-weight-700" tabindex="-1"> \n\
+                                            View Details \n\
+                                        </a>\n\
+                                    </div>\n\
+                                </div>\n\
+                                <div class="col-md-4 listind-detail"> \n\
+                                    <div class="border border-right-0 border-top-0 border-bottom-0 c-brd-light py-4"> \n\
+                                        <ul class="list-inline">\n\
+                                            <h1>Features</h1>\n\
+                                                <li>' + value.RegistrationYear + ' (' + value.RegistrationNumberYear + ' reg)</li>\n\
+                                                <li>' + value.BodyStyle + '</li>\n\
+                                                <li>' + value.MileageInt + ' miles</li>\n\
+                                                <li>' + value.EngineSizeLitres + '</li>\n\
+                                                <li>' + value.Transmission + '</li>\n\
+                                                <li>' + value.FuelType + '</li>\n\
+                                        </ul>\n\
+                                    </div>\n\
+                                </div>\n\
+                            </div>'
+                }
+            })
+            $('#ProductShow').append(html)
+        });
+    }
+    search_results()
+//    more_products()
+    function get_make_count(name) {
+    }
+    $(document).on('change', '.rounded', function () {
+        search_results()
+    })
+    $(document).on('change', '#make', function () {
+        $('#model').html('');
+        $('#aggregatedTrim').html('');
+        removeURLParameter('model')
+        removeURLParameter('aggregatedTrim')
+        search_results()
+    })
+    $(document).on('change', '#model', function () {
+        removeURLParameter('aggregatedTrim')
+        $('#aggregatedTrim').html('');
+        search_results()
+    })
+</script>
