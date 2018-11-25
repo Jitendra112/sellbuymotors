@@ -1,4 +1,4 @@
-<%- include ../sitelayouts/header.ejs %>
+<%- include ../sellbuylayouts/header.ejs %>
 <style>
     .col-md-4{
         float: left;
@@ -271,7 +271,7 @@
                             <p class="mb-0" id="foundCar">Finding</p>
                         </div>
                         <div class="col-12 col-md-5 col-xl-6 align-self-center" id="loading" style="display:none;">
-                            <img src="/images/preloader.gif" style="height:100% ;width:100%"/>
+                            <img src=/images/preloader.gif" style="height:100% ;width:100%"/>
                         </div>
                     </div>
                     <div class="card car-listing-full mb-4" id="ProductShow">
@@ -349,7 +349,7 @@
     <input class="scrollup" type="hidden" id="page" value="1"/> 
 </section>
 <!-- End List Without Sidebar -->
-<%- include ../sitelayouts/footer.ejs %>
+<%- include ../sellbuylayouts/footer.ejs %> 
 <script>
     var base_url = window.location.origin;
     $('#search_type').text(GetParameterValues('onesearchad') + ' Cars');
