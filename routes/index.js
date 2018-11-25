@@ -247,6 +247,8 @@ app.post('/save_post',async function(req, res, next){
 // Kuldeep Sir Scrapping Code<!--- Starts-->
 
 app.get('/search-cars', async function (req, res, next) {
+
+  
     res.render('sellbuy/second_search', {
         title: 'Search Cars',
         data: []

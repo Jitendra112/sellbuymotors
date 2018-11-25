@@ -1,4 +1,4 @@
-<%- include ../sellbuylayouts/header.ejs %>
+<%- include ../sitelayouts/header.ejs %>
 <style>
     .col-md-4{
         float: left;
@@ -349,7 +349,7 @@
     <input class="scrollup" type="hidden" id="page" value="1"/> 
 </section>
 <!-- End List Without Sidebar -->
-<%- include ../sellbuylayouts/footer.ejs %>  
+<%- include ../sitelayouts/footer.ejs %>
 <script>
     var base_url = window.location.origin;
     $('#search_type').text(GetParameterValues('onesearchad') + ' Cars');
@@ -543,8 +543,8 @@
                         '<h6 class="mb-2"><a href="/show_product/?id=' + value.product_id + '">' + value.name + '</a></h6>' +
                         ' <ul class="list-unstyled mb-2 c-line-height-2_5">' +
                         ' <li><h6 class="mb-0"><small class="c-light">Price</small> ' + value.price + ' </h6></li>' +
-                        '</ul><p>' + value.description.substr(0, 250) +'</p>' +
-                        '<a href="/show_product/?id= ' + value.product_id + '" class="btn btn-outline-primary text-uppercase btn-lg c-font-weight-700" tabindex="-1">' +
+                        '</ul>' + value.description.substr(0, 250) +
+                        '<a href="/show_product/?id=' + value.product_id + '" class="btn btn-outline-primary text-uppercase btn-lg c-font-weight-700" tabindex="-1">' +
                         ' View Details' +
                         ' </a>' +
                         '</div>' +
@@ -558,7 +558,7 @@
                         '</div>');
             });
             $('#foundCar').text(parseInt(data.html1.count.replace('cars found', '').replace(',', '')) + parseInt(result.data.RecordCount) + ' cars found')
-            //$('#foundCar').text(data.html1.count + ' ----- ' + parseInt(result.data.RecordCount))
+            $('#foundCar').text(data.html1.count + ' ----- ' + parseInt(result.data.RecordCount))
             $('#radius').html('<option value="1500">Distance(National)</option>')
             $('<div>' + data.html1.fields[0].html + '</div>').find('div').each(function (key, value) {
                 $('#radius').append('<option value="' + $(this).data('selected-value') + '">' + $(this).data('selected-display-name') + '</option>')
