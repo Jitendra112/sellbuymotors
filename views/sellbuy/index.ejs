@@ -44,125 +44,33 @@
                                                 
                                                 <div class="tab-content bg-white rounded-bottom rounded-right" id="myTabContent3">
                                                     <div class="tab-pane fade active show" id="id1" role="tabpanel" aria-expanded="true">
-                                                        <form>
+                                            <form method="get" class="srchfrm" action="search-cars?onesearchad=New">
+                                                        <input type="hidden" name="onesearchad" value="New">
                                                             <div class="form-group">
-                                                                <select class="form-control">
-                                                                    <option>--- Select Budget ---</option>
-                                                                    <option value="0">-Select Budget-</option>
-                                                                    <option value="1-lakh-5-lakh">1 Lakh - 5 Lakh</option>
-                                                                    <option value="5-lakh-10-lakh">5 Lakh - 10 Lakh</option>
-                                                                    <option value="10-lakh-20-lakh">10 Lakh - 20 Lakh</option>
-                                                                    <option value="20-lakh-50-lakh">20 Lakh - 50 Lakh</option>
-                                                                    <option value="50-lakh-1-crore">50 Lakh - 1 Crore</option>
-                                                                    <option value="above-1-crore">Above 1 Crore</option>
-                                                                </select>
+                                                                 <input type="text" name="postal_code" class="form-control" placeholder="Enter Postal Code">
                                                             </div>
                                                             <div class="form-group">
-                                                                <select class="form-control">
-                                                                    <option value="">--- Select City ---</option>
-                                                                    <option value="New Delhi">New Delhi</option>
-                                                                    <option value="Bangalore">Bangalore</option>
-                                                                    <option value="Mumbai">Mumbai</option>
-                                                                    <option value="Hyderabad">Hyderabad</option>
-                                                                    <option value="Chennai">Chennai</option>
-                                                                    <option value="Jaipur">Jaipur</option>
-                                                                    <option value="Pune">Pune</option>
-                                                                    <option value="Kolkata">Kolkata</option>
-                                                                    <option value="Gurgaon">Gurgaon</option>
-                                                                    <option value="Ahmedabad">Ahmedabad</option>
-                                                                    <option value="Noida">Noida</option>
-                                                                    <option value="Chandigarh">Chandigarh</option>
-                                                                    <option value="Indore">Indore</option>
-                                                                    <option value="Kochi">Kochi</option>
-                                                                    <option value="" disabled="">--------------------</option>
-                                                                    <option value="Agra">Agra</option>
-                                                                    <option value="Ahmedabad">Ahmedabad</option>
-                                                                    <option value="Ajmer">Ajmer</option>
-                                                                    <option value="Akola">Akola</option>
-                                                                    <option value="Alibag">Alibag</option>
-                                                                    <option value="Aligarh">Aligarh</option>
-                                                                    <option value="Allahabad">Allahabad</option>
-                                                                    <option value="Alwar">Alwar</option>
-                                                                    <option value="Amalapuram">Amalapuram</option>
-                                                                    <option value="Ambala">Ambala</option>
-                                                                    <option value="Ambernath">Ambernath</option>
-                                                                    <option value="Ambikapur">Ambikapur</option>
-                                                                    <option value="Amethi">Amethi</option>
-                                                                    <option value="Amravati">Amravati</option>
-                                                                    <option value="Amreli">Amreli</option>
-                                                                    <option value="Amritsar">Amritsar</option>
-                                                                    <option value="Amroha">Amroha</option>
-                                                                    <option value="Anantapur">Anantapur</option>
-                                                                    <option value="Aurangabad(bh)">Aurangabad(bh)</option>
-                                                                    <option value="Avadi">Avadi</option>
-                                                                    <option value="Azamgarh">Azamgarh</option>
-                                                                    <option value="Baddi">Baddi</option>
-                                                                    <option value="Badlapur">Badlapur</option>
-                                                                    <option value="Baran">Baran</option>
-                                                                    <option value="Barasat">Barasat</option>
-                                                                    <option value="Baraut">Baraut</option>
-                                                                    <option value="Bardhaman">Bardhaman</option>
-                                                                    <option value="Bardoli">Bardoli</option>
-                                                                    <option value="Bareilly">Bareilly</option>
-                                                                    <option value="Bargarh">Bargarh</option>
-                                                                    <option value="Baripada">Baripada</option>
-                                                                    <option value="Barmer">Barmer</option>
-                                                                    <option value="Barnala">Barnala</option>
-                                                                    <option value="Barpeta">Barpeta</option>
-                                                                    <option value="Barrackpore">Barrackpore</option>
-                                                                    <option value="Barsar">Barsar</option>
-                                                                    <option value="Barshi">Barshi</option>
-                                                                    <option value="Baruipur">Baruipur</option>
+                                                                <select class="form-control make_filter" name="make">
+                                                                 <option value="">--- Select Make ---</option>
+                                                                   
                                                                 </select>
                                                             </div>
-                                                            <a href="#" class="btn btn-primary btn-block btn-md text-uppercase font-weight-bold">Find Car</a>
+                                                           <button class="btn btn-primary btn-block btn-md text-uppercase font-weight-bold">Find Car&nbsp(<b class="counttxt"></b>)</button>
                                                         </form>
                                                     </div>
                                                     <div class="tab-pane fade" id="id2" role="tabpanel" aria-expanded="false">
-                                                        <form>
+                                                         <form method="get" class="srchfrm" action="search-cars?onesearchad=New">
+                                                        <input type="hidden" name="onesearchad" value="New">
                                                             <div class="form-group">
-                                                                <select class="form-control rounded">
-                                                                    <option>--- Select Model ---</option>
-                                                                    <option value="Ford Mustang">Mustang </option>
-                                                                    <option value="Volvo XC90 Inscription">Volvo XC90 Inscription</option>
-                                                                    <option value="BMW X6 M">BMW X6 M</option>
-                                                                    <option value="Aston Martin DB5">Aston Martin DB5</option>
-                                                                    <option value="Chevrolet Camaro">Chevrolet Camaro</option>
-                                                                    <option value="Honda City i VTEC SV">Honda City i VTEC SV</option>
-                                                                    <option value="Volkswagen Jetta">Volkswagen Jetta</option>
-                                                                    <option value="Tata Aria Pure 4x2">Tata Aria Pure 4x2</option>.
-                                                                    <option value="Skoda Octavia Ambition 1.4 TSI MT">Skoda Octavia Ambition 1.4 TSI MT</option>
-                                                                    <option value="Audi A4 35 TDI Premium">Audi A4 35 TDI Premium</option>
-                                                                    <option value="Renault Fluence E4 D">Renault Fluence E4 D</option>
-                                                                    <option value="Nissan Micra AT">Nissan Micra AT</option>
-                                                                    <option value="Mahindra Scorpio S10 AT 2WD">Mahindra Scorpio S10 AT 2WD</option>
-                                                                    <option value="Toyota Etios G">Toyota Etios G</option>
-                                                                    <option value="Maruti Swift ZXI">Maruti Swift ZXI</option>
-                                                                    <option value="Hyundai I20">Hyundai I20</option>
-                                                                </select>
+                                                                 <input type="text" name="postal_code" class="form-control" placeholder="Enter Postal Code">
                                                             </div>
                                                             <div class="form-group">
-                                                                <select class="form-control rounded">
-                                                                    <option value="">--- Select Brand ---</option>
-                                                                    <option value="Ford">Ford </option>
-                                                                    <option value="Volvo">Volvo</option>
-                                                                    <option value="BMW">BMW</option>
-                                                                    <option value="Aston">Aston</option>
-                                                                    <option value="Chevrolet">Chevrolet</option>
-                                                                    <option value="Honda">Honda City i VTEC SV</option>
-                                                                    <option value="Volkswagen">Volkswagen</option>
-                                                                    <option value="Tata">Tata</option>.
-                                                                    <option value="Skoda">Skoda</option>
-                                                                    <option value="Audi">Audi</option>
-                                                                    <option value="Ranault">Ranault</option>
-                                                                    <option value="Nissan">Nissan</option>
-                                                                    <option value="Mahindra">Mahindra</option>
-                                                                    <option value="Toyota">Toyota</option>
-                                                                    <option value="Maruti">Maruti</option>
-                                                                    <option value="Hyundai">Hyundai</option>
+                                                                <select class="form-control make_filter" name="make">
+                                                                 <option value="">--- Select Make ---</option>
+                                                                   
                                                                 </select>
                                                             </div>
-                                                            <a href="#" class="btn btn-primary btn-block btn-md text-uppercase font-weight-bold">Find Car</a>
+                                                           <button class="btn btn-primary btn-block btn-md text-uppercase font-weight-bold">Find Car&nbsp(<b class="counttxt"></b>)</button>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -173,155 +81,39 @@
                                                 
                                                 <div class="tab-content bg-white rounded-bottom rounded-right" id="myTabContent3">
                                                     <div class="tab-pane fade active show" id="id3" role="tabpanel" aria-expanded="true">
-                                                        <form>
+                                                     <form method="GET" class="" action="search-cars">
                                                             <div class="form-group">
-                                                                <select class="form-control">
-                                                                    <option>--- Select Budget ---</option>
-                                                                    <option value="0">-Select Budget-</option>
-                                                                    <option value="1-lakh-5-lakh">1 Lakh - 5 Lakh</option>
-                                                                    <option value="5-lakh-10-lakh">5 Lakh - 10 Lakh</option>
-                                                                    <option value="10-lakh-20-lakh">10 Lakh - 20 Lakh</option>
-                                                                    <option value="20-lakh-50-lakh">20 Lakh - 50 Lakh</option>
-                                                                    <option value="50-lakh-1-crore">50 Lakh - 1 Crore</option>
-                                                                    <option value="above-1-crore">Above 1 Crore</option>
-                                                                </select>
+                                                                <input type="hidden" name="onesearchad" value="Used">
+                                                                  <input type="text" name="postal_code" class="form-control" placeholder="Enter Postal Code">
                                                             </div>
                                                             <div class="form-group">
-                                                                <select class="form-control">
-                                                                    <option value="">--- Select City ---</option>
-                                                                    <option value="New Delhi">New Delhi</option>
-                                                                    <option value="Bangalore">Bangalore</option>
-                                                                    <option value="Mumbai">Mumbai</option>
-                                                                    <option value="Hyderabad">Hyderabad</option>
-                                                                    <option value="Chennai">Chennai</option>
-                                                                    <option value="Jaipur">Jaipur</option>
-                                                                    <option value="Pune">Pune</option>
-                                                                    <option value="Kolkata">Kolkata</option>
-                                                                    <option value="Gurgaon">Gurgaon</option>
-                                                                    <option value="Ahmedabad">Ahmedabad</option>
-                                                                    <option value="Noida">Noida</option>
-                                                                    <option value="Chandigarh">Chandigarh</option>
-                                                                    <option value="Indore">Indore</option>
-                                                                    <option value="Kochi">Kochi</option>
-                                                                    <option value="" disabled="">--------------------</option>
-                                                                    <option value="Agra">Agra</option>
-                                                                    <option value="Ahmedabad">Ahmedabad</option>
-                                                                    <option value="Ajmer">Ajmer</option>
-                                                                    <option value="Akola">Akola</option>
-                                                                    <option value="Alibag">Alibag</option>
-                                                                    <option value="Aligarh">Aligarh</option>
-                                                                    <option value="Allahabad">Allahabad</option>
-                                                                    <option value="Alwar">Alwar</option>
-                                                                    <option value="Amalapuram">Amalapuram</option>
-                                                                    <option value="Ambala">Ambala</option>
-                                                                    <option value="Ambernath">Ambernath</option>
-                                                                    <option value="Ambikapur">Ambikapur</option>
-                                                                    <option value="Amethi">Amethi</option>
-                                                                    <option value="Amravati">Amravati</option>
-                                                                    <option value="Amreli">Amreli</option>
-                                                                    <option value="Amritsar">Amritsar</option>
-                                                                    <option value="Amroha">Amroha</option>
-                                                                    <option value="Anantapur">Anantapur</option>
-                                                                    <option value="Aurangabad(bh)">Aurangabad(bh)</option>
-                                                                    <option value="Avadi">Avadi</option>
-                                                                    <option value="Azamgarh">Azamgarh</option>
-                                                                    <option value="Baddi">Baddi</option>
-                                                                    <option value="Badlapur">Badlapur</option>
-                                                                    <option value="Baran">Baran</option>
-                                                                    <option value="Barasat">Barasat</option>
-                                                                    <option value="Baraut">Baraut</option>
-                                                                    <option value="Bardhaman">Bardhaman</option>
-                                                                    <option value="Bardoli">Bardoli</option>
-                                                                    <option value="Bareilly">Bareilly</option>
-                                                                    <option value="Bargarh">Bargarh</option>
-                                                                    <option value="Baripada">Baripada</option>
-                                                                    <option value="Barmer">Barmer</option>
-                                                                    <option value="Barnala">Barnala</option>
-                                                                    <option value="Barpeta">Barpeta</option>
-                                                                    <option value="Barrackpore">Barrackpore</option>
-                                                                    <option value="Barsar">Barsar</option>
-                                                                    <option value="Barshi">Barshi</option>
-                                                                    <option value="Baruipur">Baruipur</option>
+                                                                <select class="form-control make_filter" name="make">
+                                                                    <option value="">--- Select Make ---</option>
+                                                                    
                                                                 </select>
                                                             </div>
-                                                            <a href="#" class="btn btn-primary btn-block btn-md text-uppercase font-weight-bold">Find Car</a>
+                                                           <button class="btn btn-primary btn-block btn-md text-uppercase font-weight-bold">Find Car&nbsp(<b class="counttxt"></b>)</button>
                                                         </form>
                                                     </div>
                                                     <div class="tab-pane fade" id="id4" role="tabpanel" aria-expanded="false">
-                                                        <form>
+                                                        <form method="GET" class="" action="search-cars">
                                                             <div class="form-group">
-                                                                <select class="form-control">
-                                                                    <option>--- Select Budget ---</option>
-                                                                    <option value="0">-Select Budget-</option>
-                                                                    <option value="1-lakh-5-lakh">1 Lakh - 5 Lakh</option>
-                                                                    <option value="5-lakh-10-lakh">5 Lakh - 10 Lakh</option>
-                                                                    <option value="10-lakh-20-lakh">10 Lakh - 20 Lakh</option>
-                                                                    <option value="20-lakh-50-lakh">20 Lakh - 50 Lakh</option>
-                                                                    <option value="50-lakh-1-crore">50 Lakh - 1 Crore</option>
-                                                                    <option value="above-1-crore">Above 1 Crore</option>
-                                                                </select>
+                                                                 <input type="hidden" name="onesearchad" value="Used">
+                                                                <input type="text" class="form-control" placeholder="Enter Postal Code">
+                                                               
                                                             </div>
                                                             <div class="form-group">
-                                                                <select class="form-control">
-                                                                    <option value="">--- Select City ---</option>
-                                                                    <option value="New Delhi">New Delhi</option>
-                                                                    <option value="Bangalore">Bangalore</option>
-                                                                    <option value="Mumbai">Mumbai</option>
-                                                                    <option value="Hyderabad">Hyderabad</option>
-                                                                    <option value="Chennai">Chennai</option>
-                                                                    <option value="Jaipur">Jaipur</option>
-                                                                    <option value="Pune">Pune</option>
-                                                                    <option value="Kolkata">Kolkata</option>
-                                                                    <option value="Gurgaon">Gurgaon</option>
-                                                                    <option value="Ahmedabad">Ahmedabad</option>
-                                                                    <option value="Noida">Noida</option>
-                                                                    <option value="Chandigarh">Chandigarh</option>
-                                                                    <option value="Indore">Indore</option>
-                                                                    <option value="Kochi">Kochi</option>
-                                                                    <option value="" disabled="">--------------------</option>
-                                                                    <option value="Agra">Agra</option>
-                                                                    <option value="Ahmedabad">Ahmedabad</option>
-                                                                    <option value="Ajmer">Ajmer</option>
-                                                                    <option value="Akola">Akola</option>
-                                                                    <option value="Alibag">Alibag</option>
-                                                                    <option value="Aligarh">Aligarh</option>
-                                                                    <option value="Allahabad">Allahabad</option>
-                                                                    <option value="Alwar">Alwar</option>
-                                                                    <option value="Amalapuram">Amalapuram</option>
-                                                                    <option value="Ambala">Ambala</option>
-                                                                    <option value="Ambernath">Ambernath</option>
-                                                                    <option value="Ambikapur">Ambikapur</option>
-                                                                    <option value="Amethi">Amethi</option>
-                                                                    <option value="Amravati">Amravati</option>
-                                                                    <option value="Amreli">Amreli</option>
-                                                                    <option value="Amritsar">Amritsar</option>
-                                                                    <option value="Amroha">Amroha</option>
-                                                                    <option value="Anantapur">Anantapur</option>
-                                                                    <option value="Aurangabad(bh)">Aurangabad(bh)</option>
-                                                                    <option value="Avadi">Avadi</option>
-                                                                    <option value="Azamgarh">Azamgarh</option>
-                                                                    <option value="Baddi">Baddi</option>
-                                                                    <option value="Badlapur">Badlapur</option>
-                                                                    <option value="Baran">Baran</option>
-                                                                    <option value="Barasat">Barasat</option>
-                                                                    <option value="Baraut">Baraut</option>
-                                                                    <option value="Bardhaman">Bardhaman</option>
-                                                                    <option value="Bardoli">Bardoli</option>
-                                                                    <option value="Bareilly">Bareilly</option>
-                                                                    <option value="Bargarh">Bargarh</option>
-                                                                    <option value="Baripada">Baripada</option>
-                                                                    <option value="Barmer">Barmer</option>
-                                                                    <option value="Barnala">Barnala</option>
-                                                                    <option value="Barpeta">Barpeta</option>
-                                                                    <option value="Barrackpore">Barrackpore</option>
-                                                                    <option value="Barsar">Barsar</option>
-                                                                    <option value="Barshi">Barshi</option>
-                                                                    <option value="Baruipur">Baruipur</option>
+                                                                <select class="form-control make_filter" name="make">
+                                                                    <option value="">--- Select Make ---</option>
+                                                                    
                                                                 </select>
                                                             </div>
-                                                            <a href="#" class="btn btn-primary btn-block btn-md text-uppercase font-weight-bold">Find Car</a>
+                                                            <button class="btn btn-primary btn-block btn-md text-uppercase font-weight-bold">Find Car&nbsp(<b class="counttxt"></b>)</button>
                                                         </form>
                                                     </div>
+                                                     <div class="col-12 col-md-5 col-xl-6 align-self-center" id="loading" style="display:none;">
+                                         <img src="/images/preloader.gif" style="height:100% ;width:100%"/>
+                                                   </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -363,7 +155,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-sm-12 d-flex justify-content-center pb-4">
-                        <h3 class="text-white mb-0">What Say Our Customers</h3>
+                        <p style="color: #fff; text-align: center;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+</p>
                     </div>
                 </div>
                 
@@ -718,9 +512,114 @@
                     </div> -->
                 </div>
             </div>
+            <input type="hidden" id="make">
         </section>
       
        
         <!-- End Subscribe-->
         
         <%- include ../sellbuylayouts/footer.ejs %>    
+
+        <script type="text/javascript">
+             function GetParameterValues(param) {
+        var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for (var i = 0; i < url.length; i++) {
+            var urlparam = url[i].split('=');
+            if (urlparam[0] == param) {
+                return urlparam[1];
+            }
+        }
+    }
+
+    function get_filter_value(param) {
+        var value = $('#' + param).val();
+        if (value == undefined) {
+            value = GetParameterValues(param);
+        }
+        if (value == undefined) {
+            value = '';
+        }
+        return value;
+    }
+    $(document).on('change','form select.make_filter',function(e){
+        // alert($(this).val())
+        $('#make').val($(this).val())
+        search_results()
+
+    })
+search_results()
+            function search_results() {
+        var base_url = window.location.origin;
+        var formData = {
+            postal_code: get_filter_value('postal_code'),
+            make: get_filter_value('make'),
+            model: get_filter_value('model'),
+            radius: get_filter_value('radius'),
+            aggregatedTrim: get_filter_value('aggregatedTrim'),
+            onesearchad: get_filter_value('onesearchad'),
+            sort: get_filter_value('sort'),
+            price_from: get_filter_value('price_from'),
+            price_to: get_filter_value('price_to'),
+            year_from: get_filter_value('year_from'),
+            year_to: get_filter_value('year_to'),
+            mileage_from: get_filter_value('mileage_from'),
+            mileage_to: get_filter_value('mileage_to'),
+            body_type: get_filter_value('body_type'),
+            fuel_type: get_filter_value('fuel_type'),
+            minimum_badge_engine_size: get_filter_value('minimum-badge-engine-size'),
+            maximum_badge_engine_size: get_filter_value('maximum-badge-engine-size'),
+            fuel_consumption: get_filter_value('fuel_consumption'),
+            zero_to_60: get_filter_value('zero-to-60'),
+            transmission: get_filter_value('transmission'),
+            drivetrain: get_filter_value('drivetrain'),
+            co2_emissions_cars: get_filter_value('co2-emissions-cars'),
+            quantity_of_doors: get_filter_value('quantity-of-doors'),
+            minimum_seats: get_filter_value('minimum-seats'),
+            maximum_seats: get_filter_value('maximum-seats'),
+            insuranceGroup: get_filter_value('insuranceGroup'),
+            annual_tax_cars: get_filter_value('annual-tax-cars'),
+            colour: get_filter_value('colour'),
+            seller_type: get_filter_value('seller-type'),
+            page: get_filter_value('page'),
+        }
+        $('#loading').css('display', 'block')
+        $.when(
+                $.getJSON(base_url + '/auto-search-results', formData), $.getJSON(base_url + '/motors-filter-search', formData).error(function (jqXHR, textStatus, errorThrown) {
+            console.log("Encounter error " + textStatus + ". " + errorThrown);
+        })).then(function (data, result) {
+            result = result[0]
+            data = data[0]
+            $('.counttxt').text(parseInt(data.html1.count.replace('cars found', '').replace(',', '')) + parseInt(result.data.RecordCount) + ' cars found')
+            $('.make_filter').html('<option value="">Any</option>')
+            var make_count = '';
+            $('<div>' + data.html1.fields[1].html + '</div>').find('div').each(function (key, value) {
+                var i = 0
+                var mc = parseInt($(this).find('.count').text().replace('(','').replace(')',''))
+                for (i; i < result.data.MakeModels.length; i++) {
+                    if (result.data.MakeModels[i].Name == $(this).find('.term').text())
+                        make_count = parseInt(result.data.MakeModels[i].Counter) + parseInt(mc);
+                }
+//                console.log($(this).find('.count').text().replace('(','').replace(')',''))
+                $('.make_filter').append('<option value="' + $(this).find('.term').text() + '">' + $(this).find('.term').text() +'(' + make_count + ')</option>')
+            })
+            var htmlModels;
+            console.log(result.data.MakeModels)
+            result.data.MakeModels.filter(function (model) {
+                if (model.Id == 'Makes_' + formData.make) {
+                    htmlModels = model.Models
+                }
+            });
+            var model_count;
+            $('#model').html('<option value="">Any</option>')
+            $('<div>' + data.html1.fields[2].html + '</div>').find('div').each(function (key, value) {
+                var i = 0
+                for (i; i < htmlModels.length; i++) {
+                    if (htmlModels[i].Name == $(this).find('.term').text())
+                        make_count = htmlModels[i].Counter;
+                }
+                $('#model').append('<option value="' + $(this).find('.term').text() + '">(' + make_count + ')' + $(this).find('.term').text() + $(this).find('.count').text() + '</option>')
+            })
+            $('form select.make_filter').val(formData.make)
+        });
+    }
+        </script>>

@@ -6,25 +6,11 @@ var http = require('http');
 let axios = require('axios');
 let cheerio = require('cheerio');
 const replaceString = require('replace-string');
-var multer  =   require('multer');
+ let formidable = require('formidable');
 let fs = require('fs');
 var url = require('url')
-var storage = multer.diskStorage({
- 
- destination: function(req, file, cb){
-
-   cb(null,'assets/uploads/')
- },
- filename: function(req,file,cb){
-
-  cb(null,Date.now() + file.originalname);
-
- }
 
 
-});  
-
-var upload = multer({ storage: storage });
 
 
 
@@ -35,13 +21,6 @@ app.get('/', function(req, res, next) {
             
         }) 
 })
-
-app.post('/upload_images' , upload.any(),function(req, res, next){
-
-     console.log(req.files);
-
-})
-
 
 
 
@@ -268,7 +247,7 @@ app.post('/save_post',async function(req, res, next){
 // Kuldeep Sir Scrapping Code<!--- Starts-->
 
 app.get('/search-cars', async function (req, res, next) {
-    res.render('sellbuy/search_cars', {
+    res.render('sellbuy/second_search', {
         title: 'Search Cars',
         data: []
     })
@@ -630,16 +609,19 @@ app.get('/mot-search', async function (req, res, next) {
 })
 app.get('/motors-filter-search', async function (req, res, next) {
     var q = url.parse(req.url, true).query;
+    var make = replaceString(q.make, '%20', '')
     var makeModel;
-    if (q.make) {
+    if (make) {
         if (q.model) {
+            var model = replaceString(q.model, '%20', '')
             if (q.aggregatedTrim) {
-                makeModel = [{Value: q.make, Models: [{value: q.model}], Trims: [{value: q.aggregatedTrim}]}]
+                var aggregatedTrim = replaceString(q.aggregatedTrim, '%20', '')
+                makeModel = [{Value: make, Models: [model], Trims: [aggregatedTrim]}]
             } else {
-                makeModel = [{Value: q.make, Models: [{value: q.model}], Trims: []}]
+                makeModel = [{Value: make, Models: [model], Trims: []}]
             }
         } else {
-            makeModel = [{Value: q.make, Models: [], Trims: []}]
+            makeModel = [{Value: make, Models: [], Trims: []}]
         }
     } else {
         makeModel = []
@@ -709,8 +691,10 @@ app.get('/motors-filter-search', async function (req, res, next) {
     axios.post(path2, searchPanelParameters)
             .then((response) => {
 //                console.log(response)
+                response.data['aaa'] = searchPanelParameters
                 res.setHeader('Content-Type', 'application/json');
-                res.send(JSON.stringify(response.data.MakeModels));
+                console.log(searchPanelParameters)
+                res.send(JSON.stringify({data: response.data, params: searchPanelParameters}));
             }, (error) => console.log(error));
 })
 

@@ -1,5 +1,4 @@
 <%- include ../sellbuylayouts/header.ejs %>
-
 <style>
     .col-md-4{
         float: left;
@@ -8,11 +7,15 @@
         position: fixed;
         z-index: 99;
     }
+    .Superactive {
+        background: red;
+        color: wheat;
+    }
 </style>
 <section>
     <div class="background-image-maker gradient gradient-lr"></div>
     <div class="holder-image">
-        <img src="images/bg2.jpg" alt="" class="img-fluid d-none" />
+        <img src="/images/bg2.jpg" alt="" class="img-fluid d-none" />
     </div>
     <div class="black-overlay overlay-full"></div>
     <div class="container">
@@ -42,9 +45,8 @@
 
 <!-- List Without Sidebar -->
 <section>
-    <div class="container">
     <div class="row">
-        <div class="col-md-3 filter-border">
+        <div class="col-md-3">
             <div class="row">
                 <div class="col-12 col-sm-12">
                     <div class="card c-brd-light car-box mb-5">
@@ -336,12 +338,7 @@
                     </div>
                     <div class="row mt-4">
                         <div class="col-12 col-sm-12">
-                            <ul class="pagination mb-0 text-center text-uppercase justify-content-center">
-                                <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-left pr-1"></i> Prev</a></li>
-                                <li class="page-item d-none d-sm-inline-block"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item d-none d-sm-inline-block active"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item d-none d-sm-inline-block"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#"> Next <i class="fa fa-angle-right pl-1"></i></a></li>
+                            <ul class="pagination mb-0 text-center text-uppercase justify-content-center" id="pagination">
                             </ul>
                         </div>
                     </div>
@@ -349,12 +346,12 @@
             </div>
         </div>
     </div>
-</div>
+    <input class="scrollup" type="hidden" id="page" value="1"/> 
 </section>
 <!-- End List Without Sidebar -->
- <%- include ../sellbuylayouts/footer.ejs %>  
+<%- include ../sellbuylayouts/footer.ejs %>  
 <script>
-    var minimum-badge-engine-size_url = window.location.origin;
+    var base_url = window.location.origin;
     $('#search_type').text(GetParameterValues('onesearchad') + ' Cars');
     function removeURLParameter(parameter) {
         var url = window.location.search;
@@ -368,6 +365,7 @@
                     pars.splice(i, 1);
                 }
             }
+
             url = urlparts[0] + '?' + pars.join('&');
             var new_url = "/search-cars?type=" + GetParameterValues('type') + url;
             window.history.pushState("data", "Title", url);
@@ -385,6 +383,7 @@
             }
         }
     }
+
     function get_filter_value(param) {
         var value = $('#' + param).val();
         if (value == undefined) {
@@ -395,7 +394,99 @@
         }
         return value;
     }
+    function more_products(formData) {
+//        var formData = {
+//            make: get_filter_value('make'),
+//            model: get_filter_value('model'),
+//            radius: get_filter_value('radius'),
+//            aggregatedTrim: get_filter_value('aggregatedTrim'),
+//        }
+        var url = base_url + '/mot-search';
+        $.get(url, formData, function (data) {
+            var html = '';
+            $.each(data, function (key, value) {
+                if (value.ObjectType == 'UsedVehicleResult') {
+//                    console.log(value)
+                    html += '<div class="product-bar">\n\
+                                <div class="col-md-4 h-283">\n\
+                                    <div class="position-relative">\n\
+                                        <a href="productView/' + value.VehicleId + '">\n\
+                                            <div class="background-image-maker rounded-left h-283" style="background-image: url(&quot;' + value.MainImage.Normal + ';);">\n\
+                                            </div>\n\
+                                            <div class="holder-image">\n\
+                                                <img src="' + value.MainImage.Normal + '" alt="" class="img-fluid d-none">\n\
+                                            </div>\n\
+                                        </a>\n\
+                                    </div>\n\
+                                </div>\n\
+                                <div class="col-md-4 title-products align-self-center">\n\
+                                    <div class="p-4 p-lg-0">\n\
+                                        <h6 class="mb-2">\n\
+                                            <a href="productView/' + value.VehicleId + '">' + value.Title + '\n\
+                                            </a>\n\
+                                        </h6>\n\
+                                         <ul class="list-unstyled mb-2 c-line-height-2_5"> \n\
+                                            <li><h6 class="mb-0"><small class="c-light">Price</small> ' + value.GBPPrice + '</h6></li>\n\
+                                        </ul>\n\
+                                        ' + value.Variant + ' …\n\
+                                        <a href="productView/' + value.VehicleId + '" class="btn btn-outline-primary text-uppercase btn-lg c-font-weight-700" tabindex="-1"> \n\
+                                            View Details \n\
+                                        </a>\n\
+                                    </div>\n\
+                                </div>\n\
+                                <div class="col-md-4 listind-detail"> \n\
+                                    <div class="border border-right-0 border-top-0 border-bottom-0 c-brd-light py-4"> \n\
+                                        <ul class="list-inline">\n\
+                                            <h1>Features</h1>\n\
+                                                <li>' + value.RegistrationYear + ' (' + value.RegistrationNumberYear + ' reg)</li>\n\
+                                                <li>' + value.BodyStyle + '</li>\n\
+                                                <li>' + value.MileageInt + ' miles</li>\n\
+                                                <li>' + value.EngineSizeLitres + '</li>\n\
+                                                <li>' + value.Transmission + '</li>\n\
+                                                <li>' + value.FuelType + '</li>\n\
+                                        </ul>\n\
+                                    </div>\n\
+                                </div>\n\
+                            </div>'
+                }
+            })
+            $('#ProductShow').append(html)
+
+        });
+    }
+    search_results()
+//    more_products()
+    $(document).on('click', 'a.pageLink', function () {
+        var num = parseInt($.trim($(this).text()));
+        if ($.isNumeric(num)) {
+            $('#page').val(num);
+            search_results()
+        }
+    }
+    );
+    function get_make_count(name) {
+
+    }
+    $(document).on('change', '.rounded', function () {
+        search_results()
+    })
+    $(document).on('change', '#make', function () {
+        $('#model').html('');
+        $('#aggregatedTrim').html('');
+        removeURLParameter('model')
+        removeURLParameter('aggregatedTrim')
+        search_results()
+    })
+    $(document).on('change', '#model', function () {
+        removeURLParameter('aggregatedTrim')
+        $('#aggregatedTrim').html('');
+        search_results()
+    })
+    function getKeyByValue(object, value) {
+        return Object.keys(object).find(key => object[key] === value);
+    }
     function search_results() {
+        var base_url = window.location.origin;
         var formData = {
             postal_code: get_filter_value('postal_code'),
             make: get_filter_value('make'),
@@ -426,11 +517,17 @@
             annual_tax_cars: get_filter_value('annual-tax-cars'),
             colour: get_filter_value('colour'),
             seller_type: get_filter_value('seller-type'),
+            page: get_filter_value('page'),
         }
-        console.log(formData)
-        var url = base_url + '/auto-search-results';
         $('#loading').css('display', 'block')
-        $.get(url, formData, function (data) {
+        $.when(
+                $.getJSON(base_url + '/auto-search-results', formData), $.getJSON(base_url + '/motors-filter-search', formData).error(function (jqXHR, textStatus, errorThrown) {
+            console.log("Encounter error " + textStatus + ". " + errorThrown);
+        })).then(function (data, result) {
+            //data = JSON.parse(data[0])
+//            console.log(result[0])
+            result = result[0]
+            data = data[0]
             $('#ProductShow').html('')
             $.each(data.cars, function (index, value) {
                 var ab = '';
@@ -438,16 +535,16 @@
                     ab += '<li>' + $.trim($(this).text()) + '</li>';
                 });
                 $('#ProductShow').append('<div class="product-bar"><div class="col-md-4 h-283"><div class="position-relative">\n\
- <a href="http://sellbuymotors.co.uk/productView/' + value.product_id + '"><div class="background-image-maker rounded-left h-283" style="background-image: url(&quot;' + value.image + ';);"></div>\n\
+ <a href="/show_product/?id=' + value.product_id + '"><div class="background-image-maker rounded-left h-283" style="background-image: url(&quot;' + value.image + ';);"></div>\n\
 <div class="holder-image"><img src="' + value.image + '" alt="" class="img-fluid d-none">\n\
 </div></a></div></div>' +
                         '<div class="col-md-4 title-products align-self-center">' +
                         '<div class="p-4 p-lg-0">' +
-                        '<h6 class="mb-2"><a href="http://sellbuymotors.co.uk/productView/' + value.product_id + '">' + value.name + '</a></h6>' +
+                        '<h6 class="mb-2"><a href="/show_product/?id=' + value.product_id + '">' + value.name + '</a></h6>' +
                         ' <ul class="list-unstyled mb-2 c-line-height-2_5">' +
                         ' <li><h6 class="mb-0"><small class="c-light">Price</small> ' + value.price + ' </h6></li>' +
-                        '</ul><p>' + value.description.substr(0, 250) +'</p>'+
-                        '<a href="http://sellbuymotors.co.uk/productView/' + value.product_id + '" class="btn btn-outline-primary text-uppercase btn-lg c-font-weight-700" tabindex="-1">' +
+                        '</ul><p>' + value.description.substr(0, 250) +'</p>' +
+                        '<a href="/show_product/?id= ' + value.product_id + '" class="btn btn-outline-primary text-uppercase btn-lg c-font-weight-700" tabindex="-1">' +
                         ' View Details' +
                         ' </a>' +
                         '</div>' +
@@ -460,18 +557,38 @@
                         '</div>' +
                         '</div>');
             });
-            $('#foundCar').text(data.html1.count)
+            $('#foundCar').text(parseInt(data.html1.count.replace('cars found', '').replace(',', '')) + parseInt(result.data.RecordCount) + ' cars found')
+            //$('#foundCar').text(data.html1.count + ' ----- ' + parseInt(result.data.RecordCount))
             $('#radius').html('<option value="1500">Distance(National)</option>')
             $('<div>' + data.html1.fields[0].html + '</div>').find('div').each(function (key, value) {
                 $('#radius').append('<option value="' + $(this).data('selected-value') + '">' + $(this).data('selected-display-name') + '</option>')
             })
             $('#make').html('<option value="">Any</option>')
+            var make_count = '';
             $('<div>' + data.html1.fields[1].html + '</div>').find('div').each(function (key, value) {
-                $('#make').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('.term').text() + $(this).find('.count').text() + '</option>')
+                var i = 0
+                for (i; i < result.data.MakeModels.length; i++) {
+                    if (result.data.MakeModels[i].Name == $(this).find('.term').text())
+                        make_count = result.data.MakeModels[i].Counter;
+                }
+                $('#make').append('<option value="' + $(this).find('.term').text() + '">(' + make_count + ')' + $(this).find('.term').text() + $(this).find('.count').text() + '</option>')
             })
+            var htmlModels;
+            console.log(result.data.MakeModels)
+            result.data.MakeModels.filter(function (model) {
+                if (model.Id == 'Makes_' + formData.make) {
+                    htmlModels = model.Models
+                }
+            });
+            var model_count;
             $('#model').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[2].html + '</div>').find('div').each(function (key, value) {
-                $('#model').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('.term').text() + $(this).find('.count').text() + '</option>')
+                var i = 0
+                for (i; i < htmlModels.length; i++) {
+                    if (htmlModels[i].Name == $(this).find('.term').text())
+                        make_count = htmlModels[i].Counter;
+                }
+                $('#model').append('<option value="' + $(this).find('.term').text() + '">(' + make_count + ')' + $(this).find('.term').text() + $(this).find('.count').text() + '</option>')
             })
             $('#aggregatedTrim').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[3].html + '</div>').find('div').each(function (key, value) {
@@ -550,7 +667,7 @@
             $('<div>' + data.html1.fields[16].maxField.html + '</div>').find('option').each(function (key, value) {
                 $('#maximum-seats').append('<option value="' + $(this).val() + '">' + $(this).text() + '</option>')
             })
-            $('#insuranceGroup').html('')
+            $('#insuranceGroup').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[17].html + '</div>').find('div').each(function (key, value) {
                 $('#insuranceGroup').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text() + '</option>')
             })
@@ -566,6 +683,17 @@
             $('<div>' + data.html1.fields[20].html + '</div>').find('div').each(function (key, value) {
                 $('#seller-type').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('.term').text() + $(this).find('.count').text() + '</option>')
             })
+            $('#pagination').html('');
+            data.pages.shift();
+            data.pages.pop();
+            var active;
+            $.each(data.pages, function (index, value) {
+                if (index + 1 == formData.page)
+                    active = 'Superactive';
+                else
+                    active = '';
+                $('#pagination').append('<li class="page-item d-none d-sm-inline-block"><a class="page-link pageLink ' + active + '">' + value.page + '</a></li>');
+            });
             $('#loading').css('display', 'none')
             $('#radius').val(formData.radius)
             $('#make').val(formData.make.replace("%20", " "))
@@ -604,85 +732,7 @@
             });
             var new_url = "/search-cars?onesearchad=" + GetParameterValues('onesearchad') + c_url;
             window.history.pushState("data", "Title", new_url);
-//            more_products(formData)
-        }, 'json')
-    }
-    function more_products(formData) {
-//        var formData = {
-//            make: get_filter_value('make'),
-//            model: get_filter_value('model'),
-//            radius: get_filter_value('radius'),
-//            aggregatedTrim: get_filter_value('aggregatedTrim'),
-//        }
-        var url = base_url + '/mot-search';
-        $.get(url, formData, function (data) {
-            var html = '';
-            $.each(data, function (key, value) {
-                if (value.ObjectType == 'UsedVehicleResult') {
-//                    console.log(value)
-                    html += '<div class="product-bar">\n\
-                                <div class="col-md-4 h-283">\n\
-                                    <div class="position-relative">\n\
-                                        <a href="productView/' + value.VehicleId + '">\n\
-                                            <div class="background-image-maker rounded-left h-283" style="background-image: url(&quot;' + value.MainImage.Normal + ';);">\n\
-                                            </div>\n\
-                                            <div class="holder-image">\n\
-                                                <img src="' + value.MainImage.Normal + '" alt="" class="img-fluid d-none">\n\
-                                            </div>\n\
-                                        </a>\n\
-                                    </div>\n\
-                                </div>\n\
-                                <div class="col-md-4 title-products align-self-center">\n\
-                                    <div class="p-4 p-lg-0">\n\
-                                        <h6 class="mb-2">\n\
-                                            <a href="productView/' + value.VehicleId + '">' + value.Title + '\n\
-                                            </a>\n\
-                                        </h6>\n\
-                                         <ul class="list-unstyled mb-2 c-line-height-2_5"> \n\
-                                            <li><h6 class="mb-0"><small class="c-light">Price</small> ' + value.GBPPrice + '</h6></li>\n\
-                                        </ul>\n\
-                                        ' + value.Variant + ' …\n\
-                                        <a href="productView/' + value.VehicleId + '" class="btn btn-outline-primary text-uppercase btn-lg c-font-weight-700" tabindex="-1"> \n\
-                                            View Details \n\
-                                        </a>\n\
-                                    </div>\n\
-                                </div>\n\
-                                <div class="col-md-4 listind-detail"> \n\
-                                    <div class="border border-right-0 border-top-0 border-bottom-0 c-brd-light py-4"> \n\
-                                        <ul class="list-inline">\n\
-                                            <h1>Features</h1>\n\
-                                                <li>' + value.RegistrationYear + ' (' + value.RegistrationNumberYear + ' reg)</li>\n\
-                                                <li>' + value.BodyStyle + '</li>\n\
-                                                <li>' + value.MileageInt + ' miles</li>\n\
-                                                <li>' + value.EngineSizeLitres + '</li>\n\
-                                                <li>' + value.Transmission + '</li>\n\
-                                                <li>' + value.FuelType + '</li>\n\
-                                        </ul>\n\
-                                    </div>\n\
-                                </div>\n\
-                            </div>'
-                }
-            })
-            $('#ProductShow').append(html)
+            more_products()
         });
     }
-    search_results()
-//    more_products()
-    function get_make_count(name) {
-    }
-    $(document).on('change', '.rounded', function () {
-        search_results()
-    })
-    $(document).on('change', '#make', function () {
-        $('#model').html('');
-        $('#aggregatedTrim').html('');
-        removeURLParameter('model')
-        removeURLParameter('aggregatedTrim')
-        search_results()
-    })
-    $(document).on('change', '#model', function () {
-        removeURLParameter('aggregatedTrim')
-        $('#aggregatedTrim').html('');
-        search_results()
-    })
 </script>

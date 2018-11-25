@@ -414,7 +414,7 @@ textarea.form-control {
     top: 5px; }
 
 .main-header.active {
-  position: fixed;
+  position: absolute;
   left: 0;
   right: 0;
   width: 100%;
@@ -1164,4 +1164,10 @@ span#myspan {
     font-size: 14px;
     text-align: justify;
     line-height: 20px;
+}
+a.navbar-brand img {
+    position: absolute;
+    z-index: 999;
+    top: 1px;
+    width: 10%;
 }
