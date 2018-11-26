@@ -1,5 +1,13 @@
 <%- include ../sellbuylayouts/header.ejs %>
         <!-- Slider-->
+        <style>
+        form-group {
+        margin-bottom: 0px;
+        width: 48%;
+        float: left;
+        margin-left: 6px;
+       }
+      </style>
         <section  class="py-0">
             <div id="owl-demo" class="owl-carousel owl-theme">
                 <div class="item">
@@ -47,7 +55,8 @@
                                      <form method="get" class="srchfrm" action="search-cars?onesearchad=New">
                                                         <input type="hidden" name="onesearchad" value="New">
                                                             <div class="form-group">
-                                                                 <input type="text" name="postal_code" class="form-control" placeholder="Enter Postal Code" required>
+                                                                <label>Post Code</label>
+                                                                 <input type="text" name="postal_code" class="form-control" placeholder="Enter Post Code" required>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Distance</label>
@@ -119,7 +128,8 @@
                                                      <form method="GET" class="" action="search-cars">
                                                             <div class="form-group">
                                                                 <input type="hidden" name="onesearchad" value="Used">
-                                                                  <input type="text" name="postal_code" class="form-control" placeholder="Enter Postal Code" required>
+                                                                  <label>Post Code</label>
+                                                                  <input type="text" name="postal_code" class="form-control" placeholder="Enter Post Code" required>
                                                             </div>
                                                                <div class="form-group">
                                                                 <label>Distance</label>
