@@ -288,6 +288,7 @@ app.post('/save_post',async function(req, res, next){
        
             var query = 'INSERT INTO tbl_products  SET ? ';
             results = await database.query(query, [cl] );
+            console.log(results.insertId);
                 if (results) {
                     res.writeHead(200, {'Content-Type': 'application/json'});
                     var obj = {success : 1 , message : 'Registration Done Successfully!!'}
