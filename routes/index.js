@@ -1,4 +1,3 @@
-
 var express = require('express')
 var app = express()
 const {database} = require('../db.js')
@@ -6,41 +5,11 @@ var http = require('http');
 let axios = require('axios');
 let cheerio = require('cheerio');
 const replaceString = require('replace-string');
- var multiparty = require('multiparty');
+var multer  =   require('multer');
+var bodyParser =    require("body-parser");
+const path = require('path');
 let fs = require('fs');
 var url = require('url')
-
-
-app.post('/upload', function(req , res) {
-
-
-var form = new multiparty.Form();
-
-
-form.parse(req, function(err, fields, files) {  
-    var imgArray = files.imatges;
-
-
-    for (var i = 0; i < imgArray.length; i++) {
-        var newPath = '/uploads/'+fields.imgName+'/';
-        var singleImg = imgArray[i];
-        newPath+= singleImg.originalFilename;
-        readAndWriteFile(singleImg, newPath);           
-    }
-    res.send("File uploaded to: " + newPath);
-
-});
-
-function readAndWriteFile(singleImg, newPath) {
-
-        fs.readFile(singleImg.path , function(err,data) {
-            fs.writeFile(newPath,data, function(err) {
-                if (err) console.log('ERRRRRR!! :'+err);
-                console.log('Fitxer: '+singleImg.originalFilename +' - '+ newPath);
-            })
-        })
-}
-})
 
 
 
@@ -51,6 +20,66 @@ app.get('/', function(req, res, next) {
             
         }) 
 })
+
+
+app.post('/uploads', async function(req, res, next){
+
+
+   
+   if(req.method == "POST"){
+
+	 
+     
+          var file = req.files.userPhoto;
+         // console.log(file);
+           if(file) {
+	      	var img_name=file.name;
+          //console.log(img_name)
+	     	 if(file.mimetype == "image/jpeg" ||file.mimetype == "image/png"||file.mimetype == "image/gif" ||file.mimetype == "application/pdf"){
+                                 
+              file.mv('assets/uploads/'+file.name, async function(err) {
+                             
+                  
+          var query = "INSERT INTO `tbl_contents`(`board_id`,`class_id`,`subject_id`,`topic_id`,`content_title`,`content_desc`,`file`) VALUES ('" + board + "','" + cls + "','" + subject + "','" + topic + "','" + my_title + "','" + content_wise + "','" + img_name + "')";
+          console.log(query);
+            results = await database.query(query, [] );  
+    		 if (results) {
+              req.flash('success', 'Content added successfully!')
+              res.redirect('/admin/content/addcontent')
+             } else {                
+             
+                req.flash('error', err)
+                res.redirect('/admin/content/addcontent')
+             }
+           	   
+            });
+          } else {
+            req.flash('error', "This format is not allowed , please upload file with '.png','.gif','.jpg','.pdf'") 
+            res.redirect('/admin/content/addcontent')
+          }
+        }else{
+       
+          var query = "INSERT INTO `tbl_contents`(`board_id`,`class_id`,`subject_id`,`topic_id`,`content_title`,`content_desc`) VALUES ('" + board + "','" + cls + "','" + subject + "','" + topic + "','" + my_title + "','" + content_wise + "')";
+          console.log(query);
+            results = await database.query(query, [] );  
+    		 if (results) {
+              req.flash('success', 'Content added successfully!')
+              res.redirect('/admin/content/addcontent')
+             } else {                
+             
+                req.flash('error', err)
+                res.redirect('/admin/content/addcontent')
+             }
+
+
+
+
+        }
+   } else {
+      res.render('addcontent');
+   }
+ 
+});
 
 
 

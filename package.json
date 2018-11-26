@@ -44,6 +44,7 @@
     "passport": "^0.4.0",
     "passport-google-oauth": "^1.0.0",
     "passport-google-oauth20": "^1.0.0",
+    "path": "^0.12.7",
     "popper.js": "^1.14.3",
     "replace-string": "^2.0.0",
     "sanitize-html": "^1.19.1",
