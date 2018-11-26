@@ -26,7 +26,7 @@
                     <div class="row">
                         <div class="col-12 col-xl-5 col-lg-6">
                             <h4 class="text-white text-center">Find the Right Car for you</h4>
-                            <div class="row">
+                            <div class="row form-main">
                                 <div class="col-3 pr-0">
                                     <ul class="nav flex-column nav-pills text-uppercase font-weight-bold text-center" id="myTab" role="tablist">
                                         <li class="nav-item mb-1">
@@ -47,7 +47,7 @@
                                             <form method="get" class="srchfrm" action="search-cars?onesearchad=New">
                                                         <input type="hidden" name="onesearchad" value="New">
                                                             <div class="form-group">
-                                                                 <input type="text" name="postal_code" class="form-control" placeholder="Enter Postal Code">
+                                                                 <input type="text" name="postal_code" class="form-control" placeholder="Enter Postal Code" required>
                                                             </div>
                                                             <div class="form-group">
                                                                 <select class="form-control make_filter" name="make">
@@ -55,14 +55,20 @@
                                                                    
                                                                 </select>
                                                             </div>
+                                                             <div class="form-group">
+                                                                <select class="form-control model_filter" name="make">
+                                                                 <option value="">--- Select Model ---</option>
+                                                                   
+                                                                </select>
+                                                            </div>
                                                            <button class="btn btn-primary btn-block btn-md text-uppercase font-weight-bold">Find Car&nbsp(<b class="counttxt"></b>)</button>
                                                         </form>
                                                     </div>
-                                                    <div class="tab-pane fade" id="id2" role="tabpanel" aria-expanded="false">
+                                                   <!--  <div class="tab-pane fade" id="id2" role="tabpanel" aria-expanded="false">
                                                          <form method="get" class="srchfrm" action="search-cars?onesearchad=New">
                                                         <input type="hidden" name="onesearchad" value="New">
                                                             <div class="form-group">
-                                                                 <input type="text" name="postal_code" class="form-control" placeholder="Enter Postal Code">
+                                                                 <input type="text" name="postal_code" class="form-control" placeholder="Enter Postal Code" required>
                                                             </div>
                                                             <div class="form-group">
                                                                 <select class="form-control make_filter" name="make">
@@ -70,9 +76,15 @@
                                                                    
                                                                 </select>
                                                             </div>
+                                                             <div class="form-group">
+                                                                <select class="form-control model_filter" name="make">
+                                                                 <option value="">--- Select Model ---</option>
+                                                                   
+                                                                </select>
+                                                            </div>
                                                            <button class="btn btn-primary btn-block btn-md text-uppercase font-weight-bold">Find Car&nbsp(<b class="counttxt"></b>)</button>
                                                         </form>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -84,7 +96,7 @@
                                                      <form method="GET" class="" action="search-cars">
                                                             <div class="form-group">
                                                                 <input type="hidden" name="onesearchad" value="Used">
-                                                                  <input type="text" name="postal_code" class="form-control" placeholder="Enter Postal Code">
+                                                                  <input type="text" name="postal_code" class="form-control" placeholder="Enter Postal Code" required>
                                                             </div>
                                                             <div class="form-group">
                                                                 <select class="form-control make_filter" name="make">
@@ -92,14 +104,20 @@
                                                                     
                                                                 </select>
                                                             </div>
+                                                             <div class="form-group">
+                                                                <select class="form-control model_filter" name="make">
+                                                                 <option value="">--- Select Model ---</option>
+                                                                   
+                                                                </select>
+                                                            </div>
                                                            <button class="btn btn-primary btn-block btn-md text-uppercase font-weight-bold">Find Car&nbsp(<b class="counttxt"></b>)</button>
                                                         </form>
                                                     </div>
-                                                    <div class="tab-pane fade" id="id4" role="tabpanel" aria-expanded="false">
+                                                  <!--   <div class="tab-pane fade" id="id4" role="tabpanel" aria-expanded="false">
                                                         <form method="GET" class="" action="search-cars">
                                                             <div class="form-group">
                                                                  <input type="hidden" name="onesearchad" value="Used">
-                                                                <input type="text" class="form-control" placeholder="Enter Postal Code">
+                                                                <input type="text" class="form-control" placeholder="Enter Postal Code" required>
                                                                
                                                             </div>
                                                             <div class="form-group">
@@ -108,12 +126,18 @@
                                                                     
                                                                 </select>
                                                             </div>
+                                                             <div class="form-group">
+                                                                <select class="form-control model_filter" name="make">
+                                                                 <option value="">--- Select Model ---</option>
+                                                                   
+                                                                </select>
+                                                            </div>
                                                             <button class="btn btn-primary btn-block btn-md text-uppercase font-weight-bold">Find Car&nbsp(<b class="counttxt"></b>)</button>
                                                         </form>
-                                                    </div>
-                                                     <div class="col-12 col-md-5 col-xl-6 align-self-center" id="loading" style="display:none;">
+                                                    </div> -->
+                                                   <!--   <div class="col-12 col-md-5 col-xl-6 align-self-center" id="loading" style="display:none;">
                                          <img src="/images/preloader.gif" style="height:100% ;width:100%"/>
-                                                   </div>
+                                                   </div> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -513,6 +537,7 @@
                 </div>
             </div>
             <input type="hidden" id="make">
+            <input type="hidden" id="model">
         </section>
       
        
@@ -547,10 +572,17 @@
         search_results()
 
     })
-search_results()
-            function search_results() {
+    $(document).on('change','form select.model_filter',function(e){
+        // alert($(this).val())
+        $('#model').val($(this).val())
+        search_results()
+
+    })
+    search_results()
+    function search_results() {
         var base_url = window.location.origin;
-        var formData = {
+        var formData = 
+        {
             postal_code: get_filter_value('postal_code'),
             make: get_filter_value('make'),
             model: get_filter_value('model'),
@@ -582,7 +614,7 @@ search_results()
             seller_type: get_filter_value('seller-type'),
             page: get_filter_value('page'),
         }
-        $('#loading').css('display', 'block')
+        //$('#loading').css('display', 'block')
         $.when(
                 $.getJSON(base_url + '/auto-search-results', formData), $.getJSON(base_url + '/motors-filter-search', formData).error(function (jqXHR, textStatus, errorThrown) {
             console.log("Encounter error " + textStatus + ". " + errorThrown);
@@ -599,7 +631,6 @@ search_results()
                     if (result.data.MakeModels[i].Name == $(this).find('.term').text())
                         make_count = parseInt(result.data.MakeModels[i].Counter) + parseInt(mc);
                 }
-//                console.log($(this).find('.count').text().replace('(','').replace(')',''))
                 $('.make_filter').append('<option value="' + $(this).find('.term').text() + '">' + $(this).find('.term').text() +'(' + make_count + ')</option>')
             })
             var htmlModels;
@@ -610,16 +641,19 @@ search_results()
                 }
             });
             var model_count;
-            $('#model').html('<option value="">Any</option>')
+            $('.model_filter').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[2].html + '</div>').find('div').each(function (key, value) {
                 var i = 0
+                var mc = parseInt($(this).find('.count').text().replace('(','').replace(')',''))
                 for (i; i < htmlModels.length; i++) {
                     if (htmlModels[i].Name == $(this).find('.term').text())
-                        make_count = htmlModels[i].Counter;
+                        make_count = htmlModels[i].Counter + parseInt(mc);
                 }
-                $('#model').append('<option value="' + $(this).find('.term').text() + '">(' + make_count + ')' + $(this).find('.term').text() + $(this).find('.count').text() + '</option>')
+                $('.model_filter').append('<option value="' + $(this).find('.term').text() + '">' + $(this).find('.term').text()+'('+make_count+')</option>')
             })
+
             $('form select.make_filter').val(formData.make)
+            $('form select.model_filter').val(formData.model)
         });
     }
         </script>>

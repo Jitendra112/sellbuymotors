@@ -6,11 +6,41 @@ var http = require('http');
 let axios = require('axios');
 let cheerio = require('cheerio');
 const replaceString = require('replace-string');
- let formidable = require('formidable');
+ var multiparty = require('multiparty');
 let fs = require('fs');
 var url = require('url')
 
 
+app.post('/upload', function(req , res) {
+
+
+var form = new multiparty.Form();
+
+
+form.parse(req, function(err, fields, files) {  
+    var imgArray = files.imatges;
+
+
+    for (var i = 0; i < imgArray.length; i++) {
+        var newPath = '/uploads/'+fields.imgName+'/';
+        var singleImg = imgArray[i];
+        newPath+= singleImg.originalFilename;
+        readAndWriteFile(singleImg, newPath);           
+    }
+    res.send("File uploaded to: " + newPath);
+
+});
+
+function readAndWriteFile(singleImg, newPath) {
+
+        fs.readFile(singleImg.path , function(err,data) {
+            fs.writeFile(newPath,data, function(err) {
+                if (err) console.log('ERRRRRR!! :'+err);
+                console.log('Fitxer: '+singleImg.originalFilename +' - '+ newPath);
+            })
+        })
+}
+})
 
 
 

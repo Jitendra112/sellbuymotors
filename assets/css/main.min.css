@@ -1048,8 +1048,11 @@ section#myfooter {
 @media (max-width: 991px) {
     #myTabContent3
     {
-        padding-top: 60px;
+        padding-top: 0px;
     }
+    .btn {
+    font-size: 10px !important;
+}
   .navbar .navbar-nav .nav-link {
     padding: 0.8rem 0.7rem !important; }
   .navbar li.dropdown > .dropdown-menu {
@@ -1170,4 +1173,10 @@ a.navbar-brand img {
     z-index: 999;
     top: 1px;
     width: 10%;
+}
+.form-main input {
+    margin-bottom: 10px;
+}
+.form-main select {
+    margin-bottom: 10px;
 }

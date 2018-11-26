@@ -529,13 +529,15 @@
             result = result[0]
             data = data[0]
             $('#ProductShow').html('')
+            var image = '';
             $.each(data.cars, function (index, value) {
                 var ab = '';
                 $(' <ul class="list-inline">' + value.listings + '</ul>').find('li').each(function (i, elem) {
                     ab += '<li>' + $.trim($(this).text()) + '</li>';
                 });
+                image = value.image == '/images/noimage/no_image_266x200.png' ? '/images/noimage.jpeg' : value.image;
                 $('#ProductShow').append('<div class="product-bar"><div class="col-md-4 h-283"><div class="position-relative">\n\
- <a href="/show_product/?id=' + value.product_id + '"><div class="background-image-maker rounded-left h-283" style="background-image: url(&quot;' + value.image + ';);"></div>\n\
+ <a href="/show_product/?id=' + value.product_id + '"><div class="background-image-maker rounded-left h-283"><img src="' + image + '"></div>\n\
 <div class="holder-image"><img src="' + value.image + '" alt="" class="img-fluid d-none">\n\
 </div></a></div></div>' +
                         '<div class="col-md-4 title-products align-self-center">' +
@@ -558,7 +560,7 @@
                         '</div>');
             });
             $('#foundCar').text(parseInt(data.html1.count.replace('cars found', '').replace(',', '')) + parseInt(result.data.RecordCount) + ' cars found')
-            // $('#foundCar').text(data.html1.count + ' ----- ' + parseInt(result.data.RecordCount))
+            //$('#foundCar').text(data.html1.count + ' ----- ' + parseInt(result.data.RecordCount))
             $('#radius').html('<option value="1500">Distance(National)</option>')
             $('<div>' + data.html1.fields[0].html + '</div>').find('div').each(function (key, value) {
                 $('#radius').append('<option value="' + $(this).data('selected-value') + '">' + $(this).data('selected-display-name') + '</option>')
@@ -567,11 +569,12 @@
             var make_count = '';
             $('<div>' + data.html1.fields[1].html + '</div>').find('div').each(function (key, value) {
                 var i = 0
+                var mc = parseInt($(this).find('.count').text().replace('(','').replace(')',''))
                 for (i; i < result.data.MakeModels.length; i++) {
                     if (result.data.MakeModels[i].Name == $(this).find('.term').text())
-                        make_count = result.data.MakeModels[i].Counter;
+                        make_count = result.data.MakeModels[i].Counter + parseInt(mc);
                 }
-                $('#make').append('<option value="' + $(this).find('.term').text() + '">(' + make_count + ')' + $(this).find('.term').text() + $(this).find('.count').text() + '</option>')
+                $('#make').append('<option value="' + $(this).find('.term').text() + '">' + $(this).find('.term').text() + '(' + make_count + ')</option>')
             })
             var htmlModels;
             console.log(result.data.MakeModels)
@@ -584,11 +587,12 @@
             $('#model').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[2].html + '</div>').find('div').each(function (key, value) {
                 var i = 0
+                var mk = parseInt($(this).find('.count').text().replace('(','').replace(')',''))
                 for (i; i < htmlModels.length; i++) {
                     if (htmlModels[i].Name == $(this).find('.term').text())
-                        make_count = htmlModels[i].Counter;
+                        make_count = htmlModels[i].Counter + parseInt(mk);
                 }
-                $('#model').append('<option value="' + $(this).find('.term').text() + '">(' + make_count + ')' + $(this).find('.term').text() + $(this).find('.count').text() + '</option>')
+                $('#model').append('<option value="' + $(this).find('.term').text() + '">' + $(this).find('.term').text() + '(' + mk + ')</option>')
             })
             $('#aggregatedTrim').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[3].html + '</div>').find('div').each(function (key, value) {
