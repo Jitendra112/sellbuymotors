@@ -35,7 +35,7 @@ app.post('/uploads', async function(req, res, next){
           
 	      	var img_name='IMG_'+ Date.now();
           //console.log(img_name)
-	     	 if(file.mimetype == "image/jpeg" ||file.mimetype == "image/png"||file.mimetype == "image/gif"){
+	     	 if(file.mimetype == "image/jpeg" ||file.mimetype == "image/png"||file.mimetype == "image/gif" || file.size < 2097152 ){
                                  
               file.mv('assets/uploads/'+img_name , async function(err) {
                              
@@ -56,8 +56,9 @@ app.post('/uploads', async function(req, res, next){
            	   
             });
           } else {
-            req.flash('error', "This format is not allowed , please upload file with '.png','.gif','.jpg'") 
-            res.redirect('/admin/content/addcontent')
+            res.writeHead(200, {'Content-Type': 'application/json'});
+                var obj = {success : 0 , message : 'Image Size is Too Large!!'}
+                res.end(JSON.stringify(obj));
           }
        
    } else {
