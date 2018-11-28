@@ -570,7 +570,7 @@
             $('<div>' + data.html1.fields[1].html + '</div>').find('div').each(function (key, value) {
                 var i = 0
                 for (i; i < result.data.MakeModels.length; i++) {
-                    if (result.data.MakeModels[i].Name == $(this).find('.term').text())
+                    if (result.data.MakeModels[i].Id.replace('Makes_','') == $(this).find('.term').text())
                         make_count = result.data.MakeModels[i].Counter;
                 }
                 $('#make').append('<option value="' + $(this).find('.term').text() + '">(' + make_count + ')' + $(this).find('.term').text() + $(this).find('.count').text() + '</option>')
@@ -584,13 +584,16 @@
                     model_variants = model.Trims;
                 }
             });
+            console.log(htmlModels)
             var model_count;
             $('#model').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[2].html + '</div>').find('div').each(function (key, value) {
                 var i = 0
                 for (i; i < htmlModels.length; i++) {
-                    if (htmlModels[i].Name == $(this).find('.term').text())
-                        make_count = htmlModels[i].Counter;
+                    if(htmlModels[i].Id){
+                        if (htmlModels[i].Id.replace('Models_','') == $(this).find('.term').text())
+                            make_count = htmlModels[i].Counter;
+                    }
                 }
                 $('#model').append('<option value="' + $(this).find('.term').text() + '">(' + make_count + ')' + $(this).find('.term').text() + $(this).find('.count').text() + '</option>')
                 make_count = 0;
