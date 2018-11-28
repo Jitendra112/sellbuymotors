@@ -10,7 +10,7 @@ var bodyParser =    require("body-parser");
 const path = require('path');
 let fs = require('fs');
 var url = require('url')
-
+var request = require('request');
 
 
 app.get('/', function(req, res, next) {
@@ -27,59 +27,54 @@ app.post('/uploads', async function(req, res, next){
 
    
    if(req.method == "POST"){
-
-	 
+         var post  = req.body;
+	       var car_id = post.carid;
      
           var file = req.files.userPhoto;
          // console.log(file);
-           if(file) {
-	      	var img_name=file.name;
+          
+	      	var img_name='IMG_'+ Date.now();
           //console.log(img_name)
-	     	 if(file.mimetype == "image/jpeg" ||file.mimetype == "image/png"||file.mimetype == "image/gif" ||file.mimetype == "application/pdf"){
+	     	 if(file.mimetype == "image/jpeg" ||file.mimetype == "image/png"||file.mimetype == "image/gif"){
                                  
-              file.mv('assets/uploads/'+file.name, async function(err) {
+              file.mv('assets/uploads/'+img_name , async function(err) {
                              
                   
-          var query = "INSERT INTO `tbl_contents`(`board_id`,`class_id`,`subject_id`,`topic_id`,`content_title`,`content_desc`,`file`) VALUES ('" + board + "','" + cls + "','" + subject + "','" + topic + "','" + my_title + "','" + content_wise + "','" + img_name + "')";
-          console.log(query);
+          var query = "INSERT INTO `tbl_cars_images`(`product_id`,`image_name`) VALUES ('" + car_id + "','" + img_name + "')";
+         // console.log(query);
             results = await database.query(query, [] );  
     		 if (results) {
-              req.flash('success', 'Content added successfully!')
-              res.redirect('/admin/content/addcontent')
+              res.writeHead(200, {'Content-Type': 'application/json'});
+              var obj = {success : 1 , message : 'Image Uploaded Successfully!!'}
+              res.end(JSON.stringify(obj));
              } else {                
              
-                req.flash('error', err)
-                res.redirect('/admin/content/addcontent')
+                res.writeHead(200, {'Content-Type': 'application/json'});
+                var obj = {success : 0 , message : 'Image Can not Uploaded!!'}
+                res.end(JSON.stringify(obj));
              }
            	   
             });
           } else {
-            req.flash('error', "This format is not allowed , please upload file with '.png','.gif','.jpg','.pdf'") 
+            req.flash('error', "This format is not allowed , please upload file with '.png','.gif','.jpg'") 
             res.redirect('/admin/content/addcontent')
           }
-        }else{
        
-          var query = "INSERT INTO `tbl_contents`(`board_id`,`class_id`,`subject_id`,`topic_id`,`content_title`,`content_desc`) VALUES ('" + board + "','" + cls + "','" + subject + "','" + topic + "','" + my_title + "','" + content_wise + "')";
-          console.log(query);
-            results = await database.query(query, [] );  
-    		 if (results) {
-              req.flash('success', 'Content added successfully!')
-              res.redirect('/admin/content/addcontent')
-             } else {                
-             
-                req.flash('error', err)
-                res.redirect('/admin/content/addcontent')
-             }
-
-
-
-
-        }
    } else {
       res.render('addcontent');
    }
  
 });
+
+app.get('/get_images', async function(req, res, next){
+
+ var query = 'SELECT * FROM  tbl_cars_images where product_id = '+req.query.id;
+ console.log(query)
+     results = await database.query(query, [] );
+       // res.writeHead(200, {'Content-Type': 'application/json'});
+        res.send(results); 
+
+})
 
 
 
@@ -255,7 +250,7 @@ app.get('/sellcars', function(req, res, next) {
         
     }) 
 })
-
+ var inserted_id;
 app.post('/save_post',async function(req, res, next){
             
     
@@ -287,11 +282,16 @@ app.post('/save_post',async function(req, res, next){
 
        
             var query = 'INSERT INTO tbl_products  SET ? ';
-            results = await database.query(query, [cl] );
-            console.log(results.insertId);
+            results = await database.query(query, [cl], true);
+            
                 if (results) {
+
+                  var sql = 'SELECT LAST_INSERT_ID() as id;'
+                   result = await database.query(sql);
+          
+                     
                     res.writeHead(200, {'Content-Type': 'application/json'});
-                    var obj = {success : 1 , message : 'Registration Done Successfully!!'}
+                    var obj = {success : 1 , message : 'Registration Done Successfully!!', product_id:result}
                     res.end(JSON.stringify(obj));
                     
                 } else {
@@ -688,74 +688,31 @@ app.get('/motors-filter-search', async function (req, res, next) {
     } else {
         makeModel = []
     }
-    var searchPanelParameters = {
-        "Doors": [],
-        "Seats": [],
-        "SafetyRatings": [],
-        "SelectedTopSpeed": null,
-        "SelectedPower": null,
-        "SelectedAcceleration": null,
-        "SelectedEngineSize": null,
-        "BodyStyles": [],
-        "MakeModels": makeModel,
-        "FuelTypes": [],
-        "Transmissions": [],
-        "Colours": [],
-        "IsPaymentSearch": false,
-        "IsReduced": false,
-        "IsHot": false,
-        "IsRecentlyAdded": false,
-        "IsRecommendedSearch": true,
-        "VoucherEnabled": false,
-        "IsGroupStock": false,
-        "PartExAvailable": false,
-        "IsPriceAndGo": false,
-        "IsPreReg": false,
-        "IsExDemo": false,
-        "ExcludeExFleet": false,
-        "ExcludeExHire": false,
-        "Keywords": [],
-        "SelectedInsuranceGroup": null,
-        "SelectedFuelEfficiency": null,
-        "SelectedCostAnnualTax": null,
-        "SelectedCO2Emission": null,
-        "SelectedTowingBrakedMax": null,
-        "SelectedTowingUnbrakedMax": null,
-        "SelectedAdvertType": "*",
-        "SelectedTankRange": null,
-        "DealerId": 0,
-        "Age": -1,
-        "Mileage": -1,
-        "MinPrice": -1,
-        "MaxPrice": -1,
-        "MinPaymentMonthlyCost": -1,
-        "MaxPaymentMonthlyCost": -1,
-        "PaymentTerm": 60,
-        "PaymentMileage": 10000,
-        "PaymentDeposit": 1000,
-        "SelectedSoldStatus": "both",
-        "SelectedBatteryRangeMiles": null,
-        "SelectedBatteryFastChargeMinutes": null,
-        "BatteryIsLeased": false,
-        "BatteryIsWarrantyWhenNew": false,
-        "ExcludeImports": false,
-        "ExcludeHistoryCatNCatD": false,
-        "ExcludeHistoryCatSCatC": false,
-        "ExcludedVehicles": [],
-        "Type": 1,
-        "PostCode": "N111NP",
-        "Distance": 1000,
-        "PaginationCurrentPage": 1,
-        "SortOrder": 0,
-        "DealerGroupId": 0
+    if (q.postal_code) {
+        var postal_code = q.postal_code;
+    } else {
+        var postal_code = 'WV23AQ';
     }
+    if (q.body_type != '') {
+        var bodystyle = [q.body_type];
+    }else{
+        var bodystyle = [];
+    }
+    if(q.colour){
+        var colour = [q.colour]
+    }else{
+        var colour = [];
+    }
+    var searchPanelParameters = {"Doors":[],"Seats":[],"SafetyRatings":[],"SelectedTopSpeed":null,"SelectedPower":null,"SelectedAcceleration":null,"SelectedEngineSize":null,"BodyStyles":["estate"],"MakeModels":[],"FuelTypes":[],"Transmissions":[],"Colours":colour,"IsPaymentSearch":false,"IsReduced":false,"IsHot":false,"IsRecentlyAdded":false,"IsRecommendedSearch":true,"VoucherEnabled":false,"IsGroupStock":false,"PartExAvailable":false,"IsPriceAndGo":false,"IsPreReg":false,"IsExDemo":false,"ExcludeExFleet":false,"ExcludeExHire":false,"Keywords":[],"SelectedInsuranceGroup":null,"SelectedFuelEfficiency":null,"SelectedCostAnnualTax":null,"SelectedCO2Emission":null,"SelectedTowingBrakedMax":null,"SelectedTowingUnbrakedMax":null,"SelectedAdvertType":"*","SelectedTankRange":null,"DealerId":0,"Age":-1,"Mileage":-1,"MinPrice":-1,"MaxPrice":-1,"MinPaymentMonthlyCost":-1,"MaxPaymentMonthlyCost":-1,"PaymentTerm":60,"PaymentMileage":10000,"PaymentDeposit":1000,"SelectedSoldStatus":"both","SelectedBatteryRangeMiles":null,"SelectedBatteryFastChargeMinutes":null,"BatteryIsLeased":false,"BatteryIsWarrantyWhenNew":false,"ExcludeImports":false,"ExcludeHistoryCatNCatD":false,"ExcludeHistoryCatSCatC":false,"ExcludedVehicles":[],"Type":1,"PostCode":"WV23AQ","Distance":1000,"PaginationCurrentPage":1,"SortOrder":0,"DealerGroupId":0}
     var path2 = 'https://www.motors.co.uk/search/car/updatesearchpanel';
+    var path2 = 'https://www.motors.co.uk/search/car/fastupdatesearchpanel';
+    console.log(path2)
     axios.post(path2, searchPanelParameters)
             .then((response) => {
 //                console.log(response)
                 response.data['aaa'] = searchPanelParameters
                 res.setHeader('Content-Type', 'application/json');
-                console.log(searchPanelParameters)
+//                console.log(searchPanelParameters)
                 res.send(JSON.stringify({data: response.data, params: searchPanelParameters}));
             }, (error) => console.log(error));
 })
@@ -874,5 +831,28 @@ app.get('/show_product', function (req, res, next) {
             }, (error) => console.log(err));
 })
 
-
+app.get('/motView', function (req, res, next) {
+    var q = url.parse(req.url, true).query;
+    var path = 'https://www.motors.co.uk/car'- + q.id + '/?i=3&m=vdn';
+    axios.get(path)
+            .then((response) => {
+                if (response.status === 200) {
+                    const html = response.data;
+                    const $ = cheerio.load(html);
+                    var data = {
+//                        overview: overview,
+                        desc: $(html).find("p,vehicle__sub").text(),
+//                        thumbs: thumbs,
+                        title: $(html).find("h1.vehicle__title").text(),
+                        phones: $(html).find("section ul li.cta-button__item order-call").html(),
+//                        phone2: $(html).find(".seller_private__telephone").text(),
+                        price: $(html).find("h2.vdp-header__full-price").text(),
+//                        distance: $(html).find(".seller_private__location").text(),
+//                        details: details,
+                    }
+                    var obj = {'data': data , html : html}
+                     res.end(html)
+                }
+            }, (error) => console.log(err));
+})
 module.exports = app;

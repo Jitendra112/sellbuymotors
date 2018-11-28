@@ -663,10 +663,39 @@
     </div>
 </section>
  <%- include ../sellbuylayouts/footer.ejs %>  
-<script>
-</script>
 
 
+ <script>
+   
+     $(document).on('submit','#my_post',function(e){
+        e.preventDefault();
+        var formData = new FormData(this);  
+        //console.log('here')                
+        $.ajax({
+        type:'POST',
+        url:$(this).attr('action'),
+        data:formData,
+        cashe:false,
+        contentType:false,
+        processData:false,                      
+        success:function(data){
+           //   alert(data.message)
+           
+           var sell = JSON.parse(data.product_id);
+           //console.log(sell[0].id);
+         if(data.success = 1){
+         window.location.href = "http://localhost:3000/sellcars#link?car_id="+ sell[0].id;
+
+      }else{
+         location.reload();
+
+       }
+    },
+ },'json');
+ });
+
+
+ </script>
 
 
 
@@ -677,26 +706,32 @@
     function show_make(){
        var serviceUrl = 'http://localhost:3000/motors-filter-search?make='+$('#formmake').val()+'&model='+$('#formmodel').val()+'&varient='+$('#model_variant').val();
        $.get(serviceUrl,function(res){
-        makesArray = res;
+        makesArray = res.data.MakeModels;
+       
            // $('#formmodel').html('')
-            $.each(res,function(key , value){
+            $.each(res.data.MakeModels,function(key , value){
             // console.log(value)
                 $('#formmake').append('<option value="'+value.Value+'" data-key="'+key+'">'+value.Name+'</option>')
             })
        },'json')
     }
 $(document).on('change','#formmake' , function(){
-      var res = makesArray[$('#formmake').find(':selected').data('key')].Models;
-      $('#formmodel').html('')
-       $.each(res,function(key , value){
-    //            console.log(value)
-                $('#formmodel').append('<option value="'+value.Value+'" data-key="'+key+'">'+value.Name+'</option>')
-            })
+        var htmlModels;
+        var model_variant;
+        makesArray.filter(function (model) {
+        if (model.Id == 'Makes_' + $('#formmake').val()) {
+        htmlModels = model.Models
+        model_variant = model.Trims
+      }
+     });
+    console.log(htmlModels)
+       $('#formmodel').html('')
+       $.each(htmlModels,function(key , value){
+       $('#formmodel').append('<option value="'+value.Value+'" data-key="'+key+'">'+value.Name+'</option>')})
        var res = makesArray[$('#formmake').find(':selected').data('key')].Trims;
-         $('#model_variant').html('')
-       $.each(res,function(key , value){
-    //            console.log(value)
-                $('#model_variant').append('<option value="'+value.Value+'" data-key="'+key+'">'+value.Name+'</option>')
+       $('#model_variant').html('')
+       $.each(model_variant,function(key , value){
+       $('#model_variant').append('<option value="'+value.Value+'" data-key="'+key+'">'+value.Name+'</option>')
             })
 
     })
@@ -704,39 +739,3 @@ $(document).on('change','#formmake' , function(){
 </script>
  
    
-
- <script>
-   
-     $(document).on('submit','#my_post',function(e){
-        e.preventDefault();
-        var formData = new FormData(this);  
-        console.log()                
-        $.post({
-        type:'POST',
-        url:$(this).attr('action'),
-        data:formData,
-        cashe:false,
-        contentType:false,
-        processData:false,                      
-        success:function(data){
-           //   alert(data.message)
-         if(data.success = 1){
-         window.location.href = "http://localhost:3000/sellcars#link";
-
-      }else{
-        location.reload();
-
-      }
-    },
-       
-                            
-       
-   
-        },'json');
-                
-                 
-    });
-
-
-
-            </script>

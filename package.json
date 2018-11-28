@@ -47,6 +47,7 @@
     "path": "^0.12.7",
     "popper.js": "^1.14.3",
     "replace-string": "^2.0.0",
+    "request": "^2.88.0",
     "sanitize-html": "^1.19.1",
     "sass-loader": "^7.1.0",
     "str_replace": "^0.1.6",

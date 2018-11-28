@@ -955,7 +955,10 @@ section {
   width: 160px;
   height: 160px;
   border: dashed 1px #dadada;
-  cursor: pointer; }
+  cursor: pointer;
+  float: left;
+
+   }
 
 /*======= Blog Single Page Css =======*/
 .blog .btn-tags {
@@ -1179,4 +1182,26 @@ a.navbar-brand img {
 }
 .form-main select {
     margin-bottom: 10px;
+}
+h5.mb-2.c-light i {
+    position: absolute;
+    top: 50%;
+    left: 7%;
+}
+a.btn.btn-secondary.btn-md.btn-block.text-uppercase {
+    margin-top: 10px;
+}
+.grid {
+    
+    width: 57%;
+    float: left;
+    margin-left: 10px;
+}
+.grid img{
+  width: auto;
+  float: left;
+}
+
+div#image_get {
+    border: 1px black solid;
 }

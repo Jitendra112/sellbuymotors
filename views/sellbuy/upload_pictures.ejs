@@ -1,5 +1,6 @@
 <%- include ../sellbuylayouts/header.ejs %>
 <!-- End Header-->        <!-- Page Inner-->
+  
         <section>
             <div class="background-image-maker gradient gradient-lr"></div>
             <div class="holder-image">
@@ -98,20 +99,25 @@
                                     <div class="col-12 col-sm-12">
                                         <label class="c-dark">Gallery</label>
                                         <div class="form-group text-center">
-            <form action="/uploads" id="uploadform"  enctype="multipart/form-data"  method="POST">
+                         <form action="/uploads" id="uploadform"  enctype="multipart/form-data"  method="POST">
                                                 <div class="d-table w-100 h-100 ">
                                                     <div class="d-table-cell align-middle">
-                                                        <div class="dz-default dz-message">
-                                                           <input type="file" name="userPhoto" class="custom-file-input">
-                                                            <h5 class="mb-2 c-light"><i class="fa fa-plus"></i></h5>
-                                                            <span id="myspan"> Add Photo</span>
-                                                            <span id = "status"></span>
+                                                        <div class="dz-default dz-message" id="mydiv">
+                                                          
                                                         </div>
                                                     </div>
                                                 </div>
                                             
                                         </div>
+                                        <div class="grid row" id="grid">
+                                         
+                                            
+
+
+                                        </div>
+                                       
                                     </div> 
+
                                     <div class="col-12 col-sm-4 col-lg-2 mr-auto mt-3 mt-sm-0">
                                         <a href="/sellcar" class="btn btn-secondary btn-md btn-block text-uppercase">Back</a>  
                                     </div>
@@ -129,6 +135,30 @@
         <!-- End Post Ad -->
 <%- include ../sellbuylayouts/footer.ejs %>          
 <script src="/js/jquery-3.3.1.min.js"></script>
+<script>
+    var html ='';
+    var myvar;
+    function GetParameterValues(car_id) {
+        var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        //console.log(url)
+        for (var i = 0; i < url.length; i++) {
+            var urlparam = url[i].split('=');
+           // console.log(urlparam[1])
+             myvar = urlparam[1];
+        }
+
+          html+='<input type="file" name="userPhoto" class="custom-file-input" id="file_id">';
+          html+='<input type="hidden" name="carid" value="' + urlparam[1] + '"/>';
+          html+='<h5 class="mb-2 c-light"><i class="fa fa-plus"></i></h5>';
+          html+='<span id="myspan"> Add Photo</span>';
+         $('#mydiv').html(html);
+
+
+
+
+    }
+    GetParameterValues();
+ </script> 
  <script>
   $(document).on('submit','#uploadform' ,function(e) {
     
@@ -146,13 +176,38 @@
         success:function(data){
            //   alert(data.message)
          //console.log(data);
+         if(data.success == 1){
+
+           alert(data.message)
+            get_images()
+         
+         }else{
+
+           alert(data.message)
+           location.reload();
+
+         }
 
       },
        
-                            
-       
-   
         },'json');
      
 });
+get_images()
+function get_images(){
+
+ 
+// alert(myvar);
+  var html = '';
+  $.get('/get_images?id='+ myvar ,function(res){
+
+    $.each(res,function(key,val){
+      html += '<div class="col-md-3" id="image_get"><img src="/uploads/'+ val.image_name + '" height="100px" width="100px"></div>'
+    })
+      $('#grid').html(html)
+  },'json')
+}
+
+
+
 </script>

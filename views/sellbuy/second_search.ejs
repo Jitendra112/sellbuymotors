@@ -410,7 +410,7 @@
                     html += '<div class="product-bar">\n\
                                 <div class="col-md-4 h-283">\n\
                                     <div class="position-relative">\n\
-                                        <a href="productView/' + value.VehicleId + '">\n\
+                                        <a href="motView/?id=' + value.VehicleId + '">\n\
                                             <div class="background-image-maker rounded-left h-283" style="background-image: url(&quot;' + value.MainImage.Normal + ';);">\n\
                                             </div>\n\
                                             <div class="holder-image">\n\
@@ -422,14 +422,14 @@
                                 <div class="col-md-4 title-products align-self-center">\n\
                                     <div class="p-4 p-lg-0">\n\
                                         <h6 class="mb-2">\n\
-                                            <a href="productView/' + value.VehicleId + '">' + value.Title + '\n\
+                                            <a href="motView/?id=' + value.VehicleId + '">' + value.Title + '\n\
                                             </a>\n\
                                         </h6>\n\
                                          <ul class="list-unstyled mb-2 c-line-height-2_5"> \n\
                                             <li><h6 class="mb-0"><small class="c-light">Price</small> ' + value.GBPPrice + '</h6></li>\n\
                                         </ul>\n\
                                         ' + value.Variant + ' …\n\
-                                        <a href="productView/' + value.VehicleId + '" class="btn btn-outline-primary text-uppercase btn-lg c-font-weight-700" tabindex="-1"> \n\
+                                        <a href="motView/?id=' + value.VehicleId + '" class="btn btn-outline-primary text-uppercase btn-lg c-font-weight-700" tabindex="-1"> \n\
                                             View Details \n\
                                         </a>\n\
                                     </div>\n\
@@ -485,10 +485,10 @@
     function getKeyByValue(object, value) {
         return Object.keys(object).find(key => object[key] === value);
     }
-    function search_results() {
+       function search_results() {
         var base_url = window.location.origin;
         var formData = {
-            postal_code: get_filter_value('postal_code'),
+            postal_code: get_postal_code('postal_code'),
             make: get_filter_value('make'),
             model: get_filter_value('model'),
             radius: get_filter_value('radius'),
@@ -538,7 +538,7 @@
                 image = value.image == '/images/noimage/no_image_266x200.png' ? '/images/noimage.jpeg' : value.image;
                 $('#ProductShow').append('<div class="product-bar"><div class="col-md-4 h-283"><div class="position-relative">\n\
  <a href="/show_product/?id=' + value.product_id + '"><div class="background-image-maker rounded-left h-283"><img src="' + image + '"></div>\n\
-<div class="holder-image"><img src="' + value.image + ';" alt="" class="img-fluid d-none">\n\
+<div class="holder-image"><img src="' + value.image + '" alt="" class="img-fluid d-none">\n\
 </div></a></div></div>' +
                         '<div class="col-md-4 title-products align-self-center">' +
                         '<div class="p-4 p-lg-0">' +
@@ -560,7 +560,7 @@
                         '</div>');
             });
             $('#foundCar').text(parseInt(data.html1.count.replace('cars found', '').replace(',', '')) + parseInt(result.data.RecordCount) + ' cars found')
-            //$('#foundCar').text(data.html1.count + ' ----- ' + parseInt(result.data.RecordCount))
+            // $('#foundCar').text(data.html1.count + 'auto count  ----- ' + parseInt(result.data.RecordCount) + ' motors count')
             $('#radius').html('<option value="1500">Distance(National)</option>')
             $('<div>' + data.html1.fields[0].html + '</div>').find('div').each(function (key, value) {
                 $('#radius').append('<option value="' + $(this).data('selected-value') + '">' + $(this).data('selected-display-name') + '</option>')
@@ -569,34 +569,45 @@
             var make_count = '';
             $('<div>' + data.html1.fields[1].html + '</div>').find('div').each(function (key, value) {
                 var i = 0
-                var mc = parseInt($(this).find('.count').text().replace('(','').replace(')',''))
                 for (i; i < result.data.MakeModels.length; i++) {
                     if (result.data.MakeModels[i].Name == $(this).find('.term').text())
-                        make_count = result.data.MakeModels[i].Counter + parseInt(mc);
+                        make_count = result.data.MakeModels[i].Counter;
                 }
-                $('#make').append('<option value="' + $(this).find('.term').text() + '">' + $(this).find('.term').text() + '(' + make_count + ')</option>')
+                $('#make').append('<option value="' + $(this).find('.term').text() + '">(' + make_count + ')' + $(this).find('.term').text() + $(this).find('.count').text() + '</option>')
+                make_count = 0;
             })
             var htmlModels;
-            console.log(result.data.MakeModels)
+            var model_variants;
             result.data.MakeModels.filter(function (model) {
                 if (model.Id == 'Makes_' + formData.make) {
                     htmlModels = model.Models
+                    model_variants = model.Trims;
                 }
             });
             var model_count;
             $('#model').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[2].html + '</div>').find('div').each(function (key, value) {
                 var i = 0
-                var mk = parseInt($(this).find('.count').text().replace('(','').replace(')',''))
                 for (i; i < htmlModels.length; i++) {
                     if (htmlModels[i].Name == $(this).find('.term').text())
-                        make_count = htmlModels[i].Counter + parseInt(mk);
+                        make_count = htmlModels[i].Counter;
                 }
-                $('#model').append('<option value="' + $(this).find('.term').text() + '">' + $(this).find('.term').text() + '(' + mk + ')</option>')
+                $('#model').append('<option value="' + $(this).find('.term').text() + '">(' + make_count + ')' + $(this).find('.term').text() + $(this).find('.count').text() + '</option>')
+                make_count = 0;
             })
+            var variant_count;
             $('#aggregatedTrim').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[3].html + '</div>').find('div').each(function (key, value) {
-                $('#aggregatedTrim').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('.term').text() + $(this).find('.count').text() + '</option>')
+                var i = 0;
+                for (i; i < model_variants.length; i++) {
+//                    console.log(model_variants[i].Name)
+                    if (model_variants[i].Name == $(this).find('.term').text()) {
+                        variant_count = model_variants[i].Counter;
+                    }
+                }
+//                console.log($(this).find('.term').text())
+                $('#aggregatedTrim').append('<option value="' + $(this).data('selected-value') + '">(' + variant_count + ')' + $(this).find('.term').text() + $(this).find('.count').text() + '</option>')
+                variant_count = 0;
             })
             $('#price_from').html('')
             $('<div>' + data.html1.fields[4].minField.html + '</div>').find('option').each(function (key, value) {
@@ -623,12 +634,30 @@
                 $('#mileage_to').append('<option value="' + $(this).val() + '">' + $(this).text() + '</option>')
             })
             $('#body_type').html('<option value="">Any</option>')
+            var bodyStyleCount;
             $('<div>' + data.html1.fields[7].html + '</div>').find('div').each(function (key, value) {
-                $('#body_type').append('<option value="' + $(this).find('label').data('selected-value') + '">' + $(this).find('label').data('selected-display-name') + $(this).find('.count').text() + '</option>')
+                var i = 0;
+                for (i; i < result.data.BodyStyles.length; i++) {
+                    if (result.data.BodyStyles[i].Name == $(this).find('.term').text().toLowerCase()) {
+                        bodyStyleCount = result.data.BodyStyles[i].Counter;
+                    }
+                }
+                $('#body_type').append('<option value="' + $(this).find('label').data('selected-value') + '">(' + bodyStyleCount + ')' + $(this).find('label').data('selected-display-name') + $(this).find('.count').text() + '</option>')
+                bodyStyleCount = 0;
             })
+//            console.log(result.data.FuelTypes)
             $('#fuel_type').html('<option value="">Any</option>')
+            var fuelCount = 0;
             $('<div>' + data.html1.fields[8].html + '</div>').find('div').each(function (key, value) {
-                $('#fuel_type').append('<option value="' + $(this).find('label').data('selected-value') + '">' + $(this).find('label').data('selected-display-name') + $(this).find('.count').text() + '</option>')
+                var i = 0;
+                for (i; i < result.data.FuelTypes.length; i++) {
+                    if (result.data.FuelTypes[i].Name == $(this).find('.term').text().toLowerCase()) {
+//                        console.log(result.data.FuelTypes[i].Name + '( ' + result.data.FuelTypes[i].Counter + ')')
+                        fuelCount = result.data.FuelTypes[i].Counter;
+                    }
+                }
+                $('#fuel_type').append('<option value="' + $(this).find('label').data('selected-value') + '">(' + fuelCount + ')' + $(this).find('label').data('selected-display-name') + $(this).find('.count').text() + '</option>')
+                fuelCount = 0;
             })
             $('#maximum-badge-engine-size').html('')
             $('<div>' + data.html1.fields[9].maxField.html + '</div>').find('option').each(function (key, value) {
@@ -680,8 +709,16 @@
                 $('#annual-tax-cars').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text() + '</option>')
             })
             $('#colour').html('<option value="">Any</option>')
+            var colourCount = 0;
+            var colourName= '';
             $('<div>' + data.html1.fields[19].html + '</div>').find('div').each(function (key, value) {
-                $('#colour').append('<option value="' + $(this).find('.term').text() + '">' + $(this).find('.term').text() + $(this).find('.count').text() + '</option>')
+                colourName = $(this).find('.term').text().toLowerCase();
+                $.each(result.data.Colours, function (key, value) {
+                    if (value.Id.replace('Colours_', '') == colourName)
+                        colourCount = value.Counter
+                })
+                $('#colour').append('<option value="' + $(this).find('.term').text() + '">(' + colourCount + ')' + colourName + $(this).find('.count').text() + '</option>')
+                colourCount = 0;
             })
             $('#seller-type').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[20].html + '</div>').find('div').each(function (key, value) {
@@ -736,7 +773,21 @@
             });
             var new_url = "/search-cars?onesearchad=" + GetParameterValues('onesearchad') + c_url;
             window.history.pushState("data", "Title", new_url);
-            more_products()
+            more_products(formData)
         });
     }
+
+function get_postal_code(value)
+    {
+        var value = GetParameterValues(value);
+        if (value == undefined) {
+            value == localStorage.postal_code
+        }
+        if (value == undefined) {
+            value = '';
+        }
+        if (value != "")
+            localStorage.setItem("postal_code", value);
+        return value;
+    }    
 </script>

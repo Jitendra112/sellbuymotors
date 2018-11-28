@@ -1,0 +1,105 @@
+<%- include ../sitelayouts/header.ejs %>
+<section>
+    <div class="background-image-maker gradient gradient-lr"></div>
+    <div class="holder-image">
+        <img src="/dist/images/bg2.jpg'" alt="" class="img-fluid d-none" />
+    </div>
+    <div class="black-overlay overlay-full"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 justify-content-center text-center">
+                <h1 class="text-white c-font-weight-700" id="carNameh1"> 
+                    <!--<%= data.title %>-->
+                </h1>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-0 h-0">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-10 col-sm-5 col-lg-3 text-center">
+                <ol class="breadcrumb justify-content-center mb-0 c-bg-primary text-white py-3 position-relative">
+                    <li class="breadcrumb-item"><a href="https://sellbuymotors.co.uk">Home</a></li>
+                    <li class="breadcrumb-item active">Car Listing</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12 col-lg-8 mb-4 mb-lg-0">
+                <div class="car-listing">
+                    <div style="text-align:left !important; padding:0px !important;" class="col-12 col-sm-12 justify-content-center text-center">
+                        <h1 class="c-font-weight-700" id="carNameh1"> 
+                            <!--<%= data.title %>-->
+                        </h1>
+                    </div>
+                    <div class="flexslider c-bg-dark mb-4">
+                        <ul class="slides" id="imageList">
+
+                        </ul>
+                    </div>
+                    <div class="c-bg-dark rounded-top">
+                        <ul class="nav nav-tabs border-0 flex-column flex-sm-row text-white" id="myTab" role="tablist">
+                            <li class="nav-item mb-0 rounded-left"><a class="nav-link redial-light border-0 py-3" data-toggle="tab" href="#desc1" role="tab" aria-expanded="true">DESCRIPTION</a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-content" id="myTabContent2">
+                        <div class="tab-pane fade active in show" id="desc1" role="tabpanel" aria-expanded="true">
+                            <div class="border c-brd-light border-top-0">
+                                <!--<div class="card-body pt-5"><p><%= data.desc %></p>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-4">
+            <div class="card c-brd-light mb-4">
+                <div class="card-body">
+                    <!--                        <h3 id="CarName"> <%= data.seller %></h3>-->
+                    <ul class="list-unstyled c-line-height-2_5 mb-0 mobileli1">
+                        <li><small class="c-light">Price</small> <h4 class="d-inline-block mb-1" id="CarPrice"> <%= data.price %></h4></li>
+
+                        <li><small class="c-light">Phone</small> 
+                            <!--                                <h4 class="d-inline-block mb-1" id="phoneNumber"> <%= data.phones %>-->
+                            <!--<%= data.phone2 %>-->
+                            </h4>
+                        </li>      
+                    </ul>
+                    <ul class="list-group">
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</section>
+<%- include ../sitelayouts/footer.ejs %>
+<script>
+    $.get('https://www.motors.co.uk/car-49630585/?i=3&m=vdn', function (html) {
+        var thumbs = [];
+        $(html).find('#dpvGallery').find('li').each(function (i, elem) {
+            thumbs[i] = {
+                thumb: $(this).find('img').attr('src'),
+            }
+        });
+        var data = {
+//                        overview: overview,
+            desc: $(html).find("p,vehicle__sub").text(),
+            thumbs: thumbs,
+            title: $(html).find("h1.vehicle__title").text(),
+            phones: $(html).find("#mobCTATarg a.call-dealer span").text(),
+//                        phone2: $(html).find(".seller_private__telephone").text(),
+            price: $(html).find("h2.vdp-header__full-price").text(),
+            distance: $(html).find(".dealer-head").html(),
+//                        details: details,
+        }
+        console.log(data)
+    })
+</script>
