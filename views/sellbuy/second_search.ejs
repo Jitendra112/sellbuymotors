@@ -535,7 +535,7 @@
                 $(' <ul class="list-inline">' + value.listings + '</ul>').find('li').each(function (i, elem) {
                     ab += '<li>' + $.trim($(this).text()) + '</li>';
                 });
-                image = value.image == '/images/noimage/no_image_266x200.png' ? '/images/noimage.jpeg' : value.image;
+                image = value.image == '/images/noimage/no_image_266x200.png' ? '/images/noimage.jpeg' : value.image.replace('https','http');
                 $('#ProductShow').append('<div class="product-bar"><div class="col-md-4 h-283"><div class="position-relative">\n\
  <a href="/show_product/?id=' + value.product_id + '"><div class="background-image-maker rounded-left h-283"><img src="' + image + '"></div>\n\
 <div class="holder-image"><img src="' + value.image + '" alt="" class="img-fluid d-none">\n\

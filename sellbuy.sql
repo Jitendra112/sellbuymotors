@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 28, 2018 at 10:52 AM
+-- Generation Time: Nov 28, 2018 at 10:35 PM
 -- Server version: 5.7.24-0ubuntu0.18.04.1
 -- PHP Version: 7.0.32-0ubuntu0.16.04.1
 
@@ -32,16 +32,6 @@ CREATE TABLE `tbl_cars_images` (
   `image_name` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_cars_images`
---
-
-INSERT INTO `tbl_cars_images` (`id`, `product_id`, `image_name`, `created_at`) VALUES
-(25, 63, 'IMG_1543339585280', '2018-11-27 17:26:25'),
-(26, 63, 'IMG_1543339854912', '2018-11-27 17:30:54'),
-(27, 63, 'IMG_1543340463584', '2018-11-27 17:41:03'),
-(28, 63, 'IMG_1543340474863', '2018-11-27 17:41:14');
 
 -- --------------------------------------------------------
 
@@ -339,24 +329,6 @@ CREATE TABLE `tbl_products` (
   `price_expectation` varchar(20) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_products`
---
-
-INSERT INTO `tbl_products` (`id`, `make_year`, `mileage`, `make`, `model`, `variant`, `color`, `body_type`, `fuel_type`, `engine_size`, `fuel_consumption`, `acceleration`, `gear_box`, `drive_train`, `co2_emission`, `doors`, `seats`, `insurance_group`, `annual_tax`, `private_trade`, `owner`, `price_expectation`, `created_at`) VALUES
-(52, '1985', '25000', 'Ferrari', '360M', 'Spider', 'Magenta', 'Coupe', 'Hybrid – Petrol&#x2F;Electric', '5.0', '40+ mpg', '0-8s (0-60mph)', 'Automatic', 'Four Wheel Drive', 'Up to 185 g &#x2F; km CO2', '3 doors', '9', 'Up to 10', 'Up to €270', 'Private adverts', 'second owner', '9,50,000', '2018-11-27 10:46:26'),
-(53, '1984', '40000', 'Ariel', 'Atom', 'Unlisted', 'Green', 'Pickup', 'Petrol', '1.9', '40+ mpg', '', 'Manual', 'Four Wheel Drive', 'Up to 120 g &#x2F; km CO2', '3 doors', '6', 'Up to 20', 'Up to €145', 'Private adverts', 'second owner', '7,00,000', '2018-11-27 16:16:04'),
-(54, '1955', '20000', 'Audi', '100', 'Amplified Edition', 'Blue', 'Hatchback', 'Hybrid – Petrol&#x2F;Electric', '2.2', '50+ mp', '8-12s (0-60mph)', 'Manual', 'Four Wheel Drive', 'Up to 110 g &#x2F; km CO2', '3 doors', '4', 'Up to 20', 'Up to €110', 'Private adverts', 'third owner', '10,00,000', '2018-11-27 16:18:20'),
-(55, '1962', '40000', 'Bentley', '4.25 Litre', 'Mulliner', 'Gold', 'Hatchback', 'Hybrid – Petrol&#x2F;Electric', '2.2', '40+ mpg', '12s+ (0-60mph)', 'Unlisted', 'Four Wheel Drive', 'Up to 175 g &#x2F; km CO2', '5 doors', '5', 'Up to 10', 'Up to €230', 'Private adverts', 'third owner', '10,00,000', '2018-11-27 16:19:34'),
-(56, '1962', '40000', 'Bentley', '4.25 Litre', 'Mulliner', 'Gold', 'Hatchback', 'Hybrid – Petrol&#x2F;Electric', '2.2', '40+ mpg', '12s+ (0-60mph)', 'Unlisted', 'Four Wheel Drive', 'Up to 175 g &#x2F; km CO2', '5 doors', '5', 'Up to 10', 'Up to €230', 'Private adverts', 'third owner', '10,00,000', '2018-11-27 16:19:36'),
-(57, '1962', '40000', 'Bentley', '4.25 Litre', 'Mulliner', 'Gold', 'Hatchback', 'Hybrid – Petrol&#x2F;Electric', '2.2', '40+ mpg', '12s+ (0-60mph)', 'Unlisted', 'Four Wheel Drive', 'Up to 175 g &#x2F; km CO2', '5 doors', '5', 'Up to 10', 'Up to €230', 'Private adverts', 'third owner', '10,00,000', '2018-11-27 16:22:32'),
-(58, '1962', '40000', 'Bentley', '4.25 Litre', 'Mulliner', 'Gold', 'Hatchback', 'Hybrid – Petrol&#x2F;Electric', '2.2', '40+ mpg', '12s+ (0-60mph)', 'Unlisted', 'Four Wheel Drive', 'Up to 175 g &#x2F; km CO2', '5 doors', '5', 'Up to 10', 'Up to €230', 'Private adverts', 'third owner', '10,00,000', '2018-11-27 16:22:48'),
-(59, '1962', '40000', 'Audi', '100', 'Amplified Edition', 'Gold', 'Hatchback', 'Hybrid – Petrol&#x2F;Electric', '2.2', '40+ mpg', '12s+ (0-60mph)', 'Unlisted', 'Four Wheel Drive', 'Up to 175 g &#x2F; km CO2', '5 doors', '5', 'Up to 10', 'Up to €230', 'Private adverts', 'third owner', '10,00,000', '2018-11-27 16:23:14'),
-(60, '1962', '40000', 'Austin', '1100', 'Unlisted', 'Gold', 'Hatchback', 'Hybrid – Petrol&#x2F;Electric', '2.2', '40+ mpg', '12s+ (0-60mph)', 'Unlisted', 'Four Wheel Drive', 'Up to 175 g &#x2F; km CO2', '5 doors', '5', 'Up to 10', 'Up to €230', 'Private adverts', 'third owner', '10,00,000', '2018-11-27 16:24:27'),
-(61, '1963', '45000', 'BSA', 'Rocket', 'Unlisted', '', 'Hatchback', 'Hybrid – Diesel&#x2F;Electric Plug-in', '4.0', '30+ mpg', '8-12s (0-60mph)', 'Semi-Automatic', 'Four Wheel Drive', 'Up to 185 g &#x2F; km CO2', '3 doors', '12', 'Up to 20', 'Up to €295', 'Private adverts', 'second owner', '12,50,000', '2018-11-27 16:26:14'),
-(62, '1958', '25000', 'Audi', '100', 'Amplified Edition', 'Multicolour', 'Estate', 'Hybrid – Diesel&#x2F;Electric', '3.5', '40+ mpg', '0-5s (0-60mph)', 'Automatic', 'Four Wheel Drive', 'Up to 185 g &#x2F; km CO2', '4 doors', '13', 'Up to 20', 'Up to €230', 'Private adverts', 'second owner', '12,50,000', '2018-11-27 16:28:45'),
-(63, '1958', '25000', 'Audi', '100', 'Amplified Edition', 'Multicolour', 'Estate', 'Hybrid – Diesel&#x2F;Electric', '3.5', '40+ mpg', '0-5s (0-60mph)', 'Automatic', 'Four Wheel Drive', 'Up to 185 g &#x2F; km CO2', '4 doors', '13', 'Up to 20', 'Up to €230', 'Private adverts', 'second owner', '12,50,000', '2018-11-27 16:30:40');
 
 -- --------------------------------------------------------
 
@@ -4540,7 +4512,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_cars_images`
 --
 ALTER TABLE `tbl_cars_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 --
 -- AUTO_INCREMENT for table `tbl_countries`
 --
@@ -4550,7 +4522,7 @@ ALTER TABLE `tbl_countries`
 -- AUTO_INCREMENT for table `tbl_products`
 --
 ALTER TABLE `tbl_products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 --
 -- AUTO_INCREMENT for table `tbl_states`
 --

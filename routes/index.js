@@ -31,11 +31,11 @@ app.post('/uploads', async function(req, res, next){
 	       var car_id = post.carid;
      
           var file = req.files.userPhoto;
-         // console.log(file);
+       //  console.log(file.size);
           
 	      	var img_name='IMG_'+ Date.now();
           //console.log(img_name)
-	     	 if(file.mimetype == "image/jpeg" ||file.mimetype == "image/png"||file.mimetype == "image/gif" || file.size < 2097152 ){
+	     	 if(file.mimetype == "image/jpeg" ||file.mimetype == "image/png"||file.mimetype == "image/gif" || file.size < 52428800 ){
                                  
               file.mv('assets/uploads/'+img_name , async function(err) {
                              
