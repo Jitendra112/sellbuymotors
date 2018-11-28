@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 20, 2018 at 07:42 PM
+-- Generation Time: Nov 28, 2018 at 10:52 AM
 -- Server version: 5.7.24-0ubuntu0.18.04.1
 -- PHP Version: 7.0.32-0ubuntu0.16.04.1
 
@@ -19,6 +19,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `sellbuy`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_cars_images`
+--
+
+CREATE TABLE `tbl_cars_images` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `image_name` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_cars_images`
+--
+
+INSERT INTO `tbl_cars_images` (`id`, `product_id`, `image_name`, `created_at`) VALUES
+(25, 63, 'IMG_1543339585280', '2018-11-27 17:26:25'),
+(26, 63, 'IMG_1543339854912', '2018-11-27 17:30:54'),
+(27, 63, 'IMG_1543340463584', '2018-11-27 17:41:03'),
+(28, 63, 'IMG_1543340474863', '2018-11-27 17:41:14');
 
 -- --------------------------------------------------------
 
@@ -284,6 +307,56 @@ INSERT INTO `tbl_countries` (`id`, `sortname`, `name`, `phonecode`) VALUES
 (244, 'YU', 'Yugoslavia', 38),
 (245, 'ZM', 'Zambia', 260),
 (246, 'ZW', 'Zimbabwe', 263);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_products`
+--
+
+CREATE TABLE `tbl_products` (
+  `id` int(11) NOT NULL,
+  `make_year` varchar(10) NOT NULL,
+  `mileage` varchar(20) NOT NULL,
+  `make` varchar(30) NOT NULL,
+  `model` varchar(10) NOT NULL,
+  `variant` varchar(50) NOT NULL,
+  `color` varchar(30) NOT NULL,
+  `body_type` varchar(20) NOT NULL,
+  `fuel_type` varchar(50) NOT NULL,
+  `engine_size` varchar(10) NOT NULL,
+  `fuel_consumption` varchar(20) NOT NULL,
+  `acceleration` varchar(30) NOT NULL,
+  `gear_box` varchar(50) NOT NULL,
+  `drive_train` varchar(30) NOT NULL,
+  `co2_emission` varchar(50) NOT NULL,
+  `doors` varchar(10) NOT NULL,
+  `seats` varchar(10) NOT NULL,
+  `insurance_group` varchar(20) NOT NULL,
+  `annual_tax` varchar(20) NOT NULL,
+  `private_trade` varchar(30) NOT NULL,
+  `owner` varchar(30) NOT NULL,
+  `price_expectation` varchar(20) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_products`
+--
+
+INSERT INTO `tbl_products` (`id`, `make_year`, `mileage`, `make`, `model`, `variant`, `color`, `body_type`, `fuel_type`, `engine_size`, `fuel_consumption`, `acceleration`, `gear_box`, `drive_train`, `co2_emission`, `doors`, `seats`, `insurance_group`, `annual_tax`, `private_trade`, `owner`, `price_expectation`, `created_at`) VALUES
+(52, '1985', '25000', 'Ferrari', '360M', 'Spider', 'Magenta', 'Coupe', 'Hybrid – Petrol&#x2F;Electric', '5.0', '40+ mpg', '0-8s (0-60mph)', 'Automatic', 'Four Wheel Drive', 'Up to 185 g &#x2F; km CO2', '3 doors', '9', 'Up to 10', 'Up to €270', 'Private adverts', 'second owner', '9,50,000', '2018-11-27 10:46:26'),
+(53, '1984', '40000', 'Ariel', 'Atom', 'Unlisted', 'Green', 'Pickup', 'Petrol', '1.9', '40+ mpg', '', 'Manual', 'Four Wheel Drive', 'Up to 120 g &#x2F; km CO2', '3 doors', '6', 'Up to 20', 'Up to €145', 'Private adverts', 'second owner', '7,00,000', '2018-11-27 16:16:04'),
+(54, '1955', '20000', 'Audi', '100', 'Amplified Edition', 'Blue', 'Hatchback', 'Hybrid – Petrol&#x2F;Electric', '2.2', '50+ mp', '8-12s (0-60mph)', 'Manual', 'Four Wheel Drive', 'Up to 110 g &#x2F; km CO2', '3 doors', '4', 'Up to 20', 'Up to €110', 'Private adverts', 'third owner', '10,00,000', '2018-11-27 16:18:20'),
+(55, '1962', '40000', 'Bentley', '4.25 Litre', 'Mulliner', 'Gold', 'Hatchback', 'Hybrid – Petrol&#x2F;Electric', '2.2', '40+ mpg', '12s+ (0-60mph)', 'Unlisted', 'Four Wheel Drive', 'Up to 175 g &#x2F; km CO2', '5 doors', '5', 'Up to 10', 'Up to €230', 'Private adverts', 'third owner', '10,00,000', '2018-11-27 16:19:34'),
+(56, '1962', '40000', 'Bentley', '4.25 Litre', 'Mulliner', 'Gold', 'Hatchback', 'Hybrid – Petrol&#x2F;Electric', '2.2', '40+ mpg', '12s+ (0-60mph)', 'Unlisted', 'Four Wheel Drive', 'Up to 175 g &#x2F; km CO2', '5 doors', '5', 'Up to 10', 'Up to €230', 'Private adverts', 'third owner', '10,00,000', '2018-11-27 16:19:36'),
+(57, '1962', '40000', 'Bentley', '4.25 Litre', 'Mulliner', 'Gold', 'Hatchback', 'Hybrid – Petrol&#x2F;Electric', '2.2', '40+ mpg', '12s+ (0-60mph)', 'Unlisted', 'Four Wheel Drive', 'Up to 175 g &#x2F; km CO2', '5 doors', '5', 'Up to 10', 'Up to €230', 'Private adverts', 'third owner', '10,00,000', '2018-11-27 16:22:32'),
+(58, '1962', '40000', 'Bentley', '4.25 Litre', 'Mulliner', 'Gold', 'Hatchback', 'Hybrid – Petrol&#x2F;Electric', '2.2', '40+ mpg', '12s+ (0-60mph)', 'Unlisted', 'Four Wheel Drive', 'Up to 175 g &#x2F; km CO2', '5 doors', '5', 'Up to 10', 'Up to €230', 'Private adverts', 'third owner', '10,00,000', '2018-11-27 16:22:48'),
+(59, '1962', '40000', 'Audi', '100', 'Amplified Edition', 'Gold', 'Hatchback', 'Hybrid – Petrol&#x2F;Electric', '2.2', '40+ mpg', '12s+ (0-60mph)', 'Unlisted', 'Four Wheel Drive', 'Up to 175 g &#x2F; km CO2', '5 doors', '5', 'Up to 10', 'Up to €230', 'Private adverts', 'third owner', '10,00,000', '2018-11-27 16:23:14'),
+(60, '1962', '40000', 'Austin', '1100', 'Unlisted', 'Gold', 'Hatchback', 'Hybrid – Petrol&#x2F;Electric', '2.2', '40+ mpg', '12s+ (0-60mph)', 'Unlisted', 'Four Wheel Drive', 'Up to 175 g &#x2F; km CO2', '5 doors', '5', 'Up to 10', 'Up to €230', 'Private adverts', 'third owner', '10,00,000', '2018-11-27 16:24:27'),
+(61, '1963', '45000', 'BSA', 'Rocket', 'Unlisted', '', 'Hatchback', 'Hybrid – Diesel&#x2F;Electric Plug-in', '4.0', '30+ mpg', '8-12s (0-60mph)', 'Semi-Automatic', 'Four Wheel Drive', 'Up to 185 g &#x2F; km CO2', '3 doors', '12', 'Up to 20', 'Up to €295', 'Private adverts', 'second owner', '12,50,000', '2018-11-27 16:26:14'),
+(62, '1958', '25000', 'Audi', '100', 'Amplified Edition', 'Multicolour', 'Estate', 'Hybrid – Diesel&#x2F;Electric', '3.5', '40+ mpg', '0-5s (0-60mph)', 'Automatic', 'Four Wheel Drive', 'Up to 185 g &#x2F; km CO2', '4 doors', '13', 'Up to 20', 'Up to €230', 'Private adverts', 'second owner', '12,50,000', '2018-11-27 16:28:45'),
+(63, '1958', '25000', 'Audi', '100', 'Amplified Edition', 'Multicolour', 'Estate', 'Hybrid – Diesel&#x2F;Electric', '3.5', '40+ mpg', '0-5s (0-60mph)', 'Automatic', 'Four Wheel Drive', 'Up to 185 g &#x2F; km CO2', '4 doors', '13', 'Up to 20', 'Up to €230', 'Private adverts', 'second owner', '12,50,000', '2018-11-27 16:30:40');
 
 -- --------------------------------------------------------
 
@@ -4421,16 +4494,30 @@ CREATE TABLE `tbl_user` (
 
 INSERT INTO `tbl_user` (`id`, `user_name`, `google_id`, `facebook_id`, `email`, `password`, `country_id`, `state_id`, `postal_code`, `role`, `created_at`) VALUES
 (8, 'kush', '108169144019802726494', NULL, 'jitendragniabs@gmail.com', 'welcome', 101, 32, '156200', 'U', '2018-11-20 12:06:57'),
-(13, 'MultiJitendra1', '114112773907484109796', NULL, 'jitendra.15love@gmail.com', NULL, NULL, NULL, NULL, NULL, '2018-11-20 13:58:35');
+(26, 'MultiJitendra1', '114112773907484109796', NULL, 'jitendra.15love@gmail.com', NULL, NULL, NULL, NULL, NULL, '2018-11-21 05:20:39'),
+(27, 'Kuldeep Kumar', '114852000254859220717', NULL, '349kuldeep@gmail.com', NULL, NULL, NULL, NULL, NULL, '2018-11-21 05:23:04'),
+(28, 'Sanjay Kumar', NULL, NULL, 'sanjay@gmail.com', 'password', 101, 10, '152116', 'U', '2018-11-21 05:48:06');
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `tbl_cars_images`
+--
+ALTER TABLE `tbl_cars_images`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_countries`
 --
 ALTER TABLE `tbl_countries`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_products`
+--
+ALTER TABLE `tbl_products`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -4450,10 +4537,20 @@ ALTER TABLE `tbl_user`
 --
 
 --
+-- AUTO_INCREMENT for table `tbl_cars_images`
+--
+ALTER TABLE `tbl_cars_images`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+--
 -- AUTO_INCREMENT for table `tbl_countries`
 --
 ALTER TABLE `tbl_countries`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=247;
+--
+-- AUTO_INCREMENT for table `tbl_products`
+--
+ALTER TABLE `tbl_products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 --
 -- AUTO_INCREMENT for table `tbl_states`
 --
@@ -4463,7 +4560,7 @@ ALTER TABLE `tbl_states`
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
