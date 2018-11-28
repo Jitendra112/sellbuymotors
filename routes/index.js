@@ -396,67 +396,6 @@ app.get('/auto-search-results', async function (req, res, next) {
     } else {
         makeModel = []
     }
-    var searchPanelParameters = {
-        "Doors": [],
-        "Seats": [],
-        "SafetyRatings": [],
-        "SelectedTopSpeed": null,
-        "SelectedPower": null,
-        "SelectedAcceleration": null,
-        "SelectedEngineSize": null,
-        "BodyStyles": [],
-        "MakeModels": makeModel,
-        "FuelTypes": [],
-        "Transmissions": [],
-        "Colours": [],
-        "IsPaymentSearch": false,
-        "IsReduced": false,
-        "IsHot": false,
-        "IsRecentlyAdded": false,
-        "IsRecommendedSearch": true,
-        "VoucherEnabled": false,
-        "IsGroupStock": false,
-        "PartExAvailable": false,
-        "IsPriceAndGo": false,
-        "IsPreReg": false,
-        "IsExDemo": false,
-        "ExcludeExFleet": false,
-        "ExcludeExHire": false,
-        "Keywords": [],
-        "SelectedInsuranceGroup": null,
-        "SelectedFuelEfficiency": null,
-        "SelectedCostAnnualTax": null,
-        "SelectedCO2Emission": null,
-        "SelectedTowingBrakedMax": null,
-        "SelectedTowingUnbrakedMax": null,
-        "SelectedAdvertType": "*",
-        "SelectedTankRange": null,
-        "DealerId": 0,
-        "Age": -1,
-        "Mileage": -1,
-        "MinPrice": -1,
-        "MaxPrice": -1,
-        "MinPaymentMonthlyCost": -1,
-        "MaxPaymentMonthlyCost": -1,
-        "PaymentTerm": 60,
-        "PaymentMileage": 10000,
-        "PaymentDeposit": 1000,
-        "SelectedSoldStatus": "both",
-        "SelectedBatteryRangeMiles": null,
-        "SelectedBatteryFastChargeMinutes": null,
-        "BatteryIsLeased": false,
-        "BatteryIsWarrantyWhenNew": false,
-        "ExcludeImports": false,
-        "ExcludeHistoryCatNCatD": false,
-        "ExcludeHistoryCatSCatC": false,
-        "ExcludedVehicles": [],
-        "Type": 1,
-        "PostCode": "N111NP",
-        "Distance": 1000,
-        "PaginationCurrentPage": 1,
-        "SortOrder": 0,
-        "DealerGroupId": 0
-    }
     var onesearchad;
     if (q.onesearchad == 'New') {
         onesearchad = 'New';
@@ -477,12 +416,6 @@ app.get('/auto-search-results', async function (req, res, next) {
                     console.log('first response come')
                     const html = response.data;
                     const $ = cheerio.load(html);
-                    var html2;
-                    var path2 = 'https://www.motors.co.uk/search/car/updatesearchpanel';
-                    axios.post(path2, searchPanelParameters)
-                            .then((response2) => {
-                                html2 = response2.data;
-                            }, (error) => console.log(error));
                     var cars = {}, filters = {}, radius = {}, make = {}, model = {}, model_variant = {}, aggregatedTrim = {}, pages = []
                     $(html.html).find('li.search-page__result').each(function (i, elem) {
                         cars[i] = {
@@ -513,10 +446,6 @@ app.get('/auto-search-results', async function (req, res, next) {
                             count: $(this).find('span').text().replace('(', '').replace(')', '').replace($(this).data('selected-display-name'), '')
                         }
                     });
-//                                $(make).each(function (key, value) {
-//                                    console.log(value)
-//                                    console.log(html2.MakeModels.indexOf(value.text))
-//                                })
                     $('<div>' + html.refinements.fields[2].html + '</div>').find(".value-button").each(function (i, elem) {
                         model[i] = {
                             value: $(this).data('selected-value'),
@@ -540,10 +469,8 @@ app.get('/auto-search-results', async function (req, res, next) {
                     data = {
                         filters: filters,
                         html1: html.refinements,
-                        html2: html2,
-//                        count: parseInt(html.refinements.count.replace(' cars found', '').replace(/,/g, '')) + parseInt(html2.RecordCount),
+                        params:q,
                         cars: cars,
-                        searchPanelParameters: searchPanelParameters,
                         path: path,
                         pages: pages
                     }
@@ -688,8 +615,9 @@ app.get('/motors-filter-search', async function (req, res, next) {
     } else {
         makeModel = []
     }
+    console.log(makeModel)
     if (q.postal_code) {
-        var postal_code = q.postal_code;
+        var postal_code = replaceString(q.postal_code, '+', '');
     } else {
         var postal_code = 'WV23AQ';
     }
@@ -703,10 +631,75 @@ app.get('/motors-filter-search', async function (req, res, next) {
     }else{
         var colour = [];
     }
-    var searchPanelParameters = {"Doors":[],"Seats":[],"SafetyRatings":[],"SelectedTopSpeed":null,"SelectedPower":null,"SelectedAcceleration":null,"SelectedEngineSize":null,"BodyStyles":["estate"],"MakeModels":[],"FuelTypes":[],"Transmissions":[],"Colours":colour,"IsPaymentSearch":false,"IsReduced":false,"IsHot":false,"IsRecentlyAdded":false,"IsRecommendedSearch":true,"VoucherEnabled":false,"IsGroupStock":false,"PartExAvailable":false,"IsPriceAndGo":false,"IsPreReg":false,"IsExDemo":false,"ExcludeExFleet":false,"ExcludeExHire":false,"Keywords":[],"SelectedInsuranceGroup":null,"SelectedFuelEfficiency":null,"SelectedCostAnnualTax":null,"SelectedCO2Emission":null,"SelectedTowingBrakedMax":null,"SelectedTowingUnbrakedMax":null,"SelectedAdvertType":"*","SelectedTankRange":null,"DealerId":0,"Age":-1,"Mileage":-1,"MinPrice":-1,"MaxPrice":-1,"MinPaymentMonthlyCost":-1,"MaxPaymentMonthlyCost":-1,"PaymentTerm":60,"PaymentMileage":10000,"PaymentDeposit":1000,"SelectedSoldStatus":"both","SelectedBatteryRangeMiles":null,"SelectedBatteryFastChargeMinutes":null,"BatteryIsLeased":false,"BatteryIsWarrantyWhenNew":false,"ExcludeImports":false,"ExcludeHistoryCatNCatD":false,"ExcludeHistoryCatSCatC":false,"ExcludedVehicles":[],"Type":1,"PostCode":"WV23AQ","Distance":1000,"PaginationCurrentPage":1,"SortOrder":0,"DealerGroupId":0}
-    var path2 = 'https://www.motors.co.uk/search/car/updatesearchpanel';
+    if(q.radius != ''){
+      var radius = q.radius
+    }else{
+      var radius = []
+    }
+    var searchPanelParameters = {
+        "Doors":[],
+        "Seats":[],
+        "SafetyRatings":[],
+        "SelectedTopSpeed":null,
+        "SelectedPower":null,
+        "SelectedAcceleration":null,
+        "SelectedEngineSize":null,
+        "BodyStyles":bodystyle,
+        "MakeModels":makeModel,
+        "FuelTypes":[],
+        "Transmissions":[],
+        "Colours":colour,
+        "IsPaymentSearch":false,
+        "IsReduced":false,
+        "IsHot":false,
+        "IsRecentlyAdded":false,
+        "IsRecommendedSearch":true,
+        "VoucherEnabled":false,
+        "IsGroupStock":false,
+        "PartExAvailable":false,
+        "IsPriceAndGo":false,
+        "IsPreReg":false,
+        "IsExDemo":false,
+        "ExcludeExFleet":false,
+        "ExcludeExHire":false,
+        "Keywords":[],
+        "SelectedInsuranceGroup":null,
+        "SelectedFuelEfficiency":null,
+        "SelectedCostAnnualTax":null,
+        "SelectedCO2Emission":null,
+        "SelectedTowingBrakedMax":null,
+        "SelectedTowingUnbrakedMax":null,
+        "SelectedAdvertType":"*",
+        "SelectedTankRange":null,
+        "DealerId":0,
+        "Age":-1,
+        "Mileage":-1,
+        "MinPrice":-1,
+        "MaxPrice":-1,
+        "MinPaymentMonthlyCost":-1,
+        "MaxPaymentMonthlyCost":-1,
+        "PaymentTerm":60,
+        "PaymentMileage":10000,
+        "PaymentDeposit":1000,
+        "SelectedSoldStatus":"both",
+        "SelectedBatteryRangeMiles":null,
+        "SelectedBatteryFastChargeMinutes":null,
+        "BatteryIsLeased":false,
+        "BatteryIsWarrantyWhenNew":false,
+        "ExcludeImports":false,
+        "ExcludeHistoryCatNCatD":false,
+        "ExcludeHistoryCatSCatC":false,
+        "ExcludedVehicles":[],
+        "Type":1,
+        "PostCode":postal_code,
+        "Distance":radius,
+        "PaginationCurrentPage":1,
+        "SortOrder":0,
+        "DealerGroupId":0
+      }
+    // var path2 = 'https://www.motors.co.uk/search/car/updatesearchpanel';
     var path2 = 'https://www.motors.co.uk/search/car/fastupdatesearchpanel';
-    console.log(path2)
+    // console.log(path2)
     axios.post(path2, searchPanelParameters)
             .then((response) => {
 //                console.log(response)

@@ -684,7 +684,7 @@
            var sell = JSON.parse(data.product_id);
            //console.log(sell[0].id);
          if(data.success = 1){
-         window.location.href = "https://sellbuymotors.co.uk/sellcars#link?car_id="+ sell[0].id;
+         window.location.href = "http://localhost:3000/sellcars#link?car_id="+ sell[0].id;
 
       }else{
          location.reload();
@@ -704,35 +704,30 @@
     var serviceUrl ;
     var makesArray ;
     function show_make(){
-       var serviceUrl = 'https://sellbuymotors.co.uk/motors-filter-search?make='+$('#formmake').val()+'&model='+$('#formmodel').val()+'&varient='+$('#model_variant').val();
+//       var serviceUrl = 'http://localhost:3000/motors-filter-search?make='+$('#formmake').val()+'&model='+$('#formmodel').val()+'&varient='+$('#model_variant').val();
+       var serviceUrl = 'https://sellbuymotors.co.uk/motors-filter-search?postal_code=&make='+$('#formmake').val()+'&model='+$('#formmodel').val()+'&radius=&aggregatedTrim='+$('#model_variant').val()+'&onesearchad=&sort=&price_from=&price_to=&year_from=&year_to=&mileage_from=&mileage_to=&body_type=&fuel_type=&minimum_badge_engine_size=&maximum_badge_engine_size=&fuel_consumption=&zero_to_60=&transmission=&drivetrain=&co2_emissions_cars=&quantity_of_doors=&minimum_seats=&maximum_seats=&insuranceGroup=&annual_tax_cars=&colour=&seller_type=&page=';
        $.get(serviceUrl,function(res){
         makesArray = res.data.MakeModels;
-       
-           // $('#formmodel').html('')
-            $.each(res.data.MakeModels,function(key , value){
-            // console.log(value)
-                $('#formmake').append('<option value="'+value.Value+'" data-key="'+key+'">'+value.Name+'</option>')
+            $.each(makesArray,function(key , value){
+                $('#formmake').append('<option value="'+value.Id.replace('Makes_','')+'" data-key="'+key+'">'+value.Id.replace('Makes_','')+'</option>')
             })
        },'json')
     }
 $(document).on('change','#formmake' , function(){
         var htmlModels;
         var model_variant;
-        makesArray.filter(function (model) {
-        if (model.Id == 'Makes_' + $('#formmake').val()) {
-        htmlModels = model.Models
-        model_variant = model.Trims
-      }
-     });
-    console.log(htmlModels)
+        console.log(makesArray[$(this).find(':selected').data('key')])
+        htmlModels = makesArray[$(this).find(':selected').data('key')].Models;
+        htmlTrims = makesArray[$(this).find(':selected').data('key')].Trims;
        $('#formmodel').html('')
        $.each(htmlModels,function(key , value){
-       $('#formmodel').append('<option value="'+value.Value+'" data-key="'+key+'">'+value.Name+'</option>')})
+           $('#formmodel').append('<option value="'+value.Id.replace('Models_','')+'" data-key="'+key+'">'+value.Id.replace('Models_','')+'</option>')
+       })
        var res = makesArray[$('#formmake').find(':selected').data('key')].Trims;
        $('#model_variant').html('')
-       $.each(model_variant,function(key , value){
-       $('#model_variant').append('<option value="'+value.Value+'" data-key="'+key+'">'+value.Name+'</option>')
-            })
+       $.each(htmlTrims,function(key , value){
+           $('#model_variant').append('<option value="'+value.Id.replace('Trims_','')+'" data-key="'+key+'">'+value.Id.replace('Trims_','')+'</option>')
+       })
 
     })
      show_make();
