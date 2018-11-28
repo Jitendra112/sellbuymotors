@@ -684,7 +684,7 @@
            var sell = JSON.parse(data.product_id);
            //console.log(sell[0].id);
          if(data.success = 1){
-         window.location.href = "http://localhost:3000/sellcars#link?car_id="+ sell[0].id;
+         window.location.href = "https://sellbuymotors.co.uk/sellcars#link?car_id="+ sell[0].id;
 
       }else{
          location.reload();
@@ -704,7 +704,7 @@
     var serviceUrl ;
     var makesArray ;
     function show_make(){
-       var serviceUrl = 'http://localhost:3000/motors-filter-search?make='+$('#formmake').val()+'&model='+$('#formmodel').val()+'&varient='+$('#model_variant').val();
+       var serviceUrl = 'https://sellbuymotors.co.uk/motors-filter-search?make='+$('#formmake').val()+'&model='+$('#formmodel').val()+'&varient='+$('#model_variant').val();
        $.get(serviceUrl,function(res){
         makesArray = res.data.MakeModels;
        
