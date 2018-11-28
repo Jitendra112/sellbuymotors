@@ -605,6 +605,9 @@
         <%- include ../sellbuylayouts/footer.ejs %>    
 
 <script type="text/javascript">
+    if (!window.location.origin) {
+      window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
+    }
     function GetParameterValues(param) {
         var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
         for (var i = 0; i < url.length; i++) {
@@ -746,4 +749,4 @@
             $('form select[name=distance]').val(formData.radius)
         });
     }
-        </script>>
+        </script>

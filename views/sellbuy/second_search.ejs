@@ -59,7 +59,7 @@
                                     </div>
                                 </div> 
                                 <div class="col-12 col-sm-6 col-md-4 col-xl-12">
-                                    <label class="c-dark">Radius</label>
+                                    <label class="c-dark">Distance(National)</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="radius">
                                             <!-- <option value="1500">Distance(National)</option> -->
@@ -351,6 +351,9 @@
 <!-- End List Without Sidebar -->
 <%- include ../sellbuylayouts/footer.ejs %> 
 <script>
+    if (!window.location.origin) {
+      window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
+    }
     var base_url = window.location.origin;
     $('#search_type').text(GetParameterValues('onesearchad') + ' Cars');
     function removeURLParameter(parameter) {
@@ -482,9 +485,6 @@
         $('#aggregatedTrim').html('');
         search_results()
     })
-    function getKeyByValue(object, value) {
-        return Object.keys(object).find(key => object[key] === value);
-    }
        function search_results() {
         var base_url = window.location.origin;
         var formData = {
