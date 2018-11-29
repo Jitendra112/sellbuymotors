@@ -335,7 +335,9 @@ textarea.form-control {
     background-image: none; }
 
 .main-header .navbar .form-control {
-  height: 34px; }
+    height: 34px;
+    padding: 0 5px;
+}
 
 .main-header .navbar .search {
   right: 15px; }
