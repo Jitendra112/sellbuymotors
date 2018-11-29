@@ -11,6 +11,17 @@
         background: red;
         color: wheat;
     }
+    select.form-control:not([size]):not([multiple]) {
+    height: auto;
+    padding: 4px 8px !important;
+}
+section {
+    padding: 50px 0px;
+    position: relative;
+}
+.form-control {
+    height: auto;
+}
 </style>
 <section>
     <div class="background-image-maker gradient gradient-lr"></div>
@@ -46,19 +57,19 @@
 <!-- List Without Sidebar -->
 <section>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-12">
             <div class="row">
                 <div class="col-12 col-sm-12">
                     <div class="card c-brd-light car-box mb-5">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Postal Code</label>
                                     <div class="form-group">
                                         <input type="text" class="form-control rounded" id="postal_code"/>
                                     </div>
                                 </div> 
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Distance(National)</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="radius">
@@ -66,7 +77,7 @@
                                         </select>
                                     </div>
                                 </div>  
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Make</label>
                                     <div class="form-group">
                                         <select class="form-control" id="make">
@@ -74,21 +85,21 @@
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Model</label>
                                     <div class="form-group">
                                         <select class="form-control" id="model">
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Model Variant</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="aggregatedTrim">
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Price</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="sort">
@@ -97,161 +108,161 @@
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Price From</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="price_from">
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Price To</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="price_to">
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Year From</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="year_from">
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Year To</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="year_to">
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Mileage From</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="mileage_from">
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Mileage To</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="mileage_to">
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Body Type</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="body_type">
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Fuel Type</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="fuel_type">
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Engine Size From</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="maximum-badge-engine-size">
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Engine Size To</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="minimum-badge-engine-size">
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Fuel Consumption</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="fuel_consumption">
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Acceleration</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="zero-to-60">
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Gearbox</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="transmission">
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Drivetrain</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="drivetrain">
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Co 2 Emission</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="co2-emissions-cars">
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Doors</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="quantity-of-doors">
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Min Seats</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="minimum-seats">
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Max Seats</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="maximum-seats">
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">InsuranceGroup</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="insuranceGroup">
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Annual Tax</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="annual-tax-cars">
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Colour</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="colour">
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-12 col-sm-6 col-md-4 col-xl-12">
+                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Private & Trade</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="seller-type">
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-12 col-md-4 col-xl-12">
+                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="mb-4"></label>
                                     <div class="form-group mb-0">
                                         <a href="#" class="btn btn-primary btn-md btn-block text-uppercase">Search</a>
@@ -263,7 +274,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-12">
             <div class="container">
                 <div class="col-12 col-lg-12">
                     <div class="row mb-4">

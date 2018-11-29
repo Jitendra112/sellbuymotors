@@ -1205,3 +1205,8 @@ a.btn.btn-secondary.btn-md.btn-block.text-uppercase {
 div#image_get {
     border: 1px black solid;
 }
+.background-image-maker img {
+    width: 100%;
+    height: auto;
+    border: 2px #ee5624 solid;
+}
