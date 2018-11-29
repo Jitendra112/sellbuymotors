@@ -62,7 +62,7 @@
                                                             <div class="form-group">
                                                                 <label>Distance</label>
                                                                 <select class="form-control distance" name="distance">
-                                                                 <option value="200">Distance(National)</option>
+                                                                 <option value="1500">Distance(National)</option>
                                                                    
                                                                 </select>
                                                             </div>
@@ -135,7 +135,7 @@
                                                                <div class="form-group">
                                                                 <label>Distance</label>
                                                                 <select class="form-control distance" name="distance">
-                                                                 <option value="">--- Select Distance ---</option>
+                                                                 <option value="1500">Distance(National)</option>
                                                                    
                                                                 </select>
                                                                 </div>
@@ -596,7 +596,7 @@
             <input type="hidden" id="make">
             <input type="hidden" id="model">
             <input type="hidden" id="postal_code">
-            <input type="hidden" id="radius" value="200">
+            <input type="hidden" id="radius" value="1500">
         </section>
       
        
@@ -653,7 +653,7 @@
         var base_url = window.location.origin;
         var formData = 
         {
-            postal_code: get_filter_value('postal_code'),
+            postal_code: 'WV23AQ',//get_filter_value('postal_code'),
             make: get_filter_value('make'),
             model: get_filter_value('model'),
             radius: get_filter_value('radius'),
@@ -694,17 +694,20 @@
             $('.counttxt').text(parseInt(data.html1.count.replace('cars found', '').replace(',', '')) + parseInt(result.data.RecordCount) + ' cars found')
             $('.make_filter').html('<option value="">Any</option>')
             var make_count = '';
-            $('<div>' + data.html1.fields[1].html + '</div>').find('div').each(function (key, value) {
+            // $('<div>' + data.html1.fields[1].html + '</div>').find('div').each(function (key, value) {
+              $.each(data.filters.make,function(key ,value){
                var i = 0
-                var mc = parseInt($(this).find('.count').text().replace('(','').replace(')','').replace(',', ''))
-             for (i; i < result.data.MakeModels.length; i++) {
-                    if (result.data.MakeModels[i].Id.replace('Makes_','') == $(this).find('.term').text()){
+                var mc = value.count.replace(',','');
+                make_count = mc;
+                for (i; i < result.data.MakeModels.length; i++) {
+                    if (result.data.MakeModels[i].Id.replace('Makes_','') == value.text){
                         make_count = parseInt(result.data.MakeModels[i].Counter) + parseInt(mc);
+                        console.log(parseInt(result.data.MakeModels[i].Counter) + '--' + value.text + '--' + parseInt(mc))
                     }
                 }
                
-                $('.make_filter').append('<option value="' + $(this).find('.term').text() + '">' + $(this).find('.term').text() +'(' + make_count + ')</option>')
-                make_count = 0;
+                $('.make_filter').append('<option value="' + value.text + '">' + value.value +'(' + make_count + ')</option>')
+                
             })
             var htmlModels;
             result.data.MakeModels.filter(function (model) {
@@ -741,7 +744,7 @@
             })
 
 
-      
+            localStorage.setItem("postal_code", formData.postal_code);
             $('form select.make_filter').val(formData.make)
             $('form select.model_filter').val(formData.model)
             $('#make').val(formData.make)
@@ -749,4 +752,6 @@
             $('form select[name=distance]').val(formData.radius)
         });
     }
+
+    $('input[name=postal_code]').val(localStorage.postal_code)
         </script>

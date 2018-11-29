@@ -636,7 +636,11 @@ app.get('/motors-filter-search', async function (req, res, next) {
         var colour = [];
     }
     if(q.radius != ''){
-      var radius = q.radius
+      if(q.radius == '1500'){
+        var radius = '1000'
+      }else{
+        var radius = q.radius
+      }
     }else{
       var radius = []
     }
