@@ -785,7 +785,7 @@ app.get('/show_product', function (req, res, next) {
                     });
                     $('.fpaImages__thumbs figure.fpaImages__thumb').each(function (i, elem) {
                         thumbs[i] = {
-                            thumb: replaceString($(this).find('img').data('src'), 'w92h69pe8e8e3', 'w720h540pe8e8e3'),
+                            thumb:replaceString(replaceString($(this).find('img').data('src'), 'w92h69pe8e8e3', 'w720h540pe8e8e3'),'https','http'),
                         }
                     });
                     $('.seller_private__telephone').each(function (i, elem) {
