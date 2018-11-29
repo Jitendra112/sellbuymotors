@@ -14,7 +14,7 @@ var request = require('request');
 
 
 app.get('/', function(req, res, next) {
-    
+     res.locals.udata = req.session.udata;
         res.render('sellbuy/index', {
             title: 'Add content',
             
@@ -308,8 +308,7 @@ app.post('/save_post',async function(req, res, next){
 // Kuldeep Sir Scrapping Code<!--- Starts-->
 
 app.get('/search-cars', async function (req, res, next) {
-
-  
+     res.locals.udata = req.session.udata;
     res.render('sellbuy/second_search', {
         title: 'Search Cars',
         data: []
@@ -317,6 +316,7 @@ app.get('/search-cars', async function (req, res, next) {
 })
 
 app.get('/search-results', async function (req, res, next) {
+ 
     var q = url.parse(req.url, true).query;
     var path = 'https://www.autotrader.co.uk/car-search?postcode=wv23aq&make=' + q.make + '&model=' + q.model;
     axios.get(path)
@@ -381,6 +381,7 @@ app.get('/search-results', async function (req, res, next) {
 })
 
 app.get('/auto-search-results', async function (req, res, next) {
+ 
     var q = url.parse(req.url, true).query;
 //    return;
     var makeModel;
@@ -482,6 +483,7 @@ app.get('/auto-search-results', async function (req, res, next) {
             , (error) => console.log(err));
 })
 app.get('/mot-search', async function (req, res, next) {
+ 
     var q = url.parse(req.url, true).query;
     var path = 'https://www.motors.co.uk/search/car/results';
     var makeModel;
@@ -598,6 +600,7 @@ app.get('/mot-search', async function (req, res, next) {
             }, (error) => console.log(error));
 })
 app.get('/motors-filter-search', async function (req, res, next) {
+  
     var q = url.parse(req.url, true).query;
     var make = replaceString(q.make, '%20', '')
     var makeModel;
@@ -712,6 +715,7 @@ app.get('/motors-filter-search', async function (req, res, next) {
 })
 
 app.get('/product_search', async function (req, res, next) {
+    res.locals.udata = req.session.udata;
     var q = url.parse(req.url, true).query;
     var path = 'https://www.autotrader.co.uk/classified/advert/' + q.id;
     axios.get(path)
@@ -767,6 +771,7 @@ app.get('/product_search', async function (req, res, next) {
 
 
 app.get('/show_product', function (req, res, next) {
+     res.locals.udata = req.session.udata;
     var q = url.parse(req.url, true).query;
     var path = 'https://www.autotrader.co.uk/classified/advert/' + q.id + '?onesearchad=New&onesearchad=Nearly%20New&onesearchad=Used&postcode=cv12ue&advertising-location=at_cars&sort=sponsored&radius=1501&page=1';
     axios.get(path)
@@ -826,6 +831,7 @@ app.get('/show_product', function (req, res, next) {
 })
 
 app.get('/motView', function (req, res, next) {
+     res.locals.udata = req.session.udata;
     var q = url.parse(req.url, true).query;
     var path = 'https://www.motors.co.uk/car'- + q.id + '/?i=3&m=vdn';
     axios.get(path)
