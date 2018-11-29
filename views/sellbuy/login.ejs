@@ -40,7 +40,7 @@
   </div>
  <%- include ../sellbuylayouts/footer.ejs %>
     <script src="js/jquery-3.3.1.min.js"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
     
 
 
@@ -74,15 +74,19 @@
                         processData:false,                      
                         success:function(data){
                          //  alert(data)
-                         if(data.success = 1){
-                            alert(data.message);
-                            window.location.href = "https://sellbuymotors.co.uk/sellcar";
+                         if(data.success == 1){
+                             toastr.success(data.message);
+                             window.setTimeout(function() {
+                              window.location.href = 'https://sellbuymotors.co.uk/sellcar';
+                                   }, 1000);
+                          //  window.location.href = "http://localhost:3000/sellcar";
 
                           }else{
                             
-                            alert(data.message);
-                            location.reload();
-
+                            toastr.error(data.message);
+                            setTimeout(function(){
+                             location.reload();
+                             }, 1000);
                           }},
 
                         
