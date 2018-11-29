@@ -730,7 +730,7 @@
                 $('.model_filter').append('<option value="' + $(this).find('.term').text() + '">' + $(this).find('.term').text()+'('+make_count+')</option>')
             })
 
-              $('.distance').html('')
+              $('.distance').html('<option value="1500">Distance(National)</option>')
             $('<div>' + data.html1.fields[0].html + '</div>').find('div').each(function (key, value) {
                 $('.distance').append('<option value="' + $(this).data('selected-value') + '">' + $(this).data('selected-display-name') + '</option>')
             })
