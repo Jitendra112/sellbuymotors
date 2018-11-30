@@ -6,7 +6,7 @@ var busboy = require('then-busboy')
 var fileUpload = require('express-fileupload')
 var exp = require('exports')
 var fs = require('fs');
-
+var session = require('express-session');
 /**
  * This middleware provides a consistent API
  * for MySQL connections during request/response life cycle
@@ -116,7 +116,7 @@ app.use(methodOverride(function (req, res) {
 var flash = require('express-flash')
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 1800000 }}))
+app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized: true, cookie: { maxAge: 1800000 }}))
 
 app.use(flash())
 app.use('/', index)

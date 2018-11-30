@@ -89,7 +89,7 @@ margin: -8px 0 0 0;
                                     <label class="c-dark">Distance(National)</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="radius">
-                                            <!-- <option value="1500">Distance(National)</option> -->
+                                            <option value="1500">Distance(National)</option>
                                         </select>
                                     </div>
                                 </div>  
@@ -583,7 +583,6 @@ margin: -8px 0 0 0;
                         }
                     }
                 }
-                console.log(variant_count)
                 $('#aggregatedTrim').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('.term').text() + '(' + variant_count + ')</option>')
                 variant_count = 0;
             })

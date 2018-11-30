@@ -636,6 +636,16 @@
                                     <div class="price position-absolute c-dark"><i class="fa fa-euro"></i></div>
                                 </div>
                             </div>
+                              <div class="col-12 col-lg-8">
+                                 <label class="c-dark">Car Description</label>
+                                <div class='row'>
+                                     <div class='col-12 col-lg-6 col-xl-7  mb-3 mb-lg-0'>
+                                       <textarea name="car_desc" rows="3" cols="149"></textarea>
+                                    </div>
+                                   
+                                    
+                                </div>
+                            </div>
                             <div class="col-12 col-lg-8">
                                 <div class='row'>
                                     <div class='col-12 col-lg-3 col-xl-2 align-self-end'>
@@ -649,6 +659,7 @@
                                     </div>
                                 </div>
                             </div>
+                       
                             <div class="col-12 col-lg-4"></div>
                             <div class="col-12 col-sm-4 col-lg-2 ml-auto mt-3 mt-sm-0">
                                 <button type="submit"  class="btn btn-primary btn-md btn-block text-uppercase" >Next</button> 
@@ -684,7 +695,7 @@
            var sell = JSON.parse(data.product_id);
            //console.log(sell[0].id);
          if(data.success = 1){
-         window.location.href = "https://sellbuymotors.co.uk/sellcars#link?car_id="+ sell[0].id;
+         window.location.href = "https://sellbuymotors.co.uk//sellcars#link?car_id="+ sell[0].id;
 
       }else{
          location.reload();
@@ -705,7 +716,7 @@
     var makesArray ;
     function show_make(){
 //       var serviceUrl = 'http://localhost:3000/motors-filter-search?make='+$('#formmake').val()+'&model='+$('#formmodel').val()+'&varient='+$('#model_variant').val();
-       var serviceUrl = 'https://sellbuymotors.co.uk/motors-filter-search?postal_code=&make='+$('#formmake').val()+'&model='+$('#formmodel').val()+'&radius=&aggregatedTrim='+$('#model_variant').val()+'&onesearchad=&sort=&price_from=&price_to=&year_from=&year_to=&mileage_from=&mileage_to=&body_type=&fuel_type=&minimum_badge_engine_size=&maximum_badge_engine_size=&fuel_consumption=&zero_to_60=&transmission=&drivetrain=&co2_emissions_cars=&quantity_of_doors=&minimum_seats=&maximum_seats=&insuranceGroup=&annual_tax_cars=&colour=&seller_type=&page=';
+       var serviceUrl = 'https://sellbuymotors.co.uk//motors-filter-search?postal_code=&make='+$('#formmake').val()+'&model='+$('#formmodel').val()+'&radius=&aggregatedTrim='+$('#model_variant').val()+'&onesearchad=&sort=&price_from=&price_to=&year_from=&year_to=&mileage_from=&mileage_to=&body_type=&fuel_type=&minimum_badge_engine_size=&maximum_badge_engine_size=&fuel_consumption=&zero_to_60=&transmission=&drivetrain=&co2_emissions_cars=&quantity_of_doors=&minimum_seats=&maximum_seats=&insuranceGroup=&annual_tax_cars=&colour=&seller_type=&page=';
        $.get(serviceUrl,function(res){
         makesArray = res.data.MakeModels;
             $.each(makesArray,function(key , value){

@@ -20,6 +20,7 @@
     "cheerio": "^1.0.0-rc.2",
     "ckeditor": "^4.9.2",
     "cookie-parser": "^1.4.3",
+    "cookieparser": "^0.1.0",
     "course": "0.0.1",
     "css-loader": "^1.0.1",
     "ejs": "^2.6.1",

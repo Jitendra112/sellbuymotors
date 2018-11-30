@@ -1212,3 +1212,11 @@ div#image_get {
     height: auto;
     border: 2px #ee5624 solid;
 }
+div#image_uplod {
+    margin-right: 43%;
+    padding-top: 9px;
+}
+
+div#public {
+    padding-top: 9px;
+}

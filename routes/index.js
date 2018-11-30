@@ -24,8 +24,14 @@ app.get('/', function(req, res, next) {
 
 app.post('/uploads', async function(req, res, next){
 
+ res.locals.udata = req.session.udata;
 
-   
+  var userdata = res.locals.udata
+
+  var newdata =  JSON.stringify(userdata);
+  var alldata = JSON.parse(newdata);
+    //console.log(alldata[0].id)
+
    if(req.method == "POST"){
          var post  = req.body;
 	       var car_id = post.carid;
@@ -40,7 +46,7 @@ app.post('/uploads', async function(req, res, next){
               file.mv('assets/uploads/'+img_name , async function(err) {
                              
                   
-          var query = "INSERT INTO `tbl_cars_images`(`product_id`,`image_name`) VALUES ('" + car_id + "','" + img_name + "')";
+          var query = "INSERT INTO `tbl_cars_images`(`user_id`,`product_id`,`image_name`) VALUES ('" + alldata[0].id + "','" + car_id + "','" + img_name + "')";
          // console.log(query);
             results = await database.query(query, [] );  
     		 if (results) {
@@ -245,12 +251,27 @@ app.get('/google_login', async function (req, res, next) {
 })
 
 app.get('/sellcars', function(req, res, next) {
-
+  res.locals.udata = req.session.udata;
     res.render('sellbuy/upload_pictures', {
         title: 'Add content',
         
     }) 
 })
+
+
+app.get('/mycars',async function(req, res, next) {
+    res.locals.udata = req.session.udata;
+    var userdata = res.locals.udata
+    var newdata =  JSON.stringify(userdata);
+    var alldata = JSON.parse(newdata);
+    var query = 'SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id where tbl_cars_images.user_id ="' + alldata[0].id + '"';
+    results = await database.query(query, [] );
+              res.render('sellbuy/my_cars', {
+                  title: 'Add content',
+                  data: JSON.parse(results)
+              })
+})
+
  var inserted_id;
 app.post('/save_post',async function(req, res, next){
             
@@ -278,6 +299,7 @@ app.post('/save_post',async function(req, res, next){
                                 private_trade: req.sanitize('private_trade').escape().trim(),
                                  owner: req.sanitize('owner').escape().trim(),
                                   price_expectation: req.sanitize('price_expect').escape().trim(),
+                                   car_description: req.sanitize('car_desc').escape().trim(),
              
         }
 
@@ -507,9 +529,9 @@ app.get('/mot-search', async function (req, res, next) {
                     "TotalPages": 0,
                     "BasicResultCount": 334186,
                     "TotalRecords": 334186,
-                    "FirstRecord": 1,
+                    "FirstRecord": (q.page * 15) - 14,
                     "LastRecord": 15,
-                    "CurrentPage": 1,
+                    "CurrentPage": q.page,
                     "LastPage": 22280,
                     "PageSize": 15,
                     "PageLinksPerPage": 5,
