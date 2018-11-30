@@ -32,6 +32,12 @@ p#foundCar {
     font-size: 18px;
     color: #ee5624;
 }
+dd, h1, h2, h3, h4, h5, h6, label {
+margin-bottom: 0;
+}
+a.btn.btn-primary {
+margin: -8px 0 0 0;
+}
 </style>
 <section>
     <div class="background-image-maker gradient gradient-lr"></div>
@@ -296,66 +302,7 @@ p#foundCar {
                         </div>
                     </div>
                     <div class="card car-listing-full mb-4" id="ProductShow">
-                        <!--                        <div class="row">
-                                                    <div class="col-12 col-lg-4 h-283">
-                                                        <div class="position-relative">
-                                                            <a href="#">
-                                                                <div class="background-image-maker rounded-left h-283"></div>
-                                                                <div class="holder-image">
-                                                                    <img src="dist/images/img7.jpg" alt="" class="img-fluid d-none" />
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12 col-lg-5 align-self-center">
-                                                        <div class="p-4 p-lg-0">
-                                                            <h6 class="mb-2"><a href="listing-details.php">Land Rover Discovery XXV</a></h6>
-                                                            <ul class="list-unstyled mb-2 c-line-height-2_5">
-                                                                <li><h6 class="c-primary mb-0"><small class="c-light">Price</small> $41,300 </h6></li>
-                                                                <li><i class="fa fa-map-marker pr-1"></i> South City, New York</li>
-                                                            </ul>
-                                                            <ul class="list-inline">
-                                                                <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-calendar pr-1"></i> 2015 </a></li>
-                                                                <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-clock pr-1"></i> 35,000</a></li>
-                                                                <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-fuel pr-1"></i>  Petrol </a></li>
-                                                                <li class="list-inline-item"><a href="#" class="c-light"><i class="flaticon-transport-2 pr-1"></i>  Auto </a></li>
-                                                            </ul>
-                                                            <a href="listing-details.php" class="btn btn-outline-primary text-uppercase btn-lg c-font-weight-700" tabindex="-1">View Details</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12 col-lg-3">
-                                                        <div class="border border-right-0 border-top-0 border-bottom-0 c-brd-light py-4">
-                                                            <table class="table mb-0 c-line-height-1 c-brd-light">
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td class="c-dark c-font-weight-600 b-r">Body Type:</td>
-                                                                        <td>SUV</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="c-dark c-font-weight-600 b-r">Brand:</td>
-                                                                        <td>Land Rover</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="c-dark c-font-weight-600 b-r">Model:</td>
-                                                                        <td>2015</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="c-dark c-font-weight-600 b-r">Fuel Type:</td>
-                                                                        <td>Diesel</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="c-dark c-font-weight-600 b-r">Transmission:</td>
-                                                                        <td>Automatic</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="c-dark c-font-weight-600 b-r">Color:</td>
-                                                                        <td>Silver</td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div> -->
+
                     </div>
                     <div class="row mt-4">
                         <div class="col-12 col-sm-12">
@@ -590,11 +537,13 @@ p#foundCar {
             var make_count = '';
             $('<div>' + data.html1.fields[1].html + '</div>').find('div').each(function (key, value) {
                 var i = 0
+                var mc = parseInt($(this).find('.count').text().replace(',','').replace('(','').replace(')',''))
+                make_count = mc;
                 for (i; i < result.data.MakeModels.length; i++) {
                     if (result.data.MakeModels[i].Id.replace('Makes_','') == $(this).find('.term').text())
-                        make_count = result.data.MakeModels[i].Counter;
+                        make_count = parseInt(result.data.MakeModels[i].Counter) + parseInt(mc);
                 }
-                $('#make').append('<option value="' + $(this).find('.term').text() + '">(' + make_count + ')' + $(this).find('.term').text() + $(this).find('.count').text() + '</option>')
+                $('#make').append('<option value="' + $(this).find('.term').text() + '">' + $(this).find('.term').text() + '('+make_count+')</option>')
                 make_count = 0;
             })
             var htmlModels;
@@ -605,32 +554,37 @@ p#foundCar {
                     model_variants = model.Trims;
                 }
             });
-            console.log(htmlModels)
             var model_count;
             $('#model').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[2].html + '</div>').find('div').each(function (key, value) {
                 var i = 0
+                var mc = parseInt($(this).find('.count').text().replace(',','').replace('(','').replace(')',''))
+                model_count = mc
                 for (i; i < htmlModels.length; i++) {
                     if(htmlModels[i].Id){
                         if (htmlModels[i].Id.replace('Models_','') == $(this).find('.term').text())
-                            make_count = htmlModels[i].Counter;
+                            model_count = parseInt(htmlModels[i].Counter) + parseInt(mc);
                     }
                 }
-                $('#model').append('<option value="' + $(this).find('.term').text() + '">(' + make_count + ')' + $(this).find('.term').text() + $(this).find('.count').text() + '</option>')
-                make_count = 0;
+                $('#model').append('<option value="' + $(this).find('.term').text() + '"> ' + $(this).find('.term').text() + '('+model_count+')</option>')
+                model_count = 0;
             })
             var variant_count;
             $('#aggregatedTrim').html('<option value="">Any</option>')
+            console.log(model_variants)
             $('<div>' + data.html1.fields[3].html + '</div>').find('div').each(function (key, value) {
                 var i = 0;
-                for (i; i < model_variants.length; i++) {
-//                    console.log(model_variants[i].Name)
-                    if (model_variants[i].Name == $(this).find('.term').text()) {
-                        variant_count = model_variants[i].Counter;
+                var mc = parseInt($(this).find('.count').text().replace(',','').replace('(','').replace(')',''))
+                variant_count = mc
+                if(result.data.RecordCount != 0){
+                    for (i; i < model_variants.length; i++) {
+                        if (model_variants[i].Name == $(this).find('.term').text()) {
+                            variant_count = parseInt(model_variants[i].Counter) + parseInt(mc);
+                        }
                     }
                 }
-//                console.log($(this).find('.term').text())
-                $('#aggregatedTrim').append('<option value="' + $(this).data('selected-value') + '">(' + variant_count + ')' + $(this).find('.term').text() + $(this).find('.count').text() + '</option>')
+                console.log(variant_count)
+                $('#aggregatedTrim').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('.term').text() + '(' + variant_count + ')</option>')
                 variant_count = 0;
             })
             $('#price_from').html('')
@@ -802,16 +756,16 @@ p#foundCar {
     }
 
 function get_postal_code(value)
-    {
-        var value = GetParameterValues(value);
-        if (value == undefined) {
-            value == localStorage.postal_code
-        }
-        if (value == undefined) {
-            value = '';
-        }
-        if (value != "")
-            localStorage.setItem("postal_code", value);
-        return value;
-    }    
+{
+    var value = GetParameterValues(value);
+    if (value == undefined) {
+        value == localStorage.postal_code
+    }
+    if (value == undefined) {
+        value = '';
+    }
+    if (value != "")
+        localStorage.setItem("postal_code", value);
+    return value;
+}    
 </script>
