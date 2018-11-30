@@ -1,609 +1,302 @@
 <%- include ../sellbuylayouts/header.ejs %>
-        <!-- Slider-->
-        <style>
-        .form-group {
-        margin-bottom: 0px;
-        width: 48%;
-        float: left;
-        margin-left: 6px;
-       }
-       }
-      </style>
-        <section  class="py-0" style="background: url('images/slider1.jpg'); padding: 24% 0 !important;background-size: 100% 100%; height: 500px;">
-           <!--  <div id="owl-demo" class="owl-carousel owl-theme">
-                <div class="item">
-                    <div class="background-image-maker gradient gradient-lr"></div>
-                    <div class="holder-image">
-                        <img src="images/slider1.jpg" alt="" class="img-fluid d-none" />
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="background-image-maker gradient gradient-lr"></div>
-                    <div class="holder-image">
-                        <img src="images/slider2.jpg" alt="" class="img-fluid d-none" />
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="background-image-maker gradient gradient-lr"></div>
-                    <div class="holder-image">
-                        <img src="images/slider3.jpg" alt="" class="img-fluid d-none" />
-                    </div>
-                </div>
-            </div> -->
-            <div class="owl-text-overlay">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12 col-xl-5 col-lg-6">
-                            <h4 class="text-white text-center">Find the Right Car for you</h4>
-                            <div class="row form-main">
-                                <div class="col-3 pr-0">
-                                    <ul class="nav flex-column nav-pills text-uppercase font-weight-bold text-center" id="myTab" role="tablist">
-                                        <li class="nav-item mb-1">
-                                            <a class="nav-link redial-light rounded-left active" data-toggle="tab" href="#tab1" role="tab" aria-selected="true" aria-expanded="true">New</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link redial-light rounded-left" data-toggle="tab" href="#tab2" role="tab" aria-selected="false" aria-expanded="false">Used</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-9 pl-0">
-                                    <div class="tab-content bg-white rounded-bottom rounded-right full-block" id="myTabContent2">
-                                        <div class="tab-pane fade active show" id="tab1" role="tabpanel" aria-expanded="true">
-                                            <div class="card-body p-4">
-                                                
-                                                <div class="tab-content bg-white rounded-bottom rounded-right" id="myTabContent3">
-                                                    <div class="tab-pane fade active show" id="id1" role="tabpanel" aria-expanded="true">
-                                     <form method="get" class="srchfrm" action="search-cars?onesearchad=New">
-                                                        <input type="hidden" name="onesearchad" value="All">
-                                                            <div class="form-group">
-                                                                <label>Post Code</label>
-                                                                 <input type="text" name="postal_code" class="form-control" placeholder="Enter Post Code" required>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Distance</label>
-                                                                <select class="form-control distance" name="distance">
-                                                                 <option value="1500">Distance(National)</option>
-                                                                   
-                                                                </select>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Make</label>
-                                                                <select class="form-control make_filter" name="make">
-                                                                 <option value="">--- Select Make ---</option>
-                                                                   
-                                                                </select>
-                                                            </div>
-                                                             <div class="form-group">
-                                                                <label>Model</label>
-                                                                <select class="form-control model_filter" name="model">
-                                                                 <option value="">--- Select Model ---</option>
-                                                                   
-                                                                </select>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Min Price</label>
-                                                                <select class="form-control min_price" name="price_from">
-                                                                 <option value="">--- Min Price ---</option>
-                                                                   
-                                                                </select>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                  <label>Max Price</label>
-                                                                <select class="form-control max_price" name="price_to">
-                                                                 <option value="">--- Max Price ---</option>
-                                                                   
-                                                                </select>
-                                                            </div>
-                                                           <button class="btn btn-primary btn-block btn-md text-uppercase font-weight-bold">Find Car&nbsp(<b class="counttxt"></b>)</button>
-                                                        </form>
-                                                    </div>
-                                                   <!--  <div class="tab-pane fade" id="id2" role="tabpanel" aria-expanded="false">
-                                                         <form method="get" class="srchfrm" action="search-cars?onesearchad=New">
-                                                        <input type="hidden" name="onesearchad" value="New">
-                                                            <div class="form-group">
-                                                                 <input type="text" name="postal_code" class="form-control" placeholder="Enter Postal Code" required>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <select class="form-control make_filter" name="make">
-                                                                 <option value="">--- Select Make ---</option>
-                                                                   
-                                                                </select>
-                                                            </div>
-                                                             <div class="form-group">
-                                                                <select class="form-control model_filter" name="make">
-                                                                 <option value="">--- Select Model ---</option>
-                                                                   
-                                                                </select>
-                                                            </div>
-                                                           <button class="btn btn-primary btn-block btn-md text-uppercase font-weight-bold">Find Car&nbsp(<b class="counttxt"></b>)</button>
-                                                        </form>
-                                                    </div> -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="tab2" role="tabpanel" aria-expanded="false">
-                                            <div class="card-body p-4">
-                                                
-                                                <div class="tab-content bg-white rounded-bottom rounded-right" id="myTabContent3">
-                                                    <div class="tab-pane fade active show" id="id3" role="tabpanel" aria-expanded="true">
-                                                     <form method="GET" class="" action="search-cars">
-                                                            <div class="form-group">
-                                                                <input type="hidden" name="onesearchad" value="All">
-                                                                  <label>Post Code</label>
-                                                                  <input type="text" name="postal_code" class="form-control" placeholder="Enter Post Code" required>
-                                                            </div>
-                                                               <div class="form-group">
-                                                                <label>Distance</label>
-                                                                <select class="form-control distance" name="distance">
-                                                                 <option value="1500">Distance(National)</option>
-                                                                   
-                                                                </select>
-                                                                </div>
-                                                            <div class="form-group">
-                                                                <label>Make</label>
-                                                                <select class="form-control make_filter" name="make">
-                                                                    <option value="">--- Select Make ---</option>
-                                                                    
-                                                                </select>
-                                                            </div>
-                                                             <div class="form-group">
-                                                                <label>Model</label>
-                                                                <select class="form-control model_filter" name="model">
-                                                                 <option value="">--- Select Model ---</option>
-                                                                   
-                                                                </select>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Min Price</label>
-                                                                <select class="form-control min_price" name="price_from">
-                                                                 <option value="">--- Min Price ---</option>
-                                                                   
-                                                                </select>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Max Price</label>
-                                                                <select class="form-control max_price" name="price_to">
-                                                                 <option value="">--- Max Price ---</option>
-                                                                   
-                                                                </select>
-                                                            </div>
-                                                           <button class="btn btn-primary btn-block btn-md text-uppercase font-weight-bold">Find Car&nbsp(<b class="counttxt"></b>)</button>
-                                                        </form>
-                                                    </div>
-                                                  <!--   <div class="tab-pane fade" id="id4" role="tabpanel" aria-expanded="false">
-                                                        <form method="GET" class="" action="search-cars">
-                                                            <div class="form-group">
-                                                                 <input type="hidden" name="onesearchad" value="Used">
-                                                                <input type="text" class="form-control" placeholder="Enter Postal Code" required>
-                                                               
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <select class="form-control make_filter" name="make">
-                                                                    <option value="">--- Select Make ---</option>
-                                                                    
-                                                                </select>
-                                                            </div>
-                                                             <div class="form-group">
-                                                                <select class="form-control model_filter" name="make">
-                                                                 <option value="">--- Select Model ---</option>
-                                                                   
-                                                                </select>
-                                                            </div>
-                                                            <button class="btn btn-primary btn-block btn-md text-uppercase font-weight-bold">Find Car&nbsp(<b class="counttxt"></b>)</button>
-                                                        </form>
-                                                    </div> -->
-                                                   <!--   <div class="col-12 col-md-5 col-xl-6 align-self-center" id="loading" style="display:none;">
-                                         <img src="/images/preloader.gif" style="height:100% ;width:100%"/>
-                                                   </div> -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Slider-->
-        
-        <!-- Car Deals-->
-      
-        <!-- End Car Deals-->
-        
-        <!-- Car Featured-->
-     
-        <!-- End Car Featured-->
-     
-        
-       <section>
-           <div class="container">
-            <div class="col-md-12 about-company">
-                <h1>About Our Company</h1>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+<!-- Slider-->
+<style>
+    .form-group {
+    margin-bottom: 0px;
+    width: 48%;
+    float: left;
+    margin-left: 6px;
+   }
+   .secion1 {
+   		background: url('images/slider1.jpg');
+   	 	padding: 24% 0 !important;
+		background-size: 100% 100%;
+   	 	height: 500px;
+   }
+</style>
+<section  class="py-0 secion1">
+	<div class="owl-text-overlay">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-xl-5 col-lg-6">
+					<h4 class="text-white text-center">Find the Right Car for you</h4>
+					<div class="row form-main">
+						<div class="col-3 pr-0">
+							<ul class="nav flex-column nav-pills text-uppercase font-weight-bold text-center" id="myTab" role="tablist">
+								<li class="nav-item mb-1">
+									<a class="nav-link redial-light rounded-left active" data-toggle="tab" href="#tab1" role="tab" aria-selected="true" aria-expanded="true">New</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link redial-light rounded-left" data-toggle="tab" href="#tab2" role="tab" aria-selected="false" aria-expanded="false">Used</a>
+								</li>
+							</ul>
+						</div>
+						<div class="col-9 pl-0">
+							<div class="tab-content bg-white rounded-bottom rounded-right full-block" id="myTabContent2">
+								<div class="tab-pane fade active show" id="tab1" role="tabpanel" aria-expanded="true">
+									<div class="card-body p-4">
+										<div class="tab-content bg-white rounded-bottom rounded-right" id="myTabContent3">
+											<div class="tab-pane fade active show" id="id1" role="tabpanel" aria-expanded="true">
+												<form method="get" class="srchfrm" action="search-cars?onesearchad=New">
+													<input type="hidden" name="onesearchad" value="All">
+														<div class="form-group">
+															<label>Post Code</label>
+															<input type="text" name="postal_code" class="form-control" placeholder="Enter Post Code" required>
+															</div>
+															<div class="form-group">
+																<label>Distance</label>
+																<select class="form-control distance" name="distance">
+																	<option value="1500">Distance(National)</option>
+																</select>
+															</div>
+															<div class="form-group">
+																<label>Make</label>
+																<select class="form-control make_filter" name="make">
+																	<option value="">--- Select Make ---</option>
+																</select>
+															</div>
+															<div class="form-group">
+																<label>Model</label>
+																<select class="form-control model_filter" name="model">
+																	<option value="">--- Select Model ---</option>
+																</select>
+															</div>
+															<div class="form-group">
+																<label>Min Price</label>
+																<select class="form-control min_price" name="price_from">
+																	<option value="">--- Min Price ---</option>
+																</select>
+															</div>
+															<div class="form-group">
+																<label>Max Price</label>
+																<select class="form-control max_price" name="price_to">
+																	<option value="">--- Max Price ---</option>
+																</select>
+															</div>
+															<button class="btn btn-primary btn-block btn-md text-uppercase font-weight-bold">Find Car&nbsp(
+																<b class="counttxt"></b>)
+															</button>
+														</form>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="tab-pane fade" id="tab2" role="tabpanel" aria-expanded="false">
+											<div class="card-body p-4">
+												<div class="tab-content bg-white rounded-bottom rounded-right" id="myTabContent3">
+													<div class="tab-pane fade active show" id="id3" role="tabpanel" aria-expanded="true">
+														<form method="GET" class="" action="search-cars">
+															<div class="form-group">
+																<input type="hidden" name="onesearchad" value="All">
+																	<label>Post Code</label>
+																	<input type="text" name="postal_code" class="form-control" placeholder="Enter Post Code" required>
+																	</div>
+																	<div class="form-group">
+																		<label>Distance</label>
+																		<select class="form-control distance" name="distance">
+																			<option value="1500">Distance(National)</option>
+																		</select>
+																	</div>
+																	<div class="form-group">
+																		<label>Make</label>
+																		<select class="form-control make_filter" name="make">
+																			<option value="">--- Select Make ---</option>
+																		</select>
+																	</div>
+																	<div class="form-group">
+																		<label>Model</label>
+																		<select class="form-control model_filter" name="model">
+																			<option value="">--- Select Model ---</option>
+																		</select>
+																	</div>
+																	<div class="form-group">
+																		<label>Min Price</label>
+																		<select class="form-control min_price" name="price_from">
+																			<option value="">--- Min Price ---</option>
+																		</select>
+																	</div>
+																	<div class="form-group">
+																		<label>Max Price</label>
+																		<select class="form-control max_price" name="price_to">
+																			<option value="">--- Max Price ---</option>
+																		</select>
+																	</div>
+																	<button class="btn btn-primary btn-block btn-md text-uppercase font-weight-bold">Find Car&nbsp(
+																		<b class="counttxt"></b>)
+																	</button>
+																</form>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<!-- End Slider-->
+				<!-- Car Deals-->
+				<!-- End Car Deals-->
+				<!-- Car Featured-->
+				<!-- End Car Featured-->
+				<section>
+					<div class="container">
+						<div class="col-md-12 about-company">
+							<h1>About Our Company</h1>
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
-</p>
-            </div>
-           </div>
-       </section>
-        <section class="image-bg">
-            <div class="background-image-maker"></div>
-            <div class="holder-image">
-                <img src="images/bg1.jpg" alt="" class="img-fluid d-none" />
-            </div>
-            <div class="black-overlay"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-sm-12 d-flex justify-content-center pb-4">
-                        <p style="color: #fff; text-align: center;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+							</p>
+						</div>
+					</div>
+				</section>
+				<section class="image-bg">
+					<div class="background-image-maker"></div>
+					<div class="holder-image">
+						<img src="images/bg1.jpg" alt="" class="img-fluid d-none" />
+					</div>
+					<div class="black-overlay"></div>
+					<div class="container">
+						<div class="row">
+							<div class="col-12 col-sm-12 d-flex justify-content-center pb-4">
+								<p style="color: #fff; text-align: center;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
-</p>
-                    </div>
-                </div>
-                
-            </div>
-        </section>
-        
-        <section>
-            <div class="container">
-                <div class="row d-flex justify-content-center text-center">
-                    <div class="col-12 col-lg-6 pb-3">
-                        <h3>Browse Cars by Top Brands</h3>
-                        <p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.</p>
-                    </div>
-                </div>
-                <div id="owl-client" class="owl-carousel owl-theme">
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                                <a href="search-cars?onesearchad=All&make=Cadillac">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand1.png" alt="Cadillac" title="Cadillac" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                                <a href="search-cars?onesearchad=All&make=Acura">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand2.png" alt="Acura" title="Acura" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                                <a href="search-cars?onesearchad=All&make=Chevrolet">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand3.png" alt="Chevrolet" title="Chevrolet" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                                <a href="search-cars?onesearchad=All&make=Bugatti">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand4.png" alt="Bugatti" title="Bugatti" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                                <a href="search-cars?onesearchad=All&make=Mazda">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand5.png" alt="Mazda" title="Mazda" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                                <a href="search-cars?onesearchad=All&make=Bentley">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand6.png" alt="Bentley" title="Bentley" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-xl-0">
-                                <a href="search-cars?onesearchad=All&make=Lamborghini">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand7.png" alt="Lamborghini" title="Lamborghini" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-xl-0">
-                                <a href="search-cars?onesearchad=All&make=Jaguar">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand8.png" alt="Jaguar" title="Jaguar" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-xl-0">
-                                <a href="search-cars?onesearchad=All&make=Porsche">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand9.png" alt="Porsche" title="Porsche" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-sm-0">
-                                <a href="search-cars?onesearchad=All&make=Audi">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand10.png" alt="Audi" title="Audi" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-sm-0">
-                                <a href="search-cars?onesearchad=All&make=Ford">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand11.png" alt="Ford" title="Ford" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2">
-                                <a href="search-cars?onesearchad=All&make=Hyundai">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand12.png" alt="Hyundai" title="Hyundai" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                   <!--  <div class="item">
-                        <div class="row">
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                                <a href="#">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand1.png" alt="Cadillac" title="Cadillac" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                                <a href="#">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand2.png" alt="Acura" title="Acura" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                                <a href="#">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand3.png" alt="Chevrolet" title="Chevrolet" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                                <a href="#">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand4.png" alt="Bugatti" title="Bugatti" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                                <a href="#">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand5.png" alt="Mazda" title="Mazda" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                                <a href="#">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand6.png" alt="Bentley" title="Bentley" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-xl-0">
-                                <a href="#">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand7.png" alt="Lamborghini" title="Lamborghini" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-xl-0">
-                                <a href="#">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand8.png" alt="Jaguar" title="Jaguar" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-xl-0">
-                                <a href="#">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand9.png" alt="Porsche" title="Porsche" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-sm-0">
-                                <a href="#">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand10.png" alt="Audi" title="Audi" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-sm-0">
-                                <a href="#">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand11.png" alt="Ford" title="Ford" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2">
-                                <a href="#">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand12.png" alt="Hyundai" title="Hyundai" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div> -->
-                <!--     <div class="item">
-                        <div class="row">
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                                <a href="#">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand1.png" alt="Cadillac" title="Cadillac" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                                <a href="#">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand2.png" alt="Acura" title="Acura" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                                <a href="#">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand3.png" alt="Chevrolet" title="Chevrolet" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                                <a href="#">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand4.png" alt="Bugatti" title="Bugatti" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                                <a href="#">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand5.png" alt="Mazda" title="Mazda" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                                <a href="#">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand6.png" alt="Bentley" title="Bentley" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-xl-0">
-                                <a href="#">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand7.png" alt="Lamborghini" title="Lamborghini" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-xl-0">
-                                <a href="#">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand8.png" alt="Jaguar" title="Jaguar" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-xl-0">
-                                <a href="#">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand9.png" alt="Porsche" title="Porsche" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-sm-0">
-                                <a href="#">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand10.png" alt="Audi" title="Audi" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-sm-0">
-                                <a href="#">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand11.png" alt="Ford" title="Ford" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-xl-2">
-                                <a href="#">
-                                    <div class="card c-brd-light rounded-0 text-center">
-                                        <div class="card-body py-0">
-                                            <img src="images/brand12.png" alt="Hyundai" title="Hyundai" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div> -->
-                </div>
-            </div>
-            <input type="hidden" id="make">
-            <input type="hidden" id="model">
-            <input type="hidden" id="postal_code">
-            <input type="hidden" id="radius" value="1500">
-        </section>
-      
-       
-        <!-- End Subscribe-->
-        
-        <%- include ../sellbuylayouts/footer.ejs %>    
-
+								</p>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section>
+					<div class="container">
+						<div class="row d-flex justify-content-center text-center">
+							<div class="col-12 col-lg-6 pb-3">
+								<h3>Browse Cars by Top Brands</h3>
+								<p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.</p>
+							</div>
+						</div>
+						<div id="owl-client" class="owl-carousel owl-theme">
+							<div class="item">
+								<div class="row">
+									<div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
+										<a href="search-cars?onesearchad=All&make=Cadillac">
+											<div class="card c-brd-light rounded-0 text-center">
+												<div class="card-body py-0">
+													<img src="images/brand1.png" alt="Cadillac" title="Cadillac" class="img-fluid" />
+												</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
+										<a href="search-cars?onesearchad=All&make=Acura">
+											<div class="card c-brd-light rounded-0 text-center">
+												<div class="card-body py-0">
+													<img src="images/brand2.png" alt="Acura" title="Acura" class="img-fluid" />
+												</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
+										<a href="search-cars?onesearchad=All&make=Chevrolet">
+											<div class="card c-brd-light rounded-0 text-center">
+												<div class="card-body py-0">
+													<img src="images/brand3.png" alt="Chevrolet" title="Chevrolet" class="img-fluid" />
+												</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
+										<a href="search-cars?onesearchad=All&make=Bugatti">
+											<div class="card c-brd-light rounded-0 text-center">
+												<div class="card-body py-0">
+													<img src="images/brand4.png" alt="Bugatti" title="Bugatti" class="img-fluid" />
+												</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
+										<a href="search-cars?onesearchad=All&make=Mazda">
+											<div class="card c-brd-light rounded-0 text-center">
+												<div class="card-body py-0">
+													<img src="images/brand5.png" alt="Mazda" title="Mazda" class="img-fluid" />
+												</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
+										<a href="search-cars?onesearchad=All&make=Bentley">
+											<div class="card c-brd-light rounded-0 text-center">
+												<div class="card-body py-0">
+													<img src="images/brand6.png" alt="Bentley" title="Bentley" class="img-fluid" />
+												</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-xl-0">
+										<a href="search-cars?onesearchad=All&make=Lamborghini">
+											<div class="card c-brd-light rounded-0 text-center">
+												<div class="card-body py-0">
+													<img src="images/brand7.png" alt="Lamborghini" title="Lamborghini" class="img-fluid" />
+												</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-xl-0">
+										<a href="search-cars?onesearchad=All&make=Jaguar">
+											<div class="card c-brd-light rounded-0 text-center">
+												<div class="card-body py-0">
+													<img src="images/brand8.png" alt="Jaguar" title="Jaguar" class="img-fluid" />
+												</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-xl-0">
+										<a href="search-cars?onesearchad=All&make=Porsche">
+											<div class="card c-brd-light rounded-0 text-center">
+												<div class="card-body py-0">
+													<img src="images/brand9.png" alt="Porsche" title="Porsche" class="img-fluid" />
+												</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-sm-0">
+										<a href="search-cars?onesearchad=All&make=Audi">
+											<div class="card c-brd-light rounded-0 text-center">
+												<div class="card-body py-0">
+													<img src="images/brand10.png" alt="Audi" title="Audi" class="img-fluid" />
+												</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-sm-0">
+										<a href="search-cars?onesearchad=All&make=Ford">
+											<div class="card c-brd-light rounded-0 text-center">
+												<div class="card-body py-0">
+													<img src="images/brand11.png" alt="Ford" title="Ford" class="img-fluid" />
+												</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-12 col-sm-6 col-md-4 col-xl-2">
+										<a href="search-cars?onesearchad=All&make=Hyundai">
+											<div class="card c-brd-light rounded-0 text-center">
+												<div class="card-body py-0">
+													<img src="images/brand12.png" alt="Hyundai" title="Hyundai" class="img-fluid" />
+												</div>
+											</div>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<input type="hidden" id="make">
+					<input type="hidden" id="model">
+					<input type="hidden" id="postal_code">
+					<input type="hidden" id="radius" value="1500">
+				</section>
+	<!-- End Subscribe--><%- include ../sellbuylayouts/footer.ejs %>
 <script type="text/javascript">
     if (!window.location.origin) {
       window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
@@ -639,6 +332,7 @@
     $(document).on('change','form select.make_filter',function(e){
         // alert($(this).val())
         $('#make').val($(this).val())
+        $('#model').val('')
         search_results()
 
     })
@@ -702,7 +396,7 @@
                 for (i; i < result.data.MakeModels.length; i++) {
                     if (result.data.MakeModels[i].Id.replace('Makes_','') == value.text){
                         make_count = parseInt(result.data.MakeModels[i].Counter) + parseInt(mc);
-                        console.log(parseInt(result.data.MakeModels[i].Counter) + '--' + value.text + '--' + parseInt(mc))
+                        // console.log(parseInt(result.data.MakeModels[i].Counter) + '--' + value.text + '--' + parseInt(mc))
                     }
                 }
                
@@ -715,19 +409,21 @@
                     htmlModels = model.Models
                 }
             });
+            console.log(htmlModels)
             var model_count;
             $('.model_filter').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[2].html + '</div>').find('div').each(function (key, value) {
                 var i = 0
                 var mc = parseInt($(this).find('.count').text().replace(',','').replace('(','').replace(')',''))
-                // console.log($(this).find('.term').text()+ '---'+ mc + ' --- ' + $(this).find('.count').text())
-                for (i; i < htmlModels.length; i++) {
-                    if (htmlModels[i].Id.replace('Models_','') == $(this).find('.term').text()){
-                        make_count = htmlModels[i].Counter + parseInt(mc);
-                    }
-                    console.log(htmlModels[i].Name)
+                var model_count = mc;
+                if(result.data.RecordCount != 0){
+                    for (i; i < htmlModels.length; i++) {
+	                    if (htmlModels[i].Id.replace('Models_','') == $(this).find('.term').text()){
+	                        model_count = htmlModels[i].Counter + parseInt(mc);
+	                    }
+	                }
                 }
-                $('.model_filter').append('<option value="' + $(this).find('.term').text() + '">' + $(this).find('.term').text()+'('+make_count+')</option>')
+                $('.model_filter').append('<option value="' + $(this).find('.term').text() + '">' + $(this).find('.term').text()+'('+model_count+')</option>')
             })
 
               $('.distance').html('<option value="1500">Distance(National)</option>')
