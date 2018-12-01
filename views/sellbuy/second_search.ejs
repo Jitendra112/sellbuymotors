@@ -571,7 +571,6 @@ margin: -8px 0 0 0;
             })
             var variant_count;
             $('#aggregatedTrim').html('<option value="">Any</option>')
-            console.log(model_variants)
             $('<div>' + data.html1.fields[3].html + '</div>').find('div').each(function (key, value) {
                 var i = 0;
                 var mc = parseInt($(this).find('.count').text().replace(',','').replace('(','').replace(')',''))
@@ -588,52 +587,56 @@ margin: -8px 0 0 0;
             })
             $('#price_from').html('')
             $('<div>' + data.html1.fields[4].minField.html + '</div>').find('option').each(function (key, value) {
-                $('#price_from').append('<option value="' + $(this).val() + '">' + $(this).text() + '</option>')
+               $('#price_from').append('<option value="' + $(this).val() + '"> ' +  $(this).text().substr(0,$(this).text().indexOf("(")) + '</option>')
             })
             $('#price_to').html('')
             $('<div>' + data.html1.fields[4].maxField.html + '</div>').find('option').each(function (key, value) {
-                $('#price_to').append('<option value="' + $(this).val() + '">' + $(this).text() + '</option>')
+                $('#price_to').append('<option value="' + $(this).val() + '"> ' +  $(this).text().substr(0,$(this).text().indexOf("(")) + '</option>')
             })
             $('#year_from').html('')
             $('<div>' + data.html1.fields[5].minField.html + '</div>').find('option').each(function (key, value) {
-                $('#year_from').append('<option value="' + $(this).val() + '">' + $(this).text() + '</option>')
+                $('#year_from').append('<option value="' + $(this).val() + '">' +  $(this).text().substr(0,$(this).text().indexOf("(")) + '</option>')
             })
             $('#year_to').html('')
             $('<div>' + data.html1.fields[5].maxField.html + '</div>').find('option').each(function (key, value) {
-                $('#year_to').append('<option value="' + $(this).val() + '">' + $(this).text() + '</option>')
+                $('#year_to').append('<option value="' + $(this).val() + '">' +  $(this).text().substr(0,$(this).text().indexOf("(")) + '</option>')
             })
             $('#mileage_from').html('')
             $('<div>' + data.html1.fields[6].minField.html + '</div>').find('option').each(function (key, value) {
-                $('#mileage_from').append('<option value="' + $(this).val() + '">' + $(this).text() + '</option>')
+                $('#mileage_from').append('<option value="' + $(this).val() + '">' +  $(this).text().substr(0,$(this).text().indexOf("(")) + '</option>')
             })
             $('#mileage_to').html('')
             $('<div>' + data.html1.fields[6].maxField.html + '</div>').find('option').each(function (key, value) {
-                $('#mileage_to').append('<option value="' + $(this).val() + '">' + $(this).text() + '</option>')
+                $('#mileage_to').append('<option value="' + $(this).val() + '">' +  $(this).text().substr(0,$(this).text().indexOf("(")) + '</option>')
             })
             $('#body_type').html('<option value="">Any</option>')
             var bodyStyleCount;
             $('<div>' + data.html1.fields[7].html + '</div>').find('div').each(function (key, value) {
                 var i = 0;
+                var mc = parseInt($(this).find('.count').text().replace(',','').replace('(','').replace(')',''))
+                bodyStyleCount = mc
                 for (i; i < result.data.BodyStyles.length; i++) {
-                    if (result.data.BodyStyles[i].Name == $(this).find('.term').text().toLowerCase()) {
-                        bodyStyleCount = result.data.BodyStyles[i].Counter;
+                    if (result.data.BodyStyles[i].Id.replace('BodyStyles_','') == $(this).find('.term').text().toLowerCase()) {
+                        bodyStyleCount = parseInt(result.data.BodyStyles[i].Counter) + parseInt(mc);
                     }
                 }
-                $('#body_type').append('<option value="' + $(this).find('label').data('selected-value') + '">(' + bodyStyleCount + ')' + $(this).find('label').data('selected-display-name') + $(this).find('.count').text() + '</option>')
+                $('#body_type').append('<option value="' + $(this).find('label').data('selected-value') + '">' + $(this).find('label').data('selected-display-name') + '(' + bodyStyleCount + ')</option>')
                 bodyStyleCount = 0;
             })
-//            console.log(result.data.FuelTypes)
+           console.log(result.data.FuelTypes)
             $('#fuel_type').html('<option value="">Any</option>')
             var fuelCount = 0;
             $('<div>' + data.html1.fields[8].html + '</div>').find('div').each(function (key, value) {
                 var i = 0;
+                var mc = parseInt($(this).find('.count').text().replace(',','').replace('(','').replace(')',''))
+                fuelCount = mc
                 for (i; i < result.data.FuelTypes.length; i++) {
-                    if (result.data.FuelTypes[i].Name == $(this).find('.term').text().toLowerCase()) {
+                    if (result.data.FuelTypes[i].Id.replace('FuelTypes_','') == $(this).find('.term').text().toLowerCase()) {
 //                        console.log(result.data.FuelTypes[i].Name + '( ' + result.data.FuelTypes[i].Counter + ')')
-                        fuelCount = result.data.FuelTypes[i].Counter;
+                        fuelCount = parseInt(result.data.FuelTypes[i].Counter) + parseInt(mc);
                     }
                 }
-                $('#fuel_type').append('<option value="' + $(this).find('label').data('selected-value') + '">(' + fuelCount + ')' + $(this).find('label').data('selected-display-name') + $(this).find('.count').text() + '</option>')
+                $('#fuel_type').append('<option value="' + $(this).find('label').data('selected-value') + '">' + $(this).find('label').data('selected-display-name') + '(' + fuelCount + ')</option>')
                 fuelCount = 0;
             })
             $('#maximum-badge-engine-size').html('')

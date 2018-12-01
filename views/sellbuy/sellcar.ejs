@@ -504,33 +504,33 @@
                                         
                                         <option value="" selected="selected">(Any)</option>
                 
-                                        <option value="1">1</option>
+                                        <option value="1 Seats">1</option>
                 
-                                        <option value="2">2</option>
+                                        <option value="2 Seats">2</option>
                 
-                                        <option value="3">3</option>
+                                        <option value="3 Seats">3</option>
                 
-                                        <option value="4">4</option>
+                                        <option value="4 Seats">4</option>
                 
-                                        <option value="5">5</option>
+                                        <option value="5 Seats">5</option>
                 
-                                        <option value="6">6</option>
+                                        <option value="6 Seats">6</option>
                 
-                                        <option value="7">7</option>
+                                        <option value="7 Seats">7</option>
                 
-                                        <option value="8">8</option>
+                                        <option value="8 Seats">8</option>
                 
-                                        <option value="9">9</option>
+                                        <option value="9 Seats">9</option>
                 
-                                        <option value="10">10</option>
+                                        <option value="10 Seats">10</option>
                  
-                                        <option value="11">11</option>
+                                        <option value="11 Seats">11</option>
                 
-                                        <option value="12">12</option>
+                                        <option value="12 Seats">12</option>
                 
-                                        <option value="13">13</option>
+                                        <option value="13 Seats">13</option>
                 
-                                        <option value="16">16</option>
+                                        <option value="16 Seats">16</option>
                                       
                 
                                     </select>
@@ -695,7 +695,7 @@
            var sell = JSON.parse(data.product_id);
            //console.log(sell[0].id);
          if(data.success = 1){
-         window.location.href = "https://sellbuymotors.co.uk//sellcars#link?car_id="+ sell[0].id;
+         window.location.href = "http://localhost:3000/sellcars#link?car_id="+ sell[0].id;
 
       }else{
          location.reload();
@@ -716,7 +716,7 @@
     var makesArray ;
     function show_make(){
 //       var serviceUrl = 'http://localhost:3000/motors-filter-search?make='+$('#formmake').val()+'&model='+$('#formmodel').val()+'&varient='+$('#model_variant').val();
-       var serviceUrl = 'https://sellbuymotors.co.uk//motors-filter-search?postal_code=&make='+$('#formmake').val()+'&model='+$('#formmodel').val()+'&radius=&aggregatedTrim='+$('#model_variant').val()+'&onesearchad=&sort=&price_from=&price_to=&year_from=&year_to=&mileage_from=&mileage_to=&body_type=&fuel_type=&minimum_badge_engine_size=&maximum_badge_engine_size=&fuel_consumption=&zero_to_60=&transmission=&drivetrain=&co2_emissions_cars=&quantity_of_doors=&minimum_seats=&maximum_seats=&insuranceGroup=&annual_tax_cars=&colour=&seller_type=&page=';
+       var serviceUrl = 'http://localhost:3000/motors-filter-search?postal_code=&make='+$('#formmake').val()+'&model='+$('#formmodel').val()+'&radius=&aggregatedTrim='+$('#model_variant').val()+'&onesearchad=&sort=&price_from=&price_to=&year_from=&year_to=&mileage_from=&mileage_to=&body_type=&fuel_type=&minimum_badge_engine_size=&maximum_badge_engine_size=&fuel_consumption=&zero_to_60=&transmission=&drivetrain=&co2_emissions_cars=&quantity_of_doors=&minimum_seats=&maximum_seats=&insuranceGroup=&annual_tax_cars=&colour=&seller_type=&page=';
        $.get(serviceUrl,function(res){
         makesArray = res.data.MakeModels;
             $.each(makesArray,function(key , value){

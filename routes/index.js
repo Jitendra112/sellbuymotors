@@ -264,13 +264,42 @@ app.get('/mycars',async function(req, res, next) {
     var userdata = res.locals.udata
     var newdata =  JSON.stringify(userdata);
     var alldata = JSON.parse(newdata);
-    var query = 'SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id where tbl_cars_images.user_id ="' + alldata[0].id + '"';
+    var query = 'SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id where tbl_cars_images.user_id ="' + alldata[0].id + '" GROUP BY tbl_cars_images.product_id';
     results = await database.query(query, [] );
               res.render('sellbuy/my_cars', {
                   title: 'Add content',
                   data: JSON.parse(results)
               })
 })
+
+
+app.get('/all_product',async function(req, res, next){
+ res.locals.udata = req.session.udata;
+  var query = 'SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id where tbl_cars_images.product_id ="' +req.query.id + '" GROUP BY tbl_cars_images.image_name';
+     results = await database.query(query, [] );
+       //console.log(results);
+    res.render('sellbuy/all_cars', {
+                  title: 'Add content',
+                  data: JSON.parse(results)
+              })
+
+        //console.log(data);
+})
+
+app.get('/featured_cars',async function(req, res, next){
+ res.locals.udata = req.session.udata;
+  var query = 'SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id GROUP BY tbl_cars_images.product_id';
+     results = await database.query(query, [] );
+       //console.log(results);
+         res.render('sellbuy/featured_cars', {
+                  title: 'Add content',
+                  data: JSON.parse(results)
+              })
+
+        //console.log(data);
+})
+
+
 
  var inserted_id;
 app.post('/save_post',async function(req, res, next){
