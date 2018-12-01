@@ -290,7 +290,7 @@ margin: -8px 0 0 0;
                 </div>
             </div>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12" id="focusDiv">
             <div class="container">
                 <div class="col-12 col-lg-12">
                     <div class="row mb-4">
@@ -693,11 +693,13 @@ margin: -8px 0 0 0;
             var colourName= '';
             $('<div>' + data.html1.fields[19].html + '</div>').find('div').each(function (key, value) {
                 colourName = $(this).find('.term').text().toLowerCase();
+                var mc = parseInt($(this).find('.count').text().replace(',','').replace('(','').replace(')',''))
+                colourCount = mc
                 $.each(result.data.Colours, function (key, value) {
                     if (value.Id.replace('Colours_', '') == colourName)
-                        colourCount = value.Counter
+                        colourCount = parseInt(value.Counter) + parseInt(mc)
                 })
-                $('#colour').append('<option value="' + $(this).find('.term').text() + '">(' + colourCount + ')' + colourName + $(this).find('.count').text() + '</option>')
+                $('#colour').append('<option value="' + $(this).find('.term').text() + '">' + colourName +  '(' + colourCount + ') </option>')
                 colourCount = 0;
             })
             $('#seller-type').html('<option value="">Any</option>')
@@ -754,6 +756,7 @@ margin: -8px 0 0 0;
             var new_url = "/search-cars?onesearchad=" + GetParameterValues('onesearchad') + c_url;
             window.history.pushState("data", "Title", new_url);
             more_products(formData)
+            $('html, body').animate({scrollTop: $("#focusDiv").offset().top}, 0);  
         });
     }
 
