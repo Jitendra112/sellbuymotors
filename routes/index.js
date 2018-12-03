@@ -11,7 +11,7 @@ const path = require('path');
 let fs = require('fs');
 var url = require('url')
 var request = require('request');
-
+var lowerCase = require('lower-case')
 
 app.get('/', function(req, res, next) {
      res.locals.udata = req.session.udata;
@@ -677,7 +677,7 @@ app.get('/motors-filter-search', async function (req, res, next) {
         var postal_code = 'WV23AQ';
     }
     if (q.body_type != '') {
-        var bodystyle = [q.body_type];
+        var bodystyle =  [lowerCase(q.body_type)];
     }else{
         var bodystyle = [];
     }
@@ -756,6 +756,7 @@ app.get('/motors-filter-search', async function (req, res, next) {
         "SortOrder":0,
         "DealerGroupId":0
       }
+    // var searchPanelParameters = {"Doors":[],"Seats":[],"SafetyRatings":[],"SelectedTopSpeed":null,"SelectedPower":null,"SelectedAcceleration":null,"SelectedEngineSize":null,"BodyStyles":bodystyle,"MakeModels":[],"FuelTypes":[],"Transmissions":[],"Colours":[],"IsPaymentSearch":false,"IsReduced":false,"IsHot":false,"IsRecentlyAdded":false,"IsRecommendedSearch":true,"VoucherEnabled":false,"IsGroupStock":false,"PartExAvailable":false,"IsPriceAndGo":false,"IsPreReg":false,"IsExDemo":false,"ExcludeExFleet":false,"ExcludeExHire":false,"Keywords":[],"SelectedInsuranceGroup":null,"SelectedFuelEfficiency":null,"SelectedCostAnnualTax":null,"SelectedCO2Emission":null,"SelectedTowingBrakedMax":null,"SelectedTowingUnbrakedMax":null,"SelectedAdvertType":"*","SelectedTankRange":null,"DealerId":0,"Age":-1,"Mileage":-1,"MinPrice":-1,"MaxPrice":-1,"MinPaymentMonthlyCost":-1,"MaxPaymentMonthlyCost":-1,"PaymentTerm":60,"PaymentMileage":10000,"PaymentDeposit":1000,"SelectedSoldStatus":"both","SelectedBatteryRangeMiles":null,"SelectedBatteryFastChargeMinutes":null,"BatteryIsLeased":false,"BatteryIsWarrantyWhenNew":false,"ExcludeImports":false,"ExcludeHistoryCatNCatD":false,"ExcludeHistoryCatSCatC":false,"ExcludedVehicles":[],"Type":1,"PostCode":"WV23AQ","Distance":1000,"PaginationCurrentPage":1,"SortOrder":0,"DealerGroupId":0}
     // var path2 = 'https://www.motors.co.uk/search/car/updatesearchpanel';
     var path2 = 'https://www.motors.co.uk/search/car/fastupdatesearchpanel';
     // console.log(path2)
