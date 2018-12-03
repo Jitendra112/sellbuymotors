@@ -8,7 +8,7 @@
         z-index: 99;
     }
     .Superactive {
-        background: red;
+        background: #050348;
         color: wheat;
     }
     select.form-control:not([size]):not([multiple]) {
@@ -30,7 +30,7 @@ section {
 p#foundCar {
     font-weight: 600;
     font-size: 18px;
-    color: #ee5624;
+    color: #050348;
 }
 dd, h1, h2, h3, h4, h5, h6, label {
 margin-bottom: 0;
@@ -487,6 +487,7 @@ margin: -8px 0 0 0;
             seller_type: get_filter_value('seller-type'),
             page: get_filter_value('page'),
         }
+
         $('#loading').css('display', 'block')
         $.when(
                 $.getJSON(base_url + '/auto-search-results', formData), $.getJSON(base_url + '/motors-filter-search', formData).error(function (jqXHR, textStatus, errorThrown) {
@@ -498,6 +499,7 @@ margin: -8px 0 0 0;
             data = data[0]
             $('#ProductShow').html('')
             var image = '';
+                    console.log(formData);
             $.each(data.cars, function (index, value) {
                 var ab = '';
                 $(' <ul class="list-inline">' + value.listings + '</ul>').find('li').each(function (i, elem) {
@@ -623,7 +625,6 @@ margin: -8px 0 0 0;
                 $('#body_type').append('<option value="' + $(this).find('label').data('selected-value') + '">' + $(this).find('label').data('selected-display-name') + '(' + bodyStyleCount + ')</option>')
                 bodyStyleCount = 0;
             })
-           console.log(result.data.FuelTypes)
             $('#fuel_type').html('<option value="">Any</option>')
             var fuelCount = 0;
             $('<div>' + data.html1.fields[8].html + '</div>').find('div').each(function (key, value) {
@@ -641,16 +642,16 @@ margin: -8px 0 0 0;
             })
             $('#maximum-badge-engine-size').html('')
             $('<div>' + data.html1.fields[9].maxField.html + '</div>').find('option').each(function (key, value) {
-                $('#maximum-badge-engine-size').append('<option value="' + $(this).val() + '">' + $(this).text() + '</option>')
+                $('#maximum-badge-engine-size').append('<option value="' + $(this).val() + '">' + $(this).text().substr(0,$(this).text().indexOf("(")) + '</option>')
             })
             $('#minimum-badge-engine-size').html('')
             $('<div>' + data.html1.fields[9].minField.html + '</div>').find('option').each(function (key, value) {
-                $('#minimum-badge-engine-size').append('<option value="' + $(this).val() + '">' + $(this).text() + '</option>')
+                $('#minimum-badge-engine-size').append('<option value="' + $(this).val() + '">' + $(this).text().substr(0,$(this).text().indexOf("(")) + '</option>')
             })
 //            console.log(data.html1.fields[10].html)
             $('#fuel_consumption').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[10].html + '</div>').find('div').each(function (key, value) {
-                $('#fuel_consumption').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text() + '</option>')
+                $('#fuel_consumption').append('<option value="' + $(this).data('selected-value') + '">' +$(this).find('span').text().substr(0,$(this).find('span').text().indexOf("(")) + '</option>')
             })
             $('#zero-to-60').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[11].html + '</div>').find('div').each(function (key, value) {

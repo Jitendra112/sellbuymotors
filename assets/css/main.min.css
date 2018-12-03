@@ -31,7 +31,7 @@ a {
     text-decoration: none;
     outline: none; }
   a:hover {
-    color: #ee5624; }
+    color: #050348; }
 
 /*======================== Font Style Css ===============================*/
 h1, h2, h3, h4, h5, h6 {
@@ -109,7 +109,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /*======================== Font Color Css ===============================*/
 .c-primary {
-  color: #ee5624; }
+  color: #050348; }
 
 .c-light {
   color: #757575;
@@ -162,19 +162,19 @@ blockquote {
     box-shadow: none !important; }
 
 .btn-primary {
-  background-color: #ee5624;
-  border-color: #ee5624;
+  background-color: #050348;
+  border-color: #050348;
   color: #fff !important; }
   .btn-primary:hover, .btn-primary:active {
-    background-color: #ee5624 !important;
-    border-color: #ee5624 !important; }
+    background-color: #050348 !important;
+    border-color: #050348 !important; }
 
 .btn-outline-primary {
-  border-color: #ee5624;
-  color: #ee5624; }
+  border-color: #050348;
+  color: #050348; }
   .btn-outline-primary:hover, .btn-outline-primary:active {
-    background-color: #ee5624 !important;
-    border-color: #ee5624 !important;
+    background-color: #050348 !important;
+    border-color: #050348 !important;
     color: #fff !important; }
 
 .btn-secondary {
@@ -367,7 +367,7 @@ textarea.form-control {
   color: #555555; }
 
 .main-header .navbar .navbar-nav .nav-link.active {
-  color: #ee5624; }
+  color: #050348; }
 
 .main-header .navbar .navbar-nav li.dropdown:last-child .dropdown-menu {
   right: 0px;
@@ -967,8 +967,8 @@ section {
   border: solid 2px #dadada;
   transition: all .9s; }
   .blog .btn-tags:hover {
-    background-color: #ee5624;
-    border-color: #ee5624;
+    background-color: #050348;
+    border-color: #050348;
     color: #fff; }
 
 .blog blockquote {
@@ -981,8 +981,8 @@ section {
 
 /*======= Pagination Css =======*/
 .pagination .page-item.active .page-link, .pagination .page-item .page-link:hover {
-  background-color: #ee5624;
-  border-color: #ee5624;
+  background-color: #050348;
+  border-color: #050348;
   color: #fff; }
 
 .pagination .page-item .page-link {
@@ -1210,7 +1210,7 @@ div#image_get {
 .background-image-maker img {
     width: 100%;
     height: auto;
-    border: 2px #ee5624 solid;
+    border: 2px #050348 solid;
 }
 div#image_uplod {
     margin-right: 43%;
