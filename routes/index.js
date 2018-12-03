@@ -691,6 +691,11 @@ app.get('/motors-filter-search', async function (req, res, next) {
     }else{
         var colour = [];
     }
+    if(q.quantity_of_doors){
+        var quantity_of_doors = [q.quantity_of_doors +' doors']
+    }else{
+        var quantity_of_doors = [];
+    }
     if(q.radius != ''){
       if(q.radius == '1500'){
         var radius = '1000'
@@ -701,7 +706,7 @@ app.get('/motors-filter-search', async function (req, res, next) {
       var radius = []
     }
     var searchPanelParameters = {
-        "Doors":[],
+        "Doors":quantity_of_doors,
         "Seats":[],
         "SafetyRatings":[],
         "SelectedTopSpeed":null,

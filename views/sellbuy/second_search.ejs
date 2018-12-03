@@ -541,11 +541,18 @@ margin: -8px 0 0 0;
                 var i = 0
                 var mc = parseInt($(this).find('.count').text().replace(',','').replace('(','').replace(')',''))
                 make_count = mc;
+                var disp = 'style = "display:none"';
                 for (i; i < result.data.MakeModels.length; i++) {
-                    if (result.data.MakeModels[i].Id.replace('Makes_','') == $(this).find('.term').text())
+                    if (result.data.MakeModels[i].Id.replace('Makes_','') == $(this).find('.term').text()){
                         make_count = parseInt(result.data.MakeModels[i].Counter) + parseInt(mc);
+                        if(result.data.MakeModels[i].Counter == 0){
+                            disp = 'style = "display:none"';
+                        }else{
+                            disp = '';
+                        }
+                    }
                 }
-                $('#make').append('<option value="' + $(this).find('.term').text() + '">' + $(this).find('.term').text() + '('+make_count+')</option>')
+                $('#make').append('<option '+disp+' value="' + $(this).find('.term').text() + '">' + $(this).find('.term').text() + '('+make_count+')</option>')
                 make_count = 0;
             })
             var htmlModels;
@@ -671,23 +678,33 @@ margin: -8px 0 0 0;
             })
             $('#quantity-of-doors').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[15].html + '</div>').find('div').each(function (key, value) {
-                $('#quantity-of-doors').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text() + '</option>')
+                var i = 0;
+                var dc = parseInt($(this).find('.count').text().replace(',','').replace('(','').replace(')',''))
+                var door_count = dc
+                for (i = 0; i < result.data.Doors.length; i++) {
+                    if (result.data.Doors[i].Id.replace('Doors_','') == $(this).find('span').text().substr(0,$(this).find('span').text().indexOf("("))){   
+                        //console.log(result.data.Doors[i].Counter +  $(this).find('span').text())
+                        door_count = parseInt(result.data.Doors[i].Counter) + parseInt(dc)
+                    }
+                    // console.log(result.data.Doors[i].Id.replace('Doors_','') + ' --- ' + $(this).find('span').text().substr(0,$(this).find('span').text().indexOf("(")))
+                }
+                $('#quantity-of-doors').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text().substr(0,$(this).find('span').text().indexOf("(")) + '('+door_count+')</option>')
             })
             $('#minimum-seats').html('')
             $('<div>' + data.html1.fields[16].minField.html + '</div>').find('option').each(function (key, value) {
-                $('#minimum-seats').append('<option value="' + $(this).val() + '">' + $(this).text() + '</option>')
+                $('#minimum-seats').append('<option value="' + $(this).val() + '">' + $(this).text().substr(0,$(this).text().indexOf("("))  + '</option>')
             })
             $('#maximum-seats').html('')
             $('<div>' + data.html1.fields[16].maxField.html + '</div>').find('option').each(function (key, value) {
-                $('#maximum-seats').append('<option value="' + $(this).val() + '">' + $(this).text() + '</option>')
+                $('#maximum-seats').append('<option value="' + $(this).val() + '">' + $(this).text().substr(0,$(this).text().indexOf("(")) + '</option>')
             })
             $('#insuranceGroup').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[17].html + '</div>').find('div').each(function (key, value) {
-                $('#insuranceGroup').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text() + '</option>')
+                $('#insuranceGroup').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text().substr(0,$(this).find('span').text().indexOf("(")) + '</option>')
             })
             $('#annual-tax-cars').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[18].html + '</div>').find('div').each(function (key, value) {
-                $('#annual-tax-cars').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text() + '</option>')
+                $('#annual-tax-cars').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text().substr(0,$(this).find('span').text().indexOf("(")) + '</option>')
             })
             $('#colour').html('<option value="">Any</option>')
             var colourCount = 0;
@@ -705,7 +722,7 @@ margin: -8px 0 0 0;
             })
             $('#seller-type').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[20].html + '</div>').find('div').each(function (key, value) {
-                $('#seller-type').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('.term').text() + $(this).find('.count').text() + '</option>')
+                $('#seller-type').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('.term').text() + $(this).find('.count').text().substr(0,$(this).find('.count').text().indexOf("(")) + '</option>')
             })
             $('#pagination').html('');
             data.pages.shift();
