@@ -696,6 +696,11 @@ app.get('/motors-filter-search', async function (req, res, next) {
     }else{
         var quantity_of_doors = [];
     }
+    if(q.transmission){
+        var transmission = [replaceString(q.transmission , '-',' ')]
+    }else{
+        var transmission = [];
+    }
     if(q.radius != ''){
       if(q.radius == '1500'){
         var radius = '1000'
@@ -716,7 +721,7 @@ app.get('/motors-filter-search', async function (req, res, next) {
         "BodyStyles":bodystyle,
         "MakeModels":makeModel,
         "FuelTypes":fuel_type,
-        "Transmissions":[],
+        "Transmissions":transmission,
         "Colours":colour,
         "IsPaymentSearch":false,
         "IsReduced":false,

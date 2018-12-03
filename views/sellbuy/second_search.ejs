@@ -662,19 +662,28 @@ margin: -8px 0 0 0;
             })
             $('#zero-to-60').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[11].html + '</div>').find('div').each(function (key, value) {
-                $('#zero-to-60').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text() + '</option>')
+                $('#zero-to-60').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text().substr(0,$(this).find('span').text().indexOf("(")) + '</option>')
             })
             $('#transmission').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[12].html + '</div>').find('div').each(function (key, value) {
-                $('#transmission').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text() + '</option>')
+                var i = 0;
+                var tc = parseInt($(this).find('.count').text().replace(',','').replace('(','').replace(')',''))
+                // console.log($(this).find('span').text())
+                var tranmission_count = tc
+                for (i = 0; i < result.data.Transmissions.length; i++) {
+                    if (result.data.Transmissions[i].Id.replace('Transmissions_','') == $(this).find('span').text().substr(0,$(this).find('span').text().indexOf("(")).replace( '-',' ')){   
+                       tranmission_count = parseInt(result.data.Transmissions[i].Counter) + parseInt(tc)
+                    }
+                }
+                $('#transmission').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text().substr(0,$(this).find('span').text().indexOf("(")) + ' ('+ tranmission_count+')</option>')
             })
             $('#drivetrain').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[13].html + '</div>').find('div').each(function (key, value) {
-                $('#drivetrain').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text() + '</option>')
+                $('#drivetrain').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text().substr(0,$(this).find('span').text().indexOf("(")) + '</option>')
             })
             $('#co2-emissions-cars').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[14].html + '</div>').find('div').each(function (key, value) {
-                $('#co2-emissions-cars').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text() + '</option>')
+                $('#co2-emissions-cars').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text().substr(0,$(this).find('span').text().indexOf("("))  + '</option>')
             })
             $('#quantity-of-doors').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[15].html + '</div>').find('div').each(function (key, value) {
@@ -683,12 +692,10 @@ margin: -8px 0 0 0;
                 var door_count = dc
                 for (i = 0; i < result.data.Doors.length; i++) {
                     if (result.data.Doors[i].Id.replace('Doors_','') == $(this).find('span').text().substr(0,$(this).find('span').text().indexOf("("))){   
-                        //console.log(result.data.Doors[i].Counter +  $(this).find('span').text())
-                        door_count = parseInt(result.data.Doors[i].Counter) + parseInt(dc)
+                       door_count = parseInt(result.data.Doors[i].Counter) + parseInt(dc)
                     }
-                    // console.log(result.data.Doors[i].Id.replace('Doors_','') + ' --- ' + $(this).find('span').text().substr(0,$(this).find('span').text().indexOf("(")))
                 }
-                $('#quantity-of-doors').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text().substr(0,$(this).find('span').text().indexOf("(")) + '('+door_count+')</option>')
+                $('#quantity-of-doors').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text().substr(0,$(this).find('span').text().indexOf("(")) + '('+ door_count +')</option>')
             })
             $('#minimum-seats').html('')
             $('<div>' + data.html1.fields[16].minField.html + '</div>').find('option').each(function (key, value) {
