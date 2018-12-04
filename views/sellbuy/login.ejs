@@ -46,7 +46,7 @@
 
 
      <script>
-   
+   var base_url = window.location.origin;
      $(document).on('submit','#login_form',function(e){
        // alert('ok');
                     e.preventDefault();
@@ -77,7 +77,7 @@
                          if(data.success == 1){
                              toastr.success(data.message);
                              window.setTimeout(function() {
-                              window.location.href = 'http://localhost:3000/sellcar';
+                              window.location.href = base_url + '/sellcar';
                                    }, 1000);
                           //  window.location.href = "http://localhost:3000/sellcar";
 

@@ -677,7 +677,7 @@
 
 
  <script>
-   
+   var base_url = window.location.origin;
      $(document).on('submit','#my_post',function(e){
         e.preventDefault();
         var formData = new FormData(this);  
@@ -695,7 +695,7 @@
            var sell = JSON.parse(data.product_id);
            //console.log(sell[0].id);
          if(data.success = 1){
-         window.location.href = "http://localhost:3000/sellcars#link?car_id="+ sell[0].id;
+         window.location.href = base_url+  "/sellcars#link?car_id="+ sell[0].id;
 
       }else{
          location.reload();
@@ -716,7 +716,7 @@
     var makesArray ;
     function show_make(){
 //       var serviceUrl = 'http://localhost:3000/motors-filter-search?make='+$('#formmake').val()+'&model='+$('#formmodel').val()+'&varient='+$('#model_variant').val();
-       var serviceUrl = 'http://localhost:3000/motors-filter-search?postal_code=&make='+$('#formmake').val()+'&model='+$('#formmodel').val()+'&radius=&aggregatedTrim='+$('#model_variant').val()+'&onesearchad=&sort=&price_from=&price_to=&year_from=&year_to=&mileage_from=&mileage_to=&body_type=&fuel_type=&minimum_badge_engine_size=&maximum_badge_engine_size=&fuel_consumption=&zero_to_60=&transmission=&drivetrain=&co2_emissions_cars=&quantity_of_doors=&minimum_seats=&maximum_seats=&insuranceGroup=&annual_tax_cars=&colour=&seller_type=&page=';
+       var serviceUrl = base_url + '/motors-filter-search?postal_code=&make='+$('#formmake').val()+'&model='+$('#formmodel').val()+'&radius=&aggregatedTrim='+$('#model_variant').val()+'&onesearchad=&sort=&price_from=&price_to=&year_from=&year_to=&mileage_from=&mileage_to=&body_type=&fuel_type=&minimum_badge_engine_size=&maximum_badge_engine_size=&fuel_consumption=&zero_to_60=&transmission=&drivetrain=&co2_emissions_cars=&quantity_of_doors=&minimum_seats=&maximum_seats=&insuranceGroup=&annual_tax_cars=&colour=&seller_type=&page=';
        $.get(serviceUrl,function(res){
         makesArray = res.data.MakeModels;
             $.each(makesArray,function(key , value){
