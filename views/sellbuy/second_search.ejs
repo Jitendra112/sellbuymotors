@@ -593,8 +593,17 @@ margin: -8px 0 0 0;
                 variant_count = 0;
             })
             $('#price_from').html('')
+            var selected = '';
+            var name;
             $('<div>' + data.html1.fields[4].minField.html + '</div>').find('option').each(function (key, value) {
-               $('#price_from').append('<option value="' + parseInt($(this).val()) + '"> ' +  $(this).text().substr(0,$(this).text().indexOf("(")) + '</option>')
+                if($(this).val() == formData.price_from){
+                    selected = 'selected';
+                    name ='€ '+ formData.price_from;
+                }else{
+                    selected = '';
+                    name= $(this).text().substr(0,$(this).text().indexOf("("));
+                }
+               $('#price_from').append('<option value="' + $(this).val() + '" '+selected+'> ' +  name + '</option>')
             })
             $('#price_to').html('')
             $('<div>' + data.html1.fields[4].maxField.html + '</div>').find('option').each(function (key, value) {
@@ -743,7 +752,8 @@ margin: -8px 0 0 0;
                 $('#model').val(formData.model.replace("%20", " "))
                 $('#aggregatedTrim').val(formData.aggregatedTrim.replace("%20", " "))
                 $('#sort').val(formData.sort)
-                $('#price_from').val(parseInt(formData.price_from))
+                // $('#price_from').val("'"+formData.year_from+"'")
+                // $('#price_from').append('<option value="'+formData.year_from+'" selected> E '+formData.year_from + '</option>')
                 $('#price_to').val(formData.price_to)
                 $('#postal_code').val(formData.postal_code)
                 $('#year_from').val(formData.year_from)
@@ -765,7 +775,7 @@ margin: -8px 0 0 0;
                 $('#annual-tax-cars').val(formData.annual_tax_cars)
                 $('#colour').val(formData.colour)
                 $('#seller-type').val(formData.seller_type)
-                console.log(formData)
+                // console.log(formData)
             var c_url = '';
             $.each(formData, function (key, value) {
                 if (value == null)
