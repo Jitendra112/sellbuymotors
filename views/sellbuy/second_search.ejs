@@ -118,7 +118,7 @@ margin: -8px 0 0 0;
                                  <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Price</label>
                                     <div class="form-group">
-                                        <select class="form-control rounded" id="sort">
+                                        <select class="form-control rounded" id="">
                                             <option value="sponsored">Total Price</option>
                                             <option value="monthly-price-asc">Monthly Price</option>
                                         </select>
@@ -297,6 +297,22 @@ margin: -8px 0 0 0;
                         <div class="col-12 col-md-5 col-xl-6 align-self-center">
                             <p class="mb-0" id="foundCar">Finding</p>
                         </div>
+                        <div class="col-12 col-md-7 col-xl-6 text-right">
+                            <div class="d-inline-block pr-md-3 mt-3 mt-md-0">
+                                <div class="selector form-group mb-0 position-relative">
+                                    <select class="form-control border-0 pl-4 rounded" id="sort">                                                
+                                        <option value="price-asc" data-val="1">Price (Lowest)</option>
+                                        <option value="price-desc" data-val="2">Price (Highest)</option>
+                                        <option value="distance" data-val="0">Distance</option>
+                                       <!--  <option value="make" data-val="">Make</option>
+                                        <option value="model" data-val="">Model</option> -->
+                                        <option selected="selected" value="mileage" data-val="14">Mileage</option>
+                                        <option value="year-desc" data-val="16">Age (Newest first)</option>
+                                        <!-- <option value="sponsored" data-val="">Sponsored adverts first</option> -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-12 col-md-5 col-xl-6 align-self-center" id="loading" style="display:none;">
                             <img src="/images/preloader.gif" style="height:100% ;width:100%"/>
                         </div>
@@ -463,6 +479,7 @@ margin: -8px 0 0 0;
             aggregatedTrim: get_filter_value('aggregatedTrim'),
             onesearchad: get_filter_value('onesearchad'),
             sort: get_filter_value('sort'),
+            sort2: $('#sort').children("option:selected").data('val'),
             price_from: get_filter_value('price_from'),
             price_to: get_filter_value('price_to'),
             year_from: get_filter_value('year_from'),
@@ -487,7 +504,7 @@ margin: -8px 0 0 0;
             seller_type: get_filter_value('seller-type'),
             page: get_filter_value('page'),
         }
-
+        console.log(formData)
         $('#loading').css('display', 'block')
         $.when(
                 $.getJSON(base_url + '/auto-search-results', formData), $.getJSON(base_url + '/motors-filter-search', formData).error(function (jqXHR, textStatus, errorThrown) {
@@ -499,6 +516,7 @@ margin: -8px 0 0 0;
             data = data[0]
             $('#ProductShow').html('')
             var image = '';
+            delete data.cars[0]
             $.each(data.cars, function (index, value) {
                 var ab = '';
                 $(' <ul class="list-inline">' + value.listings + '</ul>').find('li').each(function (i, elem) {
@@ -834,9 +852,9 @@ margin: -8px 0 0 0;
             });
                 $('#loading').css('display', 'none')
                 $('#radius').val(formData.radius)
-                $('#make').val(formData.make.replace("%20", " "))
-                $('#model').val(formData.model.replace("%20", " "))
-                $('#aggregatedTrim').val(formData.aggregatedTrim.replace("%20", " "))
+                $('#make').val(formData.make.replace("%20", " ").replace("+", " "))
+                $('#model').val(formData.model.replace("%20", " ").replace("+", " "))
+                $('#aggregatedTrim').val(formData.aggregatedTrim.replace("%20", " ").replace("+", " "))
                 $('#sort').val(formData.sort)
                 // $('#price_from').val("'"+formData.year_from+"'")
                 // $('#price_from').append('<option value="'+formData.year_from+'" selected> E '+formData.year_from + '</option>')

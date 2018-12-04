@@ -639,7 +639,7 @@ app.get('/mot-search', async function (req, res, next) {
                     "PostCode": "N111NP",
                     "Distance": 1000,
                     "PaginationCurrentPage": 1,
-                    "SortOrder": 0,
+                    "SortOrder": q.sort2,
                     "DealerGroupId": 0
                 }
     }
