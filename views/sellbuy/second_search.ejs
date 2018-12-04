@@ -377,7 +377,6 @@ margin: -8px 0 0 0;
             var html = '';
             $.each(data, function (key, value) {
                 if (value.ObjectType == 'UsedVehicleResult') {
-//                    console.log(value)
                     html += '<div class="product-bar">\n\
                                 <div class="col-md-4 h-283">\n\
                                     <div class="position-relative">\n\
@@ -499,7 +498,6 @@ margin: -8px 0 0 0;
             data = data[0]
             $('#ProductShow').html('')
             var image = '';
-                    console.log(formData);
             $.each(data.cars, function (index, value) {
                 var ab = '';
                 $(' <ul class="list-inline">' + value.listings + '</ul>').find('li').each(function (i, elem) {
@@ -596,7 +594,7 @@ margin: -8px 0 0 0;
             })
             $('#price_from').html('')
             $('<div>' + data.html1.fields[4].minField.html + '</div>').find('option').each(function (key, value) {
-               $('#price_from').append('<option value="' + $(this).val() + '"> ' +  $(this).text().substr(0,$(this).text().indexOf("(")) + '</option>')
+               $('#price_from').append('<option value="' + parseInt($(this).val()) + '"> ' +  $(this).text().substr(0,$(this).text().indexOf("(")) + '</option>')
             })
             $('#price_to').html('')
             $('<div>' + data.html1.fields[4].maxField.html + '</div>').find('option').each(function (key, value) {
@@ -640,7 +638,6 @@ margin: -8px 0 0 0;
                 fuelCount = mc
                 for (i; i < result.data.FuelTypes.length; i++) {
                     if (result.data.FuelTypes[i].Id.replace('FuelTypes_','') == $(this).find('.term').text().toLowerCase()) {
-//                        console.log(result.data.FuelTypes[i].Name + '( ' + result.data.FuelTypes[i].Counter + ')')
                         fuelCount = parseInt(result.data.FuelTypes[i].Counter) + parseInt(mc);
                     }
                 }
@@ -655,7 +652,6 @@ margin: -8px 0 0 0;
             $('<div>' + data.html1.fields[9].minField.html + '</div>').find('option').each(function (key, value) {
                 $('#minimum-badge-engine-size').append('<option value="' + $(this).val() + '">' + $(this).text().substr(0,$(this).text().indexOf("(")) + '</option>')
             })
-//            console.log(data.html1.fields[10].html)
             $('#fuel_consumption').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[10].html + '</div>').find('div').each(function (key, value) {
                 $('#fuel_consumption').append('<option value="' + $(this).data('selected-value') + '">' +$(this).find('span').text().substr(0,$(this).find('span').text().indexOf("(")) + '</option>')
@@ -668,7 +664,6 @@ margin: -8px 0 0 0;
             $('<div>' + data.html1.fields[12].html + '</div>').find('div').each(function (key, value) {
                 var i = 0;
                 var tc = parseInt($(this).find('.count').text().replace(',','').replace('(','').replace(')',''))
-                // console.log($(this).find('span').text())
                 var tranmission_count = tc
                 for (i = 0; i < result.data.Transmissions.length; i++) {
                     if (result.data.Transmissions[i].Id.replace('Transmissions_','') == $(this).find('span').text().substr(0,$(this).find('span').text().indexOf("(")).replace( '-',' ')){   
@@ -742,35 +737,35 @@ margin: -8px 0 0 0;
                     active = '';
                 $('#pagination').append('<li class="page-item d-none d-sm-inline-block"><a class="page-link pageLink ' + active + '">' + value.page + '</a></li>');
             });
-            $('#loading').css('display', 'none')
-            $('#radius').val(formData.radius)
-            $('#make').val(formData.make.replace("%20", " "))
-            $('#model').val(formData.model.replace("%20", " "))
-            $('#aggregatedTrim').val(formData.aggregatedTrim.replace("%20", " "))
-            $('#sort').val(formData.sort)
-            $('#price_from').val(formData.price_from)
-            $('#price_to').val(formData.price_to)
-            $('#postal_code').val(formData.postal_code)
-            $('#year_from').val(formData.year_from)
-            $('#year_to').val(formData.year_to)
-            $('#mileage_from').val(formData.mileage_from)
-            $('#mileage_to').val(formData.mileage_to)
-            $('#body_type').val(formData.body_type)
-            $('#fuel_type').val(formData.fuel_type)
-            $('#maximum-badge-engine-size').val(formData.maximum_badge_engine_size)
-            $('#minimum-badge-engine-size').val(formData.minimum_badge_engine_size)
-            $('#fuel_consumption').val(formData.fuel_consumption)
-            $('#zero-to-60').val(formData.zero_to_60)
-            $('#transmission').val(formData.transmission)
-            $('#drivetrain').val(formData.drivetrain)
-            $('#co2-emissions-cars').val(formData.co2_emissions_cars)
-            $('#quantity-of-doors').val(formData.quantity_of_doors)
-            $('#minimum-seats').val(formData.minimum_seats)
-            $('#maximum-seats').val(formData.maximum_seats)
-            $('#annual-tax-cars').val(formData.annual_tax_cars)
-            $('#colour').val(formData.colour)
-            $('#seller-type').val(formData.seller_type)
-//            console.log(formData)
+                $('#loading').css('display', 'none')
+                $('#radius').val(formData.radius)
+                $('#make').val(formData.make.replace("%20", " "))
+                $('#model').val(formData.model.replace("%20", " "))
+                $('#aggregatedTrim').val(formData.aggregatedTrim.replace("%20", " "))
+                $('#sort').val(formData.sort)
+                $('#price_from').val(parseInt(formData.price_from))
+                $('#price_to').val(formData.price_to)
+                $('#postal_code').val(formData.postal_code)
+                $('#year_from').val(formData.year_from)
+                $('#year_to').val(formData.year_to)
+                $('#mileage_from').val(formData.mileage_from)
+                $('#mileage_to').val(formData.mileage_to)
+                $('#body_type').val(formData.body_type)
+                $('#fuel_type').val(formData.fuel_type)
+                $('#maximum-badge-engine-size').val(formData.maximum_badge_engine_size)
+                $('#minimum-badge-engine-size').val(formData.minimum_badge_engine_size)
+                $('#fuel_consumption').val(formData.fuel_consumption)
+                $('#zero-to-60').val(formData.zero_to_60)
+                $('#transmission').val(formData.transmission)
+                $('#drivetrain').val(formData.drivetrain)
+                $('#co2-emissions-cars').val(formData.co2_emissions_cars)
+                $('#quantity-of-doors').val(formData.quantity_of_doors)
+                $('#minimum-seats').val(formData.minimum_seats)
+                $('#maximum-seats').val(formData.maximum_seats)
+                $('#annual-tax-cars').val(formData.annual_tax_cars)
+                $('#colour').val(formData.colour)
+                $('#seller-type').val(formData.seller_type)
+                console.log(formData)
             var c_url = '';
             $.each(formData, function (key, value) {
                 if (value == null)

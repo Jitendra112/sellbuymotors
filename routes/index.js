@@ -657,9 +657,9 @@ app.get('/motors-filter-search', async function (req, res, next) {
     var makeModel;
     if (make) {
         if (q.model) {
-            var model = replaceString(q.model, '%20', '')
+            var model = replaceString(q.model, '+', ' ')
             if (q.aggregatedTrim) {
-                var aggregatedTrim = replaceString(q.aggregatedTrim, '%20', '')
+                var aggregatedTrim = replaceString(q.aggregatedTrim, '+', ' ')
                 makeModel = [{Value: make, Models: [model], Trims: [aggregatedTrim]}]
             } else {
                 makeModel = [{Value: make, Models: [model], Trims: []}]
