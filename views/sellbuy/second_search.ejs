@@ -424,6 +424,7 @@ margin: -8px 0 0 0;
 
         });
     }
+    $('#radius').val(GetParameterValues(radius))
     search_results()
 //    more_products()
     $(document).on('click', 'a.pageLink', function () {
@@ -618,7 +619,7 @@ margin: -8px 0 0 0;
                 }
                 $('#price_to').append('<option value="' + $(this).val() + '" '+selected+'> ' +  name + '</option>')
             })
-            $('#year_from').html('')
+            $('#year_from').html('<option value="">Any</option>')
             var selected = '';
             var name;
             $('<div>' + data.html1.fields[5].minField.html + '</div>').find('option').each(function (key, value) {
@@ -631,7 +632,7 @@ margin: -8px 0 0 0;
                 }
                 $('#year_from').append('<option value="' + $(this).val() + '" '+selected+'>' +  name + '</option>')
             })
-            $('#year_to').html('')
+            $('#year_to').html('<option value="">Any</option>')
             var selected = '';
             var name;
             $('<div>' + data.html1.fields[5].maxField.html + '</div>').find('option').each(function (key, value) {
@@ -644,7 +645,7 @@ margin: -8px 0 0 0;
                 }
                 $('#year_to').append('<option value="' + $(this).val() + '" '+selected+'>' + name + '</option>')
             })
-            $('#mileage_from').html('')
+            $('#mileage_from').html('<option value="">Any</option>')
             var selected = '';
             var name;
             $('<div>' + data.html1.fields[6].minField.html + '</div>').find('option').each(function (key, value) {
@@ -655,9 +656,10 @@ margin: -8px 0 0 0;
                     selected = '';
                     name= $(this).text().substr(0,$(this).text().indexOf("("));
                 }
+                if(formData.mileage_from)
                 $('#mileage_from').append('<option value="' + $(this).val() + '" '+selected+'>' +  name + '</option>')
             })
-            $('#mileage_to').html('')
+            $('#mileage_to').html('<option value="">Any</option>')
             var selected = '';
             var name;
             $('<div>' + data.html1.fields[6].maxField.html + '</div>').find('option').each(function (key, value) {
@@ -668,6 +670,7 @@ margin: -8px 0 0 0;
                     selected = '';
                     name= $(this).text().substr(0,$(this).text().indexOf("("));
                 }
+                if(formData.mileage_to)                
                 $('#mileage_to').append('<option value="' + $(this).val() + '" '+selected+'>' +  name + '</option>')
             })
             $('#body_type').html('<option value="">Any</option>')
@@ -698,7 +701,7 @@ margin: -8px 0 0 0;
                 $('#fuel_type').append('<option value="' + $(this).find('label').data('selected-value') + '">' + $(this).find('label').data('selected-display-name') + '(' + fuelCount + ')</option>')
                 fuelCount = 0;
             })
-            $('#minimum-badge-engine-size').html('')
+            $('#minimum-badge-engine-size').html('<option value="">Any</option>')
             var selected = '';
             var name;
             $('<div>' + data.html1.fields[9].maxField.html + '</div>').find('option').each(function (key, value) {
@@ -712,7 +715,7 @@ margin: -8px 0 0 0;
                 if(name != '')
                 $('#minimum-badge-engine-size').append('<option value="' + $(this).val() + '" '+selected+'>' + name + '</option>')
             })
-            $('#maximum-badge-engine-size').html('')
+            $('#maximum-badge-engine-size').html('<option value="">Any</option>')
             var selected = '';
             var name;
             $('<div>' + data.html1.fields[9].minField.html + '</div>').find('option').each(function (key, value) {
@@ -766,7 +769,7 @@ margin: -8px 0 0 0;
                 }
                 $('#quantity-of-doors').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text().substr(0,$(this).find('span').text().indexOf("(")) + '('+ door_count +')</option>')
             })
-            $('#minimum-seats').html('')
+            $('#minimum-seats').html('<option value="">Any</option>')
             var selected = '';
             var name;
             $('<div>' + data.html1.fields[16].minField.html + '</div>').find('option').each(function (key, value) {
@@ -779,7 +782,7 @@ margin: -8px 0 0 0;
                 }
                 $('#minimum-seats').append('<option value="' + $(this).val() + '" '+selected +'>' + name  + '</option>')
             })
-            $('#maximum-seats').html('')
+            $('#maximum-seats').html('<option value="">Any</option>')
             var selected = '';
             var name;
             $('<div>' + data.html1.fields[16].maxField.html + '</div>').find('option').each(function (key, value) {

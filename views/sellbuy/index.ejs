@@ -42,6 +42,7 @@
 														<div class="form-group">
 															<label>Post Code</label>
 															<input type="text" name="postal_code" class="form-control" placeholder="Enter Post Code" required>
+															<input type="hidden" name="radius">
 															</div>
 															<div class="form-group">
 																<label>Distance</label>
@@ -88,6 +89,7 @@
 														<form method="GET" class="" action="search-cars">
 															<div class="form-group">
 																<input type="hidden" name="onesearchad" value="All">
+																	<input type="hidden" name="radius">
 																	<label>Post Code</label>
 																	<input type="text" name="postal_code" class="form-control" placeholder="Enter Post Code" required>
 																	</div>
@@ -443,6 +445,7 @@
             localStorage.setItem("postal_code", formData.postal_code);
             $('form select.make_filter').val(formData.make)
             $('form select.model_filter').val(formData.model)
+            $('form input[name=radius]').val(formData.radius)
             $('#make').val(formData.make)
             $('#radius').val(formData.radius)
             $('form select[name=distance]').val(formData.radius)
