@@ -709,6 +709,7 @@ margin: -8px 0 0 0;
                     selected = '';
                     name= $(this).text().substr(0,$(this).text().indexOf("("));
                 }
+                if(name != '')
                 $('#minimum-badge-engine-size').append('<option value="' + $(this).val() + '" '+selected+'>' + name + '</option>')
             })
             $('#maximum-badge-engine-size').html('')
@@ -722,6 +723,7 @@ margin: -8px 0 0 0;
                     selected = '';
                     name= $(this).text().substr(0,$(this).text().indexOf("("));
                 }
+                if(name != '')
                 $('#maximum-badge-engine-size').append('<option value="' + $(this).val() + '" '+selected+'>' + name + '</option>')
             })
             $('#fuel_consumption').html('<option value="">Any</option>')
@@ -765,12 +767,30 @@ margin: -8px 0 0 0;
                 $('#quantity-of-doors').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('span').text().substr(0,$(this).find('span').text().indexOf("(")) + '('+ door_count +')</option>')
             })
             $('#minimum-seats').html('')
+            var selected = '';
+            var name;
             $('<div>' + data.html1.fields[16].minField.html + '</div>').find('option').each(function (key, value) {
-                $('#minimum-seats').append('<option value="' + $(this).val() + '">' + $(this).text().substr(0,$(this).text().indexOf("("))  + '</option>')
+                if($(this).val() == formData.minimum_seats){
+                    selected = 'selected';
+                    name = formData.minimum_seats;
+                }else{
+                    selected = '';
+                    name= $(this).text().substr(0,$(this).text().indexOf("("));
+                }
+                $('#minimum-seats').append('<option value="' + $(this).val() + '" '+selected +'>' + name  + '</option>')
             })
             $('#maximum-seats').html('')
+            var selected = '';
+            var name;
             $('<div>' + data.html1.fields[16].maxField.html + '</div>').find('option').each(function (key, value) {
-                $('#maximum-seats').append('<option value="' + $(this).val() + '">' + $(this).text().substr(0,$(this).text().indexOf("(")) + '</option>')
+                if($(this).val() == formData.maximum_seats){
+                    selected = 'selected';
+                    name = formData.maximum_seats;
+                }else{
+                    selected = '';
+                    name= $(this).text().substr(0,$(this).text().indexOf("("));
+                }
+                $('#maximum-seats').append('<option value="' + $(this).val() + '" '+selected +'>' + name + '</option>')
             })
             $('#insuranceGroup').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[17].html + '</div>').find('div').each(function (key, value) {
