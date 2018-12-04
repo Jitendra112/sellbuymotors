@@ -181,16 +181,16 @@ margin: -8px 0 0 0;
                                     </div>
                                 </div> 
                                  <div class="col-2 col-sm-2 col-md-2 col-xl-2">
-                                    <label class="c-dark">Engine Size From</label>
+                                    <label class="c-dark">Engine Size To</label>
                                     <div class="form-group">
-                                        <select class="form-control rounded" id="maximum-badge-engine-size">
+                                        <select class="form-control rounded" id="minimum-badge-engine-size">
                                         </select>
                                     </div>
                                 </div> 
                                  <div class="col-2 col-sm-2 col-md-2 col-xl-2">
-                                    <label class="c-dark">Engine Size To</label>
+                                    <label class="c-dark">Engine Size From</label>
                                     <div class="form-group">
-                                        <select class="form-control rounded" id="minimum-badge-engine-size">
+                                        <select class="form-control rounded" id="maximum-badge-engine-size">
                                         </select>
                                     </div>
                                 </div> 
@@ -598,7 +598,7 @@ margin: -8px 0 0 0;
             $('<div>' + data.html1.fields[4].minField.html + '</div>').find('option').each(function (key, value) {
                 if($(this).val() == formData.price_from){
                     selected = 'selected';
-                    name ='€ '+ formData.price_from;
+                    name ='£ '+ formData.price_from;
                 }else{
                     selected = '';
                     name= $(this).text().substr(0,$(this).text().indexOf("("));
@@ -606,24 +606,69 @@ margin: -8px 0 0 0;
                $('#price_from').append('<option value="' + $(this).val() + '" '+selected+'> ' +  name + '</option>')
             })
             $('#price_to').html('')
+            var selected = '';
+            var name;
             $('<div>' + data.html1.fields[4].maxField.html + '</div>').find('option').each(function (key, value) {
-                $('#price_to').append('<option value="' + $(this).val() + '"> ' +  $(this).text().substr(0,$(this).text().indexOf("(")) + '</option>')
+                if($(this).val() == formData.price_to){
+                    selected = 'selected';
+                    name ='£ '+ formData.price_to;
+                }else{
+                    selected = '';
+                    name= $(this).text().substr(0,$(this).text().indexOf("("));
+                }
+                $('#price_to').append('<option value="' + $(this).val() + '" '+selected+'> ' +  name + '</option>')
             })
             $('#year_from').html('')
+            var selected = '';
+            var name;
             $('<div>' + data.html1.fields[5].minField.html + '</div>').find('option').each(function (key, value) {
-                $('#year_from').append('<option value="' + $(this).val() + '">' +  $(this).text().substr(0,$(this).text().indexOf("(")) + '</option>')
+                if($(this).val() == formData.year_from){
+                    selected = 'selected';
+                    name = formData.year_from;
+                }else{
+                    selected = '';
+                    name= $(this).text().substr(0,$(this).text().indexOf("("));
+                }
+                $('#year_from').append('<option value="' + $(this).val() + '" '+selected+'>' +  name + '</option>')
             })
             $('#year_to').html('')
+            var selected = '';
+            var name;
             $('<div>' + data.html1.fields[5].maxField.html + '</div>').find('option').each(function (key, value) {
-                $('#year_to').append('<option value="' + $(this).val() + '">' +  $(this).text().substr(0,$(this).text().indexOf("(")) + '</option>')
+                if($(this).val() == formData.year_to){
+                    selected = 'selected';
+                    name = formData.year_to;
+                }else{
+                    selected = '';
+                    name= $(this).text().substr(0,$(this).text().indexOf("("));
+                }
+                $('#year_to').append('<option value="' + $(this).val() + '" '+selected+'>' + name + '</option>')
             })
             $('#mileage_from').html('')
+            var selected = '';
+            var name;
             $('<div>' + data.html1.fields[6].minField.html + '</div>').find('option').each(function (key, value) {
-                $('#mileage_from').append('<option value="' + $(this).val() + '">' +  $(this).text().substr(0,$(this).text().indexOf("(")) + '</option>')
+                if($(this).val() == formData.mileage_from){
+                    selected = 'selected';
+                    name = formData.mileage_from + ' miles';
+                }else{
+                    selected = '';
+                    name= $(this).text().substr(0,$(this).text().indexOf("("));
+                }
+                $('#mileage_from').append('<option value="' + $(this).val() + '" '+selected+'>' +  name + '</option>')
             })
             $('#mileage_to').html('')
+            var selected = '';
+            var name;
             $('<div>' + data.html1.fields[6].maxField.html + '</div>').find('option').each(function (key, value) {
-                $('#mileage_to').append('<option value="' + $(this).val() + '">' +  $(this).text().substr(0,$(this).text().indexOf("(")) + '</option>')
+                if($(this).val() == formData.mileage_to){
+                    selected = 'selected';
+                    name = formData.mileage_to + ' miles';
+                }else{
+                    selected = '';
+                    name= $(this).text().substr(0,$(this).text().indexOf("("));
+                }
+                $('#mileage_to').append('<option value="' + $(this).val() + '" '+selected+'>' +  name + '</option>')
             })
             $('#body_type').html('<option value="">Any</option>')
             var bodyStyleCount;
@@ -653,13 +698,31 @@ margin: -8px 0 0 0;
                 $('#fuel_type').append('<option value="' + $(this).find('label').data('selected-value') + '">' + $(this).find('label').data('selected-display-name') + '(' + fuelCount + ')</option>')
                 fuelCount = 0;
             })
-            $('#maximum-badge-engine-size').html('')
-            $('<div>' + data.html1.fields[9].maxField.html + '</div>').find('option').each(function (key, value) {
-                $('#maximum-badge-engine-size').append('<option value="' + $(this).val() + '">' + $(this).text().substr(0,$(this).text().indexOf("(")) + '</option>')
-            })
             $('#minimum-badge-engine-size').html('')
+            var selected = '';
+            var name;
+            $('<div>' + data.html1.fields[9].maxField.html + '</div>').find('option').each(function (key, value) {
+                if($(this).val() == formData.minimum_badge_engine_size){
+                    selected = 'selected';
+                    name = formData.minimum_badge_engine_size;
+                }else{
+                    selected = '';
+                    name= $(this).text().substr(0,$(this).text().indexOf("("));
+                }
+                $('#minimum-badge-engine-size').append('<option value="' + $(this).val() + '" '+selected+'>' + name + '</option>')
+            })
+            $('#maximum-badge-engine-size').html('')
+            var selected = '';
+            var name;
             $('<div>' + data.html1.fields[9].minField.html + '</div>').find('option').each(function (key, value) {
-                $('#minimum-badge-engine-size').append('<option value="' + $(this).val() + '">' + $(this).text().substr(0,$(this).text().indexOf("(")) + '</option>')
+                if($(this).val() == formData.maximum_badge_engine_size){
+                    selected = 'selected';
+                    name = formData.maximum_badge_engine_size;
+                }else{
+                    selected = '';
+                    name= $(this).text().substr(0,$(this).text().indexOf("("));
+                }
+                $('#maximum-badge-engine-size').append('<option value="' + $(this).val() + '" '+selected+'>' + name + '</option>')
             })
             $('#fuel_consumption').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[10].html + '</div>').find('div').each(function (key, value) {
