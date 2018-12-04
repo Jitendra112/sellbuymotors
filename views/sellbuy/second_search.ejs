@@ -301,14 +301,15 @@ border: 1px #ccc solid;
                             <p class="mb-0" id="foundCar">Finding</p>
                         </div>
                         <div class="col-12 col-md-7 col-xl-6 text-right">
+                            <p>Sort by:-</p>
                             <div class="d-inline-block pr-md-3 mt-3 mt-md-0">
                                 <div class="selector form-group mb-0 position-relative">
                                     <select class="form-control border-0 pl-4 rounded" id="sort">                                                
                                         <option value="price-asc" data-val="1">Price (Lowest)</option>
                                         <option value="price-desc" data-val="2">Price (Highest)</option>
                                         <option value="distance" data-val="0">Distance</option>
-                                       <!--  <option value="make" data-val="">Make</option>
-                                        <option value="model" data-val="">Model</option> -->
+                                        <option value="make" data-val="" data-val="0">Make</option>
+                                        <option value="model" data-val="" data-val="0">Model</option>
                                         <option selected="selected" value="mileage" data-val="14">Mileage</option>
                                         <option value="year-desc" data-val="16">Age (Newest first)</option>
                                         <!-- <option value="sponsored" data-val="">Sponsored adverts first</option> -->
@@ -478,7 +479,7 @@ border: 1px #ccc solid;
             postal_code: get_postal_code('postal_code'),
             make: get_filter_value('make'),
             model: get_filter_value('model'),
-            radius: get_filter_value('radius'),
+            radius: get_filter_value('radius') == '' ? 1500 : get_filter_value('radius'),
             aggregatedTrim: get_filter_value('aggregatedTrim'),
             onesearchad: get_filter_value('onesearchad'),
             sort: get_filter_value('sort'),
@@ -519,8 +520,12 @@ border: 1px #ccc solid;
             data = data[0]
             $('#ProductShow').html('')
             var image = '';
-            delete data.cars[0]
+            // console.log(data.cars)
+            // delete data.cars[0]
+            // console.log(data.cars)
             $.each(data.cars, function (index, value) {
+                console.log(value.product_id.length + ' --' + value.product_id)
+                if(value.product_id.length == 15){
                 var ab = '';
                 $(' <ul class="list-inline">' + value.listings + '</ul>').find('li').each(function (i, elem) {
                     ab += '<li>' + $.trim($(this).text()) + '</li>';
@@ -548,6 +553,7 @@ border: 1px #ccc solid;
                         '</div>' +
                         '</div>' +
                         '</div>');
+                1}
             });
             $('#foundCar').text(parseInt(data.html1.count.replace('cars found', '').replace(',', '')) + parseInt(result.data.RecordCount) + ' cars found')
             // $('#foundCar').text(data.html1.count + 'auto count  ----- ' + parseInt(result.data.RecordCount) + ' motors count')
