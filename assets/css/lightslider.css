@@ -157,7 +157,7 @@
     display: block;
     top: 50%;
     height: 32px;
-    background-image: url('controls.png');
+    background-image: url('/images/controls.png');
     cursor: pointer;
     position: absolute;
     z-index: 99;
@@ -176,6 +176,13 @@
 .lSAction > .lSNext {
     background-position: -32px 0;
     right: 10px;
+}
+a:not([href]):not([tabindex]), a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
+    /* color: #000; */
+    /* text-decoration: none; */
+    background-color: #003;
+    border-radius: 21%;
+    padding-right: 11px;
 }
 .lSAction > a.disabled {
     pointer-events: none;

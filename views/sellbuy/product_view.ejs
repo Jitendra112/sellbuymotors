@@ -20,6 +20,10 @@
     .demo{
         width: 800px;
     }
+    ul#image-gallery img {
+    width: 100%;
+    height: auto;
+}
 </style>
 
 <section>
@@ -105,7 +109,7 @@
 
                         <div class="tab-pane fade" id="li<%= index %>" role="tabpanel" aria-expanded="true">
                             <div class="border c-brd-light border-top-0">
-                                <div class="card-body pt-5"><p><%= cl.detail %></p>
+                                <div class="card-body pt-5 detaild"><p><%= cl.detail %></p>
                                      </div>
                                  </div>
                              </div>
@@ -165,4 +169,7 @@
                 }  
             });
         });
+          $('#myTabContent2').find('.detaild').each(function(){
+            $(this).html($(this).text())
+         })
     </script>

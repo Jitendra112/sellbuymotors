@@ -653,7 +653,7 @@ app.get('/mot-search', async function (req, res, next) {
 app.get('/motors-filter-search', async function (req, res, next) {
   
     var q = url.parse(req.url, true).query;
-    var make = replaceString(q.make, '%20', '')
+    var make = replaceString(q.make, '+', ' ')
     var makeModel;
     if (make) {
         if (q.model) {
@@ -889,7 +889,6 @@ app.get('/show_product', function (req, res, next) {
                         details: details,
                     }
                     var obj = {'cars': q, 'data': data}
-                    console.log(data.overview)
                     res.render('sellbuy/product_view', {
                         title: 'Search Cars',
                         data: data
@@ -901,27 +900,75 @@ app.get('/show_product', function (req, res, next) {
 })
 
 app.get('/motView', function (req, res, next) {
-     res.locals.udata = req.session.udata;
     var q = url.parse(req.url, true).query;
-    var path = 'https://www.motors.co.uk/car'- + q.id + '/?i=3&m=vdn';
+    var path = 'https://www.motors.co.uk/car-' + q.id + '/?i=3&m=vdn';
+    // var path = 'https://www.motors.co.uk/car-51623111/?i=0&m=srf';
     axios.get(path)
             .then((response) => {
                 if (response.status === 200) {
                     const html = response.data;
                     const $ = cheerio.load(html);
+                    var thumbs = [];
+                    var icons = []
+                    var specs = []
+                    var details = []
+                    var detailsd = []
+                    $(html).find('#dpvGallery').find('li').each(function (i, elem) {
+                        thumbs[i] = {
+                            thumb: replaceString($(this).find('img').attr('src'),'f.jpg','.jpg'),
+                        }
+                    });
+                    $(html).find('.spec__icons').find('li').each(function (i, elem) {
+                      if($(this).find('span.spec__caption').text()){
+                        icons[i] = {
+                            icon: $(this).find('span.icon').attr('class'),
+                            iconval: $(this).find('span.spec__caption').text(),
+                            iconvalue:$(this).find('div').text()
+                        }
+                      }
+                    });
+                    $(html).find('.spec__highlight').find('li').each(function (i, elem) {
+                        specs[i] = {
+                            name: $(this).find('span.highlight__caption').text(),
+                            value: $(this).find('span.highlight__figure').text(),
+                        }
+                    });
+                    $(html).find('.accordion-pane ul li').each(function (i, elem) {
+                      if($(this).find('a').text()){
+                         details[i] = {
+                              detail_heading: $(this).find('a').text(),
+                              id: 'panel-'+$(this).find('a').data('tab'),
+                          }
+                      }
+                    });
+                    $(html).find('.accordion-pane section').each(function (i, elem) {
+                         detailsd[i] = {
+                              detail:  $(this).html(),
+                              id: $(this).attr('id'),
+                          }
+                    });
                     var data = {
 //                        overview: overview,
                         desc: $(html).find("p,vehicle__sub").text(),
-//                        thumbs: thumbs,
-                        title: $(html).find("h1.vehicle__title").text(),
+                       thumbs: thumbs,
+                        title: $(html).find("header h1.vdp-header__vehicle-name").text(),
                         phones: $(html).find("section ul li.cta-button__item order-call").html(),
 //                        phone2: $(html).find(".seller_private__telephone").text(),
                         price: $(html).find("h2.vdp-header__full-price").text(),
 //                        distance: $(html).find(".seller_private__location").text(),
-//                        details: details,
+                       details: details,
+                       detailsd:detailsd,
+                        icons:icons,
+                        specs:specs
                     }
-                    var obj = {'data': data , html : html}
-                     res.end(html)
+                    // var obj = {'data': data }
+                    console.log(data.phones)
+                      res.render('sellbuy/mot_product_view', {
+                          title: 'Search Cars',
+                          data: data
+                      })
+                    //  res.writeHead(200, {'Content-Type': 'application/json'});
+                    // res.end(JSON.stringify(obj));
                 }
             }, (error) => console.log(err));
 })
