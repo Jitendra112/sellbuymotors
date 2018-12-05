@@ -85,7 +85,7 @@ border: 1px #ccc solid;
                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Post Code</label>
                                     <div class="form-group">
-                                        <input type="text" class="form-control rounded" id="postal_code"/>
+                                        <input type="text" class="form-control rounded" id="postal_code" name="postal_code" />
                                     </div>
                                 </div> 
                                  <div class="col-2 col-sm-2 col-md-2 col-xl-2">
@@ -524,7 +524,6 @@ border: 1px #ccc solid;
             // delete data.cars[0]
             // console.log(data.cars)
             $.each(data.cars, function (index, value) {
-                console.log(value.product_id.length + ' --' + value.product_id)
                 if(value.product_id.length == 15){
                 var ab = '';
                 $(' <ul class="list-inline">' + value.listings + '</ul>').find('li').each(function (i, elem) {
@@ -595,10 +594,12 @@ border: 1px #ccc solid;
                 var i = 0
                 var mc = parseInt($(this).find('.count').text().replace(',','').replace('(','').replace(')',''))
                 model_count = mc
-                for (i; i < htmlModels.length; i++) {
-                    if(htmlModels[i].Id){
-                        if (htmlModels[i].Id.replace('Models_','') == $(this).find('.term').text())
-                            model_count = parseInt(htmlModels[i].Counter) + parseInt(mc);
+                if(htmlModels){
+                    for (i; i < htmlModels.length; i++) {
+                        if(htmlModels[i].Id){
+                            if (htmlModels[i].Id.replace('Models_','') == $(this).find('.term').text())
+                                model_count = parseInt(htmlModels[i].Counter) + parseInt(mc);
+                        }
                     }
                 }
                 $('#model').append('<option value="' + $(this).find('.term').text() + '"> ' + $(this).find('.term').text() + '('+model_count+')</option>')
@@ -916,4 +917,5 @@ function get_postal_code(value)
         localStorage.setItem("postal_code", value);
     return value;
 }    
+  $('input[name=postal_code]').val(localStorage.postal_code)
 </script>

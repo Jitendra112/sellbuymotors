@@ -874,7 +874,7 @@ app.get('/show_product', function (req, res, next) {
                     $('section.fpaSpecifications .fpaSpecifications__expandingSection').each(function (i, elem) {
                         details[i] = {
                             detail_heading: $(this).find('h3').text(),
-                            detail:  replaceString($(this).find('.fpaSpecifications__list').text(), '_', ''),
+                            detail:  replaceString($(this).find('.fpaSpecifications__list').html(), '_', ''),
                         }
                     });
                     var data = {
