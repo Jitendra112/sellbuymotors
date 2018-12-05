@@ -30,7 +30,7 @@ section {
 p#foundCar {
     font-weight: 600;
     font-size: 18px;
-    color: #050348;
+    color: #0061c5;
 }
 dd, h1, h2, h3, h4, h5, h6, label {
 margin-bottom: 0;
@@ -40,6 +40,20 @@ margin: -8px 0 0 0;
 }
 .selector {
 border: 1px #ccc solid;
+}
+@media only screen and (max-width: 479px) {
+.momile {
+    max-width: 100% !important;
+    float: left;
+    width: 100% !important;
+    flex: 100%;
+}
+a.navbar-brand img {
+    position: absolute;
+    z-index: 999;
+    top: 1px;
+    width: 18%;
+}
 }
 </style>
 <section>
@@ -82,13 +96,13 @@ border: 1px #ccc solid;
                     <div class="card c-brd-light car-box mb-5">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Post Code</label>
                                     <div class="form-group">
                                         <input type="text" class="form-control rounded" id="postal_code" name="postal_code" />
                                     </div>
                                 </div> 
-                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                 <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Distance(National)</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="radius">
@@ -96,7 +110,7 @@ border: 1px #ccc solid;
                                         </select>
                                     </div>
                                 </div>  
-                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                 <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Make</label>
                                     <div class="form-group">
                                         <select class="form-control" id="make">
@@ -104,21 +118,21 @@ border: 1px #ccc solid;
                                         </select>
                                     </div>
                                 </div> 
-                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                 <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Model</label>
                                     <div class="form-group">
                                         <select class="form-control" id="model">
                                         </select>
                                     </div>
                                 </div> 
-                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                 <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Model Variant</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="aggregatedTrim">
                                         </select>
                                     </div>
                                 </div> 
-                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                 <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Price</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="">
@@ -127,161 +141,161 @@ border: 1px #ccc solid;
                                         </select>
                                     </div>
                                 </div> 
-                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                 <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Price From</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="price_from">
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Price To</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="price_to">
                                         </select>
                                     </div>
                                 </div> 
-                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                 <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Year From</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="year_from">
                                         </select>
                                     </div>
                                 </div> 
-                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                 <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Year To</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="year_to">
                                         </select>
                                     </div>
                                 </div> 
-                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                 <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Mileage From</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="mileage_from">
                                         </select>
                                     </div>
                                 </div> 
-                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                 <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Mileage To</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="mileage_to">
                                         </select>
                                     </div>
                                 </div> 
-                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                 <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Body Type</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="body_type">
                                         </select>
                                     </div>
                                 </div> 
-                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                 <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Fuel Type</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="fuel_type">
                                         </select>
                                     </div>
                                 </div> 
-                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                 <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Engine Size To</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="minimum-badge-engine-size">
                                         </select>
                                     </div>
                                 </div> 
-                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                 <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Engine Size From</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="maximum-badge-engine-size">
                                         </select>
                                     </div>
                                 </div> 
-                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                 <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Fuel Consumption</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="fuel_consumption">
                                         </select>
                                     </div>
                                 </div>
-                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                 <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Acceleration</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="zero-to-60">
                                         </select>
                                     </div>
                                 </div> 
-                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                 <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Gearbox</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="transmission">
                                         </select>
                                     </div>
                                 </div> 
-                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                 <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Drivetrain</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="drivetrain">
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Co 2 Emission</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="co2-emissions-cars">
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Doors</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="quantity-of-doors">
                                         </select>
                                     </div>
                                 </div> 
-                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                 <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Min Seats</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="minimum-seats">
                                         </select>
                                     </div>
                                 </div> 
-                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                 <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Max Seats</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="maximum-seats">
                                         </select>
                                     </div>
                                 </div> 
-                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                 <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">InsuranceGroup</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="insuranceGroup">
                                         </select>
                                     </div>
                                 </div> 
-                                <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Annual Tax</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="annual-tax-cars">
                                         </select>
                                     </div>
                                 </div> 
-                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                 <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Colour</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="colour">
                                         </select>
                                     </div>
                                 </div> 
-                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                 <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="c-dark">Private & Trade</label>
                                     <div class="form-group">
                                         <select class="form-control rounded" id="seller-type">
                                         </select>
                                     </div>
                                 </div> 
-                                 <div class="col-2 col-sm-2 col-md-2 col-xl-2">
+                                 <div class="momile col-2 col-sm-2 col-md-2 col-xl-2">
                                     <label class="mb-4"></label>
                                     <div class="form-group mb-0">
                                         <a href="#" class="btn btn-primary btn-md btn-block text-uppercase">Search</a>
@@ -301,9 +315,10 @@ border: 1px #ccc solid;
                             <p class="mb-0" id="foundCar">Finding</p>
                         </div>
                         <div class="col-12 col-md-7 col-xl-6 text-right">
-                            <p>Sort by:-</p>
-                            <div class="d-inline-block pr-md-3 mt-3 mt-md-0">
-                                <div class="selector form-group mb-0 position-relative">
+                           
+                            <div class="momile d-inline-block pr-md-3 mt-3 mt-md-0">
+                                 <p style="text-align: left; margin: 0px; color:#0061c5; font-weight: 600;">Sort by:-</p>
+                                <div style="border: 1px #0061c5 solid !important;" class="selector form-group mb-0 position-relative">
                                     <select class="form-control border-0 pl-4 rounded" id="sort">                                                
                                         <option selected="selected" value="price-asc" data-val="1">Price (Lowest)</option>
                                         <option value="price-desc" data-val="2">Price (Highest)</option>
@@ -317,7 +332,7 @@ border: 1px #ccc solid;
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-5 col-xl-6 align-self-center" id="loading" style="display:none;">
+                        <div class="col-12 col-md-5 col-xl-6 align-self-center" id="loading" style="display:none;top: 31%;right: 33%;">
                             <img src="/images/preloader.gif" style="height:100% ;width:100%"/>
                         </div>
                     </div>
@@ -524,7 +539,7 @@ border: 1px #ccc solid;
             // delete data.cars[0]
             // console.log(data.cars)
             $.each(data.cars, function (index, value) {
-                if(value.product_id.length == 15){
+                // if(value.product_id.length == 15){
                 var ab = '';
                 $(' <ul class="list-inline">' + value.listings + '</ul>').find('li').each(function (i, elem) {
                     ab += '<li>' + $.trim($(this).text()) + '</li>';
@@ -552,7 +567,7 @@ border: 1px #ccc solid;
                         '</div>' +
                         '</div>' +
                         '</div>');
-                1}
+                // }
             });
             $('#foundCar').text(parseInt(data.html1.count.replace('cars found', '').replace(',', '')) + parseInt(result.data.RecordCount) + ' cars found')
             // $('#foundCar').text(data.html1.count + 'auto count  ----- ' + parseInt(result.data.RecordCount) + ' motors count')

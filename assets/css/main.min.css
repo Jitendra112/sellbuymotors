@@ -35,7 +35,7 @@ a {
 
 /*======================== Font Style Css ===============================*/
 h1, h2, h3, h4, h5, h6 {
-  color: #000000;
+  color: #0061c5;
   margin: 0 0 18px;
   line-height: 1;
   font-weight: 500;
@@ -87,7 +87,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /*======================== Background Color Css ===============================*/
 .c-bg-primary {
-  background-color: #ee5624; }
+  background-color: #0061c5; }
 
 .c-bg-light {
   background-color: #f6f6f6; }
@@ -162,16 +162,16 @@ blockquote {
     box-shadow: none !important; }
 
 .btn-primary {
-  background-color: #050348;
-  border-color: #050348;
+  background-color: #0061c5;
+  border-color: #0061c5;
   color: #fff !important; }
   .btn-primary:hover, .btn-primary:active {
     background-color: #050348 !important;
     border-color: #050348 !important; }
 
 .btn-outline-primary {
-  border-color: #050348;
-  color: #050348; }
+  border-color: #0061c5;
+  color: #0061c5; }
   .btn-outline-primary:hover, .btn-outline-primary:active {
     background-color: #050348 !important;
     border-color: #050348 !important;
@@ -367,7 +367,7 @@ textarea.form-control {
   color: #555555; }
 
 .main-header .navbar .navbar-nav .nav-link.active {
-  color: #050348; }
+  color: #0061c5; }
 
 .main-header .navbar .navbar-nav li.dropdown:last-child .dropdown-menu {
   right: 0px;
@@ -483,7 +483,7 @@ section {
 
 .nav-tabs .nav-link.active {
   border-color: #ee5624;
-  background-color: #ee5624;
+  background-color: #0061c5;
   color: #fff; }
   .nav-tabs .nav-link.active:after {
     content: "";
@@ -492,7 +492,7 @@ section {
     right: 0;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
-    border-top: 8px solid #ee5624;
+    border-top: 8px solid #0061c5;
     width: 5px;
     margin: 0 auto;
     bottom: -8px; }
@@ -1166,7 +1166,7 @@ span#myspan {
     right: 90%;
 }
 .c-brd-light {
-    border-color: #ccc !important;
+    border-color: #fff !important;
 }
 .title-products h6 {
     font-size: 14px;
@@ -1210,7 +1210,7 @@ div#image_get {
 .background-image-maker img {
     width: 100%;
     height: auto;
-    border: 2px #050348 solid;
+    border: 2px #0061c5 solid;
 }
 div#image_uplod {
     margin-right: 43%;
@@ -1219,4 +1219,24 @@ div#image_uplod {
 
 div#public {
     padding-top: 9px;
+}
+.fpaSpecificationslistItem {
+    width: 50%;
+    float: left;
+}
+.fpaSpecificationsterm {
+    float: left;
+    width: 50%;
+}
+@media only screen and (max-width: 479px) {
+
+a.navbar-brand img {
+    position: absolute;
+    z-index: 999;
+    top: 1px;
+    width: 18%;
+}
+.demo {
+    width: 100% !important;
+}
 }
