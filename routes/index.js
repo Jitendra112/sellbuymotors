@@ -899,11 +899,11 @@ app.get('/show_product', function (req, res, next) {
             }, (error) => console.log(err));
 })
 
-app.get('/motView', function (req, res, next) {
+app.get('/motView', async function (req, res, next) {
     var q = url.parse(req.url, true).query;
     var path = 'https://www.motors.co.uk/car-' + q.id + '/?i=3&m=vdn';
     // var path = 'https://www.motors.co.uk/car-51623111/?i=0&m=srf';
-    axios.get(path)
+    await axios.get(path)
             .then((response) => {
                 if (response.status === 200) {
                     const html = response.data;
@@ -952,7 +952,7 @@ app.get('/motView', function (req, res, next) {
                         desc: $(html).find("p,vehicle__sub").text(),
                        thumbs: thumbs,
                         title: $(html).find("header h1.vdp-header__vehicle-name").text(),
-                        phones: $(html).find("section ul li.cta-button__item order-call").html(),
+                        phones: '01403 858697',//$(html).find(".cta-button__item").html(),
 //                        phone2: $(html).find(".seller_private__telephone").text(),
                         price: $(html).find("h2.vdp-header__full-price").text(),
 //                        distance: $(html).find(".seller_private__location").text(),
@@ -962,7 +962,7 @@ app.get('/motView', function (req, res, next) {
                         specs:specs
                     }
                     // var obj = {'data': data }
-                    console.log(data.phones)
+                    // console.log(data.phones)
                       res.render('sellbuy/mot_product_view', {
                           title: 'Search Cars',
                           data: data
