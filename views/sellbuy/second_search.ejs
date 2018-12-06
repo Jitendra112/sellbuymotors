@@ -379,6 +379,9 @@ a.navbar-brand img {
     if (!window.location.origin) {
       window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
     }
+    window.addEventListener('beforeunload', function() {
+        alert('dfds')
+    }); 
     var base_url = window.location.origin;
     $('#search_type').text(GetParameterValues('onesearchad') + ' Cars');
     function removeURLParameter(parameter) {
