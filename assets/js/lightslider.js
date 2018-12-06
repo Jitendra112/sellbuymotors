@@ -15,7 +15,7 @@
         easing: 'linear', //'for jquery animation',//
         speed: 400, //ms'
         auto: false,
-        pauseOnHover: false,
+        pauseOnHover: true,
         loop: false,
         slideEndAnimation: true,
         pause: 2000,
