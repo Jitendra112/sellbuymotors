@@ -41,20 +41,6 @@ margin: -8px 0 0 0;
 .selector {
 border: 1px #ccc solid;
 }
-@media only screen and (max-width: 479px) {
-.momile {
-    max-width: 100% !important;
-    float: left;
-    width: 100% !important;
-    flex: 100%;
-}
-a.navbar-brand img {
-    position: absolute;
-    z-index: 999;
-    top: 1px;
-    width: 18%;
-}
-}
 .form-control {
     border: 1px #fff solid;
 }
@@ -73,6 +59,24 @@ a.navbar-brand img {
     padding: 10px 0;
     background: #f8f8f8;
 }
+.background-image-maker.rounded-left.h-283 {
+    border: 1px #0061c5 solid;
+}
+@media only screen and (max-width: 479px) {
+.momile {
+    max-width: 100% !important;
+    float: left;
+    width: 100% !important;
+    flex: 100%;
+}
+a.navbar-brand img {
+    position: absolute;
+    z-index: 999;
+    top: 1px;
+    width: 18%;
+}
+}
+
 </style>
 <section>
     <div class="background-image-maker gradient gradient-lr"></div>
@@ -109,7 +113,7 @@ a.navbar-brand img {
 <section>
     <div class="row">
         <div class="col-md-12">
-            <div class="row">
+            <div class="row" id="focusDiv">
                 <div class="col-12 col-sm-12">
                     <div class="card c-brd-light car-box mb-5">
                         <div class="card-body">
@@ -325,7 +329,7 @@ a.navbar-brand img {
                 </div>
             </div>
         </div>
-        <div class="col-md-12" id="focusDiv">
+        <div class="col-md-12">
             <div class="container">
                 <div class="col-12 col-lg-12">
                     <div class="row mb-4">
