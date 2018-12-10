@@ -972,8 +972,8 @@ app.get('/motView', async function (req, res, next) {
                 }
             }, (error) => console.log(err));
 })
-
-app.get('/privacy_policies', function(req, res, next) {
+ // facebook login
+app.get('/facebook_login', function(req, res, next) {
   res.locals.udata = req.session.udata;
     res.render('sellbuy/privacy_policy', {
         title: 'Add content',

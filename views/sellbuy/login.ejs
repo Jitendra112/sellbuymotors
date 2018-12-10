@@ -215,13 +215,29 @@
       // successful.  See statusChangeCallback() for when this call is made.
       function testAPI() {
         console.log('Welcome!  Fetching your information.... ');
-        FB.api('/me', function(response) {
+        FB.api('/me','GET', {fields: 'first_name,last_name,name,id,email'}, function(response) {
           console.log("Fb response");
           console.log(response);
           console.log('Successful login for: ' + response.name);
+          var id = response.id;
+          var name = response.name;
+          var email = response.email;
+          console.log(email);
         //  console.log('Successful login for: ' + response.id);
-          document.getElementById('status').innerHTML =
-            'Thanks for logging in, ' + response.name + '!';
+          $.get(base_url + '/facebook_login?id=' + id +'&vid=' + name ,function(res){
+                       
+                        if(res.success = 1){
+                        
+                        window.location.href = "http://sellbuymotors.co.uk/sellcar";
+                                        
+                        }else{
+
+
+                          console.log('here')
+
+                        }
+                    },'json');   
+
         });
          
       }
