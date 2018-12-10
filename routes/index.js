@@ -974,11 +974,46 @@ app.get('/motView', async function (req, res, next) {
 })
  // facebook login
 app.get('/facebook_login', function(req, res, next) {
-  res.locals.udata = req.session.udata;
-    res.render('sellbuy/privacy_policy', {
-        title: 'Add content',
-        
-    }) 
+  var query = 'SELECT * FROM  tbl_user where email =  "' + req.query.sid  +  '"';
+
+  //console.log(query);
+  results = await database.query(query, [] );
+
+  if(results.length > 0){
+   console.log(results.length);
+   var sess;
+   sess=req.session;
+   sess.udata;
+   sess.udata = JSON.parse(results);
+   console.log(sess.udata)
+  var query ='Update tbl_user SET facebook_id ="' + req.query.id + '" Where email="' + req.query.sid  +  '"';
+
+  results = await database.query(query, [] );
+  res.writeHead(200, {'Content-Type': 'application/json'});
+  res.end(JSON.stringify({success : 1 , message : 'Login Successfully'}));
+    
+  }else{
+   
+   var query = 'INSERT INTO tbl_user(facebook_id,user_name,email)VALUES("'+ req.query.id +'" ,"'+ req.query.vid +'" ,"' + req.query.sid  +  '")';
+    results = await database.query(query, [] , true );
+   var query = 'SELECT * FROM  tbl_user where email =  "' + req.query.sid  +  '" and facebook_id = "'+ req.query.id+'"';
+    results = await database.query(query, [] );
+
+    if(results.length > 0){
+     console.log(results.length);
+     var sess;
+     sess=req.session;
+     sess.udata;
+     sess.udata = JSON.parse(results);
+  res.writeHead(200, {'Content-Type': 'application/json'});
+  res.end(JSON.stringify({success : 1 , message : 'Login Successfully'}));
+    }else{
+        res.writeHead(200, {'Content-Type': 'application/json'});
+  res.end(JSON.stringify({success : 0 , message : 'error while login'}));
+    }   
+
+  }
+
 })
 
 
