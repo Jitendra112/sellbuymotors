@@ -36,7 +36,7 @@
                         <ul class="list-inline footer-social mb-2">
                             <!-- <li class="list-inline-item"><a href="/google"><i class="fa fa-google-plus pr-3"></i></a></li> -->
                             <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                              <fb:login-button scope="public_profile,email" onlogin="checkLoginState();" onclick="testAPI()">
+                              <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
                               </fb:login-button>
                         </ul>
                        
@@ -172,7 +172,7 @@
         FB.getLoginStatus(function(response) {
           statusChangeCallback(response);
         });
-      }
+     
 
       window.fbAsyncInit = function() {
         FB.init({
@@ -241,6 +241,7 @@
         });
          
       }
+    }
 </script>
 </body>
 </html>
