@@ -182,18 +182,29 @@ function fbLogin() {
     FB.login(function (response) {
         if (response.authResponse) {
             // Get and display the user profile data
-     FB.api('/me', {locale: 'en_US', fields: 'id,first_name,last_name,email,link,gender,locale,picture'},
+            getFbUserData();
+
+        } else {
+            document.getElementById('status').innerHTML = 'User cancelled login or did not fully authorize.';
+        }
+    }, {scope: 'email'});
+}
+
+// Fetch the user profile data from facebook
+function getFbUserData(){
+    FB.api('/me', {locale: 'en_US', fields: 'id,first_name,last_name,email,link,gender,locale,picture'},
     function (response) {
         document.getElementById('fbLink').setAttribute("onclick","fbLogout()");
         document.getElementById('fbLink').innerHTML = 'Logout from Facebook';
         // document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.first_name + '!';
         // document.getElementById('userData').innerHTML = '<p><b>FB ID:</b> '+response.id+'</p><p><b>Name:</b> '+response.first_name+' '+response.last_name+'</p><p><b>Email:</b> '+response.email+'</p><p><b>Gender:</b> '+response.gender+'</p><p><b>Locale:</b> '+response.locale+'</p><p><b>Picture:</b> <img src="'+response.picture.data.url+'"/></p><p><b>FB Profile:</b> <a target="_blank" href="'+response.link+'">click to view profile</a></p>';
+         console.log('got you');
          var id = response.id;
          var email = response.email;
          var name = response.first_name+' '+response.last_name;
-
+           console.log('are you');
           $.get(base_url + '/facebook_login?id=' + id + '&sid=' + email +'&vid=' + name ,function(res){
-                       
+                       console.log('here');
                         if(res.success = 1){
                         
                         window.location.href = "http://sellbuymotors.co.uk/sellcar";
@@ -206,18 +217,8 @@ function fbLogin() {
                         }
                     },'json');   
 
-    });        
-
-        } else {
-            document.getElementById('status').innerHTML = 'User cancelled login or did not fully authorize.';
-        }
-    }, {scope: 'email'});
+    });
 }
-
-// Fetch the user profile data from facebook
-// function getFbUserData(){
- 
-// }
 
 // Logout from facebook
 function fbLogout() {
