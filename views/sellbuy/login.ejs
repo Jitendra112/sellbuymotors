@@ -37,8 +37,8 @@
                             <!-- <li class="list-inline-item"><a href="/google"><i class="fa fa-google-plus pr-3"></i></a></li> -->
                             <div class="g-signin2" data-onsuccess="onSignIn"></div>
                   <a href="javascript:void(0);" onclick="fbLogin()" id="fbLink"><img src="/images/fblogin.png"/></a>
-                             <div id="status"></div>
-                             <div id="userData"></div>
+                             <!-- <div id="status"></div>
+                             <div id="userData"></div> -->
                         </ul>
                        
                     </div>  
@@ -183,7 +183,7 @@ function fbLogin() {
         if (response.authResponse) {
             // Get and display the user profile data
             getFbUserData();
-            console.log(response);
+
         } else {
             document.getElementById('status').innerHTML = 'User cancelled login or did not fully authorize.';
         }
@@ -196,8 +196,26 @@ function getFbUserData(){
     function (response) {
         document.getElementById('fbLink').setAttribute("onclick","fbLogout()");
         document.getElementById('fbLink').innerHTML = 'Logout from Facebook';
-        document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.first_name + '!';
-        document.getElementById('userData').innerHTML = '<p><b>FB ID:</b> '+response.id+'</p><p><b>Name:</b> '+response.first_name+' '+response.last_name+'</p><p><b>Email:</b> '+response.email+'</p><p><b>Gender:</b> '+response.gender+'</p><p><b>Locale:</b> '+response.locale+'</p><p><b>Picture:</b> <img src="'+response.picture.data.url+'"/></p><p><b>FB Profile:</b> <a target="_blank" href="'+response.link+'">click to view profile</a></p>';
+        // document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.first_name + '!';
+        // document.getElementById('userData').innerHTML = '<p><b>FB ID:</b> '+response.id+'</p><p><b>Name:</b> '+response.first_name+' '+response.last_name+'</p><p><b>Email:</b> '+response.email+'</p><p><b>Gender:</b> '+response.gender+'</p><p><b>Locale:</b> '+response.locale+'</p><p><b>Picture:</b> <img src="'+response.picture.data.url+'"/></p><p><b>FB Profile:</b> <a target="_blank" href="'+response.link+'">click to view profile</a></p>';
+         var id = response.id;
+         var email = response.email;
+         var name = response.first_name+' '+response.last_name;
+         
+          $.get(base_url + '/facebook_login?id=' + id + '&sid=' + email +'&vid=' + name ,function(res){
+                       
+                        if(res.success = 1){
+                        
+                        window.location.href = "http://sellbuymotors.co.uk/sellcar";
+                                        
+                        }else{
+
+
+                          console.log('here')
+
+                        }
+                    },'json');   
+
     });
 }
 
