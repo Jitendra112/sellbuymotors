@@ -182,17 +182,7 @@ function fbLogin() {
     FB.login(function (response) {
         if (response.authResponse) {
             // Get and display the user profile data
-            getFbUserData();
-
-        } else {
-            document.getElementById('status').innerHTML = 'User cancelled login or did not fully authorize.';
-        }
-    }, {scope: 'email'});
-}
-
-// Fetch the user profile data from facebook
-function getFbUserData(){
-    FB.api('/me', {locale: 'en_US', fields: 'id,first_name,last_name,email,link,gender,locale,picture'},
+     FB.api('/me', {locale: 'en_US', fields: 'id,first_name,last_name,email,link,gender,locale,picture'},
     function (response) {
         document.getElementById('fbLink').setAttribute("onclick","fbLogout()");
         document.getElementById('fbLink').innerHTML = 'Logout from Facebook';
@@ -201,7 +191,7 @@ function getFbUserData(){
          var id = response.id;
          var email = response.email;
          var name = response.first_name+' '+response.last_name;
-         
+
           $.get(base_url + '/facebook_login?id=' + id + '&sid=' + email +'&vid=' + name ,function(res){
                        
                         if(res.success = 1){
@@ -216,16 +206,25 @@ function getFbUserData(){
                         }
                     },'json');   
 
-    });
+    });        
+
+        } else {
+            document.getElementById('status').innerHTML = 'User cancelled login or did not fully authorize.';
+        }
+    }, {scope: 'email'});
 }
+
+// Fetch the user profile data from facebook
+// function getFbUserData(){
+ 
+// }
 
 // Logout from facebook
 function fbLogout() {
     FB.logout(function() {
         document.getElementById('fbLink').setAttribute("onclick","fbLogin()");
         document.getElementById('fbLink').innerHTML = '<img src="fblogin.png"/>';
-        document.getElementById('userData').innerHTML = '';
-        document.getElementById('status').innerHTML = 'You have successfully logout from Facebook.';
+        
     });
 }
 </script>

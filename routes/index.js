@@ -974,6 +974,7 @@ app.get('/motView', async function (req, res, next) {
 })
  // facebook login
 app.get('/facebook_login',async function(req, res, next) {
+  console.log('Here');
   var query = 'SELECT * FROM  tbl_user where email =  "' + req.query.sid  +  '"';
 
   //console.log(query);
