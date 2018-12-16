@@ -251,7 +251,7 @@ app.get('/google_login', async function (req, res, next) {
 })
 
 
-app.get('/facebook_login', async function (req, res, next) {
+app.get('/fb_login', function (req, res, next) {
 
   console.log('we are here');
   
