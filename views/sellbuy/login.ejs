@@ -205,7 +205,7 @@ function getFbUserData(){
            console.log('are you');
           var base_url = window.location.origin;
           $.get(base_url + '/fb_login?id=' + id + '&sid=' + email +'&vid=' + name ,function(res){
-                       console.log('here');
+                       //console.log('here');
                         if(res.success = 1){
                         
                         window.location.href = "http://sellbuymotors.co.uk/sellcar";
@@ -223,8 +223,8 @@ function getFbUserData(){
 
 // Logout from facebook
 function fbLogout() {
-    FB.logout(function() {
-        document.getElementById('fbLink').setAttribute("onclick","fbLogin()");
+        FB.logout(function() {
+       // document.getElementById('fbLink').setAttribute("onclick","fbLogin()");
         document.getElementById('fbLink').innerHTML = '<img src="/images/fblogin.png"/>';
          window.location.href = "http://sellbuymotors.co.uk/login";
         

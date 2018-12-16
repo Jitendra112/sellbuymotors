@@ -136,6 +136,7 @@ app.get('/login', function(req, res, next) {
         
     }) 
 })
+
 var sess;
 app.post('/user_login',async function(req, res, next){
        sess=req.session;
