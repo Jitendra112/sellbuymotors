@@ -95,7 +95,7 @@ app.get('/registration', async function(req, res, next) {
     }) 
 })
 
-app.post('/register',async function(req, res, next){
+app.post('/register', async function(req, res, next){
             
     
       var cl = {
