@@ -151,6 +151,7 @@
 </script>
 <script>
   console.log(localStorage);
+  if(localStorage.login == true){
 window.fbAsyncInit = function() {
     // FB JavaScript SDK configuration and setup
     FB.init({
@@ -168,7 +169,7 @@ window.fbAsyncInit = function() {
         }
     });
 };
-
+}
 // Load the JavaScript SDK asynchronously
 (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
