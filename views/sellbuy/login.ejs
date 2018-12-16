@@ -207,7 +207,8 @@ function getFbUserData(){
           $.get(base_url + '/fb_login?id=' + id + '&sid=' + email +'&vid=' + name ,function(res){
                        //console.log('here');
                         if(res.success = 1){
-                        
+                        var store = localStorage.setItem("login", true);
+                        console.log(store);
                         window.location.href = "http://sellbuymotors.co.uk/sellcar";
                                         
                         }else{
