@@ -218,7 +218,7 @@ app.get('/google_login', async function (req, res, next) {
    sess=req.session;
    sess.udata;
    sess.udata = JSON.parse(results);
-   console.log(sess.udata)
+   ///console.log(sess.udata)
   var query ='Update tbl_user SET google_id ="' + req.query.id + '" Where email="' + req.query.sid  +  '"';
 
   results = await database.query(query, [] );
@@ -253,20 +253,20 @@ app.get('/google_login', async function (req, res, next) {
 
 app.get('/fb_login', async function (req, res, next) {
 
-   console.log('we are here');
+  // console.log('we are here');
   
    var query = 'SELECT * FROM  tbl_user where email =  "' + req.query.sid  +  '"';
 
   //console.log(query);
    results = await database.query(query, [] );
-   console.log(results);
+  // console.log(results);
    if(results.length > 0){
    console.log(results.length);
    var sess;
    sess=req.session;
    sess.udata;
    sess.udata = JSON.parse(results);
-   console.log(sess.udata)
+  // console.log(sess.udata)
    var query ='Update tbl_user SET facebook_id ="' + req.query.id + '" Where email="' + req.query.sid  +  '"';
 
    results = await database.query(query, [] );
@@ -281,7 +281,7 @@ app.get('/fb_login', async function (req, res, next) {
     results = await database.query(query, [] );
 
     if(results.length > 0){
-     console.log(results.length);
+    // console.log(results.length);
      var sess;
      sess=req.session;
      sess.udata;

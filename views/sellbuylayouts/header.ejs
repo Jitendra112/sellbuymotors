@@ -39,7 +39,7 @@
                                    <div class="top-right">
                                        <ul class="list-inline mb-0 no-border">
                                         <% if(locals.udata) { %>
-                                           <li class="list-inline-item"><i class="fa fa-user pr-1"></i> <a href="#/" class="c-primary login_form"><%= locals.udata[0].user_name %></a> | <a href="/logout" class="register_form c-primary" onclick="signOut();" >Logout </a></li>
+                                           <li class="list-inline-item"><i class="fa fa-user pr-1"></i> <a href="#/" class="c-primary login_form"><%= locals.udata[0].user_name %></a> | <a href="/logout" class="register_form c-primary" onclick="signOut(), fbLogout()">Logout </a></li>
                                           <% } else { %>
                                             <li class="list-inline-item"><i class="fa fa-user pr-1"></i> <a href="/login" class="c-primary login_form"> Login </a> Or <a href="/registration" class="register_form c-primary"> Register </a></li>
                                           <% } %>
