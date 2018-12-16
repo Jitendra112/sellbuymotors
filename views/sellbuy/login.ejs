@@ -204,7 +204,7 @@ function getFbUserData(){
          var name = response.first_name+' '+response.last_name;
            console.log('are you');
           var base_url = window.location.origin;
-          $.post(base_url + '/facebook_login?id=' + id + '&sid=' + email +'&vid=' + name ,function(res){
+          $.get(base_url + '/facebook_login?id=' + id + '&sid=' + email +'&vid=' + name ,function(res){
                        console.log('here');
                         if(res.success = 1){
                         
