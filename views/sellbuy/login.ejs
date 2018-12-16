@@ -224,7 +224,7 @@ function getFbUserData(){
 // Logout from facebook
 function fbLogout() {
         FB.logout(function() {
-       // document.getElementById('fbLink').setAttribute("onclick","fbLogin()");
+        document.getElementById('fbLink').setAttribute("onclick","fbLogin()");
         document.getElementById('fbLink').innerHTML = '<img src="/images/fblogin.png"/>';
          window.location.href = "http://sellbuymotors.co.uk/login";
         
