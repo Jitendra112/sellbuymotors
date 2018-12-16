@@ -225,7 +225,7 @@ function getFbUserData(){
 function fbLogout() {
     FB.logout(function() {
         document.getElementById('fbLink').setAttribute("onclick","fbLogin()");
-        document.getElementById('fbLink').innerHTML = '<img src="fblogin.png"/>';
+        document.getElementById('fbLink').innerHTML = '<img src="/images/fblogin.png"/>';
         
     });
 }
