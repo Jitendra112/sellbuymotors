@@ -36,7 +36,7 @@
                         <ul class="list-inline footer-social mb-2">
                             <!-- <li class="list-inline-item"><a href="/google"><i class="fa fa-google-plus pr-3"></i></a></li> -->
                             <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                  <a href="javascript:void(0);" onclick="fbLogin()" id="fbLink"><img src="/images/fblogin.png"/></a>
+                           <a href="javascript:void(0);" onclick="fbLogin()" id="fbLink"><img src="/images/fblogin.png"/></a>
                              <!-- <div id="status"></div>
                              <div id="userData"></div> -->
                         </ul>
@@ -222,14 +222,7 @@ function getFbUserData(){
 }
 
 // Logout from facebook
-function fbLogout() {
-        FB.logout(function() {
-        document.getElementById('fbLink').setAttribute("onclick","fbLogin()");
-        document.getElementById('fbLink').innerHTML = '<img src="/images/fblogin.png"/>';
-         window.location.href = "http://sellbuymotors.co.uk/login";
-        
-    });
-}
+
 </script>
 </body>
 </html>

@@ -88,3 +88,14 @@
                        </nav>
                    </div>
                </header>
+ <script src="js/jquery-3.3.1.min.js"></script>
+ <script>
+   function fbLogout() {
+        FB.logout(function() {
+        document.getElementById('fbLink').setAttribute("onclick","fbLogin()");
+        document.getElementById('fbLink').innerHTML = '<img src="/images/fblogin.png"/>';
+         window.location.href = "http://sellbuymotors.co.uk/login";
+        
+    });
+}
+ </script>
