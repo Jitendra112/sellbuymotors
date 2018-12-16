@@ -150,8 +150,6 @@
 
 </script>
 <script>
-  console.log(localStorage);
-  if(localStorage.login == true){
 window.fbAsyncInit = function() {
     // FB JavaScript SDK configuration and setup
     FB.init({
@@ -169,7 +167,7 @@ window.fbAsyncInit = function() {
         }
     });
 };
-}
+
 // Load the JavaScript SDK asynchronously
 (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -209,7 +207,7 @@ function getFbUserData(){
           $.get(base_url + '/fb_login?id=' + id + '&sid=' + email +'&vid=' + name ,function(res){
                        //console.log('here');
                         if(res.success = 1){
-
+                          
                        localStorage.setItem("login", true);
 
                         window.location.href = "http://sellbuymotors.co.uk/sellcar";
@@ -226,14 +224,7 @@ function getFbUserData(){
 }
 
 // Logout from facebook
-function fbLogout() {
-        FB.logout(function() {
-        //document.getElementById('fbLink').setAttribute("onclick","fbLogin()");
-        document.getElementById('fbLink').innerHTML = '<img src="/images/fblogin.png"/>';
-         window.location.href = "http://sellbuymotors.co.uk/login";
-        
-    });
-}
+
 </script>
 </body>
 </html>
