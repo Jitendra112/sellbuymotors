@@ -275,7 +275,7 @@ app.get('/fb_login', async function (req, res, next) {
     
    }else{
    
-    var query = 'INSERT INTO tbl_user(facebook_id,user_name,email)VALUES("'+ req.query.id +'" , "'+ req.query.vid +'" ,"' + req.query.sid  +  '")';
+    var query = 'INSERT INTO tbl_user(facebook_id,user_name,email)VALUES("'+ req.query.id +'" , "'+ req.query.vid +'" , "' + req.query.sid  +  '")';
     results = await database.query(query, [] , true );
     var query = 'SELECT * FROM  tbl_user where email =  "' + req.query.sid  +  '" and facebook_id = "'+ req.query.id+'"';
     results = await database.query(query, [] );
