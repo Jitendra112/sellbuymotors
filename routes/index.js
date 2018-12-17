@@ -325,10 +325,21 @@ app.get('/mycars',async function(req, res, next) {
     var alldata = JSON.parse(newdata);
     var query = 'SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id where tbl_cars_images.user_id ="' + alldata[0].id + '" GROUP BY tbl_cars_images.product_id';
     results = await database.query(query, [] );
-              res.render('sellbuy/my_cars', {
+   // console.log(results.length)
+       if(results.length > 0){
+                  res.render('sellbuy/my_cars', {
                   title: 'Add content',
                   data: JSON.parse(results)
               })
+
+            }else{
+   
+                res.render('sellbuy/cars', {
+                  title: 'Add content',
+                
+
+               })
+            }
 })
 
 

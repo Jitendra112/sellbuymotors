@@ -63,8 +63,9 @@
  <%- include ../sellbuylayouts/footer.ejs %>
    
     <script src="js/jquery-3.3.1.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
      <script>
-   
+      var base_url = window.location.origin;
      $(document).on('submit','#myform',function(e){
        // alert('ok');
                     e.preventDefault();
@@ -103,15 +104,18 @@
                         contentType:false,
                         processData:false,                      
                         success:function(data){
-                         //  alert(data)
-                            alert(data.message);
-                            window.location.href = "http://sellbuymotors.co.uk/login";
-                        },
-                        error:function(data){
+                         if(data.success == 1){
+                             toastr.success(data.message);
+                             window.setTimeout(function() {
+                             window.location.href = base_url + '/login';
+                                   }, 1000);
+                           
+                        }else{
                             
-                            alert(data.message);
-                            location.reload();
-                        }
+                            toastr.error(data.message);
+                           
+                        }},
+
                     },'json');
                  }
                  
