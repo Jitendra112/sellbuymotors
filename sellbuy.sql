@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 28, 2018 at 10:35 PM
+-- Generation Time: Dec 17, 2018 at 06:25 PM
 -- Server version: 5.7.24-0ubuntu0.18.04.1
 -- PHP Version: 7.0.32-0ubuntu0.16.04.1
 
@@ -28,10 +28,28 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tbl_cars_images` (
   `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `product_id` int(11) DEFAULT NULL,
   `image_name` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_cars_images`
+--
+
+INSERT INTO `tbl_cars_images` (`id`, `user_id`, `product_id`, `image_name`, `created_at`) VALUES
+(55, 8, 30, 'IMG_1543645645173', '2018-12-01 06:27:25'),
+(56, 8, 30, 'IMG_1543645649902', '2018-12-01 06:27:29'),
+(57, 8, 30, 'IMG_1543645655727', '2018-12-01 06:27:35'),
+(58, 8, 31, 'IMG_1543647180521', '2018-12-01 06:53:00'),
+(59, 8, 31, 'IMG_1543647257063', '2018-12-01 06:54:17'),
+(60, 8, 32, 'IMG_1544087797308', '2018-12-06 09:16:37'),
+(61, 8, 33, 'IMG_1545024567253', '2018-12-17 05:29:27'),
+(62, 8, 33, 'IMG_1545024576123', '2018-12-17 05:29:36'),
+(63, 8, 33, 'IMG_1545024583355', '2018-12-17 05:29:43'),
+(64, 8, 34, 'IMG_1545024750721', '2018-12-17 05:32:30'),
+(65, 8, 34, 'IMG_1545024759007', '2018-12-17 05:32:39');
 
 -- --------------------------------------------------------
 
@@ -326,9 +344,24 @@ CREATE TABLE `tbl_products` (
   `annual_tax` varchar(20) NOT NULL,
   `private_trade` varchar(30) NOT NULL,
   `owner` varchar(30) NOT NULL,
+  `car_type` varchar(50) NOT NULL,
   `price_expectation` varchar(20) NOT NULL,
+  `car_description` varchar(1500) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_products`
+--
+
+INSERT INTO `tbl_products` (`id`, `make_year`, `mileage`, `make`, `model`, `variant`, `color`, `body_type`, `fuel_type`, `engine_size`, `fuel_consumption`, `acceleration`, `gear_box`, `drive_train`, `co2_emission`, `doors`, `seats`, `insurance_group`, `annual_tax`, `private_trade`, `owner`, `car_type`, `price_expectation`, `car_description`, `created_at`) VALUES
+(30, '2016', '60000', 'Chrysler', '300C', 'Black and Red', 'Maroon', 'MPV', 'Hybrid – Petrol&#x2F;Electric', '1.8', '30+ mpg', '12s+ (0-60mph)', 'Semi-Automatic', 'Front Wheel Drive', 'Up to 75 g &#x2F; km CO2', '3 doors', '13 Seats', 'Up to 30', 'Up to €185', 'Private adverts', 'first owner', '', '10,00,000', 'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from &quot;de Finibus Bonorum et Malorum&quot; by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.', '2018-12-01 06:27:16'),
+(31, '2016', '45000', 'Audi', '100', 'Amplified Edition', 'Blue', 'Hatchback', 'Diesel', '3.0', '40+ mpg', '0-8s (0-60mph)', 'Semi-Automatic', 'Four Wheel Drive', 'Up to 130 g &#x2F; km CO2', '2 doors', '4 Seats', 'Up to 30', 'Up to €30', 'Private adverts', 'first owner', '', '10,00,000', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don&#x27;t look even slightly believable.', '2018-12-01 06:52:38'),
+(32, '1961', '45000', 'Bentley', '4.25 Litre', 'Mulliner', 'Maroon', 'Coupe', 'Electric', '1.4', '30+ mpg', '8-12s (0-60mph)', 'Automatic', 'All Wheel Drive', 'Up to 175 g &#x2F; km CO2', '2 doors', '10 Seats', 'Up to 10', 'Up to €185', 'Trade adverts', 'first owner', '', '12,50,000', '', '2018-12-06 09:16:03'),
+(33, '1965', '40000', 'Aston Martin', 'Cygnet', 'AMR', 'Blue', 'Pickup', 'Petrol', '1.9', '40+ mpg', '8-12s (0-60mph)', 'Manual', 'All Wheel Drive', 'Up to 110 g &#x2F; km CO2', '4 doors', '6 Seats', 'Up to 20', 'Up to €30', 'Private adverts', 'first owner', 'car', '10,00,000', 'car', '2018-12-17 05:28:04'),
+(34, '1965', '5000', 'Ariel', 'Atom', 'Unlisted', 'Blue', 'Coupe', 'Hybrid – Diesel&#x2F;Electric', '1.6', '60+ mpg', '8-12s (0-60mph)', 'Manual', 'All Wheel Drive', 'Up to 120 g &#x2F; km CO2', '3 doors', '5 Seats', 'Up to 20', 'Up to €145', 'Private adverts', 'first owner', 'car', '10,00,000', 'wqwedwqewqewqe', '2018-12-17 05:32:20'),
+(35, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '12,50,000', '', '2018-12-17 10:52:43'),
+(36, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '12,50,000', '', '2018-12-17 12:18:28');
 
 -- --------------------------------------------------------
 
@@ -4450,7 +4483,7 @@ CREATE TABLE `tbl_user` (
   `id` int(11) NOT NULL,
   `user_name` varchar(100) DEFAULT NULL,
   `google_id` varchar(50) DEFAULT NULL,
-  `facebook_id` int(50) DEFAULT NULL,
+  `facebook_id` varchar(50) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(100) DEFAULT NULL,
   `country_id` int(11) DEFAULT NULL,
@@ -4512,7 +4545,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_cars_images`
 --
 ALTER TABLE `tbl_cars_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 --
 -- AUTO_INCREMENT for table `tbl_countries`
 --
@@ -4522,7 +4555,7 @@ ALTER TABLE `tbl_countries`
 -- AUTO_INCREMENT for table `tbl_products`
 --
 ALTER TABLE `tbl_products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT for table `tbl_states`
 --
