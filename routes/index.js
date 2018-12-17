@@ -12,6 +12,8 @@ let fs = require('fs');
 var url = require('url')
 var request = require('request');
 var lowerCase = require('lower-case')
+var api = require('car-registration-api-uk');
+
 
 app.get('/', function(req, res, next) {
      res.locals.udata = req.session.udata;
@@ -21,6 +23,14 @@ app.get('/', function(req, res, next) {
         }) 
 })
 
+
+app.get('/getcars',function(req, res, next) {
+  console.log(req.query.car);
+api.CheckCarRegistrationUK(req.query.car ,"Kuldeep",function(data){
+   console.log(data);
+    res.send(data); 
+});
+});
 
 app.post('/uploads', async function(req, res, next){
 
@@ -376,8 +386,9 @@ app.post('/save_post',async function(req, res, next){
                                annual_tax: req.sanitize('annual_tax').escape().trim(),
                                 private_trade: req.sanitize('private_trade').escape().trim(),
                                  owner: req.sanitize('owner').escape().trim(),
-                                  price_expectation: req.sanitize('price_expect').escape().trim(),
-                                   car_description: req.sanitize('car_desc').escape().trim(),
+                                  car_type: req.sanitize('car_type').escape().trim(),
+                                   price_expectation: req.sanitize('price_expect').escape().trim(),
+                                    car_description: req.sanitize('car_desc').escape().trim(),
              
         }
 

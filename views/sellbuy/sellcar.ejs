@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-sm-12 justify-content-center text-center">
-                <h1 class="text-white c-font-weight-700">Sell car</h1>
+                <h1 class="text-white c-font-weight-700">Sell Car</h1>
             </div>
         </div>
     </div>
@@ -22,7 +22,7 @@
             <div class="col-10 col-sm-5 col-lg-3 text-center">
                 <ol class="breadcrumb justify-content-center mb-0 c-bg-primary text-white py-3 position-relative">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Sell car</li>
+                    <li class="breadcrumb-item active">Sell Car</li>
                 </ol>
             </div>
         </div>
@@ -89,6 +89,24 @@
                     <div class="card-body">
                          <form id="my_post" action="/save_post" method="post">
                         <div class="row">
+                              <div class="col-12 col-sm-6 col-lg-4">
+                                <label class="c-dark">Search Car</label>
+                                <div class="form-group">
+                                    <input  class="form-control rounded" name="name" id="name" type="text" placeholder="Enter Car No." />
+                                       
+                                </div>
+                            </div>
+                               <div class="col-12 col-sm-6 col-lg-4">
+                                <label class="c-dark">Type</label>
+                                <div class="form-group">
+                                    <select class="form-control rounded" name="car_type">
+                                        <option value="" selected="selected">(Any)</option>
+                                        <option value="car">Car</option>
+                                        <option value="van">Van</option>
+                                       
+                                    </select>
+                                </div>
+                            </div>
                             <div class="col-12 col-sm-6 col-lg-4">
                                
                                 <label class="c-dark">Make Year</label>
@@ -195,7 +213,7 @@
                             <div class="col-12 col-sm-6 col-lg-4">
                                 <label class="c-dark">Colour</label>
                                 <div class="form-group">
-                                    <select class="form-control rounded" name="color">
+                                    <select class="form-control rounded" name="color" id="colour">
 
                                         <option value="" selected="selected">(Any)</option>
 
@@ -253,7 +271,7 @@
                             <div class="col-12 col-sm-6 col-lg-4">
                                 <label class="c-dark">Body type</label>
                                 <div class="form-group">
-                                    <select class="form-control rounded" name="body_type">
+                                    <select class="form-control rounded" name="body_type" id="body_type">
 
                                        <option value="" selected="selected">(Any)</option>
 
@@ -280,7 +298,7 @@
                             <div class="col-12 col-sm-6 col-lg-4">
                                 <label class="c-dark">Fuel Type</label>
                                 <div class="form-group">
-                                    <select class="form-control rounded" name="fuel_type">
+                                    <select class="form-control rounded" name="fuel_type" id="fuel_type">
 
                                         <option value="" selected="selected">(Any)</option>
 
@@ -400,7 +418,7 @@
                              <div class="col-12 col-sm-6 col-lg-4">
                                 <label class="c-dark">Gearbox</label>
                                 <div class="form-group">
-                                    <select class="form-control rounded" name="gearbox">
+                                    <select class="form-control rounded" name="gearbox" id="trans_type">
 
                                         <option value="" selected="selected">(Any)</option>
 
@@ -474,23 +492,23 @@
                              <div class="col-12 col-sm-6 col-lg-4">
                                 <label class="c-dark">Doors</label>
                                 <div class="form-group">
-                                    <select class="form-control rounded" name="doors">
+                                    <select class="form-control rounded" name="doors" id="doors">
 
                                         <option value="" selected="selected">(Any)</option>
 
-                                        <option value="0 doors">0 doors</option>
+                                        <option value="0DR">0DR</option>
                 
-                                        <option value="2 doors">2 doors</option>
+                                        <option value="2DR">2DR</option>
                 
-                                        <option value="3 doors">3 doors</option>
+                                        <option value="3DR">3DR</option>
                 
-                                        <option value="4 doors">4 doors</option>
+                                        <option value="4DR">4DR</option>
 
-                                        <option value="5 doors">5 doors</option>
+                                        <option value="5DR">5DR</option>
                 
-                                        <option value="6 doors">6 doors</option>
+                                        <option value="6DR">6DR</option>
                 
-                                        <option value="7 doors">7 doors</option>
+                                        <option value="7DR">7DR</option>
                                       
                 
                                     </select>
@@ -499,38 +517,38 @@
                              <div class="col-12 col-sm-6 col-lg-4">
                                 <label class="c-dark">Seats</label>
                                 <div class="form-group">
-                                    <select class="form-control rounded" name="seats">
+                                    <select class="form-control rounded" name="seats" id="seats">
 
                                         
                                         <option value="" selected="selected">(Any)</option>
                 
-                                        <option value="1 Seats">1</option>
+                                        <option value="1">1</option>
                 
-                                        <option value="2 Seats">2</option>
+                                        <option value="2">2</option>
                 
-                                        <option value="3 Seats">3</option>
+                                        <option value="3">3</option>
                 
-                                        <option value="4 Seats">4</option>
+                                        <option value="4">4</option>
                 
-                                        <option value="5 Seats">5</option>
+                                        <option value="5">5</option>
                 
-                                        <option value="6 Seats">6</option>
+                                        <option value="6">6</option>
                 
-                                        <option value="7 Seats">7</option>
+                                        <option value="7">7</option>
                 
-                                        <option value="8 Seats">8</option>
+                                        <option value="8">8</option>
                 
-                                        <option value="9 Seats">9</option>
+                                        <option value="9">9</option>
                 
-                                        <option value="10 Seats">10</option>
+                                        <option value="10">10</option>
                  
-                                        <option value="11 Seats">11</option>
+                                        <option value="11">11</option>
                 
-                                        <option value="12 Seats">12</option>
+                                        <option value="12">12</option>
                 
-                                        <option value="13 Seats">13</option>
+                                        <option value="13">13</option>
                 
-                                        <option value="16 Seats">16</option>
+                                        <option value="16">16</option>
                                       
                 
                                     </select>
@@ -539,18 +557,18 @@
                               <div class="col-12 col-sm-6 col-lg-4">
                                 <label class="c-dark">Insurance Group</label>
                                 <div class="form-group">
-                                    <select class="form-control rounded" name="insurance_group">
+                                    <select class="form-control rounded" name="insurance_group" id="insurance_group">
 
                                         
                                         <option value="" selected="selected">(Any)</option>
                 
-                                        <option value="Up to 10">Up to 10</option>
+                                        <option value="10">Up to 10</option>
                 
-                                        <option value="Up to 20">Up to 20</option>
+                                        <option value="20">Up to 20</option>
                 
-                                        <option value="Up to 30">Up to 30</option>
+                                        <option value="30">Up to 30</option>
                 
-                                        <option value="Up to 40">Up to 40</option>
+                                        <option value="40">Up to 40</option>
                 
                 
                                     </select>
@@ -621,6 +639,7 @@
                                     </select>
                                 </div>
                             </div> 
+                            
                             <div class="col-12 col-sm-6 col-lg-4">
                                 <label class="c-dark">Price Expectation</label>
                                 <div class="form-group position-relative">
@@ -633,20 +652,19 @@
                                         <option value="5,00,000">e.g. 5,00,000</option>
                                     </select>
                                     <small>Twelve Lakh Fifty Thousand Dollar Only</small>
-                                    <div class="price position-absolute c-dark"><i class="fa fa-euro"></i></div>
+                                    <div class="price position-absolute c-dark"><span>&#163;</span></div>
                                 </div>
-                            </div>
+                            </div><br><br>
                               <div class="col-12 col-lg-8">
                                  <label class="c-dark">Car Description</label>
                                 <div class='row'>
                                      <div class='col-12 col-lg-6 col-xl-7  mb-3 mb-lg-0'>
-                                       <textarea name="car_desc" rows="3" cols="149"></textarea>
+                                       <textarea name="car_desc" rows="2" cols="97"></textarea>
                                     </div>
                                    
                                     
                                 </div>
                             </div>
-                         
                        
                            
                             <div class="col-12 col-sm-4 col-lg-2 ml-auto mt-3 mt-sm-0">
@@ -731,5 +749,76 @@ $(document).on('change','#formmake' , function(){
     })
      show_make();
 </script>
+ <script>
+      $(document).on('blur','#name',function(e){
+  
+      var car_detail = $('#name').val();
+      // console.log(car_detail);
+      var base_url = window.location.origin;
+
+       $.get(base_url + '/getcars?car='+ car_detail , function(res){
+        
+        console.log(res.CarMake.CurrentTextValue.toLowerCase())
+
+          const nameCapitalized = res.CarMake.CurrentTextValue.toLowerCase().charAt(0).toUpperCase() + res.CarMake.CurrentTextValue.toLowerCase().slice(1)
+           setTimeout(func, 5000);
+           function func() {
+           $('#formmake').val(nameCapitalized);
+
+          }
+
+          
+        
+
+
+    
+
+         const colourCapitalized = res.Colour.toLowerCase().charAt(0).toUpperCase() + res.Colour.toLowerCase().slice(1)
+     
+          $('#colour').val(colourCapitalized);
+
  
+       
+
+          const fuelCapitalized = res.FuelType.CurrentTextValue
+         
+          $('#fuel_type').val(fuelCapitalized);
+
+
+        
+       
+
+          const bodyCapitalized = res.BodyStyle.CurrentTextValue
+         
+          $('#body_type').val(bodyCapitalized);
+
+
+         
+
+          const transCapitalized = res.Transmission.CurrentTextValue
+          
+          $('#trans_type').val(transCapitalized);
+
+
+         
+
+          const doorCapitalized = res.NumberOfDoors.CurrentTextValue
+        
+          $('#doors').val(doorCapitalized);
+
+
+          
+
+          const seatCapitalized = res.NumberOfSeats.CurrentTextValue
+         
+          $('#seats').val(seatCapitalized);
+
+
+           const yearCapitalized = res.RegistrationYear
+          $('#make_year').val(yearCapitalized);
+
+
+   });
+    });
+ </script>
    
