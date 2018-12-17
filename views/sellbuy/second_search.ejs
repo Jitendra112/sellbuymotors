@@ -377,12 +377,12 @@ a.navbar-brand img {
 <!-- End List Without Sidebar -->
 <%- include ../sellbuylayouts/footer.ejs %> 
 <script>
-	window.addEventListener("beforeunload", function (e) {
-      var confirmationMessage = "\o/";
+	// window.addEventListener("beforeunload", function (e) {
+ //      var confirmationMessage = "\o/";
 
-      (e || window.event).returnValue = confirmationMessage; //Gecko + IE
-      return confirmationMessage;                            //Webkit, Safari, Chrome
-    });
+ //      (e || window.event).returnValue = confirmationMessage; //Gecko + IE
+ //      return confirmationMessage;                            //Webkit, Safari, Chrome
+ //    });
     if (!window.location.origin) {
       window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
     }
