@@ -65,11 +65,15 @@
 
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
-    
+     
 
-
+ 
 
      <script>
+      protected void Application_BeginRequest(object sender, EventArgs e)
+       {
+    HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin","/user_login");
+       }
    var base_url = window.location.origin;
      $(document).on('submit','#login_form',function(e){
        // alert('ok');
