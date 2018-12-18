@@ -26,7 +26,7 @@ app.get('/', function(req, res, next) {
 
 app.get('/getcars',function(req, res, next) {
   console.log(req.query.car);
-api.CheckCarRegistrationUK(req.query.car ,"Kuldeep",function(data){
+api.CheckCarRegistrationUK(req.query.car ,"jazz",function(data){
    console.log(data);
     res.send(data); 
 });
