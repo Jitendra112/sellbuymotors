@@ -89,11 +89,11 @@
                     }else{ 
                     var formData = new FormData(this);  
                     console.log()                
-                    $.post({
+                    $.ajax({
                         type:'POST',
                         url:$(this).attr('action'),
                         data:formData,
-                        cashe:false,
+                        cache:false,
                         contentType:false,
                         processData:false,                      
                         success:function(data){
