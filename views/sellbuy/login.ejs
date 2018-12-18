@@ -93,10 +93,12 @@
                         type:'POST',
                         url:$(this).attr('action'),
                         data:formData,
-                        cache:false,
+                        async: true,
+                        cache: false,
                         contentType:false,
                         processData:false,  
-                        dataType: "json",                    
+                        dataType: 'json',
+                                         
                         success:function(data){
                          //  alert(data)
                          if(data.success == 1){
