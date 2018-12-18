@@ -98,7 +98,8 @@
                         data:formData,
                         cache:false,
                         contentType:false,
-                        processData:false,                      
+                        processData:false,  
+                        dataType: "json",                    
                         success:function(data){
                          if(data.success == 1){
                              toastr.success(data.message);
