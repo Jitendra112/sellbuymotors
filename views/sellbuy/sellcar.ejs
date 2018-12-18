@@ -89,20 +89,14 @@
                     <div class="card-body">
                          <form id="my_post" action="/save_post" method="post">
                         <div class="row">
-                              <div class="col-12 col-sm-6 col-lg-4">
-                                <label class="c-dark">Search Car</label>
-                                <div class="form-group">
-                                    <input  class="form-control rounded" name="name" id="name" type="text" placeholder="Enter Car No." />
-                                       
-                                </div>
-                            </div>
+                             
                                <div class="col-12 col-sm-6 col-lg-4">
                                 <label class="c-dark">Type</label>
                                 <div class="form-group">
                                     <select class="form-control rounded" name="car_type">
-                                        <option value="" selected="selected">(Any)</option>
-                                        <option value="car">Car</option>
-                                        <option value="van">Van</option>
+                                        <option value="Car" selected="selected">Car</option>
+                                        
+                                       
                                        
                                     </select>
                                 </div>
@@ -749,76 +743,5 @@ $(document).on('change','#formmake' , function(){
     })
      show_make();
 </script>
- <script>
-      $(document).on('blur','#name',function(e){
-  
-      var car_detail = $('#name').val();
-      // console.log(car_detail);
-      var base_url = window.location.origin;
 
-       $.get(base_url + '/getcars?car='+ car_detail , function(res){
-        
-        console.log(res.CarMake.CurrentTextValue.toLowerCase())
-
-          const nameCapitalized = res.CarMake.CurrentTextValue.toLowerCase().charAt(0).toUpperCase() + res.CarMake.CurrentTextValue.toLowerCase().slice(1)
-           setTimeout(func, 5000);
-           function func() {
-           $('#formmake').val(nameCapitalized);
-
-          }
-
-          
-        
-
-
-    
-
-         const colourCapitalized = res.Colour.toLowerCase().charAt(0).toUpperCase() + res.Colour.toLowerCase().slice(1)
-     
-          $('#colour').val(colourCapitalized);
-
- 
-       
-
-          const fuelCapitalized = res.FuelType.CurrentTextValue
-         
-          $('#fuel_type').val(fuelCapitalized);
-
-
-        
-       
-
-          const bodyCapitalized = res.BodyStyle.CurrentTextValue
-         
-          $('#body_type').val(bodyCapitalized);
-
-
-         
-
-          const transCapitalized = res.Transmission.CurrentTextValue
-          
-          $('#trans_type').val(transCapitalized);
-
-
-         
-
-          const doorCapitalized = res.NumberOfDoors.CurrentTextValue
-        
-          $('#doors').val(doorCapitalized);
-
-
-          
-
-          const seatCapitalized = res.NumberOfSeats.CurrentTextValue
-         
-          $('#seats').val(seatCapitalized);
-
-
-           const yearCapitalized = res.RegistrationYear
-          $('#make_year').val(yearCapitalized);
-
-
-   });
-    });
- </script>
    
