@@ -15,31 +15,17 @@
              <input type="text" class="form-control rounded-0" id="user_name" name="user_name" placeholder="Username" />
                     </div>
                     <div class="form-group">
-             <input type="email" class="form-control rounded-0" id="email_address" name="email_address" placeholder="Email Address" />
+             <input type="email" class="form-control rounded-0" id="email_address" name="email_address" placeholder="Email" />
+                    </div>
+                     <div class="form-group">
+             <input type="email" class="form-control rounded-0" id="cemail" name="cemail" placeholder="Confirm Email" />
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control rounded-0" id="password" name="password" placeholder="Password" />
                     </div>
-                     <div class="form-group">
-                        <select  class="form-control rounded-0" id="country" name="country">
-                          
-                          <option value="">Choose Country</option>
-                           <% if (locals.data) { %>
-                           <% locals.data.forEach(function(cl){%>
-                           <option value="<%= cl.id %>"><%= cl.name %></option>
-                           <% }) %>
-                           <% } %>
-                        </select>
-                    </div>
-                     <div class="form-group">
-                        <select  class="form-control rounded-0" id="State" name="State">
-                          <option value="">Choose State</option>
-                          
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control rounded-0" id="postal_code" name="postal_code" placeholder="Postal Code" />
-                    </div>
+                  
+                   
+                    
                    
                     <div class="checkbox form-group">
                         <input id="send_updates" type="checkbox" />
@@ -71,27 +57,35 @@
                     e.preventDefault();
                     var user = $('#user_name').val();
                     if(user == ''){
-                     alert('User Name is Required');
+                     toastr.error('User Name is Required');
                      document.getElementById("user_name").focus();
                      return false;
 
                     }else if($('#email_address').val() == ''){
 
-                       alert('Email is Required');
+                      toastr.error('Email is Required');
                       document.getElementById("email_address").focus();
                       return false;
 
+                    }else if($('#cemail').val() == ''){
+
+                      toastr.error('Confirm Email is Required');
+                      document.getElementById("cemail").focus();
+                      return false;
+
+                    }else if($('#cemail').val() !== $('#email_address').val()){
+
+                      toastr.error('Email did not Matched!!');
+                      document.getElementById("cemail").focus();
+                      return false;  
+
                     }else if($('#password').val() == ''){
 
-                       alert('Password is Required');
+                       toastr.error('Password is Required');
                        document.getElementById("password").focus();
                       return false;
 
-                    }else if($('#postal_code').val() == ''){
-
-                       alert('Postal Code is Required');
-                       document.getElementById("postal_code").focus();
-                      return false;
+                    
 
                      }else{ 
                     var formData = new FormData(this);  
@@ -121,17 +115,29 @@
                  
                 });
 
-  $(document).on('change','#country',function(){
+  $(document).on('change','#email_address',function(){
    // alert('ok');
   
-  var html = '';
-  $.get('/show_states?id='+$(this).val(),function(res){
-    $.each(res,function(key,val){
-      html += '<option value="'+val.id+'">'+val.name+'</option>';
-    })
-      $('#State').html(html)
-  },'json')
-})
+ 
+  $.get('/check_email?email='+$(this).val(),function(res){
+      
+                             if(res.success == 1){
+                              toastr.success(res.message);
+                             
+                           
+                              }else{
+                                
+                            toastr.error(res.message);
+                            setTimeout(function(){
+                          
+                           document.getElementById('email_address').value = " ";
+                          }, 3000);
+                          }
+                        
+                         
+                         },'json')
+
+                        })
 
       </script>
     </body>

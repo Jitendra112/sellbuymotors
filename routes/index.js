@@ -95,13 +95,10 @@ app.get('/get_images', async function(req, res, next){
 
 
 
-app.get('/registration', async function(req, res, next) {
+app.get('/registration', function(req, res, next) {
    
-    var query = "select * from tbl_countries ORDER BY id ASC";
-    results = await database.query(query, [] );
     res.render('sellbuy/registration', {
-        title: 'Add content',
-        data: JSON.parse(results)
+      
     }) 
 })
 
@@ -113,9 +110,6 @@ app.post('/register', async function(req, res, next){
             user_name: req.sanitize('user_name').escape().trim(),
             email: req.sanitize('email_address').escape().trim(),
             password: req.sanitize('password').escape().trim(),
-            country_id: req.sanitize('country').escape().trim(),
-            state_id: req.sanitize('State').escape().trim(),
-            postal_code: req.sanitize('postal_code').escape().trim(),
             role: 'U',
         }
 
@@ -205,11 +199,21 @@ app.get('/logout', function (req, res) {
       res.redirect('/login');
   });
 
-app.get('/show_states', async function(req, res, next) {
-    var query = 'SELECT * FROM  tbl_states where country_id = '+req.query.id;
+app.get('/check_email', async function(req, res, next) {
+    var query = 'SELECT email FROM  tbl_user where email = "' + req.query.email + '"';
+    //console.log(query);
      results = await database.query(query, [] );
-       // res.writeHead(200, {'Content-Type': 'application/json'});
-        res.send(results);  
+     //console.log(results.length);
+      if(results.length > 0){
+      
+     res.writeHead(200, {'Content-Type': 'application/json'});
+     res.end(JSON.stringify({success : 0 , message : 'Email Already Exists!!'}));
+     
+    }else{
+     res.writeHead(200, {'Content-Type': 'application/json'});
+     res.end(JSON.stringify({success : 1 , message : 'Email Verified'}));
+    }
+        
 });
 
 

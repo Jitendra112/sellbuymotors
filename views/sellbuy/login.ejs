@@ -64,14 +64,14 @@
        // alert('ok');
                     e.preventDefault();
                     if($('#user_name').val() == ''){
-                     alert('User Name or Email Address is Required!!');
+                     toastr.error('User Name or Email Address is Required!!');
                      document.getElementById("user_name").focus();
                      return false;
 
                     
                     }else if($('#password').val() == ''){
                         
-                       alert('Password is Required!!');
+                       toastr.error('Password is Required!!');
                        document.getElementById("password").focus();
                       return false;
 
