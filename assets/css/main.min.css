@@ -1002,11 +1002,13 @@ section {
   display: none; }
 
 .popupContainer {
-  position:inherit;
-  width: 350px;
-  left: 40%;
-  z-index: 9999;
-  top: 0; }
+    position: inherit;
+    width: 350px;
+    left: 40%;
+    margin: 100px auto;
+    z-index: 9999;
+    top: 0;
+}
   .popupContainer .popupHeader {
     border-bottom: solid 1px #dadada; }
   .popupContainer .modal_close {
