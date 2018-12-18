@@ -1242,3 +1242,13 @@ a.navbar-brand img {
     width: 100% !important;
 }
 }
+.footer-bottom {
+    background-color: #0061c5;
+}
+.footer-bottom .footer-social a {
+    transition: all 1s;
+    color: #000;
+}
+span.copyright {
+    color: #000;
+}
