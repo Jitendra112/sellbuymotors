@@ -29,7 +29,7 @@
             <!-- Social Login -->						
             <!-- Username & Password Login form -->
             <div class="user_login">
-                <form id="login_form" action="/user_login" method="post">
+                <form id="login_form" action="" method="post">
                     <div class="form-group">
                         <input type="text" class="form-control rounded-0" name="user_name" id="user_name" placeholder="username or email address" />
                     </div>
@@ -72,8 +72,7 @@
      <script>
    var base_url = window.location.origin;
      $(document).on('submit','#login_form',function(e){
-       // alert('ok');
-                    e.preventDefault();
+           e.preventDefault();
                     if($('#user_name').val() == ''){
                      toastr.error('User Name or Email Address is Required!!');
                      document.getElementById("user_name").focus();
@@ -92,12 +91,12 @@
                     $.ajax({
                         type:'POST',
                         cache: false,
-                        url:$(this).attr('action'),
+                        url:'/user_login?buster='+new Date().getTime(),
                         data:formData,
                         contentType:false,
                         processData:false,  
-                       
-                                         
+                        dataType : 'json',
+                                 
                         success:function(data){
                          //  alert(data)
                          if(data.success == 1){
@@ -124,19 +123,19 @@
 
 
 
-  function onSignIn(googleUser) {
-  var profile = googleUser.getBasicProfile();
-  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  console.log('Name: ' + profile.getName());
-  console.log('Image URL: ' + profile.getImageUrl());
-  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+               function onSignIn(googleUser) {
+               var profile = googleUser.getBasicProfile();
+               console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+               console.log('Name: ' + profile.getName());
+               console.log('Image URL: ' + profile.getImageUrl());
+               console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 
-           var id = profile.getId();
-           var email = profile.getEmail();
-           var name = profile.getName();
-           var base_url = window.location.origin;
+               var id = profile.getId();
+               var email = profile.getEmail();
+               var name = profile.getName();
+               var base_url = window.location.origin;
             
-             $.get(base_url + '/google_login?id=' + id + '&sid=' + email +'&vid=' + name ,function(res){
+               $.get(base_url + '/google_login?id=' + id + '&sid=' + email +'&vid=' + name ,function(res){
                        
                         if(res.success = 1){
                         
