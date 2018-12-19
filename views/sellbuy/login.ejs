@@ -91,13 +91,13 @@
                     console.log()                
                     $.ajax({
                         type:'POST',
+                        cache: false,
                         url:$(this).attr('action'),
                         data:formData,
-                        async: true,
-                        cache: false,
+                        async: false,  
                         contentType:false,
                         processData:false,  
-                        dataType: 'json',
+                       
                                          
                         success:function(data){
                          //  alert(data)
