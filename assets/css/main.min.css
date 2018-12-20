@@ -12,16 +12,25 @@
   src: url("../fonts/Consolas.eot") format("embedded-opentype");
   font-weight: normal;
   font-style: normal; }
-
 body {
-  background: #fff;
-  margin: 0px;
-  padding: 0px;
-  color: #757575;
-  font-family: "Open Sans", sans-serif;
-  font-size: 0.875rem;
-  word-wrap: break-word;
-  line-height: 1.5rem; }
+    background: #fff;
+    margin: 0px;
+    padding: 0px;
+    color: #757575;
+    font-family: "Open Sans", sans-serif;
+    font-size: 0.875rem;
+    word-wrap: break-word;
+    line-height: 1.5rem;
+    background: url('/images/simple-family-car-218225eb-blue-overlay.png') fixed;
+    background-size: 100% 100%;
+}
+
+
+ul.navbar-nav a {
+    color: #fff !important;
+    font-weight: 600;
+}
+
 
 a {
   text-decoration: none;
@@ -331,7 +340,7 @@ textarea.form-control {
     margin-top: 5px;
     height: 2px;
     display: block;
-    background-color: #ee5624;
+    background-color: #fff;
     background-image: none; }
 
 .main-header .navbar .form-control {
@@ -1025,8 +1034,13 @@ section#myfooter {
 }
 .footer-bottom {
   background-color: #0f1316; }
-  .footer-bottom .copyright a {
-    color: #d7d7d7; }
+.footer-bottom .copyright a {
+    color: var(--red);
+    text-decoration: underline;
+    font-weight: bolder;
+    font-size: 18px;
+    font-style: italic;
+}
   .footer-bottom .footer-social a {
     transition: all 1s; }
     .footer-bottom .footer-social a:hover {
@@ -1247,8 +1261,87 @@ a.navbar-brand img {
 }
 .footer-bottom .footer-social a {
     transition: all 1s;
-    color: #000;
+    color: #fff;
 }
 span.copyright {
-    color: #000;
+    color: #fff;
+}
+.top-bar {
+    background: #f8f8f8;
+    padding: 2px 0 !important;
+    background: linear-gradient(0deg,#007bff,#0061c5),url(images/bg1.jpg);
+}
+.login_form {
+    border-radius: 5px;
+    background: #0061c5;
+    padding: 8px 20px;
+    margin: 0 5px;
+    color: #fff;
+}
+a.register_form {
+    background: #bd362f;
+    padding: 8px 10px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.footer {
+    transition: all 1s;
+    background: linear-gradient(0deg,#17a2b8,#004085),url(images/bg1.jpg);
+    color: #fff;
+  }
+  .about-company h1 {
+    color: #FFF;
+    FONT-SIZE: 24px;
+    font-weight: 600;
+    text-decoration: underline;
+}
+.about-company p {
+    color: #FFF;
+    FONT-SIZE: 16px;
+    font-weight: 600;
+}
+.colors h3 {
+    color: #fff;
+    font-weight: 600;
+}
+.colors p {
+    color: #fff;
+    font-weight: 600;
+}
+.top-bar a {
+    color: #fff;
+}
+.top-right li {
+    color: #fff !important;
+}
+p#foundCar {
+    font-weight: 600;
+    font-size: 18px;
+    color: #ffffff !important;
+    background: #dc3545;
+    padding: 10px;
+    width: 35%;
+    text-align: center;
+    border-radius: 10px;
+}
+.text-right p {
+    color: #fff !important;
+    font-size: 18px;
+    font-weight: 600;
+}
+.loginseller {
+    padding-top: 100px;
+}
+.loginseller h3 {
+    color: #fff;
+    font-weight: 600;
+}
+.loginseller p {
+    color: #fff;
+    font-weight: 600;
+}
+.mobilesss {
+    width: 100%;
+    border: 1px #ccc solid;
 }

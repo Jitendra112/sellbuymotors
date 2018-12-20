@@ -98,3 +98,17 @@ color: #fff !important;
 .popupContainer input {
     margin: 10px 0px;
 }
+.card {
+    background-color: #fff0 !important;
+}
+
+.card-body {
+    background: #fff;
+}
+a:not([href]):not([tabindex]), a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
+    color: #fff !important;
+    /* text-decoration: none; */
+    background-color: var(--gray-dark);
+    border-radius: 21%;
+    padding-right: 11px;
+}

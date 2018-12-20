@@ -215,7 +215,14 @@ app.get('/check_email', async function(req, res, next) {
     }
         
 });
-
+ ///
+ app.get('/van', function(req, res, next) {
+    
+        res.render('sellbuy/van', {
+            title: 'Add content',
+            
+        }) 
+})
 
 // Auth wiith google
 

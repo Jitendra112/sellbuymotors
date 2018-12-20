@@ -13,7 +13,7 @@
                
                  
                <!-- Favicon -->
-               <link rel="icon" type="image/png" href="images/favicon.ico">
+               <link rel="icon" type="image/png" href="images/faviconpn.png">
                  
                <!--Plugin CSS-->
                <link href="/css/plugins.min.css" rel="stylesheet">
@@ -23,16 +23,16 @@
                <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
                <!--main Css-->
               <style>
-                .login_form {
-                   background: #0061c5;
-                   padding: 8px 10px;
-                   margin: 0 5px;
-                   color: #fff;
-                  }
-                 a.register_form {
-                background: #f7cc49;
-                padding: 8px 10px;
-              }
+               .login_form {
+    background: #28a745;
+    padding: 8px 20px;
+    margin: 0 5px;
+    color: #fff;
+}
+a.register_form {
+    background: var(--danger);
+    padding: 8px 20px;
+}
               </style>
            </head>
            <body> 
@@ -50,9 +50,9 @@
                                    <div class="top-right">
                                        <ul class="list-inline mb-0 no-border">
                                         <% if(locals.udata) { %>
-                                           <li class="list-inline-item"><i class="fa fa-user pr-1"></i> <a href="#/" class="c-primary login_form"><%= locals.udata[0].user_name %></a> | <a class="register_form c-primary" onclick="signOut(), fbLogout()" href="/logout">Logout </a></li>
+                                           <li class="list-inline-item"><a href="#/" class="c-primary login_form"><%= locals.udata[0].user_name %></a> | <a class="register_form c-primary" onclick="signOut(), fbLogout()" href="/logout">Logout </a></li>
                                           <% } else { %>
-                                            <li class="list-inline-item"><i class="fa fa-user pr-1"></i> <a href="/login" class="c-primary login_form"> Login </a> Or <a href="/registration" class="register_form c-primary"> Register </a></li>
+                                            <li class="list-inline-item"><a href="/login" class="c-primary login_form"> Login </a> Or <a href="/registration" class="register_form c-primary"> Register </a></li>
                                           <% } %>
                                            
                                        </ul>
@@ -73,6 +73,7 @@
                              <ul class="navbar-nav ml-auto mr-lg-4 mt-4 mt-lg-0">
                                <% if(locals.udata) { %>
                                <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                               <li class="nav-item"><a class="nav-link" href="/van">Vans</a></li>
                             <li class="nav-item"><a class="nav-link" href="/search-cars?onesearchad=New">New-Cars</a></li>
                             <li class="nav-item"><a class="nav-link" href="/search-cars?onesearchad=Used">Used-Cars</a></li>
                             <li class="nav-item"><a class="nav-link" href="/search-cars?onesearchad=All">All-Cars</a></li>
@@ -81,6 +82,7 @@
                              <li class="nav-item"><a class="nav-link" href="/mycars">My-Cars</a></li>
                               <% } else { %>
                                <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                               <li class="nav-item"><a class="nav-link" href="/van">Vans</a></li>
                             <li class="nav-item"><a class="nav-link" href="/search-cars?onesearchad=New">New-Cars</a></li>
                             <li class="nav-item"><a class="nav-link" href="/search-cars?onesearchad=Used">Used-Cars</a></li>
                             <li class="nav-item"><a class="nav-link" href="/search-cars?onesearchad=All">All-Cars</a></li>
