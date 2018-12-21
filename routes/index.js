@@ -13,7 +13,7 @@ var url = require('url')
 var request = require('request');
 var lowerCase = require('lower-case')
 var api = require('car-registration-api-uk');
-
+ var sha1 = require('js-sha1');
 
 app.get('/', function(req, res, next) {
      res.locals.udata = req.session.udata;
@@ -103,18 +103,19 @@ app.get('/registration', function(req, res, next) {
 })
 
 app.post('/register', async function(req, res, next){
-            
+        
     
       var cl = {
           
             user_name: req.sanitize('user_name').escape().trim(),
             email: req.sanitize('email_address').escape().trim(),
-            password: req.sanitize('password').escape().trim(),
+            password: sha1(req.sanitize('password').escape().trim()),
             role: 'U',
         }
 
-       
+          
             var query = 'INSERT INTO tbl_user  SET ? ';
+
             results = await database.query(query, [cl] );
                 if (results) {
                     res.writeHead(200, {'Content-Type': 'application/json'});
@@ -147,9 +148,10 @@ app.post('/user_login',async function(req, res, next){
        sess.udata;
       
     //console.log(sess)
-   
+      var data = sha1(req.body.password);
 
-       var query = 'SELECT * FROM tbl_user Where user_name = "' + req.body.user_name + '" && password = "' + req.body.password  + '"';
+
+       var query = 'SELECT * FROM tbl_user Where user_name = "' + req.body.user_name + '" && password = "' + data  + '"';
       // console.log(query);
         results = await database.query(query, [] );
         //console.log(results.length);

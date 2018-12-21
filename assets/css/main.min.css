@@ -877,7 +877,10 @@ section {
   top: 10px; }
 
 .selector select.form-control:not([size]):not([multiple]) {
-  background: url(../images/arrow2.png) no-repeat 96%; }
+    background: url(../images/arrow2.png) no-repeat 96%;
+    background-color: #fff;
+    border-radius: 0px !important;
+}
 
 .car-listing-full .table td {
   border-bottom: solid 1px #dadada; }

@@ -1,0 +1,53 @@
+
+<%- include ../adminlayouts/header.ejs %>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        All Users
+        <small>Control panel</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">All Users</li>
+      </ol>
+    </section>
+   
+
+    <table id="example" class="display" style="width:99%">
+        <thead>
+            <tr><th>S.No.</th>
+                <th>Name</th>
+                <th>Email</th>
+               
+                
+            </tr>
+        </thead>
+        <tbody>
+          <% if (locals.data) { %>
+              <% locals.data.forEach(function(cls,index){  %>
+            <tr>
+                 
+                <td><%= index + 1 %></td>
+                <td><%= cls.user_name %></td>
+                <td><%= cls.email %></td>
+                
+            
+            </tr>
+               <% }) %>
+                <% } %>
+        </tbody>
+     
+    </table>
+    
+  </div>
+  <!-- /.content-wrapper -->
+ 
+
+ <%- include ../adminlayouts/footer.ejs %>
+  <script>
+    $(document).ready(function() {
+    $('#example').DataTable();
+} );
+  </script>

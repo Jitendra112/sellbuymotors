@@ -121,7 +121,7 @@ app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized: true, 
 
 app.use(flash())
 app.use('/', index)
-app.use('/admin', index)
+app.use('/admin', admin)
 //app.use('/reb/users', users)
 // app.use('/admin/class',cl)
 // app.use('/admin/content',cont)
