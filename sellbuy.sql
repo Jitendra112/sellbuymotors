@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 17, 2018 at 06:25 PM
+-- Generation Time: Dec 21, 2018 at 07:58 PM
 -- Server version: 5.7.24-0ubuntu0.18.04.1
 -- PHP Version: 7.0.32-0ubuntu0.16.04.1
 
@@ -39,17 +39,8 @@ CREATE TABLE `tbl_cars_images` (
 --
 
 INSERT INTO `tbl_cars_images` (`id`, `user_id`, `product_id`, `image_name`, `created_at`) VALUES
-(55, 8, 30, 'IMG_1543645645173', '2018-12-01 06:27:25'),
-(56, 8, 30, 'IMG_1543645649902', '2018-12-01 06:27:29'),
-(57, 8, 30, 'IMG_1543645655727', '2018-12-01 06:27:35'),
-(58, 8, 31, 'IMG_1543647180521', '2018-12-01 06:53:00'),
-(59, 8, 31, 'IMG_1543647257063', '2018-12-01 06:54:17'),
-(60, 8, 32, 'IMG_1544087797308', '2018-12-06 09:16:37'),
-(61, 8, 33, 'IMG_1545024567253', '2018-12-17 05:29:27'),
-(62, 8, 33, 'IMG_1545024576123', '2018-12-17 05:29:36'),
-(63, 8, 33, 'IMG_1545024583355', '2018-12-17 05:29:43'),
-(64, 8, 34, 'IMG_1545024750721', '2018-12-17 05:32:30'),
-(65, 8, 34, 'IMG_1545024759007', '2018-12-17 05:32:39');
+(69, 42, 40, 'IMG_1545394255870', '2018-12-21 12:10:55'),
+(70, 42, 40, 'IMG_1545394288972', '2018-12-21 12:11:28');
 
 -- --------------------------------------------------------
 
@@ -355,13 +346,7 @@ CREATE TABLE `tbl_products` (
 --
 
 INSERT INTO `tbl_products` (`id`, `make_year`, `mileage`, `make`, `model`, `variant`, `color`, `body_type`, `fuel_type`, `engine_size`, `fuel_consumption`, `acceleration`, `gear_box`, `drive_train`, `co2_emission`, `doors`, `seats`, `insurance_group`, `annual_tax`, `private_trade`, `owner`, `car_type`, `price_expectation`, `car_description`, `created_at`) VALUES
-(30, '2016', '60000', 'Chrysler', '300C', 'Black and Red', 'Maroon', 'MPV', 'Hybrid – Petrol&#x2F;Electric', '1.8', '30+ mpg', '12s+ (0-60mph)', 'Semi-Automatic', 'Front Wheel Drive', 'Up to 75 g &#x2F; km CO2', '3 doors', '13 Seats', 'Up to 30', 'Up to €185', 'Private adverts', 'first owner', '', '10,00,000', 'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from &quot;de Finibus Bonorum et Malorum&quot; by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.', '2018-12-01 06:27:16'),
-(31, '2016', '45000', 'Audi', '100', 'Amplified Edition', 'Blue', 'Hatchback', 'Diesel', '3.0', '40+ mpg', '0-8s (0-60mph)', 'Semi-Automatic', 'Four Wheel Drive', 'Up to 130 g &#x2F; km CO2', '2 doors', '4 Seats', 'Up to 30', 'Up to €30', 'Private adverts', 'first owner', '', '10,00,000', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don&#x27;t look even slightly believable.', '2018-12-01 06:52:38'),
-(32, '1961', '45000', 'Bentley', '4.25 Litre', 'Mulliner', 'Maroon', 'Coupe', 'Electric', '1.4', '30+ mpg', '8-12s (0-60mph)', 'Automatic', 'All Wheel Drive', 'Up to 175 g &#x2F; km CO2', '2 doors', '10 Seats', 'Up to 10', 'Up to €185', 'Trade adverts', 'first owner', '', '12,50,000', '', '2018-12-06 09:16:03'),
-(33, '1965', '40000', 'Aston Martin', 'Cygnet', 'AMR', 'Blue', 'Pickup', 'Petrol', '1.9', '40+ mpg', '8-12s (0-60mph)', 'Manual', 'All Wheel Drive', 'Up to 110 g &#x2F; km CO2', '4 doors', '6 Seats', 'Up to 20', 'Up to €30', 'Private adverts', 'first owner', 'car', '10,00,000', 'car', '2018-12-17 05:28:04'),
-(34, '1965', '5000', 'Ariel', 'Atom', 'Unlisted', 'Blue', 'Coupe', 'Hybrid – Diesel&#x2F;Electric', '1.6', '60+ mpg', '8-12s (0-60mph)', 'Manual', 'All Wheel Drive', 'Up to 120 g &#x2F; km CO2', '3 doors', '5 Seats', 'Up to 20', 'Up to €145', 'Private adverts', 'first owner', 'car', '10,00,000', 'wqwedwqewqewqe', '2018-12-17 05:32:20'),
-(35, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '12,50,000', '', '2018-12-17 10:52:43'),
-(36, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '12,50,000', '', '2018-12-17 12:18:28');
+(40, '2017', '30000', 'Audi', 'A1', 'Amplified Edition', 'Burgundy', 'Estate', 'Hybrid – Petrol&#x2F;Electric Plug-in', '2.0', '60+ mpg', '8-12s (0-60mph)', 'Semi-Automatic', 'Front Wheel Drive', 'Up to 140 g &#x2F; km CO2', '3DR', '10', '20', 'Up to €210', 'Trade adverts', 'first owner', 'Car', '12,50,000', 'test', '2018-12-21 12:08:22');
 
 -- --------------------------------------------------------
 
@@ -4486,10 +4471,7 @@ CREATE TABLE `tbl_user` (
   `facebook_id` varchar(50) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(100) DEFAULT NULL,
-  `country_id` int(11) DEFAULT NULL,
-  `state_id` int(11) DEFAULT NULL,
-  `postal_code` varchar(20) DEFAULT NULL,
-  `role` varchar(20) DEFAULT NULL,
+  `role` varchar(20) DEFAULT 'U',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -4497,11 +4479,13 @@ CREATE TABLE `tbl_user` (
 -- Dumping data for table `tbl_user`
 --
 
-INSERT INTO `tbl_user` (`id`, `user_name`, `google_id`, `facebook_id`, `email`, `password`, `country_id`, `state_id`, `postal_code`, `role`, `created_at`) VALUES
-(8, 'kush', '108169144019802726494', NULL, 'jitendragniabs@gmail.com', 'welcome', 101, 32, '156200', 'U', '2018-11-20 12:06:57'),
-(26, 'MultiJitendra1', '114112773907484109796', NULL, 'jitendra.15love@gmail.com', NULL, NULL, NULL, NULL, NULL, '2018-11-21 05:20:39'),
-(27, 'Kuldeep Kumar', '114852000254859220717', NULL, '349kuldeep@gmail.com', NULL, NULL, NULL, NULL, NULL, '2018-11-21 05:23:04'),
-(28, 'Sanjay Kumar', NULL, NULL, 'sanjay@gmail.com', 'password', 101, 10, '152116', 'U', '2018-11-21 05:48:06');
+INSERT INTO `tbl_user` (`id`, `user_name`, `google_id`, `facebook_id`, `email`, `password`, `role`, `created_at`) VALUES
+(26, 'MultiJitendra1', '114112773907484109796', NULL, 'jitendra.15love@gmail.com', NULL, 'U', '2018-12-21 09:28:58'),
+(27, 'Kuldeep Kumar', '114852000254859220717', NULL, '349kuldeep@gmail.com', NULL, 'U', '2018-12-21 09:29:05'),
+(28, 'Sanjay Kumar', NULL, NULL, 'sanjay@gmail.com', 'password', 'U', '2018-11-21 05:48:06'),
+(37, 'jazz', NULL, NULL, 'waldo@gmail.com', '1234', 'U', '2018-12-18 09:39:27'),
+(38, NULL, NULL, NULL, 'admin@gmail.com', 'admin', 'A', '2018-12-20 11:18:51'),
+(42, 'kush', NULL, NULL, 'sonu@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'U', '2018-12-21 09:47:11');
 
 --
 -- Indexes for dumped tables
@@ -4545,7 +4529,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_cars_images`
 --
 ALTER TABLE `tbl_cars_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 --
 -- AUTO_INCREMENT for table `tbl_countries`
 --
@@ -4555,7 +4539,7 @@ ALTER TABLE `tbl_countries`
 -- AUTO_INCREMENT for table `tbl_products`
 --
 ALTER TABLE `tbl_products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 --
 -- AUTO_INCREMENT for table `tbl_states`
 --
@@ -4565,7 +4549,7 @@ ALTER TABLE `tbl_states`
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
