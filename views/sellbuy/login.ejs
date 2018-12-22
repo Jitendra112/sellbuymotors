@@ -88,7 +88,7 @@
 
                     }else{ 
                     var formData = new FormData(this);  
-                    console.log()                
+                                   
                     $.ajax({
                         type:'POST',
                         cache: false,
@@ -103,7 +103,7 @@
                          if(data.success == 1){
                              toastr.success(data.message);
                              window.setTimeout(function() {
-                              window.location.href = base_url + '/sellcar';
+                              window.location.href = base_url + '/profile';
                                    },1000);
                           //  window.location.href = "http://localhost:3000/sellcar";
 

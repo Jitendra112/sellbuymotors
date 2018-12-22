@@ -1,0 +1,374 @@
+<%- include ../sellbuylayouts/header.ejs %>
+
+  <link rel="stylesheet" href="css/bootstrap.min.css"> 
+
+   <link rel="stylesheet" href="css/font-awesome.min.css">
+   <link rel="stylesheet" type="text/css" href="css/plugins/plugins.css"> 
+   <link rel="stylesheet" type="text/css" href="css/apartment-layout.css">
+   <link id="skin" rel="stylesheet" type="text/css" href="css/apartment-colors-blue.css">
+ <section class="short-image no-padding blog-short-title">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-lg-12 short-image-title">
+					<h5 class="subtitle-margin second-color">dashboard</h5>
+					<h1 class="second-color">my account</h1>
+					<div class="short-title-separator"></div>
+				</div>
+			</div>
+		</div>
+    </section>
+	
+	<section class="section-light section-top-shadow">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-md-9 col-md-push-3">
+					<div class="row">
+						<div class="col-xs-12">
+							<h5 class="subtitle-margin">edit</h5>
+							<h1>Profile<span class="special-color">.</span></h1>
+							<div class="title-separator-primary"></div>
+						</div>
+					</div>	
+					<form name="agent-from" action="controler/controler.php" method="post" enctype="multipart/form-data">
+										<input type='hidden' name="id" value="1"/>
+					<div class="row margin-top-60">
+						<div class="col-xs-6 col-xs-offset-3 col-sm-offset-0 col-sm-3 col-md-4">
+							<div class="agent-photos">
+								<img src="https://bestwayproperties.co.uk/controler/uploads/profiles/1/1-1544258721.jpg" id="agent-profile-photo" class="img-responsive" alt="">
+								<div class="change-photo">
+									<i class="fa fa-pencil fa-lg"></i>
+									<input name="agent-photo" id="agent-photo" type="file" accept="image/*">
+								</div>
+								<input disabled="disabled" id="agent-file-name" class="main-input" type="text">
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-9 col-md-8">
+							<div class="labelled-input">
+								<label for="email">Email</label><input id="email" name="email" type="email" class="input-full main-input" placeholder="" value="<%= locals.data[0].email %>" readonly />
+								<div class="clearfix"></div>
+							</div>
+							<div class="labelled-input">
+								<label for="first-name">First name</label><input id="first-name" name="first-name" type="text" class="input-full main-input" placeholder="" value="" required />
+								<div class="clearfix"></div>
+							</div>
+							<div class="labelled-input">
+								<label for="last-name">Last name</label><input id="last-name" name="last-name" type="text" class="input-full main-input" placeholder="" value=""/>
+								<div class="clearfix"></div>
+							</div>
+							<div class="labelled-input">
+								<label for="phone">Phone</label><input id="phone" name="phone" type="tel" class="input-full main-input" placeholder="" value=""/>
+								<div class="clearfix"></div>
+							</div>
+							<div class="labelled-input last">
+								<label for="address">Address</label><input id="address" name="address" type="text" class="input-full main-input" placeholder="" value=""/>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="labelled-input last">
+								<label for="state">State</label><input id="state" name="state" type="text" class="input-full main-input" placeholder="" value=""/>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="labelled-input last">
+								<label for="country">Country</label><input id="country" name="country" type="text" class="input-full main-input" placeholder="" value=""/>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						
+						<div class="col-md-12">
+							<div class="labelled-input last">
+								<label for="passcode">Postcode</label><input id="passcode" name="passcode" type="text" class="input-full main-input" placeholder="" value=""/>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+					<div class="row margin-top-15">
+						<div class="col-xs-12">
+							<div class="labelled-textarea">
+								<label for="description">Description</label>
+								<textarea id="description" name="description" class="input-full main-input"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="row margin-top-30">
+						<div class="col-xs-12 col-lg-6">
+							<div class="labelled-input-short">
+								<label for="facebook">
+									<span class="label-icon-circle pull-left">
+										<i class="fa fa-facebook"></i>
+									</span>
+									Facebook
+								</label>
+								<input id="facebook" name="facebook" type="url" class="input-full main-input" placeholder="" value=""/>
+								<div class="clearfix"></div>
+							</div>
+							<div class="labelled-input-short">
+								<label for="gplus">
+									<span class="label-icon-circle pull-left">
+										<i class="fa fa-google-plus"></i>
+									</span>
+									Google +
+								</label>
+								<input id="gplus" name="gplus" type="url" class="input-full main-input" placeholder="" value=""/>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-lg-6">
+							<div class="labelled-input-short">
+								<label for="twitter">
+									<span class="label-icon-circle pull-left">
+										<i class="fa fa-twitter"></i>
+									</span>
+									Twitter
+								</label>
+								<input id="twitter" name="twitter" type="url" class="input-full main-input" placeholder="" value=""/>
+								<div class="clearfix"></div>
+							</div>
+							<div class="labelled-input-short">
+								<label for="skype">
+									<span class="label-icon-circle pull-left">
+										<i class="fa fa-skype"></i>
+									</span>
+									Skype
+								</label>
+								<input id="skype" name="skype" type="url" class="input-full main-input" placeholder="" value=""/>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+					<div class="row margin-top-30">
+						<div class="col-xs-12">
+							<div class="info-box">
+								<p>Fill this fields only if you want to change your password</p>
+								<div class="small-triangle"></div>
+								<div class="small-icon"><i class="fa fa-info fa-lg"></i></div>
+							</div>
+						</div>
+					</div>
+					<div class="row margin-top-15">
+						<div class="col-xs-12 col-lg-6">
+							<div class="labelled-input-short">
+								<label for="first-name">New Password</label>
+								<input id="password" name="password" type="password" class="input-full main-input" placeholder="" value=""/>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-lg-6">
+							<div class="labelled-input-short">
+								<label for="first-name">Repeat Password</label>
+								<input id="repeat-password" name="repeat-password" type="password" class="input-full main-input" placeholder="" value=""/>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+					<div class="row margin-top-15">
+						<div class="col-xs-12">
+							<div class="center-button-cont center-button-cont-border">
+								<!--a href="#" class="button-primary button-shadow">
+									<span>save</span>
+									<div class="button-triangle"></div>
+									<div class="button-triangle2"></div>
+									<div class="button-icon"><i class="fa fa-lg fa-floppy-o"></i></div>
+								</a-->
+								
+								<button type='submit' class="button-primary button-shadow" name="submit" value="updateprofile">
+									<span>save</span>
+									<div class="button-triangle"></div>
+									<div class="button-triangle2"></div>
+									<div class="button-icon"><i class="fa fa-lg fa-floppy-o"></i></div>
+								</button>
+							</div>
+						</div>
+					</div>
+					</form>
+					<div class="row margin-top-60"></div>
+				</div>			
+				<div class="col-xs-12 col-md-3 col-md-pull-9">
+					<div class="sidebar-left">
+
+	
+	<div class="profile-info margin-top-60">
+				<div class="profile-info-title negative-margin">Admin </div>
+		<img src="https://bestwayproperties.co.uk/controler/uploads/profiles/1/1-1544258721.jpg" alt="" class="pull-left" />
+		<div class="profile-info-text pull-left">
+			<p class="subtitle-margin">admin</p>
+			<p class="">, </p>
+			
+			<a href="logout.php" class="logout-link margin-top-30"><i class="fa fa-lg fa-sign-out"></i>Logout</a>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	
+	<div class="center-button-cont margin-top-15">
+		<a href="#" class="button-primary button-shadow button-full">
+			<span>My profile</span>
+			<div class="button-triangle"></div>
+			<div class="button-triangle2"></div>
+			<div class="button-icon"><i class="fa fa-user"></i></div>
+		</a>
+	</div>
+	<div class="center-button-cont margin-top-15">
+		<a href="submit-property.php" class="button-alternative button-shadow button-full">
+			<span>Add Cars</span>
+			<div class="button-triangle"></div>
+			<div class="button-triangle2"></div>
+			<div class="button-icon"><i class="jfont fa-lg">&#xe804;</i></div>
+		</a>
+	</div>
+	<hr/>
+	<div class="center-button-cont margin-top-30">
+		<a href="user-properties.php" class="button-primary button-shadow button-full">
+			<span>All Cars</span>
+			<div class="button-triangle"></div>
+			<div class="button-triangle2"></div>
+			<div class="button-icon"><i class="fa fa-th-list"></i></div>
+		</a>
+	</div>
+	
+	<div class="center-button-cont margin-top-15">
+		<a href="user-properties.php?transaction=sale" class="button-fourth button-shadow button-full">
+			<span>Sale Cars</span>
+			<div class="button-triangle"></div>
+			<div class="button-triangle2"></div>
+			<div class="button-icon"><i class="fa fa-th-list"></i></div>
+		</a>
+	</div>
+	
+
+</div>				</div>
+			</div>
+		</div>
+	</section>
+        		
+		
+     <!-- Footer Top -->
+      <section class="footer c-bg-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-3 mb-4 mb-lg-0">
+                    <h6 class="text-white">About-Us</h6>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu..
+
+</p>
+                    
+                </div>
+                <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+                    <div class="row">
+                        <div class="col-12 col-sm-4 mb-4 mb-sm-0">
+                            <h6 class="text-white">Brands</h6>
+                            <ul class="list-unstyled footer-links mb-0">
+                                <li><a href="search-cars?onesearchad=Bmw&make=Bmw"><i class="fa fa-angle-right pr-2"></i> BMW</a></li>
+                                <li><a href="search-cars?onesearchad=Mercedes-Benz&make=Mercedes-Benz"><i class="fa fa-angle-right pr-2"></i> Mercedes</a></li>
+                                <li><a href="search-cars?onesearchad=Lamborghini&make=Lamborghini"><i class="fa fa-angle-right pr-2"></i> Lamborghini</a></li>
+                                <li><a href="search-cars?onesearchad=Audi&make=Audi"><i class="fa fa-angle-right pr-2"></i> Audi</a></li>
+                                <li><a href="search-cars?onesearchad=Porsche&make=Porsche"><i class="fa fa-angle-right pr-2"></i> Porsche</a></li>
+                                <li><a href="search-cars?onesearchad=Ford&make=Ford"><i class="fa fa-angle-right pr-2"></i> Ford</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-sm-4 mb-4 mb-sm-0">
+                            <h6 class="text-white">Overview</h6>
+                            <ul class="list-unstyled footer-links mb-0">
+                                <li><a href="#"><i class="fa fa-angle-right pr-2"></i> About Us</a></li>
+                                <li><a href="#"><i class="fa fa-angle-right pr-2"></i> Feedback</a></li>
+                                <li><a href="#"><i class="fa fa-angle-right pr-2"></i> Contact Us</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                            <h6 class="text-white">Other</h6>
+                            <ul class="list-unstyled footer-links mb-0">
+                                <li><a href="#"><i class="fa fa-angle-right pr-2"></i> Careers</a></li>
+                                <li><a href="#"><i class="fa fa-angle-right pr-2"></i> Customer Care</a></li>
+                                <li><a href="#"><i class="fa fa-angle-right pr-2"></i> Privacy Policy</a></li>
+                                <li><a href="#"><i class="fa fa-angle-right pr-2"></i> Terms & Conditions</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-3">
+                    <h6 class="text-white">Contact Info</h6>
+                    <p>Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim aliquam.</p>
+                    <ul class="list-unstyled footer-address mb-0">
+                        
+                        <li><a href="mailto:info@sellbuymotors.co.uk"><i class="fa fa-envelope pr-2"></i> info@sellbuymotors.co.uk</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Footer Top-->
+    
+    <!-- Footer Bottom -->
+    <section class="footer-bottom c-bg-dark py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-8 text-lg-left text-center mb-3 mb-lg-0">
+                    <span class="copyright">Copyright &copy; 2018 Powered By <a href="#">Sellbuymotosr.co.uk</a>  All Rights Reserved.</span>
+                </div>
+                <div class="col-12 col-lg-4 text-lg-right text-center footer-noborder">
+                    <ul class="list-inline footer-social mb-0">
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook pr-3"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter pr-3"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin pr-3"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Footer Bottom -->
+    
+    <!-- Top To Bottom-->
+    <div class="scrollup">
+        <img src="/images/up-arrow.png" class="img-fluid" />
+    </div>
+    <!-- End Top To Bottom-->
+  
+  
+    <!-- End Login /Register Form-->
+    
+    <!-- jQuery -->
+    <script src="/js/plugins.min.js"></script>
+    <script src="/js/common.js"></script>
+     <script src="/js/lightslider.js"></script>
+       <script type="text/javascript" src="js/plugins/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+	
+<!-- Bootstrap-->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+<!-- Google Maps -->
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDfDCV5hXiPamCIT8_vwGXuzimLQ9MF76g&amp;sensor=false&amp;libraries=places"></script>
+
+	
+<!-- plugins script -->
+	<script type="text/javascript" src="js/plugins/plugins.js"></script>
+
+<!-- template scripts -->
+    <script type="text/javascript" src="js/apartment.js"></script>
+     <script>
+    function signOut() {
+   // console.log('User signed out.');
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      window.location.href = "http://sellbuymotors.co.uk/login";
+      console.log('User signed out.');
+    });
+  }
+
+  function onLoad() {
+      gapi.load('auth2', function() {
+        gapi.auth2.init();
+      });
+    }
+
+</script>
+<script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+</body>
+
+</html>
+
+

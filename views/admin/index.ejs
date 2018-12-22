@@ -54,6 +54,9 @@
         </div>
         <!-- /.col -->
       </div>
+      <div class="col-12 col-md-5 col-xl-6 align-self-center" id="loading" style="display:none;top: 31%;right: 33%;">
+      <img src="/images/preloader.gif" style="height:100% ;width:100%"/>
+     </div>
     </form>
 
    
@@ -102,7 +105,7 @@
 
                     }else{ 
                     var formData = new FormData(this);  
-                    console.log()                
+                     $('#loading').css('display', 'block')               
                     $.ajax({
                         type:'POST',
                         cache: false,
@@ -113,7 +116,7 @@
                         dataType : 'json',
                                 
                         success:function(data){
-                         //  alert(data)
+                         $('#loading').css('display', 'none')
                          if(data.success == 1){
                              toastr.success(data.message);
                              window.setTimeout(function() {

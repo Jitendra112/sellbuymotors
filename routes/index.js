@@ -330,6 +330,27 @@ app.get('/sellcars', function(req, res, next) {
     }) 
 })
 
+// User profile
+
+app.get('/profile', function(req, res, next) {
+ res.locals.udata = req.session.udata;
+ var g = res.locals.udata;
+
+if(g) {
+        var query = "select * from tbl_user Where role='U'";
+        res.render('sellbuy/user_profile', {
+            title: 'Add content',
+            data: JSON.parse(results)
+             
+    }) 
+ } else{
+    res.render('sellbuy/login', {
+        title: 'Add content',
+        
+    }) 
+
+ }
+})
 
 app.get('/mycars',async function(req, res, next) {
     res.locals.udata = req.session.udata;
