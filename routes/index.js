@@ -12,9 +12,11 @@ let fs = require('fs');
 var url = require('url')
 var request = require('request');
 var lowerCase = require('lower-case')
-var api = require('car-registration-api-uk');
+// var api = require('car-registration-api-uk');
  var sha1 = require('js-sha1');
 
+
+/*---------------------------------GET Index Page-----------------------------------*/
 app.get('/', function(req, res, next) {
      res.locals.udata = req.session.udata;
         res.render('sellbuy/index', {
@@ -22,15 +24,17 @@ app.get('/', function(req, res, next) {
             
         }) 
 })
+/*----------------------------------Get Index Page End----------------------------------*/
 
+// app.get('/getcars',function(req, res, next) {
+//   console.log(req.query.car);
+// api.CheckCarRegistrationUK(req.query.car ,"jazz",function(data){
+//    console.log(data);
+//     res.send(data); 
+// });
+// });
 
-app.get('/getcars',function(req, res, next) {
-  console.log(req.query.car);
-api.CheckCarRegistrationUK(req.query.car ,"jazz",function(data){
-   console.log(data);
-    res.send(data); 
-});
-});
+/*----------------------------------Car Image Upload Post-----------------------------------*/
 
 app.post('/uploads', async function(req, res, next){
 
@@ -82,18 +86,153 @@ app.post('/uploads', async function(req, res, next){
    }
  
 });
+/*----------------------------------Car Image Upload Post End-----------------------------------*/
+
+
+/*----------------------------------Car Image Upload Get----------------------------------------*/
 
 app.get('/get_images', async function(req, res, next){
 
- var query = 'SELECT * FROM  tbl_cars_images where product_id = '+req.query.id;
- console.log(query)
-     results = await database.query(query, [] );
-       // res.writeHead(200, {'Content-Type': 'application/json'});
-        res.send(results); 
+      var query = 'SELECT * FROM  tbl_cars_images where product_id = '+req.query.id;
+      console.log(query)
+      results = await database.query(query, [] );
+      res.send(results); 
 
 })
 
 
+/*----------------------------------Car Image Upload Get End-----------------------------------*/
+
+
+
+/*----------------------------------User Image Upload Post-------------------------------------*/
+
+app.post('/user_image', function(req, res, next){
+    res.locals.udata = req.session.udata;
+    var userdata = res.locals.udata
+    var newdata =  JSON.stringify(userdata);
+    var alldata = JSON.parse(newdata);
+    //console.log(alldata[0].id);
+
+      if(req.method == "POST"){
+         var post  = req.body;
+        
+     
+          var file = req.files.agent_photo;
+       //  console.log(file.size);
+          
+          var img_name='IMG_'+ Date.now();
+          //console.log(img_name)
+         if(file.mimetype == "image/jpeg" ||file.mimetype == "image/png"||file.mimetype == "image/gif" || file.size < 52428800 ){
+                                 
+              file.mv('assets/ProfilePictures/'+img_name , async function(err) {
+                             
+                  
+          var query = 'Update tbl_user SET `profile_image` ="' + img_name + '" Where id="' + alldata[0].id  +  '"';
+         // console.log(query);
+            results = await database.query(query, [] );  
+         if (results) {
+              res.writeHead(200, {'Content-Type': 'application/json'});
+              var obj = {success : 1 , message : 'Image Updated Successfully!!'}
+              res.end(JSON.stringify(obj));
+             } else {                
+             
+                res.writeHead(200, {'Content-Type': 'application/json'});
+                var obj = {success : 0 , message : 'Image Can not Updated!!'}
+                res.end(JSON.stringify(obj));
+             }
+               
+            });
+          } else {
+            res.writeHead(200, {'Content-Type': 'application/json'});
+                var obj = {success : 0 , message : 'Image Size is Too Large!!'}
+                res.end(JSON.stringify(obj));
+          }
+       
+   } else {
+      res.render('addcontent');
+   }
+
+});
+/*----------------------------------User Image Upload End--------------------------------------*/
+
+
+
+/*---------------------------------- get User Image--------------------------------------------*/
+
+app.get('/profile_images', async function(req, res, next){
+    
+       var query = 'SELECT `profile_image`  FROM  tbl_user where id = '+ req.query.id;
+       //console.log(query);
+       results = await database.query(query, [] );
+       res.send(results); 
+
+})
+/*---------------------------------- Get User Image End--------------------------------------------*/
+
+
+
+
+app.post('/save_user', async function(req, res, next){
+
+     
+        if(req.method == "POST"){
+         var post  = req.body;
+         var fname = post.first_name;
+         var lname = post.last_name;
+         var phone = post.phone;
+         var address = post.address;
+         var state = post.state;
+         var country = post.country;
+         var postcode = post.passcode;
+         var desc = post.description;
+         var pass = post.password;
+         var id =  post.user_id;
+        // console.log(id);
+          if(pass == ''){
+             var query = 'Update `tbl_user` SET  `first_name` ="' + fname + '",`last_name`="' + lname + '",`phone`="' + phone + '",`address`="' + address + '",`state`="' + state + '",`country`="' + country + '", `post_code`="' + postcode + '", `description`="' + desc + '"  Where id ="' + id + '"';
+            // console.log(query);
+              results = await database.query(query, [] );
+                if (results) {
+                    res.writeHead(200, {'Content-Type': 'application/json'});
+                    var obj = {success : 1 , message : 'Profile Updated Successfully!!'}
+                    res.end(JSON.stringify(obj));
+                    
+                   } else {
+
+                    res.writeHead(200, {'Content-Type': 'application/json'});
+                    var obj = {success : 0 , message : 'Updation Failed!!'}
+                    res.end(JSON.stringify(obj));
+                    
+                }
+            
+          }else{
+
+   
+            var query = 'Update `tbl_user` SET  `first_name` ="' + fname + '",`last_name`="' + lname + '",`phone`="' + phone + '",`address`="' + address + '",`state`="' + state + '",`country`="' + country + '", `post_code`="' + postcode + '", `description`="' + desc + '" , `password`="' + sha1(pass) + '" Where id ="' + id + '"';
+             // console.log(query);
+            results = await database.query(query, [] );
+                if (results) {
+                    res.writeHead(200, {'Content-Type': 'application/json'});
+                    var obj = {success : 1 , message : 'Profile Updated Successfully!!'}
+                    res.end(JSON.stringify(obj));
+                    
+                   } else {
+
+                    res.writeHead(200, {'Content-Type': 'application/json'});
+                    var obj = {success : 0 , message : 'Updation Failed!!'}
+                    res.end(JSON.stringify(obj));
+                    
+                }
+              }
+           
+            }else{
+          res.render('addcontent');
+         }
+
+      })
+
+/*----------------------------------Get User Registration------------------------------------------*/
 
 app.get('/registration', function(req, res, next) {
    
@@ -101,28 +240,27 @@ app.get('/registration', function(req, res, next) {
       
     }) 
 })
+/*----------------------------------Get User Registration End--------------------------------------*/
+
+
+/*----------------------------------User Registration Post Request-------------------------------------*/
 
 app.post('/register', async function(req, res, next){
         
-    
       var cl = {
-          
             user_name: req.sanitize('user_name').escape().trim(),
             email: req.sanitize('email_address').escape().trim(),
             password: sha1(req.sanitize('password').escape().trim()),
             role: 'U',
-        }
-
-          
+            }
             var query = 'INSERT INTO tbl_user  SET ? ';
-
             results = await database.query(query, [cl] );
                 if (results) {
                     res.writeHead(200, {'Content-Type': 'application/json'});
                     var obj = {success : 1 , message : 'Registration Done Successfully!!'}
                     res.end(JSON.stringify(obj));
                     
-                } else {
+                   } else {
 
                     res.writeHead(200, {'Content-Type': 'application/json'});
                     var obj = {success : 0 , message : 'Registration Failed!! '}
@@ -130,76 +268,88 @@ app.post('/register', async function(req, res, next){
                     
                 }
            
-})
+            })
+/*---------------------End User Registration POST-----------------------------------------*/
+
+
+
+/*---------------------Get User Login------------------------------------------------------*/
 
 app.get('/login', function(req, res, next) {
-
-
   
-    res.render('sellbuy/login', {
+        res.render('sellbuy/login', {
         title: 'Add content',
         
     }) 
 })
 
+/*---------------------Get User Login End-----------------------------------------------------*/
+
+/*---------------------User Login Post -------------------------------------------------------*/
 var sess;
 app.post('/user_login',async function(req, res, next){
        sess=req.session;
        sess.udata;
-      
-    //console.log(sess)
-      var data = sha1(req.body.password);
-
-
+       var data = sha1(req.body.password);
        var query = 'SELECT * FROM tbl_user Where user_name = "' + req.body.user_name + '" && password = "' + data  + '"';
-      // console.log(query);
-        results = await database.query(query, [] );
-        //console.log(results.length);
-        if(results.length > 0 ){
-         
-          sess.udata = JSON.parse(results);
-        
-        
-       
+       results = await database.query(query, [] ); 
+       if(results.length > 0 ){
+       sess.udata = JSON.parse(results);
+
                   res.writeHead(200, {'Content-Type': 'application/json'});
                   var obj = {success : 1 , message : 'Login Successfully!!'}
                   res.end(JSON.stringify(obj));
                   
-              } else {
+                 } else {
 
                   res.writeHead(200, {'Content-Type': 'application/json'});
                   var obj = {success : 0 , message : 'Login Failed!! '}
                   res.end(JSON.stringify(obj));
                   
-              }
+               }
 
       
 })
+
+/*-------------------------------End User Login Post----------------------------------------------*/
+
+
+/*--------------------------------------Get Add Car-----------------------------------------------*/
+
 
 app.get('/addcar', function(req, res, next) {
    // console.log(req.session.udata); 
  res.locals.udata = req.session.udata;
  var g = res.locals.udata;
-
-if(g) {
+ if(g) {
         res.render('sellbuy/addcar', {
-            title: 'Add content',
+        title: 'login',
              
-    }) 
- } else{
-    res.render('sellbuy/login', {
-        title: 'Add content',
+      }) 
+     } else{
+        res.render('sellbuy/login', {
+        title: 'login',
         
     }) 
-
  }
 })
+
+/*--------------------------------------Get Add Car End-----------------------------------------------*/
+
+
+/*-----------------------------------------User Logout------------------------------------------------*/
 
 app.get('/logout', function (req, res) {
     req.session.destroy();
 
       res.redirect('/login');
   });
+
+
+/*--------------------------------------User Logout End-----------------------------------------------*/
+
+
+/*-----------------------------Check User Mail if Already Registered----------------------------------*/
 
 app.get('/check_email', async function(req, res, next) {
     var query = 'SELECT email FROM  tbl_user where email = "' + req.query.email + '"';
@@ -217,7 +367,13 @@ app.get('/check_email', async function(req, res, next) {
     }
         
 });
- ///
+
+
+/*--------------------------------------Check User mail End-----------------------------------------------*/
+
+
+/*--------------------------------------Get Van Page------------------------------------------------------*/
+
  app.get('/van', function(req, res, next) {
     
         res.render('sellbuy/van', {
@@ -226,8 +382,11 @@ app.get('/check_email', async function(req, res, next) {
         }) 
 })
 
-// Auth wiith google
+/*--------------------------------------Get Van End-----------------------------------------------------*/
 
+
+
+/*--------------------------------------Login With Google-----------------------------------------------*/
 
 app.get('/google_login', async function (req, res, next) {
   
@@ -257,7 +416,7 @@ app.get('/google_login', async function (req, res, next) {
 	  results = await database.query(query, [] );
 
   	if(results.length > 0){
-	   console.log(results.length);
+	 //  console.log(results.length);
 	   var sess;
 	   sess=req.session;
 	   sess.udata;
@@ -274,6 +433,11 @@ app.get('/google_login', async function (req, res, next) {
 
 })
 
+/*--------------------------------------Login With Google End-----------------------------------------------*/
+
+
+
+/*--------------------------------------Login With Facebook------------------------------------------------*/
 
 app.get('/fb_login', async function (req, res, next) {
 
@@ -285,7 +449,7 @@ app.get('/fb_login', async function (req, res, next) {
    results = await database.query(query, [] );
   // console.log(results);
    if(results.length > 0){
-   console.log(results.length);
+   //console.log(results.length);
    var sess;
    sess=req.session;
    sess.udata;
@@ -322,6 +486,11 @@ app.get('/fb_login', async function (req, res, next) {
 
 })
 
+/*--------------------------------------Login With Facebook End---------------------------------------------------*/
+
+
+
+
 app.get('/addpicture', function(req, res, next) {
   res.locals.udata = req.session.udata;
     res.render('sellbuy/upload_pictures', {
@@ -332,15 +501,21 @@ app.get('/addpicture', function(req, res, next) {
 
 // User profile
 
-app.get('/profile', function(req, res, next) {
+app.get('/profile',async function(req, res, next) {
  res.locals.udata = req.session.udata;
  var g = res.locals.udata;
-
+ //console.log(g[0].id)
 if(g) {
-        var query = "select * from tbl_user Where role='U'";
+
+       var newdata =  JSON.stringify(g);
+       var alldata = JSON.parse(newdata);
+        var query = 'select * from tbl_user Where id= ' + alldata[0].id;
+       /// console.log(query);
+        results = await database.query(query, [] );
         res.render('sellbuy/user_profile', {
             title: 'Add content',
             data: JSON.parse(results)
+
              
     }) 
  } else{
@@ -379,6 +554,7 @@ app.get('/mycars',async function(req, res, next) {
 
 app.get('/all_product',async function(req, res, next){
  res.locals.udata = req.session.udata;
+ 
   var query = 'SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id where tbl_cars_images.product_id ="' +req.query.id + '" GROUP BY tbl_cars_images.image_name';
      results = await database.query(query, [] );
        //console.log(results);
@@ -394,14 +570,22 @@ app.get('/featured_cars',async function(req, res, next){
  res.locals.udata = req.session.udata;
   var query = 'SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id GROUP BY tbl_cars_images.product_id';
      results = await database.query(query, [] );
-       //console.log(results);
+       if(results.length > 0){
          res.render('sellbuy/featured_cars', {
                   title: 'Add content',
                   data: JSON.parse(results)
               })
+               }else{
+   
+                res.render('sellbuy/feature_car', {
+                  title: 'Add content',
+                
 
-        //console.log(data);
+               })
+            }
 })
+        
+
 
 
 

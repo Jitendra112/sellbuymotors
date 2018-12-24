@@ -1,5 +1,14 @@
 <%- include ../sellbuylayouts/header.ejs %>
-
+<style>
+button.btn.btn-success {
+    margin-top: 9px;
+}
+ @media only screen and (max-width: 479px) {
+   	    button.btn.btn-success {
+    top: -37px;
+   }
+   }
+</style>
   <link rel="stylesheet" href="css/bootstrap.min.css"> 
 
    <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -29,38 +38,52 @@
 							<div class="title-separator-primary"></div>
 						</div>
 					</div>	
-					<form name="agent-from" action="controler/controler.php" method="post" enctype="multipart/form-data">
-										<input type='hidden' name="id" value="1"/>
+					
+						
 					<div class="row margin-top-60">
 						<div class="col-xs-6 col-xs-offset-3 col-sm-offset-0 col-sm-3 col-md-4">
 							<div class="agent-photos">
-								<img src="https://bestwayproperties.co.uk/controler/uploads/profiles/1/1-1544258721.jpg" id="agent-profile-photo" class="img-responsive" alt="">
+								<div id="grid">
+								
+								 </div>
+								<form name="agent-from" id="image_upload" action="/user_image" method="POST" enctype="multipart/form-data">	
 								<div class="change-photo">
 									<i class="fa fa-pencil fa-lg"></i>
-									<input name="agent-photo" id="agent-photo" type="file" accept="image/*">
+							    
+									<input name="agent_photo" id="agent-photo"  type="file" accept="image/*">
 								</div>
 								<input disabled="disabled" id="agent-file-name" class="main-input" type="text">
+								<button type="submit" class="btn btn-success">Click Here to Update</button>
+								</form>
 							</div>
-						</div>
+						</div> 
+
+                         <input type="hidden" id="myid"  value="<%= locals.data[0].id %>" />
+                    
+                      
+					  
 						<div class="col-xs-12 col-sm-9 col-md-8">
+							<form id="myform" action="save_user" method="post">
 							<div class="labelled-input">
-								<label for="email">Email</label><input id="email" name="email" type="email" class="input-full main-input" placeholder="" value="<%= locals.data[0].email %>" readonly />
+								<input type="hidden" name="user_id"  value="<%= locals.data[0].id %>" />
+		                    <label for="email">Email</label>
+		                    <input id="email" name="email" type="text" class="input-full main-input"  value="<%= locals.data[0].email %>" readonly/>
 								<div class="clearfix"></div>
 							</div>
 							<div class="labelled-input">
-								<label for="first-name">First name</label><input id="first-name" name="first-name" type="text" class="input-full main-input" placeholder="" value="" required />
+								<label for="first-name">First name</label><input id="first-name" name="first_name" type="text" class="input-full main-input" placeholder="" value="<%= locals.data[0].first_name %>" required />
 								<div class="clearfix"></div>
 							</div>
 							<div class="labelled-input">
-								<label for="last-name">Last name</label><input id="last-name" name="last-name" type="text" class="input-full main-input" placeholder="" value=""/>
+								<label for="last-name">Last name</label><input id="last-name" name="last_name" type="text" class="input-full main-input" placeholder="" value="<% if(locals.data[0].last_name == null){ %><%= '' %><% }else{ %><%= locals.data[0].last_name %>  <% } %>"/>
 								<div class="clearfix"></div>
 							</div>
 							<div class="labelled-input">
-								<label for="phone">Phone</label><input id="phone" name="phone" type="tel" class="input-full main-input" placeholder="" value=""/>
+								<label for="phone">Phone</label><input id="phone" name="phone" type="tel" class="input-full main-input" placeholder="" value="<% if(locals.data[0].phone == null){ %><%= '' %><% }else{ %><%= locals.data[0].phone %>  <% } %>"/>
 								<div class="clearfix"></div>
 							</div>
 							<div class="labelled-input last">
-								<label for="address">Address</label><input id="address" name="address" type="text" class="input-full main-input" placeholder="" value=""/>
+								<label for="address">Address</label><input id="address" name="address" type="text" class="input-full main-input" placeholder="" value="<% if(locals.data[0].address == null){ %><%= '' %><% }else{ %><%= locals.data[0].address %>  <% } %>"/>
 								<div class="clearfix"></div>
 							</div>
 						</div>
@@ -68,20 +91,20 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="labelled-input last">
-								<label for="state">State</label><input id="state" name="state" type="text" class="input-full main-input" placeholder="" value=""/>
+								<label for="state">State</label><input id="state" name="state" type="text" class="input-full main-input" placeholder="" value="<% if(locals.data[0].state == null){ %><%= '' %><% }else{ %><%= locals.data[0].state %>  <% } %>"/>
 								<div class="clearfix"></div>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="labelled-input last">
-								<label for="country">Country</label><input id="country" name="country" type="text" class="input-full main-input" placeholder="" value=""/>
+								<label for="country">Country</label><input id="country" name="country" type="text" class="input-full main-input" placeholder="" value="<% if(locals.data[0].country == null){ %><%= '' %><% }else{ %><%= locals.data[0].country %>  <% } %>"/>
 								<div class="clearfix"></div>
 							</div>
 						</div>
 						
 						<div class="col-md-12">
 							<div class="labelled-input last">
-								<label for="passcode">Postcode</label><input id="passcode" name="passcode" type="text" class="input-full main-input" placeholder="" value=""/>
+								<label for="passcode">Postcode</label><input id="passcode" name="passcode" type="text" class="input-full main-input" placeholder="" value="<% if(locals.data[0].post_code == null){ %><%= '' %><% }else{ %><%= locals.data[0].post_code %>  <% } %>"/>
 								<div class="clearfix"></div>
 							</div>
 						</div>
@@ -90,56 +113,11 @@
 						<div class="col-xs-12">
 							<div class="labelled-textarea">
 								<label for="description">Description</label>
-								<textarea id="description" name="description" class="input-full main-input"></textarea>
+								<textarea id="description" name="description" class="input-full main-input"><% if(locals.data[0].description == null){ %><%= '' %><% }else{ %><%= locals.data[0].description %>  <% } %></textarea>
 							</div>
 						</div>
 					</div>
-					<div class="row margin-top-30">
-						<div class="col-xs-12 col-lg-6">
-							<div class="labelled-input-short">
-								<label for="facebook">
-									<span class="label-icon-circle pull-left">
-										<i class="fa fa-facebook"></i>
-									</span>
-									Facebook
-								</label>
-								<input id="facebook" name="facebook" type="url" class="input-full main-input" placeholder="" value=""/>
-								<div class="clearfix"></div>
-							</div>
-							<div class="labelled-input-short">
-								<label for="gplus">
-									<span class="label-icon-circle pull-left">
-										<i class="fa fa-google-plus"></i>
-									</span>
-									Google +
-								</label>
-								<input id="gplus" name="gplus" type="url" class="input-full main-input" placeholder="" value=""/>
-								<div class="clearfix"></div>
-							</div>
-						</div>
-						<div class="col-xs-12 col-lg-6">
-							<div class="labelled-input-short">
-								<label for="twitter">
-									<span class="label-icon-circle pull-left">
-										<i class="fa fa-twitter"></i>
-									</span>
-									Twitter
-								</label>
-								<input id="twitter" name="twitter" type="url" class="input-full main-input" placeholder="" value=""/>
-								<div class="clearfix"></div>
-							</div>
-							<div class="labelled-input-short">
-								<label for="skype">
-									<span class="label-icon-circle pull-left">
-										<i class="fa fa-skype"></i>
-									</span>
-									Skype
-								</label>
-								<input id="skype" name="skype" type="url" class="input-full main-input" placeholder="" value=""/>
-								<div class="clearfix"></div>
-							</div>
-						</div>
-					</div>
+					
 					<div class="row margin-top-30">
 						<div class="col-xs-12">
 							<div class="info-box">
@@ -191,37 +169,26 @@
 					<div class="sidebar-left">
 
 	
-	<div class="profile-info margin-top-60">
-				<div class="profile-info-title negative-margin">Admin </div>
-		<img src="https://bestwayproperties.co.uk/controler/uploads/profiles/1/1-1544258721.jpg" alt="" class="pull-left" />
-		<div class="profile-info-text pull-left">
-			<p class="subtitle-margin">admin</p>
-			<p class="">, </p>
-			
-			<a href="logout.php" class="logout-link margin-top-30"><i class="fa fa-lg fa-sign-out"></i>Logout</a>
-		</div>
-		<div class="clearfix"></div>
-	</div>
 	
-	<div class="center-button-cont margin-top-15">
+<!-- 	<div class="center-button-cont margin-top-15">
 		<a href="#" class="button-primary button-shadow button-full">
 			<span>My profile</span>
 			<div class="button-triangle"></div>
 			<div class="button-triangle2"></div>
 			<div class="button-icon"><i class="fa fa-user"></i></div>
 		</a>
-	</div>
+	</div> -->
 	<div class="center-button-cont margin-top-15">
 		<a href="/addcar" class="button-alternative button-shadow button-full">
 			<span>Add Cars</span>
 			<div class="button-triangle"></div>
 			<div class="button-triangle2"></div>
-			<div class="button-icon"><i class="jfont fa-lg">&#xe804;</i></div>
+			<div class="button-icon"><i class="fa fa-plus"></i></i></div>
 		</a>
 	</div>
 	<hr/>
 	<div class="center-button-cont margin-top-30">
-		<a href="user-properties.php" class="button-primary button-shadow button-full">
+		<a href="/featured_cars" class="button-primary button-shadow button-full">
 			<span>All Cars</span>
 			<div class="button-triangle"></div>
 			<div class="button-triangle2"></div>
@@ -230,8 +197,8 @@
 	</div>
 	
 	<div class="center-button-cont margin-top-15">
-		<a href="user-properties.php?transaction=sale" class="button-fourth button-shadow button-full">
-			<span>Sale Cars</span>
+		<a href="/mycars" class="button-fourth button-shadow button-full">
+			<span>My Cars</span>
 			<div class="button-triangle"></div>
 			<div class="button-triangle2"></div>
 			<div class="button-icon"><i class="fa fa-th-list"></i></div>
@@ -352,18 +319,124 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
      <script>
-     	function get_images(){
-        var html = '';
-        $.get('/get_images' ,function(res){
-        $.each(res,function(key,val){
-         html += '<div class="col-md-3" id="image_get"><img src="/uploads/'+ val.image_name + '" height="100px" width="100px"></div>'
-        })
-        $('#grid').html(html)
+     $(document).on('submit','#image_upload' ,function(e) {
+   
+       e.preventDefault();
+       if($('#agent-photo').val() == ''){
+        
+        toastr.error('Choose Image to Upload!!')
+          return false;
+       }else{
+       var formData = new FormData(this);  
+       // alert(formData);
+        console.log(formData)                
+        $.ajax({
+        type:'POST',
+        url:$(this).attr('action'),
+        data:formData,
+        cashe:false,
+        contentType:false,
+        processData:false,                      
+        success:function(data){
+           //   alert(data.message)
+         //console.log(data);
+         if(data.success == 1){
+             get_images();
+           toastr.success(data.message)
+           $("#image_upload")[0].reset();
+           $('#agent-file-name').css('display','none');
+            
+         
+         }else{
+
+           toastr.error(data.message)
+           location.reload();
+
+         }
+
+      },
+       
+        },'json');
+     }
+     
+});
+get_images();
+function get_images(){
+
+ var id = $('#myid').val();
+ //alert(id);
+  var html = '';
+  $.get('/profile_images?id='+ id ,function(res){
+   
+    $.each(res,function(key,val){
+    	//alert(val.profile_image);
+    	if(val.profile_image == null){
+
+    		var image = 'user.jpg';
+    	}else{ 
+    		var image = val.profile_image
+    	}
+        html += '<img src="/ProfilePictures/'+ image + '" id="agent-profile-photo" class="img-responsive" alt="" >';
+     
+    })
+      $('#grid').html(html)
   },'json')
 }
 
 
 
+</script>
+
+<!---Save User Details --->
+<script>
+ $(document).on('submit','#myform' ,function(e) {
+   
+       e.preventDefault();
+    
+       var formData = new FormData(this);  
+       // alert(formData);
+        console.log(formData)                
+        $.ajax({
+        type:'POST',
+        url:$(this).attr('action'),
+        data:formData,
+        cashe:false,
+        contentType:false,
+        processData:false,                      
+        success:function(data){
+           //   alert(data.message)
+         //console.log(data);
+         if(data.success == 1){
+           toastr.success(data.message);
+            window.setTimeout(function() {
+            location.reload()
+            },2000);
+         }else{
+
+           toastr.error(data.message)
+           location.reload();
+
+         }
+
+      },
+       
+        },'json');
+   
+     
+});
+
+
+
+</script>
+
+
+
+
+
+
+
+
+<script>
     function signOut() {
    // console.log('User signed out.');
     var auth2 = gapi.auth2.getAuthInstance();

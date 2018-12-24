@@ -1,0 +1,102 @@
+<%- include ../sellbuylayouts/header.ejs %>
+<style>
+    .col-md-4{
+        float: left;
+    }
+    #loading{
+        position: fixed;
+        z-index: 99;
+    }
+    .Superactive {
+        background: red;
+        color: wheat;
+    }
+    select.form-control:not([size]):not([multiple]) {
+    height: auto;
+    padding: 0px 8px !important;
+}
+section {
+    padding: 50px 0px;
+    position: relative;
+}
+.form-control {
+    height: auto;
+    padding: 0px;
+}
+.btn-md {
+    padding: 0 !important;
+    line-height: 22px;
+}
+p#foundCar {
+    font-weight: 600;
+    font-size: 18px;
+    color: #ee5624;
+}
+dd, h1, h2, h3, h4, h5, h6, label {
+margin-bottom: 0;
+}
+a.btn.btn-primary {
+margin: -8px 0 0 0;
+}
+</style>
+<section>
+    <div class="background-image-maker gradient gradient-lr"></div>
+    <div class="holder-image">
+        <img src="/images/bg2.jpg" alt="" class="img-fluid d-none" />
+    </div>
+    <div class="black-overlay overlay-full"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 justify-content-center text-center">
+                <h1 class="text-white c-font-weight-700" id="search_type">Featured Cars</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Page Inner-->
+<section class="py-0 h-0">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-10 col-sm-5 col-lg-3 text-center">
+                <ol class="breadcrumb justify-content-center mb-0 c-bg-primary text-white py-3 position-relative">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Featured Cars</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb -->
+<section class="py-0 h-0">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-10 col-sm-5 col-lg-3 text-center">
+               <!--  <ol class="breadcrumb justify-content-center mb-0 c-bg-primary text-white py-3 position-relative">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Car Listing</li>
+                </ol> -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Breadcrumb -->
+
+<!-- List Without Sidebar -->
+<section>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container">
+                <div class="col-12 col-lg-12">
+                 
+                 <h1>There is no car to Display.Please Add cars in Add-Cars Section </h1> 
+                   
+                </div>
+            </div>
+        </div>
+
+ 
+    </div>
+   
+</section>
+<!-- End List Without Sidebar -->
+<%- include ../sellbuylayouts/footer.ejs %> 
