@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 21, 2018 at 07:58 PM
+-- Generation Time: Dec 24, 2018 at 11:00 PM
 -- Server version: 5.7.24-0ubuntu0.18.04.1
 -- PHP Version: 7.0.32-0ubuntu0.16.04.1
 
@@ -33,14 +33,6 @@ CREATE TABLE `tbl_cars_images` (
   `image_name` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_cars_images`
---
-
-INSERT INTO `tbl_cars_images` (`id`, `user_id`, `product_id`, `image_name`, `created_at`) VALUES
-(69, 42, 40, 'IMG_1545394255870', '2018-12-21 12:10:55'),
-(70, 42, 40, 'IMG_1545394288972', '2018-12-21 12:11:28');
 
 -- --------------------------------------------------------
 
@@ -340,13 +332,6 @@ CREATE TABLE `tbl_products` (
   `car_description` varchar(1500) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_products`
---
-
-INSERT INTO `tbl_products` (`id`, `make_year`, `mileage`, `make`, `model`, `variant`, `color`, `body_type`, `fuel_type`, `engine_size`, `fuel_consumption`, `acceleration`, `gear_box`, `drive_train`, `co2_emission`, `doors`, `seats`, `insurance_group`, `annual_tax`, `private_trade`, `owner`, `car_type`, `price_expectation`, `car_description`, `created_at`) VALUES
-(40, '2017', '30000', 'Audi', 'A1', 'Amplified Edition', 'Burgundy', 'Estate', 'Hybrid – Petrol&#x2F;Electric Plug-in', '2.0', '60+ mpg', '8-12s (0-60mph)', 'Semi-Automatic', 'Front Wheel Drive', 'Up to 140 g &#x2F; km CO2', '3DR', '10', '20', 'Up to €210', 'Trade adverts', 'first owner', 'Car', '12,50,000', 'test', '2018-12-21 12:08:22');
 
 -- --------------------------------------------------------
 
@@ -4471,6 +4456,15 @@ CREATE TABLE `tbl_user` (
   `facebook_id` varchar(50) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(100) DEFAULT NULL,
+  `first_name` varchar(50) DEFAULT NULL,
+  `last_name` varchar(50) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `state` varchar(50) DEFAULT NULL,
+  `country` varchar(50) DEFAULT NULL,
+  `post_code` varchar(10) DEFAULT NULL,
+  `description` varchar(100) DEFAULT NULL,
+  `profile_image` varchar(50) DEFAULT NULL,
   `role` varchar(20) DEFAULT 'U',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -4479,13 +4473,12 @@ CREATE TABLE `tbl_user` (
 -- Dumping data for table `tbl_user`
 --
 
-INSERT INTO `tbl_user` (`id`, `user_name`, `google_id`, `facebook_id`, `email`, `password`, `role`, `created_at`) VALUES
-(26, 'MultiJitendra1', '114112773907484109796', NULL, 'jitendra.15love@gmail.com', NULL, 'U', '2018-12-21 09:28:58'),
-(27, 'Kuldeep Kumar', '114852000254859220717', NULL, '349kuldeep@gmail.com', NULL, 'U', '2018-12-21 09:29:05'),
-(28, 'Sanjay Kumar', NULL, NULL, 'sanjay@gmail.com', 'password', 'U', '2018-11-21 05:48:06'),
-(37, 'jazz', NULL, NULL, 'waldo@gmail.com', '1234', 'U', '2018-12-18 09:39:27'),
-(38, NULL, NULL, NULL, 'admin@gmail.com', 'admin', 'A', '2018-12-20 11:18:51'),
-(42, 'kush', NULL, NULL, 'sonu@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'U', '2018-12-21 09:47:11');
+INSERT INTO `tbl_user` (`id`, `user_name`, `google_id`, `facebook_id`, `email`, `password`, `first_name`, `last_name`, `phone`, `address`, `state`, `country`, `post_code`, `description`, `profile_image`, `role`, `created_at`) VALUES
+(26, 'MultiJitendra1', '114112773907484109796', NULL, 'jitendra.15love@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'U', '2018-12-21 09:28:58'),
+(27, 'Kuldeep Kumar', '114852000254859220717', NULL, '349kuldeep@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'U', '2018-12-21 09:29:05'),
+(28, 'Sanjay Kumar', NULL, NULL, 'sanjay@gmail.com', 'password', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'U', '2018-11-21 05:48:06'),
+(38, NULL, NULL, NULL, 'admin@gmail.com', 'admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'A', '2018-12-20 11:18:51'),
+(48, 'Sonu', NULL, NULL, 'sonu@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'IMG_1545671753609', 'U', '2018-12-24 17:15:53');
 
 --
 -- Indexes for dumped tables
@@ -4529,7 +4522,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_cars_images`
 --
 ALTER TABLE `tbl_cars_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 --
 -- AUTO_INCREMENT for table `tbl_countries`
 --
@@ -4549,7 +4542,7 @@ ALTER TABLE `tbl_states`
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
