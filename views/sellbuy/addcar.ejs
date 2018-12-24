@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-sm-12 justify-content-center text-center">
-                <h1 class="text-white c-font-weight-700">Sell Car</h1>
+                <h1 class="text-white c-font-weight-700">Add Car</h1>
             </div>
         </div>
     </div>
@@ -22,7 +22,7 @@
             <div class="col-10 col-sm-5 col-lg-3 text-center">
                 <ol class="breadcrumb justify-content-center mb-0 c-bg-primary text-white py-3 position-relative">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Sell Car</li>
+                    <li class="breadcrumb-item active">Add Car</li>
                 </ol>
             </div>
         </div>
@@ -54,7 +54,8 @@
                                 <label class="c-dark">Type</label>
                                 <div class="form-group">
                                     <select class="form-control rounded" name="car_type">
-                                        <option value="Car" selected="selected">Car</option>
+                                        <option value="New" selected="selected">New</option>
+                                         <option value="Used">Used</option>
                                         
                                        
                                        
@@ -597,15 +598,9 @@
                             <div class="col-12 col-sm-6 col-lg-4">
                                 <label class="c-dark">Price Expectation</label>
                                 <div class="form-group position-relative">
-                                    <select class="form-control rounded pl-4" name="price_expect">
-                                        <option value="12,50,000">e.g. 12,50,000</option>
-                                        <option value="11,00,000">e.g. 11,00,000</option>
-                                        <option value="10,00,000">e.g. 10,00,000</option>
-                                        <option value="9,50,000">e.g. 9,00,000</option>
-                                        <option value="7,00,000">e.g. 7,00,000</option>
-                                        <option value="5,00,000">e.g. 5,00,000</option>
-                                    </select>
-                                    <small>Twelve Lakh Fifty Thousand Dollar Only</small>
+                                    <input type="text" class="form-control rounded pl-4" name="price_expect">
+                                      
+                                  
                                     <div class="price position-absolute c-dark"><span>&#163;</span></div>
                                 </div>
                             </div><br><br>
@@ -655,7 +650,7 @@
            var sell = JSON.parse(data.product_id);
            //console.log(sell[0].id);
          if(data.success = 1){
-         window.location.href = base_url+  "/sellcars#link?car_id="+ sell[0].id;
+         window.location.href = base_url+  "/addpicture#link?car_id="+ sell[0].id;
 
       }else{
          location.reload();

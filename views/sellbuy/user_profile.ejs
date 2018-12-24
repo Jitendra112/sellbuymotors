@@ -11,7 +11,7 @@
 			<div class="row">
 				<div class="col-xs-12 col-lg-12 short-image-title">
 					<h5 class="subtitle-margin second-color">dashboard</h5>
-					<h1 class="second-color">my account</h1>
+					<h1 class="second-color">My Profile</h1>
 					<div class="short-title-separator"></div>
 				</div>
 			</div>
@@ -212,7 +212,7 @@
 		</a>
 	</div>
 	<div class="center-button-cont margin-top-15">
-		<a href="submit-property.php" class="button-alternative button-shadow button-full">
+		<a href="/addcar" class="button-alternative button-shadow button-full">
 			<span>Add Cars</span>
 			<div class="button-triangle"></div>
 			<div class="button-triangle2"></div>
@@ -349,7 +349,21 @@
 
 <!-- template scripts -->
     <script type="text/javascript" src="js/apartment.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
      <script>
+     	function get_images(){
+        var html = '';
+        $.get('/get_images' ,function(res){
+        $.each(res,function(key,val){
+         html += '<div class="col-md-3" id="image_get"><img src="/uploads/'+ val.image_name + '" height="100px" width="100px"></div>'
+        })
+        $('#grid').html(html)
+  },'json')
+}
+
+
+
     function signOut() {
    // console.log('User signed out.');
     var auth2 = gapi.auth2.getAuthInstance();

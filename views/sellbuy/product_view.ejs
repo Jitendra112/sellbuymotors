@@ -37,10 +37,10 @@
     color: #fff;
 }
 a.tracking-motoring-products-link.vehicleLeaderinsuranceLink {
-    background: red;
+    display: none;
+}
+ul.fpa-features-list li {
     color: #fff;
-    padding: 5px;
-    margin: 21px 0 0 0 !important;
 }
 </style>
 
@@ -101,7 +101,7 @@ a.tracking-motoring-products-link.vehicleLeaderinsuranceLink {
                     </div>  
                     <div class="c-bg-dark rounded-top">
                         <ul class="nav nav-tabs border-0 flex-column flex-sm-row text-white" id="myTab" role="tablist">
-                            <li class="nav-item mb-0 rounded-left"><a class="nav-link redial-light border-0 py-3" data-toggle="tab" href="#desc1" role="tab" aria-expanded="true">DESCRIPTION</a></li>
+                            <li class="nav-item mb-0 rounded-left "><a class="nav-link redial-light border-0 py-3 active" data-toggle="tab" href="#desc1" role="tab" aria-expanded="true">DESCRIPTION</a></li>
                             <% locals.data.details.forEach(function(cl,index){ 
                             %>  
                             <li class="nav-item mb-0 rounded-left"><a class="nav-link redial-light border-0 py-3" data-toggle="tab" href="#li<%= index %>" role="tab" aria-expanded="true"><%= cl.detail_heading %></a></li>

@@ -1606,3 +1606,19 @@ section.section-light.section-top-shadow {
 header#header-fix {
 
 }
+@media (min-width: 768px){
+.navbar-nav {
+    float: right;
+    margin: 0;
+}
+}
+
+ul.list-unstyled.footer-links.mb-0 a {
+    color: #fff;
+}
+h6.text-white {
+    font-style: normal;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+

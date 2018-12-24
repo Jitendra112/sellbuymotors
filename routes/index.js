@@ -176,13 +176,13 @@ app.post('/user_login',async function(req, res, next){
       
 })
 
-app.get('/sellcar', function(req, res, next) {
+app.get('/addcar', function(req, res, next) {
    // console.log(req.session.udata); 
  res.locals.udata = req.session.udata;
  var g = res.locals.udata;
 
 if(g) {
-        res.render('sellbuy/sellcar', {
+        res.render('sellbuy/addcar', {
             title: 'Add content',
              
     }) 
@@ -322,7 +322,7 @@ app.get('/fb_login', async function (req, res, next) {
 
 })
 
-app.get('/sellcars', function(req, res, next) {
+app.get('/addpicture', function(req, res, next) {
   res.locals.udata = req.session.udata;
     res.render('sellbuy/upload_pictures', {
         title: 'Add content',
