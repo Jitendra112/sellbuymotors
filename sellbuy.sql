@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 24, 2018 at 11:00 PM
+-- Generation Time: Dec 25, 2018 at 05:45 PM
 -- Server version: 5.7.24-0ubuntu0.18.04.1
 -- PHP Version: 7.0.32-0ubuntu0.16.04.1
 
@@ -33,6 +33,18 @@ CREATE TABLE `tbl_cars_images` (
   `image_name` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_cars_images`
+--
+
+INSERT INTO `tbl_cars_images` (`id`, `user_id`, `product_id`, `image_name`, `created_at`) VALUES
+(1, 48, 1, 'IMG_1545739460288', '2018-12-25 12:04:20'),
+(2, 48, 1, 'IMG_1545739467724', '2018-12-25 12:04:27'),
+(3, 48, 1, 'IMG_1545739473442', '2018-12-25 12:04:33'),
+(4, 48, 1, 'IMG_1545739482522', '2018-12-25 12:04:42'),
+(5, 48, 1, 'IMG_1545739488560', '2018-12-25 12:04:48'),
+(6, 48, 1, 'IMG_1545739497128', '2018-12-25 12:04:57');
 
 -- --------------------------------------------------------
 
@@ -332,6 +344,13 @@ CREATE TABLE `tbl_products` (
   `car_description` varchar(1500) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_products`
+--
+
+INSERT INTO `tbl_products` (`id`, `make_year`, `mileage`, `make`, `model`, `variant`, `color`, `body_type`, `fuel_type`, `engine_size`, `fuel_consumption`, `acceleration`, `gear_box`, `drive_train`, `co2_emission`, `doors`, `seats`, `insurance_group`, `annual_tax`, `private_trade`, `owner`, `car_type`, `price_expectation`, `car_description`, `created_at`) VALUES
+(1, '2001', '20000', 'Audi', 'A1', 'Amplified Edition', 'Gray', 'Hatchback', 'Hybrid – Diesel&#x2F;Electric Plug-in', '3.0', '50+ mp', '8-12s (0-60mph)', 'Semi-Automatic', 'Four Wheel Drive', 'Up to 120 g &#x2F; km CO2', '3DR', '5', '10', 'Up to €295', 'Private adverts', 'second owner', 'New', '120000', 'test', '2018-12-25 12:00:53');
 
 -- --------------------------------------------------------
 
@@ -4522,7 +4541,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_cars_images`
 --
 ALTER TABLE `tbl_cars_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `tbl_countries`
 --
@@ -4532,7 +4551,7 @@ ALTER TABLE `tbl_countries`
 -- AUTO_INCREMENT for table `tbl_products`
 --
 ALTER TABLE `tbl_products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tbl_states`
 --
