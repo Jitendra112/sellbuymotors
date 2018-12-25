@@ -840,6 +840,45 @@ app.get('/mot-search', async function (req, res, next) {
     } else {
         makeModel = []
     }
+     if (q.postal_code) {
+        var postal_code = replaceString(q.postal_code, '+', '');
+    } else {
+        var postal_code = 'WV23AQ';
+    }
+    if (q.body_type != '') {
+        var bodystyle =  [lowerCase(q.body_type)];
+    }else{
+        var bodystyle = [];
+    }
+    if (q.fuel_type != '') {
+        var fuel_type =  [lowerCase(q.fuel_type)];
+    }else{
+        var fuel_type = [];
+    }
+    if(q.colour){
+        var colour = [lowerCase(q.colour)]
+    }else{
+        var colour = [];
+    }
+    if(q.quantity_of_doors){
+        var quantity_of_doors = [q.quantity_of_doors +' doors']
+    }else{
+        var quantity_of_doors = [];
+    }
+    if(q.transmission){
+        var transmission = [replaceString(q.transmission , '-',' ')]
+    }else{
+        var transmission = [];
+    }
+    if(q.radius != ''){
+      if(q.radius == '1500'){
+        var radius = '1000'
+      }else{
+        var radius = q.radius
+      }
+    }else{
+      var radius = []
+    }
     var params = {
         "isNewSearch": true,
         "pagination":
@@ -878,10 +917,10 @@ app.get('/mot-search', async function (req, res, next) {
                     "SelectedPower": null,
                     "SelectedAcceleration": null,
                     "SelectedEngineSize": null,
-                    "BodyStyles": [],
+                    "BodyStyles": bodystyle,
                     "MakeModels": makeModel,
-                    "FuelTypes": [],
-                    "Transmissions": [],
+                    "FuelTypes": fuel_type,
+                    "Transmissions": transmission,
                     "Colours": [],
                     "IsPaymentSearch": false,
                     "IsReduced": false,

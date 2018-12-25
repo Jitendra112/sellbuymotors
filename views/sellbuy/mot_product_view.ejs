@@ -25,7 +25,14 @@
     height: auto;
 }
 </style>
-
+<script>
+     var cd = '<%= data.title %>';
+    if(cd){
+        alert(cd)
+    }else{
+        location.reload()
+    }
+</script>
 <section>
     <div class="background-image-maker gradient gradient-lr"></div>
     <div class="holder-image">
@@ -144,6 +151,7 @@
 </section>
 <%- include ../sellbuylayouts/footer.ejs %> 
   <script>
+   
          $(document).ready(function() {
             $("#content-slider").lightSlider({
                 loop:true,
