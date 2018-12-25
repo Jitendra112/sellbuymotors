@@ -921,7 +921,7 @@ app.get('/mot-search', async function (req, res, next) {
                     "MakeModels": makeModel,
                     "FuelTypes": fuel_type,
                     "Transmissions": transmission,
-                    "Colours": [],
+                    "Colours": colour,
                     "IsPaymentSearch": false,
                     "IsReduced": false,
                     "IsHot": false,
@@ -1209,6 +1209,7 @@ app.get('/show_product', function (req, res, next) {
                         overview: overview,
                         desc: $(html).find(".fpa-description-text").text(),
                         thumbs: thumbs,
+                        seller: $(html).find(".js-seller-name").text(),
                         title: $(html).find("h1 span.vehicle-title__text").text(),
                         phones: $(html).find("section.seller_trade .seller_trade__telephone").text(),
                         phone2: $(html).find(".seller_private__telephone").text(),
@@ -1221,6 +1222,7 @@ app.get('/show_product', function (req, res, next) {
                         title: 'Search Cars',
                         data: data
                     })
+                    //console.log(data.seller)
 //                    res.writeHead(200, {'Content-Type': 'application/json'});
 //                    res.end(JSON.stringify(obj));
                 }
