@@ -5,12 +5,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        All Cars
+        Used Cars
         <small>Control panel</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">All Cars</li>
+        <li class="active">Used Cars</li>
       </ol>
     </section>
    
@@ -21,7 +21,7 @@
                 <th>Brand Name</th>
                 <th>Model Name</th>
                 <th style="width:30%">Car Image</th>
-                <th>Car Type</th>
+                
                 
             </tr>
         </thead>
@@ -35,7 +35,7 @@
                 <td><%= cls.model %></td>
                 <td><img src="/uploads/<%= cls.image_name %>" style="width:30%"></td>
                <!--  <td><a href="/admin/Details">View Details</a></td> -->
-                <td><%= cls.car_type %></td>
+                
             </tr>
                <% }) %>
                 <% } %>

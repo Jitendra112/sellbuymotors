@@ -10,6 +10,11 @@ var url = require('url')
 var request = require('request');
 var pagination = require('pagination')
 
+
+
+
+/*----------------------------------Get Admin Login Page --------------------------------------*/
+
 app.get('/', function(req, res, next) {
     
         res.render('admin/index', {
@@ -17,6 +22,16 @@ app.get('/', function(req, res, next) {
             
         }) 
 })
+
+/*----------------------------------Get Admin Login Page End--------------------------------------*/
+
+
+
+
+
+
+
+/*--------------------------------------Admin Login-----------------------------------------------*/
 
 var sess;
 app.post('/admin_login',async function(req, res, next){
@@ -51,14 +66,45 @@ app.post('/admin_login',async function(req, res, next){
       
 });
 
-app.get('/Dashboard', function(req, res, next) {
+/*----------------------------------Admin Login End--------------------------------------*/
+
+
+
+
+
+
+
+
+/*----------------------------------Admin Dashboard--------------------------------------*/
+
+app.get('/Dashboard',async function(req, res, next) {
 
   res.locals.udata = req.session.udata;
    var g = res.locals.udata;
-
+    var user;
+    var car;
+    var new_car;
+    var used;
 if(g) {
+        var query = "Select COUNT(*) as user from tbl_user Where role='U'";
+        user = await database.query(query, [] );
+        var query = "Select COUNT(*) as car from tbl_products";
+        car = await database.query(query, [] );
+        var query = "Select COUNT(*) as new from tbl_products Where car_type='New'";
+        new_car = await database.query(query, [] );
+        var query = "Select COUNT(*) as used from tbl_products Where car_type='Used'";
+        used = await database.query(query, [] );
+        var data  = {
+        user : JSON.parse(user),
+        car : JSON.parse(car),
+        new_car : JSON.parse(new_car),
+        used : JSON.parse(used),
+
+        
+    }
         res.render('admin/dashboard', {
             title: 'Add content',
+            data: data
              
     }) 
  } else{
@@ -69,15 +115,30 @@ if(g) {
 
  }
 })
+
+/*----------------------------------Admin Dashboard End--------------------------------------*/    
     
-    
+
+
+
+
+/*-----------------------------------Admin Sign Out------------------------------------------*/
 
 app.get('/signout', function (req, res) {
     req.session.destroy();
 
       res.redirect('/admin/');
   });
-// Display Users
+
+/*----------------------------------Admin Sign Out End--------------------------------------*/
+
+
+
+
+
+
+
+/*----------------------------------- Display All Users--------------------------------------*/
 
 app.get('/Users',async function(req, res, next) {
 
@@ -100,22 +161,28 @@ if(g) {
  }
 })
 
-// Display Cars
+/*----------------------------------- Display All Users End----------------------------------*/
+
+
+
+
+
+/*--------------------------------------- Display All Cars-----------------------------------*/
 
 app.get('/Cars',async function(req, res, next) {
 
-  res.locals.udata = req.session.udata;
-   var g = res.locals.udata;
+    res.locals.udata = req.session.udata;
+    var g = res.locals.udata;
 
-if(g) { 
+ if(g) { 
        var query = "SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id GROUP BY tbl_cars_images.product_id";
         results = await database.query(query, [] );
         res.render('admin/all_cars', {
-            title: 'Add content',
-            data: JSON.parse(results)
-    }) 
- } else{
-    res.render('admin/index', {
+        title: 'Add content',
+        data: JSON.parse(results)
+     }) 
+  } else{
+        res.render('admin/index', {
         title: 'Add content',
         
     }) 
@@ -123,25 +190,114 @@ if(g) {
  }
 })
 
-app.get('/Details',async function(req, res, next) {
+/*--------------------------------------- Display All Cars End-----------------------------------*/
 
-  res.locals.udata = req.session.udata;
-   var g = res.locals.udata;
 
-if(g) { 
-       var query = "SELECT tbl_products.*,tbl_cars_images.image_name,tbl_user.user_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id INNER JOIN tbl_user ON tbl_user.id = tbl_cars_images.user_id";
-        results = await database.query(query, [] );
-      //  console.log(results);
-        res.render('admin/car_details', {
-            title: 'Add content',
-            data: JSON.parse(results)
-    }) 
- } else{
-    res.render('admin/index', {
+
+
+/*--------------------------------------- Display All New Cars-----------------------------------*/
+
+
+app.get('/NewCars',async function(req, res, next) {
+
+    res.locals.udata = req.session.udata;
+    var g = res.locals.udata;
+ if(g) { 
+    var query = "SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id Where car_type='New' GROUP BY tbl_cars_images.product_id";
+    results = await database.query(query, [] );
+    if(results.length > 0 ){
+    res.render('admin/new_cars', {
+    title: 'New Cars',
+    data: JSON.parse(results)
+     }) 
+
+    }else{
+    res.render('admin/new_no_cars', {
+         title: 'New cars',
+         
+       });
+    }
+       
+  } else{
+        res.render('admin/index', {
         title: 'Add content',
         
     }) 
 
  }
 })
+
+
+/*--------------------------------------- Display All New Cars End-----------------------------------*/
+
+
+
+
+
+/*--------------------------------------- Display All Used Cars--------------------------------------*/
+
+
+
+app.get('/UsedCars',async function(req, res, next) {
+
+       res.locals.udata = req.session.udata;
+       var g = res.locals.udata;
+ if(g) { 
+       var query = "SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id Where car_type='Used' GROUP BY tbl_cars_images.product_id";
+       results = await database.query(query, [] );
+       if(results.length > 0){
+        res.render('admin/used_cars', {
+        title: 'Used cars',
+        data: JSON.parse(results)
+        }) 
+       }else{
+         res.render('admin/used_no_cars', {
+         title: 'Used cars',
+       });
+       }
+}else{
+        res.render('admin/index', {
+        title: 'Add content',
+        
+    }) 
+
+ }
+})
+
+/*--------------------------------------- Display All Used Cars End--------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// app.get('/Details',async function(req, res, next) {
+
+//   res.locals.udata = req.session.udata;
+//    var g = res.locals.udata;
+
+// if(g) { 
+//        var query = "SELECT tbl_products.*,tbl_cars_images.image_name,tbl_user.user_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id INNER JOIN tbl_user ON tbl_user.id = tbl_cars_images.user_id";
+//         results = await database.query(query, [] );
+//       //  console.log(results);
+//         res.render('admin/car_details', {
+//             title: 'Add content',
+//             data: JSON.parse(results)
+//     }) 
+//  } else{
+//     res.render('admin/index', {
+//         title: 'Add content',
+        
+//     }) 
+
+//  }
+// })
 module.exports = app

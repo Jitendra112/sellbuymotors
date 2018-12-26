@@ -490,6 +490,7 @@ app.get('/fb_login', async function (req, res, next) {
 
 
 
+/*----------------------------------------------GET Add Car Images--------------------------------------------------*/
 
 app.get('/addpicture', function(req, res, next) {
   res.locals.udata = req.session.udata;
@@ -499,7 +500,14 @@ app.get('/addpicture', function(req, res, next) {
     }) 
 })
 
-// User profile
+
+/*----------------------------------------------GET Add Car Images End--------------------------------------------------*/
+
+
+
+
+
+/*----------------------------------------------GET Add Car Images--------------------------------------------------*/
 
 app.get('/profile',async function(req, res, next) {
  res.locals.udata = req.session.udata;
