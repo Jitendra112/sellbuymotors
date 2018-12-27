@@ -1,13 +1,49 @@
 <%- include ../sellbuylayouts/header.ejs %>
-<style type="text/css">
-    
-    .car-listing h1 {
+ <style>
+    ul{
+        list-style: none outside none;
+        padding-left: 0;
+        margin: 0;
+    }
+    .demo .item{
+        margin-bottom: 60px;
+    }
+    .content-slider li{
+        background-color: #ed3020;
+        text-align: center;
+        color: #FFF;
+    }
+    .content-slider h3 {
+        margin: 0;
+        padding: 70px 0;
+    }
+    .demo{
+        width: 800px;
+    }
+    ul#image-gallery img {
+    width: 100%;
+    height: auto;
+}
+.detaild {
+    background: #fff0;
+}   
+.c-brd-light {
+    border-color: #fff0 !important;
+}
+.fpaSpecificationslist--col1 {
     color: #fff;
 }
-li.position-relative img {
-    width: 100%;
+.fpaSpecificationslistItem {
+    color: #fff;
+}
+a.tracking-motoring-products-link.vehicleLeaderinsuranceLink {
+    display: none;
+}
+ul.fpa-features-list li {
+    color: #fff;
 }
 </style>
+
 <section>
     <div class="background-image-maker gradient gradient-lr"></div>
     <div class="holder-image">
@@ -18,8 +54,7 @@ li.position-relative img {
         <div class="row">
             <div class="col-12 col-sm-12 justify-content-center text-center">
                 <h1 class="text-white c-font-weight-700" id="carNameh1"> 
-                    <%= locals.data[0].make %><br>(<%= locals.data[0].model %>)
-                        </h1>
+                   <%= locals.data[0].make %><br>(<%= locals.data[0].model %>)
                 </h1>
             </div>
         </div>
@@ -41,37 +76,36 @@ li.position-relative img {
     <div class="container">
 
         <div class="row">
+          
+
             <div class="col-12 col-lg-8 mb-4 mb-lg-0">
                 <div class="car-listing">
                     <div style="text-align:left !important; padding:0px !important;" class="col-12 col-sm-12 justify-content-center text-center">
-                        <h1 class="c-font-weight-700" id="carNameh1"> 
+                        <h1 class="c-font-weight-700" id="carNameh1" style="color: #fff;"> 
                              <%= locals.data[0].make %> (<%= locals.data[0].model %>)
                         </h1>
                     </div>
-                    <div class="flexslider c-bg-dark mb-4">
-                        <ul class="slides" id="imageList">
-                             <% if (locals.data) {%>
-                            <% locals.data.forEach(function(cl){%>
-                            <li class="position-relative"  data-thumb="/uploads/<%= cl.image_name  %>"><img src="/uploads/<%= cl.image_name  %>" alt="" class="img-fluid" /></li>
-                            <% }) %>
-                            <% } %>
-                            <!--                            <?php
-                                                        $thumbs = $page->data->thumbs;
-                                                        foreach ($thumbs as $thumb) {
-                                                            echo $thumb->thumb;
-                                                            $t = str_replace("w92h69pe8e8e3", "w720h540pe8e8e3", $thumb->thumb);
-                                                            echo '<li class="position-relative"  data-thumb="' . $t . '"><img src="' . $t . '" alt="" class="img-fluid" /></li>';
-                                                        }
-                                                        ?>-->
-
-                        </ul>
-                    </div>
+                      <div class="demo">
+                        <div class="item">            
+                            <div class="clearfix">
+                                <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
+                                    <% if (locals.data) { %>
+                                    <% locals.data.forEach(function(cl){%>
+                                    <li data-thumb="/uploads/<%= cl.image_name  %>"> 
+                                        <img src="/uploads/<%= cl.image_name  %>" />
+                                     </li>
+                                     <% }) %>
+                                     <% } %>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>  
                     <div class="c-bg-dark rounded-top">
                         <ul class="nav nav-tabs border-0 flex-column flex-sm-row text-white" id="myTab" role="tablist">
-                            <li class="nav-item mb-0 rounded-left"><a class="nav-link redial-light border-0 py-3" data-toggle="tab" href="#desc1" role="tab" aria-expanded="true">DESCRIPTION</a></li>
-                         
-                            <li class="nav-item mb-0 rounded-left"><a class="nav-link redial-light border-0 py-3" data-toggle="tab" href="#" role="tab" aria-expanded="true"><%= locals.data[0].car_description %></a></li>
-                          
+                            <li class="nav-item mb-0 rounded-left "><a class="nav-link redial-light border-0 py-3 active" data-toggle="tab" href="#desc1" role="tab" aria-expanded="true">DESCRIPTION</a></li>
+                             
+                            <li class="nav-item mb-0 rounded-left"><a class="nav-link redial-light border-0 py-3" data-toggle="tab" href="#" role="tab" aria-expanded="true"></a></li>
+                           
                             <!--                            <?php
                                                         foreach ($page->data->details as $key => $d) {
                                                         $divId = str_replace(" ", "_", $d->detail_heading);
@@ -84,19 +118,21 @@ li.position-relative img {
                     <div class="tab-content" id="myTabContent2">
                         <div class="tab-pane fade active in show" id="desc1" role="tabpanel" aria-expanded="true">
                             <div class="border c-brd-light border-top-0">
-                                <div class="card-body pt-5"><p><%= data.desc %></p>
+                                <div class="card-body pt-5"><p><%= locals.data[0].car_description %></p>
                                 </div>
                             </div>
                         </div>
-                  
+                        <% if (locals.data) {%>
+                       <% locals.data.forEach(function(cl,index){%>
 
-                        <div class="tab-pane fade" id="" role="tabpanel" aria-expanded="true">
+                        <div class="tab-pane fade" id="li<%= index %>" role="tabpanel" aria-expanded="true">
                             <div class="border c-brd-light border-top-0">
-                                <div class="card-body pt-5"><p><%= locals.data[0].car_description %></p>
+                                <div class="card-body pt-5 detaild"><p><%= cl.car_description %></p>
                                      </div>
                                  </div>
                              </div>
-                        
+                        <% }) %>
+                         <% } %>
                     </div>
                 </div>
             </div>
@@ -104,20 +140,18 @@ li.position-relative img {
                 <div class="card c-brd-light mb-4">
                     <div class="card-body">
                         <!-- <h3 id="CarName"> <%= data.seller %></h3> -->
-                        <!--<h4 id="CarName1111"> <?php // echo $page->data->title; ?></h4>-->
+                        <!-- <h4 id="CarName1111"> <%= data.title %></h4> -->
                         <ul class="list-unstyled c-line-height-2_5 mb-0 mobileli1">
+                            <li><small class="c-light">Price</small> <h4 class="d-inline-block mb-1" id="CarPrice"> £ <%= locals.data[0].price_expectation %></h4></li>
 
-                            <li><small class="c-light">Price</small> <h4 class="d-inline-block mb-1" id="CarPrice">£ <%= locals.data[0].price_expectation %></h4></li>
-
-                          <!--   <li><small class="c-light">Phone</small> 
+                            <!-- <li><small class="c-light">Phone</small> 
                                 <h4 class="d-inline-block mb-1" id="phoneNumber"> <%= data.phones %>
                                     <%= data.phone2 %>
                                 </h4>
                             </li>  -->     
                         </ul>
                         <ul class="list-group">
-                            
-                             <li class="list-group-item"><%= locals.data[0].make_year %></li> 
+                            <li class="list-group-item"><%= locals.data[0].make_year %></li> 
                              <li class="list-group-item"><%= locals.data[0].body_type %></li>
                              <li class="list-group-item"><%= locals.data[0].mileage %></li>
                              <li class="list-group-item"><%= locals.data[0].engine_size %></li>
@@ -125,7 +159,6 @@ li.position-relative img {
                              <li class="list-group-item"><%= locals.data[0].fuel_type %></li>
                              <li class="list-group-item"><%= locals.data[0].doors %></li>
                              <li class="list-group-item"><%= locals.data[0].seats %></li>
-                           
 <!--                            <?php
                             foreach ($page->data->overview as $feature) {
                             echo'<li class="list-group-item">' . $feature->view . '</span></li> ';
@@ -140,3 +173,26 @@ li.position-relative img {
     </div>
 </section>
 <%- include ../sellbuylayouts/footer.ejs %> 
+  <script>
+         $(document).ready(function() {
+            $("#content-slider").lightSlider({
+                loop:true,
+                keyPress:true
+            });
+            $('#image-gallery').lightSlider({
+                gallery:true,
+                item:1,
+                thumbItem:9,
+                slideMargin: 0,
+                speed:500,
+                auto:true,
+                loop:true,
+                onSliderLoad: function() {
+                    $('#image-gallery').removeClass('cS-hidden');
+                }  
+            });
+        });
+          $('#myTabContent2').find('.detaild').each(function(){
+            $(this).html($(this).text())
+         })
+    </script>
