@@ -1006,7 +1006,7 @@ app.get('/motors-filter-search', async function (req, res, next) {
     } else {
         makeModel = []
     }
-    console.log(makeModel)
+    //console.log(makeModel)
     if (q.postal_code) {
         var postal_code = replaceString(q.postal_code, '+', '');
     } else {
