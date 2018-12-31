@@ -650,6 +650,7 @@ a.navbar-brand img {
                 model_count = 0;
             })
             var variant_count;
+            console.log(model_variants)
             $('#aggregatedTrim').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[3].html + '</div>').find('div').each(function (key, value) {
                 var i = 0;
@@ -657,7 +658,7 @@ a.navbar-brand img {
                 variant_count = mc
                 if(result.data.RecordCount != 0){
                     for (i; i < model_variants.length; i++) {
-                        if (model_variants[i].Name == $(this).find('.term').text()) {
+                        if (model_variants[i].Id.replace('Trims_','') == $(this).find('.term').text()) {
                             variant_count = parseInt(model_variants[i].Counter) + parseInt(mc);
                         }
                     }
