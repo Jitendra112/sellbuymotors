@@ -1265,13 +1265,17 @@ app.get('/motView', async function (req, res, next) {
                         }
                       }
                     });
-                    $(html).find('.spec__highlight').find('li').each(function (i, elem) {
+                    var half_icon = Math.ceil(icons.length / 2)
+                    var icons = icons.splice(0,half_icon)
+                     $(html).find('.spec__highlight').find('li').each(function (i, elem) {
                         specs[i] = {
                             name: $(this).find('span.highlight__caption').text(),
                             value: $(this).find('span.highlight__figure').text(),
                         }
                     });
+
                     $(html).find('.accordion-pane ul li').each(function (i, elem) {
+                   
                       if($(this).find('a').text()){
                          details[i] = {
                               detail_heading: $(this).find('a').text(),
@@ -1279,6 +1283,8 @@ app.get('/motView', async function (req, res, next) {
                           }
                       }
                     });
+                    var half_length = Math.ceil(details.length / 2);    
+                    var leftSide = details.splice(0,half_length);
                     $(html).find('.accordion-pane section').each(function (i, elem) {
                          detailsd[i] = {
                               detail:  $(this).html(),
@@ -1289,18 +1295,18 @@ app.get('/motView', async function (req, res, next) {
 //                        overview: overview,
                         desc: $(html).find("p,vehicle__sub").text(),
                        thumbs: thumbs,
-                        title: $(html).find("header h1.vdp-header__vehicle-name").text(),
+                        title: $(html).find(".vdp-header__vehicle-name").html(),
                         phones: '01403 858697',//$(html).find(".cta-button__item").html(),
 //                        phone2: $(html).find(".seller_private__telephone").text(),
-                        price: $(html).find("h2.vdp-header__full-price").text(),
+                        price: $(html).find("h2.vdp-header__full-price").html(),
 //                        distance: $(html).find(".seller_private__location").text(),
                        details: details,
                        detailsd:detailsd,
+                       dealer : $(html).find('#dealerName').text(),
                         icons:icons,
                         specs:specs
                     }
-                    // var obj = {'data': data }
-                    // console.log(data.phones)
+                    
                       res.render('sellbuy/mot_product_view', {
                           title: 'Search Cars',
                           data: data

@@ -58,6 +58,7 @@
     "str_replace": "^0.1.6",
     "then-busboy": "^3.0.0",
     "toastr": "^2.1.4",
+    "trim": "0.0.1",
     "webpack": "^4.25.1"
   },
   "devDependencies": {
