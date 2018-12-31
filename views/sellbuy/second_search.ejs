@@ -564,7 +564,7 @@ a.navbar-brand img {
             data = data[0]
             $('#ProductShow').html('')
             var image = '';
-            // console.log(data.cars)
+            
             // delete data.cars[0]
             // console.log(data.cars)
             $.each(data.cars, function (index, value) {
@@ -728,7 +728,7 @@ a.navbar-brand img {
                     selected = '';
                     name= $(this).text().substr(0,$(this).text().indexOf("("));
                 }
-                if(formData.mileage_from)
+                //if(formData.mileage_from)
                 $('#mileage_from').append('<option value="' + $(this).val() + '" '+selected+'>' +  name + '</option>')
             })
             $('#mileage_to').html('<option value="">Any</option>')
@@ -742,7 +742,7 @@ a.navbar-brand img {
                     selected = '';
                     name= $(this).text().substr(0,$(this).text().indexOf("("));
                 }
-                if(formData.mileage_to)                
+                //if(formData.mileage_to)                
                 $('#mileage_to').append('<option value="' + $(this).val() + '" '+selected+'>' +  name + '</option>')
             })
             $('#body_type').html('<option value="">Any</option>')
