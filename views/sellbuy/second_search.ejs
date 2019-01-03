@@ -362,6 +362,9 @@ a.navbar-brand img {
                     <div class="card car-listing-full mb-4" id="ProductShow">
 
                     </div>
+                    <div class="card car-listing-full mb-4" id="Show">
+
+                    </div>
                     <div class="row mt-4">
                         <div class="col-12 col-sm-12">
                             <ul class="pagination mb-0 text-center text-uppercase justify-content-center" id="pagination">
@@ -487,6 +490,8 @@ a.navbar-brand img {
             $('#ProductShow').append(html)
 
         });
+
+        dbproduct();
     }
     $('#radius').val(GetParameterValues(radius))
     search_results()
@@ -963,4 +968,45 @@ function get_postal_code(value)
     return value;
 }    
   $('input[name=postal_code]').val(localStorage.postal_code)
+
+/*--------------------------------Database Products---------------------------------------*/
+
+
+function dbproduct(){
+var base_url = window.location.origin;
+
+$.get(base_url + '/database_products',function(res){
+  $.each(res, function(key, value) {
+ 
+    $('#Show').append('<div class="product-bar"><div class="col-md-4 h-283"><div class="position-relative">\n\
+ <a href="/all_product/?id=' + value.id + '"><div class="background-image-maker rounded-left h-283"><img src="uploads/'+ value.image_name +'"></div>\n\
+<div class="holder-image"><img src="uploads/' + value.image_name + '" alt="" class="img-fluid d-none">\n\
+</div></a></div></div>' +
+                        '<div class="col-md-4 title-products align-self-center">' +
+                        '<div class="p-4 p-lg-0">' +
+                        '<h6 class="mb-2"><a href="/all_product/?id=' + value.id + '">' + value.make + '</a></h6>' +
+                        ' <ul class="list-unstyled mb-2 c-line-height-2_5">' +
+                        ' <li><h6 class="mb-0"><small class="c-light">Price</small> ' + value.price_expectation + ' </h6></li>' +
+                        '</ul><p>' + value.car_description.substr(0, 250) +'</p>' +
+                        '<a href="/all_product/?id=' + value.id + '" class="btn btn-outline-primary text-uppercase btn-lg c-font-weight-700" tabindex="-1">' +
+                        ' View Details' +
+                        ' </a>' +
+                        '</div>' +
+                        ' </div>' +
+                        '<div class="col-md-4 listind-detail">' +
+                        ' <div class="border border-right-0 border-top-0 border-bottom-0 c-brd-light py-4">' +
+                        ' <ul class="list-inline"><h1>Features</h1>'+
+                          '<li>' + value.body_type + '</li>'+
+                          '<li>' + value.engine_size + '</li>'+
+                          '<li>' + value.gear_box + '</li>'+
+                          '<li>' + value.fuel_type + '</li>'+
+                        '</ul>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>');
+});     
+}, 'json');
+
+}
+
 </script>

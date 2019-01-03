@@ -1318,6 +1318,15 @@ app.get('/motView', async function (req, res, next) {
 })
 
 
+/* to display database cars*/
 
+app.get('/database_products',async function(req, res, next){
+ res.locals.udata = req.session.udata;
+  var query = 'SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id GROUP BY tbl_cars_images.product_id';
+     results = await database.query(query, [] );
+     
+       res.send(results); 
+        
+});
 
 module.exports = app;
