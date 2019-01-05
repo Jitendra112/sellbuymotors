@@ -76,7 +76,11 @@ a.navbar-brand img {
     width: 18%;
 }
 }
-
+.background-image-maker img {
+    width: 100%;
+    height: 282px;
+    border: 2px #0061c5 solid;
+}
 
 </style>
 <section>
@@ -978,7 +982,7 @@ var base_url = window.location.origin;
 $.get(base_url + '/database_products',function(res){
   $.each(res, function(key, value) {
  
-    $('#Show').append('<div class="product-bar"><div class="col-md-4 h-283"><div class="position-relative">\n\
+    $('#Show').html('<div class="product-bar"><div class="col-md-4 h-283"><div class="position-relative">\n\
  <a href="/all_product/?id=' + value.id + '"><div class="background-image-maker rounded-left h-283"><img src="uploads/'+ value.image_name +'"></div>\n\
 <div class="holder-image"><img src="uploads/' + value.image_name + '" alt="" class="img-fluid d-none">\n\
 </div></a></div></div>' +
