@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 25, 2018 at 05:45 PM
+-- Generation Time: Jan 07, 2019 at 10:23 AM
 -- Server version: 5.7.24-0ubuntu0.18.04.1
 -- PHP Version: 7.0.32-0ubuntu0.16.04.1
 
@@ -44,7 +44,11 @@ INSERT INTO `tbl_cars_images` (`id`, `user_id`, `product_id`, `image_name`, `cre
 (3, 48, 1, 'IMG_1545739473442', '2018-12-25 12:04:33'),
 (4, 48, 1, 'IMG_1545739482522', '2018-12-25 12:04:42'),
 (5, 48, 1, 'IMG_1545739488560', '2018-12-25 12:04:48'),
-(6, 48, 1, 'IMG_1545739497128', '2018-12-25 12:04:57');
+(6, 48, 1, 'IMG_1545739497128', '2018-12-25 12:04:57'),
+(7, 48, 2, 'IMG_1546670852298', '2019-01-05 06:47:32'),
+(8, 48, 2, 'IMG_1546670859780', '2019-01-05 06:47:39'),
+(9, 48, 2, 'IMG_1546670868760', '2019-01-05 06:47:48'),
+(10, 48, 2, 'IMG_1546670879592', '2019-01-05 06:47:59');
 
 -- --------------------------------------------------------
 
@@ -350,7 +354,8 @@ CREATE TABLE `tbl_products` (
 --
 
 INSERT INTO `tbl_products` (`id`, `make_year`, `mileage`, `make`, `model`, `variant`, `color`, `body_type`, `fuel_type`, `engine_size`, `fuel_consumption`, `acceleration`, `gear_box`, `drive_train`, `co2_emission`, `doors`, `seats`, `insurance_group`, `annual_tax`, `private_trade`, `owner`, `car_type`, `price_expectation`, `car_description`, `created_at`) VALUES
-(1, '2001', '20000', 'Audi', 'A1', 'Amplified Edition', 'Gray', 'Hatchback', 'Hybrid – Diesel&#x2F;Electric Plug-in', '3.0', '50+ mp', '8-12s (0-60mph)', 'Semi-Automatic', 'Four Wheel Drive', 'Up to 120 g &#x2F; km CO2', '3DR', '5', '10', 'Up to €295', 'Private adverts', 'second owner', 'New', '120000', 'test', '2018-12-25 12:00:53');
+(1, '2001', '20000', 'Audi', 'A1', 'Amplified Edition', 'Gray', 'Hatchback', 'Hybrid – Diesel&#x2F;Electric Plug-in', '3.0', '50+ mp', '8-12s (0-60mph)', 'Semi-Automatic', 'Four Wheel Drive', 'Up to 120 g &#x2F; km CO2', '3DR', '5', '10', 'Up to €295', 'Private adverts', 'second owner', 'New', '120000', 'test', '2018-12-25 12:00:53'),
+(2, '1956', '35000', 'BMW', '1 Series', '30 Jahre', 'Indigo', 'Saloon', 'Hybrid – Petrol&#x2F;Electric', '4.5', '40+ mpg', '0-5s (0-60mph)', 'Automatic', 'All Wheel Drive', 'Up to 165 g &#x2F; km CO2', '4DR', '11', '30', 'Up to €210', 'Trade adverts', 'first owner', 'New', '120000', 'this is a car', '2019-01-05 06:45:36');
 
 -- --------------------------------------------------------
 
@@ -4478,6 +4483,7 @@ CREATE TABLE `tbl_user` (
   `first_name` varchar(50) DEFAULT NULL,
   `last_name` varchar(50) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
+  `web` varchar(20) DEFAULT NULL,
   `address` varchar(100) DEFAULT NULL,
   `state` varchar(50) DEFAULT NULL,
   `country` varchar(50) DEFAULT NULL,
@@ -4492,12 +4498,12 @@ CREATE TABLE `tbl_user` (
 -- Dumping data for table `tbl_user`
 --
 
-INSERT INTO `tbl_user` (`id`, `user_name`, `google_id`, `facebook_id`, `email`, `password`, `first_name`, `last_name`, `phone`, `address`, `state`, `country`, `post_code`, `description`, `profile_image`, `role`, `created_at`) VALUES
-(26, 'MultiJitendra1', '114112773907484109796', NULL, 'jitendra.15love@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'U', '2018-12-21 09:28:58'),
-(27, 'Kuldeep Kumar', '114852000254859220717', NULL, '349kuldeep@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'U', '2018-12-21 09:29:05'),
-(28, 'Sanjay Kumar', NULL, NULL, 'sanjay@gmail.com', 'password', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'U', '2018-11-21 05:48:06'),
-(38, NULL, NULL, NULL, 'admin@gmail.com', 'admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'A', '2018-12-20 11:18:51'),
-(48, 'Sonu', NULL, NULL, 'sonu@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'IMG_1545671753609', 'U', '2018-12-24 17:15:53');
+INSERT INTO `tbl_user` (`id`, `user_name`, `google_id`, `facebook_id`, `email`, `password`, `first_name`, `last_name`, `phone`, `web`, `address`, `state`, `country`, `post_code`, `description`, `profile_image`, `role`, `created_at`) VALUES
+(26, 'MultiJitendra1', '114112773907484109796', NULL, 'jitendra.15love@gmail.com', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 'U', '2018-12-21 09:28:58'),
+(27, 'Kuldeep Kumar', '114852000254859220717', NULL, '349kuldeep@gmail.com', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 'U', '2018-12-21 09:29:05'),
+(28, 'Sanjay Kumar', NULL, NULL, 'sanjay@gmail.com', 'password', NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 'U', '2018-11-21 05:48:06'),
+(38, NULL, NULL, NULL, 'admin@gmail.com', 'admin', NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 'A', '2018-12-20 11:18:51'),
+(48, 'Sonu', NULL, NULL, 'sonu@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'JInder', 'Rai', '9803116396', '  mydreem.in', '', '', '', '', '', 'IMG_1545671753609', 'U', '2019-01-06 10:39:42');
 
 --
 -- Indexes for dumped tables
@@ -4541,7 +4547,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_cars_images`
 --
 ALTER TABLE `tbl_cars_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tbl_countries`
 --
@@ -4551,7 +4557,7 @@ ALTER TABLE `tbl_countries`
 -- AUTO_INCREMENT for table `tbl_products`
 --
 ALTER TABLE `tbl_products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tbl_states`
 --
