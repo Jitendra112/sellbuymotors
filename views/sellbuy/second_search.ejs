@@ -561,7 +561,7 @@ a.navbar-brand img {
             seller_type: get_filter_value('seller-type'),
             page: get_filter_value('page'),
         }
-        console.log(formData)
+        //console.log(formData)
         $('#loading').css('display', 'block')
         $.when(
                 $.getJSON(base_url + '/auto-search-results', formData), $.getJSON(base_url + '/motors-filter-search', formData).error(function (jqXHR, textStatus, errorThrown) {
@@ -607,7 +607,7 @@ a.navbar-brand img {
                         '</div>');
                 // }
             });
-            $('#foundCar').text(parseInt(data.html1.count.replace('cars found', '').replace(',', '')) + parseInt(result.data.RecordCount) + ' cars found')
+            var foundCar = parseInt(data.html1.count.replace('cars found', '').replace(',', '')) + parseInt(result.data.RecordCount)
             // $('#foundCar').text(data.html1.count + 'auto count  ----- ' + parseInt(result.data.RecordCount) + ' motors count')
             $('#radius').html('<option value="1500">Distance(National)</option>')
             $('<div>' + data.html1.fields[0].html + '</div>').find('div').each(function (key, value) {
@@ -659,7 +659,7 @@ a.navbar-brand img {
                 model_count = 0;
             })
             var variant_count;
-            console.log(model_variants)
+           // console.log(model_variants)
             $('#aggregatedTrim').html('<option value="">Any</option>')
             $('<div>' + data.html1.fields[3].html + '</div>').find('div').each(function (key, value) {
                 var i = 0;
@@ -905,9 +905,10 @@ a.navbar-brand img {
             })
             $('#pagination').html('');
             data.pages.shift();
+           // console.log(data.pages);
             data.pages.pop();
             var active;
-            $.each(data.pages, function (index, value) {
+            $.each(data.pages,function (index, value) {
                 if (index + 1 == formData.page)
                     active = 'Superactive';
                 else
@@ -954,7 +955,9 @@ a.navbar-brand img {
             var new_url = "/search-cars?onesearchad=" + GetParameterValues('onesearchad') + c_url;
             window.history.pushState("data", "Title", new_url);
             more_products(formData)
+            countdbprod(foundCar);
             $('html, body').animate({scrollTop: $("#focusDiv").offset().top}, 0);  
+
         });
     }
 
@@ -975,14 +978,15 @@ function get_postal_code(value)
 
 /*--------------------------------Database Products---------------------------------------*/
 
-
+ 
 function dbproduct(){
 var base_url = window.location.origin;
-
-$.get(base_url + '/database_products',function(res){
+$('#Show').html('');
+$.get(base_url + '/database_products?onesearchad=' + GetParameterValues('onesearchad'),function(res){
+   // console.log(res);
   $.each(res, function(key, value) {
  
-    $('#Show').html('<div class="product-bar"><div class="col-md-4 h-283"><div class="position-relative">\n\
+    $('#Show').append('<div class="product-bar"><div class="col-md-4 h-283"><div class="position-relative">\n\
  <a href="/all_product/?id=' + value.id + '"><div class="background-image-maker rounded-left h-283"><img src="uploads/'+ value.image_name +'"></div>\n\
 <div class="holder-image"><img src="uploads/' + value.image_name + '" alt="" class="img-fluid d-none">\n\
 </div></a></div></div>' +
@@ -1008,9 +1012,29 @@ $.get(base_url + '/database_products',function(res){
                         '</div>' +
                         '</div>' +
                         '</div>');
+
 });     
 }, 'json');
 
 }
 
+
+function countdbprod(cars){
+
+var base_url = window.location.origin;
+$.get(base_url + '/count_products?onesearchad=' + GetParameterValues('onesearchad'),function(res){
+    $('#foundCar').text(parseInt(res[0].Count) + cars)
+   //console.log(cars) ;
+  
+}, 'json');
+}
+
+// $('#pagination').pagination({
+//     dataSource: cars,
+//     callback: function(data, pagination) {
+//         // template method of yourself
+//         var html = template(data);
+//         dataContainer.html(html);
+//     }
+// })
 </script>

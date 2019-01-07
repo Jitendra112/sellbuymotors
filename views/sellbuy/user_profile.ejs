@@ -82,6 +82,10 @@ button.btn.btn-success {
 								<label for="phone">Phone</label><input id="phone" name="phone" type="tel" class="input-full main-input" placeholder="" value="<% if(locals.data[0].phone == null){ %><%= '' %><% }else{ %><%= locals.data[0].phone %>  <% } %>"/>
 								<div class="clearfix"></div>
 							</div>
+							<div class="labelled-input">
+								<label for="phone">Website</label><input id="website" name="website" type="tel" class="input-full main-input" placeholder="" value="<% if(locals.data[0].web == null){ %><%= '' %><% }else{ %><%= locals.data[0].web %>  <% } %>"/>
+								<div class="clearfix"></div>
+							</div>
 							<div class="labelled-input last">
 								<label for="address">Address</label><input id="address" name="address" type="text" class="input-full main-input" placeholder="" value="<% if(locals.data[0].address == null){ %><%= '' %><% }else{ %><%= locals.data[0].address %>  <% } %>"/>
 								<div class="clearfix"></div>

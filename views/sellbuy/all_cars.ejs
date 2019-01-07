@@ -81,9 +81,9 @@ ul.fpa-features-list li {
             <div class="col-12 col-lg-8 mb-4 mb-lg-0">
                 <div class="car-listing">
                     <div style="text-align:left !important; padding:0px !important;" class="col-12 col-sm-12 justify-content-center text-center">
-                        <h1 class="c-font-weight-700" id="carNameh1" style="color: #fff;"> 
+                       <!--  <h1 class="c-font-weight-700" id="carNameh1" style="color: #fff;"> 
                              <%= locals.data[0].make %> (<%= locals.data[0].model %>)
-                        </h1>
+                        </h1> -->
                     </div>
                       <div class="demo">
                         <div class="item">            
@@ -142,6 +142,10 @@ ul.fpa-features-list li {
                         <!-- <h3 id="CarName"> <%= data.seller %></h3> -->
                         <!-- <h4 id="CarName1111"> <%= data.title %></h4> -->
                         <ul class="list-unstyled c-line-height-2_5 mb-0 mobileli1">
+                             <li><small class="c-light">Name</small> <h4 class="d-inline-block mb-1" id="CarPrice"><%= locals.data[0].user_name %></h4></li>
+                              <li><small class="c-light">Email</small> <h4 class="d-inline-block mb-1" id="CarPrice"><%= locals.data[0].email %></h4></li>
+                               <li><small class="c-light">Phone</small> <h4 class="d-inline-block mb-1" id="CarPrice"><%= locals.data[0].phone %></h4></li>
+                                <li><small class="c-light">Website</small><h4  class="d-inline-block mb-1" id="CarPrice"><a href="//<%_ %><%=locals.data[0].web %>"><%= locals.data[0].web %></a></h4></li>
                             <li><small class="c-light">Price</small> <h4 class="d-inline-block mb-1" id="CarPrice"> £ <%= locals.data[0].price_expectation %></h4></li>
 
                             <!-- <li><small class="c-light">Phone</small> 
@@ -195,4 +199,10 @@ ul.fpa-features-list li {
           $('#myTabContent2').find('.detaild').each(function(){
             $(this).html($(this).text())
          })
+
+           function website(){
+        
+        window.location.href = "../../<%= locals.data[0].web %>";
+  
+     }
     </script>

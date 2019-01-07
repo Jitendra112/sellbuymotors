@@ -181,6 +181,7 @@ app.post('/save_user', async function(req, res, next){
          var fname = post.first_name;
          var lname = post.last_name;
          var phone = post.phone;
+         var website_url = post.website;
          var address = post.address;
          var state = post.state;
          var country = post.country;
@@ -190,7 +191,7 @@ app.post('/save_user', async function(req, res, next){
          var id =  post.user_id;
         // console.log(id);
           if(pass == ''){
-             var query = 'Update `tbl_user` SET  `first_name` ="' + fname + '",`last_name`="' + lname + '",`phone`="' + phone + '",`address`="' + address + '",`state`="' + state + '",`country`="' + country + '", `post_code`="' + postcode + '", `description`="' + desc + '"  Where id ="' + id + '"';
+             var query = 'Update `tbl_user` SET  `first_name` ="' + fname + '",`last_name`="' + lname + '",`phone`="' + phone + '",`web`="' + website_url + '",`address`="' + address + '",`state`="' + state + '",`country`="' + country + '", `post_code`="' + postcode + '", `description`="' + desc + '"  Where id ="' + id + '"';
             // console.log(query);
               results = await database.query(query, [] );
                 if (results) {
@@ -562,14 +563,15 @@ app.get('/mycars',async function(req, res, next) {
 
 app.get('/all_product',async function(req, res, next){
  res.locals.udata = req.session.udata;
- 
-  var query = 'SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id where tbl_cars_images.product_id ="' +req.query.id + '" GROUP BY tbl_cars_images.image_name';
+          
+
+  var query = 'SELECT tbl_products.*,tbl_cars_images.image_name,tbl_user.user_name,tbl_user.email,tbl_user.phone,tbl_user.web from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id INNER JOIN tbl_user ON tbl_user.id=tbl_cars_images.user_id where tbl_cars_images.product_id ="' +req.query.id + '" GROUP BY tbl_cars_images.image_name';
      results = await database.query(query, [] );
        //console.log(results);
-    res.render('sellbuy/all_cars', {
-                  title: 'Add content',
-                  data: JSON.parse(results)
-              })
+     res.render('sellbuy/all_cars', {
+     title: 'Add content',
+     data: JSON.parse(results)
+    })
 
         //console.log(data);
 })
@@ -592,11 +594,7 @@ app.get('/featured_cars',async function(req, res, next){
                })
             }
 })
-        
-
-
-
-
+      
  var inserted_id;
 app.post('/save_post',async function(req, res, next){
             
@@ -1322,11 +1320,45 @@ app.get('/motView', async function (req, res, next) {
 
 app.get('/database_products',async function(req, res, next){
  res.locals.udata = req.session.udata;
-  var query = 'SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id GROUP BY tbl_cars_images.product_id';
+
+ if(req.query.onesearchad == 'All'){
+
+   var query = 'SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id GROUP BY tbl_cars_images.product_id';
+
+    results = await database.query(query, [] );
+     
+       res.send(results); 
+ }else{
+
+  var query = 'SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id Where car_type = "' + req.query.onesearchad + '" GROUP BY tbl_cars_images.product_id';
+ 
      results = await database.query(query, [] );
      
        res.send(results); 
-        
+   } 
 });
+
+
+app.get('/count_products',async function(req, res, next){
+ res.locals.udata = req.session.udata;
+
+ if(req.query.onesearchad == 'All'){
+
+   var query = 'SELECT COUNT(*) as Count FROM tbl_products';
+    results = await database.query(query, [] );
+     
+       res.send(results); 
+
+ }else{
+
+  var query = 'SELECT COUNT(*) as Count FROM tbl_products Where car_type = "' + req.query.onesearchad + '"';
+
+    results = await database.query(query, [] );
+     
+       res.send(results); 
+    }
+       
+});
+
 
 module.exports = app;
