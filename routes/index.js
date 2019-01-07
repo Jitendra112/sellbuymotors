@@ -387,6 +387,49 @@ app.get('/check_email', async function(req, res, next) {
 
 
 
+/*--------------------------------------Get About us Page------------------------------------------------------*/
+
+ app.get('/About-Us', function(req, res, next) {
+    
+        res.render('sellbuy/about_us', {
+            title: 'Add content',
+            
+        }) 
+})
+
+/*--------------------------------------Get About us Page End-----------------------------------------------------*/
+
+
+
+
+/*--------------------------------------Get Privacy Policy Page------------------------------------------------------*/
+
+ app.get('/Privacy-Policy', function(req, res, next) {
+    
+        res.render('sellbuy/privacy_polcies', {
+            title: 'Add content',
+            
+        }) 
+})
+
+/*--------------------------------------Get Privacy Policy Page End-----------------------------------------------------*/
+
+
+
+/*--------------------------------------Get Contact Us Page------------------------------------------------------*/
+
+ app.get('/Contact-Us', function(req, res, next) {
+    
+        res.render('sellbuy/contact_us', {
+            title: 'Add content',
+            
+        }) 
+})
+
+/*--------------------------------------Get Contact Us Page End-----------------------------------------------------*/
+
+
+
 /*--------------------------------------Login With Google-----------------------------------------------*/
 
 app.get('/google_login', async function (req, res, next) {

@@ -1029,12 +1029,13 @@ $.get(base_url + '/count_products?onesearchad=' + GetParameterValues('onesearcha
 }, 'json');
 }
 
-// $('#pagination').pagination({
-//     dataSource: cars,
-//     callback: function(data, pagination) {
-//         // template method of yourself
-//         var html = template(data);
-//         dataContainer.html(html);
-//     }
-// })
+
+
+$(function() {
+    $('#pagination').pagination({
+        items: 100,
+        itemsOnPage: 10,
+        cssStyle: 'light-theme'
+    });
+});
 </script>
