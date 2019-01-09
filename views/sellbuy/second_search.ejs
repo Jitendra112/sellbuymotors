@@ -506,7 +506,7 @@ a.navbar-brand img {
     $(document).on('click', 'a.pageLink', function () {
 
         var num = parseInt($.trim($(this).text()));
-         alert(num)
+        // alert(num)
         if ($.isNumeric(num)) {
             $('#page').val(num);
             search_results()
