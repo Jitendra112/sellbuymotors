@@ -516,7 +516,7 @@ a.navbar-brand img {
       $(document).on('click', 'a.pagepre', function () {
 
         var num = parseInt($.trim($(this).data('id')));
-         alert(num)
+        // alert(num)
         if ($.isNumeric(num)) {
             $('#page').val(num);
             search_results()
@@ -528,7 +528,7 @@ a.navbar-brand img {
        $(document).on('click', 'a.pagepost', function () {
 
         var num = parseInt($.trim($(this).data('id')));
-         alert(num)
+        // alert(num)
         if ($.isNumeric(num)) {
             $('#page').val(num);
             search_results()
@@ -1024,7 +1024,7 @@ $.get(base_url + '/database_products?onesearchad=' + GetParameterValues('onesear
                         '<div class="p-4 p-lg-0">' +
                         '<h6 class="mb-2"><a href="/all_product/?id=' + value.id + '">' + value.make + '</a></h6>' +
                         ' <ul class="list-unstyled mb-2 c-line-height-2_5">' +
-                        ' <li><h6 class="mb-0"><small class="c-light">Price</small> ' + value.price_expectation + ' </h6></li>' +
+                        ' <li><h6 class="mb-0"><small class="c-light">Price</small><span>&#163;</span> ' + value.price_expectation + ' </h6></li>' +
                         '</ul><p>' + value.car_description.substr(0, 250) +'</p>' +
                         '<a href="/all_product/?id=' + value.id + '" class="btn btn-outline-primary text-uppercase btn-lg c-font-weight-700" tabindex="-1">' +
                         ' View Details' +
