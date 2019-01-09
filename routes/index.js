@@ -667,6 +667,14 @@ app.post('/save_post',async function(req, res, next){
                                   car_type: req.sanitize('car_type').escape().trim(),
                                    price_expectation: req.sanitize('price_expect').escape().trim(),
                                     car_description: req.sanitize('car_desc').escape().trim(),
+                                     car_comes: req.sanitize('car_comes').escape().trim(),
+                                      economy_perform: req.sanitize('car_eco').escape().trim(),
+                                       driver_convenience: req.sanitize('car_driver').escape().trim(),
+                                        safety: req.sanitize('car_safety').escape().trim(),
+                                         exterior_feat: req.sanitize('car_efeatures').escape().trim(),
+                                          interior_feat: req.sanitize('car_ifeatures').escape().trim(),
+                                           technical: req.sanitize('car_technical').escape().trim(),
+                                            dimensions: req.sanitize('car_dimensions').escape().trim(),
              
         }
 
@@ -1363,17 +1371,17 @@ app.get('/motView', async function (req, res, next) {
 
 app.get('/database_products',async function(req, res, next){
  res.locals.udata = req.session.udata;
-
+ var page = req.query.page - 1;
  if(req.query.onesearchad == 'All'){
-
-   var query = 'SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id GROUP BY tbl_cars_images.product_id';
-
+   
+   var query = 'SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id GROUP BY tbl_cars_images.product_id limit '+ page + ', 1';
+     //console.log(query);
     results = await database.query(query, [] );
      
        res.send(results); 
  }else{
-
-  var query = 'SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id Where car_type = "' + req.query.onesearchad + '" GROUP BY tbl_cars_images.product_id';
+   
+  var query = 'SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id Where car_type = "' + req.query.onesearchad + '" GROUP BY tbl_cars_images.product_id limit '+ page + ', 1';
  
      results = await database.query(query, [] );
      

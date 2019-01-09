@@ -334,13 +334,16 @@ a.navbar-brand img {
                 </div>
             </div>
         </div>
+        
         <div class="col-md-12">
             <div class="container">
                 <div class="col-12 col-lg-12">
                     <div class="row mb-4">
                         <div class="col-12 col-md-5 col-xl-6 align-self-center">
                             <p class="mb-0" id="foundCar">Finding</p>
+                        
                         </div>
+                         <div id="hidedata"></div>
                         <div class="col-12 col-md-7 col-xl-6 text-right">
                            
                             <div class="momile d-inline-block pr-md-3 mt-3 mt-md-0">
@@ -501,13 +504,38 @@ a.navbar-brand img {
     search_results()
 //    more_products()
     $(document).on('click', 'a.pageLink', function () {
+
         var num = parseInt($.trim($(this).text()));
+         alert(num)
+        if ($.isNumeric(num)) {
+            $('#page').val(num);
+            search_results()
+        }
+    });
+
+      $(document).on('click', 'a.pagepre', function () {
+
+        var num = parseInt($.trim($(this).data('id')));
+         alert(num)
         if ($.isNumeric(num)) {
             $('#page').val(num);
             search_results()
         }
     }
     );
+
+
+       $(document).on('click', 'a.pagepost', function () {
+
+        var num = parseInt($.trim($(this).data('id')));
+         alert(num)
+        if ($.isNumeric(num)) {
+            $('#page').val(num);
+            search_results()
+        }
+    }
+    );
+
     function get_make_count(name) {
 
     }
@@ -903,18 +931,17 @@ a.navbar-brand img {
             $('<div>' + data.html1.fields[20].html + '</div>').find('div').each(function (key, value) {
                 $('#seller-type').append('<option value="' + $(this).data('selected-value') + '">' + $(this).find('.term').text() + $(this).find('.count').text().substr(0,$(this).find('.count').text().indexOf("(")) + '</option>')
             })
-            $('#pagination').html('');
-            data.pages.shift();
-           // console.log(data.pages);
-            data.pages.pop();
-            var active;
-            $.each(data.pages,function (index, value) {
-                if (index + 1 == formData.page)
-                    active = 'Superactive';
-                else
-                    active = '';
-                $('#pagination').append('<li class="page-item d-none d-sm-inline-block"><a class="page-link pageLink ' + active + '">' + value.page + '</a></li>');
-            });
+            // $('#pagination').html('');
+            // data.pages.shift();
+            // data.pages.pop();
+            // var active;
+            // $.each(data.pages,function (index, value) {
+            //     if (index + 1 == formData.page)
+            //         active = 'Superactive';
+            //     else
+            //         active = '';
+            //     $('#pagination').append('<li class="page-item d-none d-sm-inline-block"><a class="page-link pageLink ' + active + '">' + value.page + '</a></li>');
+            // });
                 $('#loading').css('display', 'none')
                 $('#radius').val(formData.radius)
                 $('#make').val(formData.make.replace("%20", " ").replace("+", " "))
@@ -956,6 +983,8 @@ a.navbar-brand img {
             window.history.pushState("data", "Title", new_url);
             more_products(formData)
             countdbprod(foundCar);
+            
+
             $('html, body').animate({scrollTop: $("#focusDiv").offset().top}, 0);  
 
         });
@@ -982,7 +1011,8 @@ function get_postal_code(value)
 function dbproduct(){
 var base_url = window.location.origin;
 $('#Show').html('');
-$.get(base_url + '/database_products?onesearchad=' + GetParameterValues('onesearchad'),function(res){
+var page = $('#page').val()
+$.get(base_url + '/database_products?onesearchad=' + GetParameterValues('onesearchad')+'&page='+page,function(res){
    // console.log(res);
   $.each(res, function(key, value) {
  
@@ -1020,24 +1050,105 @@ $.get(base_url + '/database_products?onesearchad=' + GetParameterValues('onesear
 
 
 function countdbprod(cars){
-
+    
+ var Totalcount;
 var base_url = window.location.origin;
 $.get(base_url + '/count_products?onesearchad=' + GetParameterValues('onesearchad'),function(res){
     $('#foundCar').text(parseInt(res[0].Count) + cars)
-   //console.log(cars) ;
-  
+
+     Totalcount =parseInt(res[0].Count) + cars;
+     // alert(Totalcount);
+      var limit = 10000;
+      var count = Math.ceil(Totalcount / limit);
+     //alert(count);
+      var page = $('#page').val();
+
+      if(page > 2 ){
+
+         start_rec = page - 1;
+
+      }else{
+
+          start_rec = 1;
+      }
+        var end_rec;
+
+       if(count > 1){
+      end_rec = parseInt(start_rec) + 6;
+      var  html = '';
+       if(start_rec > 1){
+      
+       html += '<li class="page-item d-none d-sm-inline-block" ><a class="page-link pagepre" data-id="'+ (page-2)+'"><<</a></li>';
+
+       }
+       
+       var i;
+    
+       var active;
+       for(i=start_rec; i < end_rec; i++){
+        if(i == page){
+             active = 'Superactive';
+         }else{
+            active = ''
+         }
+         
+          if (i > count)
+           break; 
+           
+         html += '<li class="page-item d-none d-sm-inline-block"><a class="page-link pageLink '+ active +'">' + i + '</a></li>';
+        }
+     
+         if(end_rec < count){
+          
+          var newpage = parseInt(page) + 6;
+         html += '<li class="page-item d-none d-sm-inline-block" ><a class="page-link pagepost" data-id="'+ newpage +'" >>></a></li>';
+
+        }
+    }else{
+
+       end_rec = parseInt(start_rec) + 3;
+
+
+    }
+
+
+      var  html = '';
+       if(start_rec > 1){
+      
+       html += '<li class="page-item d-none d-sm-inline-block" ><a class="page-link pagepre" data-id="'+ (page-2)+'"><<</a></li>';
+
+       }
+       
+       var i;
+    
+       var active;
+       for(i=start_rec; i < end_rec; i++){
+        if(i == page){
+             active = 'Superactive';
+         }else{
+            active = ''
+         }
+          if (i > count)
+           break; 
+
+         html += '<li class="page-item d-none d-sm-inline-block"><a class="page-link pageLink '+ active +'">' + i + '</a></li>';
+        }
+     
+         if(end_rec > count){
+          
+          var newpage = parseInt(page) + parseInt(count);
+         html += '<li class="page-item d-none d-sm-inline-block" ><a class="page-link pagepost" data-id="'+ newpage +'" >>></a></li>';
+
+        }
+
+       $('#pagination').html(html)
 }, 'json');
 }
 
 
 
-// $(function() {
 
-//    // console.log(foundCar)
-//     $('#pagination').pagination({
-//         items: 100,
-//         itemsOnPage: 10,
-//         cssStyle: 'light-theme'
-//     });
-// });
+
+ 
+
 </script>
