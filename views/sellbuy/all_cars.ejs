@@ -190,7 +190,10 @@ ul.fpa-features-list li {
                              <li><small class="c-light">Name</small> <h4 class="d-inline-block mb-1" id="CarPrice"><%= locals.data[0].user_name %></h4></li>
                               <li><small class="c-light">Email</small> <h4 class="d-inline-block mb-1" id="CarPrice"><%= locals.data[0].email %></h4></li>
                                <li><small class="c-light">Phone</small> <h4 class="d-inline-block mb-1" id="CarPrice"><%= locals.data[0].phone %></h4></li>
-                                <li><small class="c-light">Website</small><h4  class="d-inline-block mb-1" id="CarPrice"><a href="//<%=locals.data[0].web.substring(2, 100)  %>"><%= locals.data[0].web %></a></h4></li>
+                                <li><small class="c-light">Website</small><h4  class="d-inline-block mb-1" id="CarPrice">
+                                    <a href="<% if(locals.data[0].web == null){ %><%= '' %><% }else{%>//<%= locals.data[0].web.substring(2, 100) %><% } %>
+                                        "><%= locals.data[0].web %></a></h4></li>
+
                             <li><small class="c-light">Price</small> <h4 class="d-inline-block mb-1" id="CarPrice"> £ <%= locals.data[0].price_expectation %></h4></li>
 
                             <!-- <li><small class="c-light">Phone</small> 
