@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 10, 2019 at 12:41 PM
+-- Generation Time: Jan 13, 2019 at 12:38 PM
 -- Server version: 5.7.24-0ubuntu0.18.04.1
 -- PHP Version: 7.0.32-0ubuntu0.16.04.1
 
@@ -33,41 +33,6 @@ CREATE TABLE `tbl_cars_images` (
   `image_name` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_cars_images`
---
-
-INSERT INTO `tbl_cars_images` (`id`, `user_id`, `product_id`, `image_name`, `created_at`) VALUES
-(1, 48, 1, 'IMG_1545739460288', '2018-12-25 12:04:20'),
-(2, 48, 1, 'IMG_1545739467724', '2018-12-25 12:04:27'),
-(3, 48, 1, 'IMG_1545739473442', '2018-12-25 12:04:33'),
-(4, 48, 1, 'IMG_1545739482522', '2018-12-25 12:04:42'),
-(5, 48, 1, 'IMG_1545739488560', '2018-12-25 12:04:48'),
-(6, 48, 1, 'IMG_1545739497128', '2018-12-25 12:04:57'),
-(7, 48, 2, 'IMG_1546670852298', '2019-01-05 06:47:32'),
-(8, 48, 2, 'IMG_1546670859780', '2019-01-05 06:47:39'),
-(9, 48, 2, 'IMG_1546670868760', '2019-01-05 06:47:48'),
-(10, 48, 2, 'IMG_1546670879592', '2019-01-05 06:47:59'),
-(11, 48, 3, 'IMG_1547014184891', '2019-01-09 06:09:44'),
-(12, 48, 3, 'IMG_1547014202216', '2019-01-09 06:10:02'),
-(13, 48, 4, 'IMG_1547026575982', '2019-01-09 09:36:16'),
-(14, 48, 4, 'IMG_1547026582921', '2019-01-09 09:36:22'),
-(15, 48, 4, 'IMG_1547026590470', '2019-01-09 09:36:30'),
-(16, 48, 4, 'IMG_1547026599377', '2019-01-09 09:36:39'),
-(17, 48, 5, 'IMG_1547032430137', '2019-01-09 11:13:50'),
-(18, 48, 5, 'IMG_1547032436750', '2019-01-09 11:13:56'),
-(19, 48, 5, 'IMG_1547032462890', '2019-01-09 11:14:22'),
-(20, 48, 5, 'IMG_1547032471754', '2019-01-09 11:14:31'),
-(21, 48, 6, 'IMG_1547032973448', '2019-01-09 11:22:53'),
-(22, 48, 6, 'IMG_1547032979560', '2019-01-09 11:22:59'),
-(23, 48, 6, 'IMG_1547032987109', '2019-01-09 11:23:07'),
-(24, 48, 6, 'IMG_1547032995290', '2019-01-09 11:23:15'),
-(25, 48, 6, 'IMG_1547033013263', '2019-01-09 11:23:33'),
-(26, 48, 7, 'IMG_1547033926647', '2019-01-09 11:38:46'),
-(27, 48, 7, 'IMG_1547033932553', '2019-01-09 11:38:52'),
-(28, 48, 7, 'IMG_1547033940883', '2019-01-09 11:39:00'),
-(29, 48, 7, 'IMG_1547033949494', '2019-01-09 11:39:09');
 
 -- --------------------------------------------------------
 
@@ -375,15 +340,6 @@ CREATE TABLE `tbl_products` (
   `dimensions` varchar(700) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_products`
---
-
-INSERT INTO `tbl_products` (`id`, `make_year`, `mileage`, `make`, `model`, `variant`, `color`, `body_type`, `fuel_type`, `engine_size`, `fuel_consumption`, `acceleration`, `gear_box`, `drive_train`, `co2_emission`, `doors`, `seats`, `insurance_group`, `annual_tax`, `private_trade`, `owner`, `car_type`, `price_expectation`, `car_description`, `car_comes`, `economy_perform`, `driver_convenience`, `safety`, `exterior_feat`, `interior_feat`, `technical`, `dimensions`, `created_at`) VALUES
-(4, '2010', '500', 'BMW', '1 Series', '30 Jahre', 'Blue', 'Coupe', 'Hybrid – Petrol&#x2F;Electric', '1.8', '30+ mpg', '0-5s (0-60mph)', 'Semi-Automatic', 'All Wheel Drive', 'Up to 100 g &#x2F; km CO2', '5DR', '4', '10', 'Up to €30', 'Private adverts', 'first owner', 'New', '120000', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet', 'consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?', 'But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure,', 'but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise,', 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga', 'Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus', 'On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish.', 'In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.&quot;', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don&#x27;t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn&#x27;t anything embarrassing hidden in the middle of text.', '2019-01-09 09:36:02'),
-(5, '2019', '100', 'Audi', 'A4 Allroad', 'Amplified Edition', 'Blue', 'Coupe', 'Petrol', '2.6', '40+ mpg', '0-8s (0-60mph)', 'Manual', 'Four Wheel Drive', 'Up to 130 g &#x2F; km CO2', '3DR', '8', '20', 'Up to €145', 'Private adverts', 'first owner', 'New', '1300000', 'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words,', 'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from &quot;de Finibus Bonorum et Malorum&quot; by Cicero are also reproduced in their exact original form,', 'The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.', 'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from &quot;de Finibus Bonorum et Malorum&quot; by Cicero are also reproduced in their exact original form,', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum', '2019-01-09 11:13:27'),
-(7, '2013', '500', 'Bentley', 'Turbo R', 'Mulliner', 'Blue', 'Coupe', 'Hybrid – Petrol&#x2F;Electric Plug-in', '3.0', '50+ mp', '0-8s (0-60mph)', 'Semi-Automatic', 'Front Wheel Drive', 'Up to 110 g &#x2F; km CO2', '3DR', '5', '10', 'Up to £20', 'Private adverts', 'first owner', 'Used', '10000', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#x27;Content here, content here&#x27;, making it look like readable English', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#x27;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#x27;Content here, content here&#x27;, making it look like readable English', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#x27;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#x27;Content here, content here&#x27;, making it look like readable English', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#x27;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has', '2019-01-09 11:38:38');
 
 -- --------------------------------------------------------
 
@@ -4518,6 +4474,7 @@ CREATE TABLE `tbl_user` (
   `post_code` varchar(10) DEFAULT NULL,
   `description` varchar(100) DEFAULT NULL,
   `profile_image` varchar(50) DEFAULT NULL,
+  `dealer` varchar(20) DEFAULT NULL,
   `role` varchar(20) DEFAULT 'U',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -4526,11 +4483,11 @@ CREATE TABLE `tbl_user` (
 -- Dumping data for table `tbl_user`
 --
 
-INSERT INTO `tbl_user` (`id`, `user_name`, `google_id`, `facebook_id`, `email`, `password`, `first_name`, `last_name`, `phone`, `web`, `address`, `state`, `country`, `post_code`, `description`, `profile_image`, `role`, `created_at`) VALUES
-(26, 'MultiJitendra1', '114112773907484109796', NULL, 'jitendra.15love@gmail.com', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 'U', '2018-12-21 09:28:58'),
-(27, 'Kuldeep Kumar', '114852000254859220717', NULL, '349kuldeep@gmail.com', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 'U', '2018-12-21 09:29:05'),
-(38, NULL, NULL, NULL, 'admin@gmail.com', 'admin', NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 'A', '2018-12-20 11:18:51'),
-(48, 'Sonu', NULL, NULL, 'sonu@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'JInder', 'Rai  ', '9803116396  ', '', '  ', '  ', '  ', '  ', '  ', 'IMG_1545671753609', 'U', '2019-01-10 05:58:53');
+INSERT INTO `tbl_user` (`id`, `user_name`, `google_id`, `facebook_id`, `email`, `password`, `first_name`, `last_name`, `phone`, `web`, `address`, `state`, `country`, `post_code`, `description`, `profile_image`, `dealer`, `role`, `created_at`) VALUES
+(26, 'MultiJitendra1', '114112773907484109796', NULL, 'jitendra.15love@gmail.com', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'U', '2018-12-21 09:28:58'),
+(27, 'Kuldeep Kumar', '114852000254859220717', NULL, '349kuldeep@gmail.com', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'U', '2018-12-21 09:29:05'),
+(38, NULL, NULL, NULL, 'admin@gmail.com', 'admin', NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'A', '2018-12-20 11:18:51'),
+(48, 'Sonu', NULL, NULL, 'sonu@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'JInder', 'Rai              ', '9803116396          ', 'gniwebsolutions.com        ', '              ', '              ', '              ', '          ', '              ', 'IMG_1545671753609', 'Private Seller', 'U', '2019-01-13 06:58:37');
 
 --
 -- Indexes for dumped tables
@@ -4574,7 +4531,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_cars_images`
 --
 ALTER TABLE `tbl_cars_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `tbl_countries`
 --
@@ -4584,7 +4541,7 @@ ALTER TABLE `tbl_countries`
 -- AUTO_INCREMENT for table `tbl_products`
 --
 ALTER TABLE `tbl_products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `tbl_states`
 --
@@ -4594,7 +4551,7 @@ ALTER TABLE `tbl_states`
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
