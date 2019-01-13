@@ -187,11 +187,13 @@ ul.fpa-features-list li {
                         <!-- <h3 id="CarName"> <%= data.seller %></h3> -->
                         <!-- <h4 id="CarName1111"> <%= data.title %></h4> -->
                         <ul class="list-unstyled c-line-height-2_5 mb-0 mobileli1">
-                             <li><small class="c-light">Name</small> <h4 class="d-inline-block mb-1" id="CarPrice"><%= locals.data[0].user_name %></h4></li>
-                              <li><small class="c-light">Email</small> <h4 class="d-inline-block mb-1" id="CarPrice"><%= locals.data[0].email %></h4></li>
-                               <li><small class="c-light">Phone</small> <h4 class="d-inline-block mb-1" id="CarPrice"><%= locals.data[0].phone %></h4></li>
-                                <li><small class="c-light">Website</small><h4  class="d-inline-block mb-1" id="CarPrice">
-                                    <a href="<% if(locals.data[0].web == null){ %><%= '' %><% }else{%>//<%= locals.data[0].web.substring(2, 100) %><% } %>
+                            <li><small class="c-light"><img src="/ProfilePictures/<%= locals.data[0].profile_image %>" width="30%" /></li>
+                             <li> <h4 class="d-inline-block mb-1" id="CarPrice"><%= locals.data[0].user_name %></h4></li>
+                              <li><h4 class="d-inline-block mb-1" id="CarPrice"><%= locals.data[0].dealer %></h4></li>
+                              <li><h4 class="d-inline-block mb-1" id="CarPrice"><%= locals.data[0].email %></h4></li>
+                               <li> <h4 class="d-inline-block mb-1" id="CarPrice"><%= locals.data[0].phone %></h4></li>
+                                <li><h4  class="d-inline-block mb-1" id="CarPrice">
+                                    <a href="<% if(locals.data[0].web == null){ %><%= '' %><% }else{%>//<%= locals.data[0].web.substring(0, 100) %><% } %>
                                         "><%= locals.data[0].web %></a></h4></li>
 
                             <li><small class="c-light">Price</small> <h4 class="d-inline-block mb-1" id="CarPrice"> £ <%= locals.data[0].price_expectation %></h4></li>

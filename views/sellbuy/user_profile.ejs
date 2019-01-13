@@ -8,6 +8,11 @@ button.btn.btn-success {
     top: -37px;
    }
    }
+   .dell {
+    width: 75% !important;
+    padding: 14px;
+    background: #fff;
+}
 </style>
   <link rel="stylesheet" href="css/bootstrap.min.css"> 
 
@@ -53,7 +58,7 @@ button.btn.btn-success {
 									<input name="agent_photo" id="agent-photo"  type="file" accept="image/*">
 								</div>
 								<input disabled="disabled" id="agent-file-name" class="main-input" type="text">
-								<button type="submit" class="btn btn-success">Click Here to Update</button>
+								<button type="submit" class="btn btn-success">Upload your logo</button>
 								</form>
 							</div>
 						</div> 
@@ -63,11 +68,20 @@ button.btn.btn-success {
                       
 					  
 						<div class="col-xs-12 col-sm-9 col-md-8">
-							<form id="myform" action="save_user" method="post">
+							<form id="myform" action="/save_user" method="post">
 							<div class="labelled-input">
 								<input type="hidden" name="user_id"  value="<%= locals.data[0].id %>" />
 		                    <label for="email">Email</label>
 		                    <input id="email" name="email" type="text" class="input-full main-input"  value="<%= locals.data[0].email %>" readonly/>
+								<div class="clearfix"></div>
+							</div>
+							<div class="labelled-input">
+								<label for="first-name">Type</label>
+								<select id="first-name" name="dealer"  class="input-full main-input dell" required >
+									<option value="Dealer">Dealer</option>
+									<option value="Private Seller">Private Seller</option>
+
+								</select>
 								<div class="clearfix"></div>
 							</div>
 							<div class="labelled-input">

@@ -180,6 +180,7 @@ app.post('/save_user', async function(req, res, next){
          var post  = req.body;
          var fname = post.first_name;
          var lname = post.last_name;
+         var car_dealer = post.dealer;
          var phone = post.phone;
          var website_url = post.website;
          var address = post.address;
@@ -191,7 +192,7 @@ app.post('/save_user', async function(req, res, next){
          var id =  post.user_id;
         // console.log(id);
           if(pass == ''){
-             var query = 'Update `tbl_user` SET  `first_name` ="' + fname + '",`last_name`="' + lname + '",`phone`="' + phone + '",`web`="' + website_url + '",`address`="' + address + '",`state`="' + state + '",`country`="' + country + '", `post_code`="' + postcode + '", `description`="' + desc + '"  Where id ="' + id + '"';
+             var query = 'Update `tbl_user` SET  `first_name` ="' + fname + '",`last_name`="' + lname + '",`phone`="' + phone + '",`web`="' + website_url + '",`address`="' + address + '",`state`="' + state + '",`country`="' + country + '", `post_code`="' + postcode + '", `dealer`="' + car_dealer + '", `description`="' + desc + '"  Where id ="' + id + '"';
             // console.log(query);
               results = await database.query(query, [] );
                 if (results) {
@@ -608,7 +609,7 @@ app.get('/all_product',async function(req, res, next){
  res.locals.udata = req.session.udata;
           
 
-  var query = 'SELECT tbl_products.*,tbl_cars_images.image_name,tbl_user.user_name,tbl_user.email,tbl_user.phone,tbl_user.web from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id INNER JOIN tbl_user ON tbl_user.id=tbl_cars_images.user_id where tbl_cars_images.product_id ="' +req.query.id + '" GROUP BY tbl_cars_images.image_name';
+  var query = 'SELECT tbl_products.*,tbl_cars_images.image_name,tbl_user.user_name,tbl_user.email,tbl_user.phone,tbl_user.web,tbl_user.profile_image,tbl_user.dealer from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id INNER JOIN tbl_user ON tbl_user.id=tbl_cars_images.user_id where tbl_cars_images.product_id ="' +req.query.id + '" GROUP BY tbl_cars_images.image_name';
      results = await database.query(query, [] );
        //console.log(results);
      res.render('sellbuy/all_cars', {
