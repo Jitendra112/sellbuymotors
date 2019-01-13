@@ -1374,14 +1374,14 @@ app.get('/database_products',async function(req, res, next){
  var page = req.query.page - 1;
  if(req.query.onesearchad == 'All'){
    
-   var query = 'SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id GROUP BY tbl_cars_images.product_id limit '+ page + ', 1';
+   var query = 'SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id GROUP BY tbl_cars_images.product_id ORDER BY id DESC limit '+ page + ', 1 ';
      //console.log(query);
     results = await database.query(query, [] );
      
        res.send(results); 
  }else{
    
-  var query = 'SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id Where car_type = "' + req.query.onesearchad + '" GROUP BY tbl_cars_images.product_id limit '+ page + ', 1';
+  var query = 'SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id Where car_type = "' + req.query.onesearchad + '" GROUP BY tbl_cars_images.product_id ORDER BY id DESC limit '+ page + ', 1';
  
      results = await database.query(query, [] );
      
