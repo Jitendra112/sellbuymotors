@@ -335,16 +335,17 @@ a.navbar-brand img {
                 </div>
             </div>
         </div>
-        
+        <div id="mydiv"></div>
         <div class="col-md-12">
             <div class="container">
                 <div class="col-12 col-lg-12">
                     <div class="row mb-4">
                         <div class="col-12 col-md-5 col-xl-6 align-self-center">
                             <p class="mb-0" id="foundCar">Finding</p>
+
                         
                         </div>
-                         <div id="hidedata"></div>
+                       
                         <div class="col-12 col-md-7 col-xl-6 text-right">
                            
                             <div class="momile d-inline-block pr-md-3 mt-3 mt-md-0">
@@ -499,7 +500,7 @@ a.navbar-brand img {
 
         });
 
-        dbproduct();
+        dbproduct(formData);
     }
     $('#radius').val(GetParameterValues(radius))
     search_results()
@@ -544,18 +545,23 @@ a.navbar-brand img {
         search_results()
     })
     $(document).on('change', '#make', function () {
+       // alert('ok');
         $('#model').html('');
         $('#aggregatedTrim').html('');
         removeURLParameter('model')
         removeURLParameter('aggregatedTrim')
         search_results()
+        dbproduct(formData)
+       // db_search_results()
     })
     $(document).on('change', '#model', function () {
         removeURLParameter('aggregatedTrim')
         $('#aggregatedTrim').html('');
         search_results()
+        dbproduct(formData)
     })
        function search_results() {
+
         var base_url = window.location.origin;
         var formData = {
             postal_code: get_postal_code('postal_code'),
@@ -638,6 +644,7 @@ a.navbar-brand img {
             });
             var foundCar = parseInt(data.html1.count.replace('cars found', '').replace(',', '')) + parseInt(result.data.RecordCount)
             // $('#foundCar').text(data.html1.count + 'auto count  ----- ' + parseInt(result.data.RecordCount) + ' motors count')
+            
             $('#radius').html('<option value="1500">Distance(National)</option>')
             $('<div>' + data.html1.fields[0].html + '</div>').find('div').each(function (key, value) {
                 $('#radius').append('<option value="' + $(this).data('selected-value') + '">' + $(this).data('selected-display-name') + '</option>')
@@ -1009,13 +1016,16 @@ function get_postal_code(value)
 /*--------------------------------Database Products---------------------------------------*/
 
  
-function dbproduct(){
+function dbproduct(formData){
+ //console.log(formData)
 var base_url = window.location.origin;
 $('#Show').html('');
 var page = $('#page').val()
-$.get(base_url + '/database_products?onesearchad=' + GetParameterValues('onesearchad')+'&page='+page,function(res){
-   // console.log(res);
-  $.each(res, function(key, value) {
+
+$.get(base_url + '/database_products',formData , function (result) {
+           
+       //  console.log(result);
+  $.each(result, function(key, value) {
  
     $('#Show').append('<div class="product-bar"><div class="col-md-4 h-283"><div class="position-relative">\n\
  <a href="/all_product/?id=' + value.id + '"><div class="background-image-maker rounded-left h-283"><img src="uploads/'+ value.image_name +'"></div>\n\
@@ -1045,23 +1055,26 @@ $.get(base_url + '/database_products?onesearchad=' + GetParameterValues('onesear
                         '</div>');
 
 });     
-}, 'json');
-
+},'json')
 }
+//search_results()
 
 
+/*-----------------------------------------------database filter products-------------------------------------*/
+
+/*-----------------------------------------------database filter products End-------------------------------------*/
 function countdbprod(cars){
     
  var Totalcount;
 var base_url = window.location.origin;
 $.get(base_url + '/count_products?onesearchad=' + GetParameterValues('onesearchad'),function(res){
     $('#foundCar').text(parseInt(res[0].Count) + cars)
-
+    
      Totalcount =parseInt(res[0].Count) + cars;
-     // alert(Totalcount);
-      var limit = 10000;
+     
+      var limit = 25;
       var count = Math.ceil(Totalcount / limit);
-     //alert(count);
+     // alert(count);
       var page = $('#page').val();
 
       if(page > 2 ){
@@ -1074,7 +1087,7 @@ $.get(base_url + '/count_products?onesearchad=' + GetParameterValues('onesearcha
       }
         var end_rec;
 
-       if(count > 1){
+     
       end_rec = parseInt(start_rec) + 6;
       var  html = '';
        if(start_rec > 1){
@@ -1101,47 +1114,11 @@ $.get(base_url + '/count_products?onesearchad=' + GetParameterValues('onesearcha
      
          if(end_rec < count){
           
-          var newpage = parseInt(page) + 6;
+          var newpage = parseInt(page) + 1;
          html += '<li class="page-item d-none d-sm-inline-block" ><a class="page-link pagepost" data-id="'+ newpage +'" >>></a></li>';
 
         }
-    }else{
-
-       end_rec = parseInt(start_rec) + 3;
-
-
-    }
-
-
-      var  html = '';
-       if(start_rec > 1){
-      
-       html += '<li class="page-item d-none d-sm-inline-block" ><a class="page-link pagepre" data-id="'+ (page-2)+'"><<</a></li>';
-
-       }
-       
-       var i;
     
-       var active;
-       for(i=start_rec; i < end_rec; i++){
-        if(i == page){
-             active = 'Superactive';
-         }else{
-            active = ''
-         }
-          if (i > count)
-           break; 
-
-         html += '<li class="page-item d-none d-sm-inline-block"><a class="page-link pageLink '+ active +'">' + i + '</a></li>';
-        }
-     
-         if(end_rec > count){
-          
-          var newpage = parseInt(page) + parseInt(count);
-         html += '<li class="page-item d-none d-sm-inline-block" ><a class="page-link pagepost" data-id="'+ newpage +'" >>></a></li>';
-
-        }
-
        $('#pagination').html(html)
 }, 'json');
 }

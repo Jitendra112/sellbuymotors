@@ -1371,19 +1371,22 @@ app.get('/motView', async function (req, res, next) {
 /* to display database cars*/
 
 app.get('/database_products',async function(req, res, next){
+  var q = url.parse(req.url, true).query;
+ //console.log(q);
+
  res.locals.udata = req.session.udata;
- var page = req.query.page - 1;
- if(req.query.onesearchad == 'All'){
+ var page = q.page - 1;
+ if(q.onesearchad == 'All'){
    
-   var query = 'SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id GROUP BY tbl_cars_images.product_id ORDER BY id DESC limit '+ page + ', 1 ';
-     //console.log(query);
+   var query = 'SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id Where tbl_products.make like "%'+q.make+'%" and tbl_products.model like "%'+q.model+'%" and tbl_products.fuel_type like"%'+q.fuel_type+'%" and tbl_products.body_type like "%'+q.body_type+'%" and tbl_products.color like "%'+q.colour+'%" and tbl_products.fuel_consumption like "%'+q.fuel_consumption+'%" and tbl_products.gear_box like "%'+q.transmission+'%" and tbl_products.drive_train like "%'+q.drivetrain+'%" and tbl_products.annual_tax like "%'+q.annual_tax_cars+'%" and tbl_products.doors like "%'+q.quantity_of_doors+'%" and tbl_products.co2_emission like "%'+q.co2_emissions_cars+'%" GROUP BY tbl_cars_images.product_id';
+    // console.log(query);
     results = await database.query(query, [] );
      
-       res.send(results); 
+                   res.send(results); 
  }else{
    
-  var query = 'SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id Where car_type = "' + req.query.onesearchad + '" GROUP BY tbl_cars_images.product_id ORDER BY id DESC limit '+ page + ', 1';
- 
+  var query = 'SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id Where tbl_products.car_type = "' + q.onesearchad + '" and tbl_products.make like "%'+q.make+'%" and tbl_products.model like "%'+q.model+'%" and tbl_products.fuel_type like"%'+q.fuel_type+'%" and tbl_products.body_type like "%'+q.body_type+'%" and tbl_products.color like "%'+q.colour+'%" and tbl_products.fuel_consumption like "%'+q.fuel_consumption+'%" and tbl_products.gear_box like "%'+q.transmission+'%" and tbl_products.drive_train like "%'+q.drivetrain+'%" and tbl_products.annual_tax like "%'+q.annual_tax_cars+'%" and tbl_products.doors like "%'+q.quantity_of_doors+'%" and tbl_products.co2_emission like "%'+q.co2_emissions_cars+'%" GROUP BY tbl_cars_images.product_id ORDER BY id DESC limit '+ page + ', 1';
+   // console.log(query);
      results = await database.query(query, [] );
      
        res.send(results); 
@@ -1411,6 +1414,5 @@ app.get('/count_products',async function(req, res, next){
     }
        
 });
-
 
 module.exports = app;
