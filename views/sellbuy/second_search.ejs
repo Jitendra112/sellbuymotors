@@ -545,13 +545,15 @@ a.navbar-brand img {
         search_results()
     })
     $(document).on('change', '#make', function () {
-       // alert('ok');
+        var allmake = $(this).val();
+       alert(allmake);
         $('#model').html('');
         $('#aggregatedTrim').html('');
         removeURLParameter('model')
         removeURLParameter('aggregatedTrim')
         search_results()
         dbproduct(formData)
+       
        // db_search_results()
     })
     $(document).on('change', '#model', function () {
@@ -667,7 +669,9 @@ a.navbar-brand img {
                     }
                 }
                 $('#make').append('<option '+disp+' value="' + $(this).find('.term').text() + '">' + $(this).find('.term').text() + '('+make_count+')</option>')
-                make_count = 0;
+               
+               //console.log(make_count);
+                 make_count = 0;
             })
             var htmlModels;
             var model_variants;
@@ -990,13 +994,16 @@ a.navbar-brand img {
             var new_url = "/search-cars?onesearchad=" + GetParameterValues('onesearchad') + c_url;
             window.history.pushState("data", "Title", new_url);
             more_products(formData)
-            countdbprod(foundCar);
+            countdbprod(foundCar,formData);
             
 
             $('html, body').animate({scrollTop: $("#focusDiv").offset().top}, 0);  
 
         });
     }
+
+
+
 
 function get_postal_code(value)
 {
@@ -1063,15 +1070,42 @@ $.get(base_url + '/database_products',formData , function (result) {
 /*-----------------------------------------------database filter products-------------------------------------*/
 
 /*-----------------------------------------------database filter products End-------------------------------------*/
-function countdbprod(cars){
+function countdbprod(cars ,formData){
     
  var Totalcount;
-var base_url = window.location.origin;
-$.get(base_url + '/count_products?onesearchad=' + GetParameterValues('onesearchad'),function(res){
-    $('#foundCar').text(parseInt(res[0].Count) + cars)
+ var base_url = window.location.origin;
+$.get(base_url + '/count_products',formData ,function(res){
+   // console.log(res.make);
+    var make_list = $('#make').html()
+    var str
+    var new_count = 0;
+    var t
+     var all_count = res.mcount[0].cars;
     
-     Totalcount =parseInt(res[0].Count) + cars;
+    $.each(JSON.parse(res.make),function(key, value){
+
+        
+       $('<div>'+make_list + '</div>').find('option').each(function (i, elem) {
+            // console.log($(this).val())
+            if(value.make == $(this).val()){
+                t = $(this)
+                str = $(this).text()
+                str = str.replace(str.substring(0,str.indexOf("(")),'').replace(',','').replace('(','').replace(')','');
+                new_count = parseInt(str) + parseInt(value.make_count)
+                console.log(new_count + '--' +value.make  + ' make matched add' + str + ' + ' + value.make_count)
+                $("#make option[value='" + $(this).val() + "']").text(value.make + '( '+ new_count + ')');
+            }
+        });
+
+    });
+   
+    
      
+   //  console.log(res.model);  
+    $('#foundCar').text(all_count + cars)
+    
+     Totalcount =parseInt(all_count + cars);
+    
       var limit = 25;
       var count = Math.ceil(Totalcount / limit);
      // alert(count);

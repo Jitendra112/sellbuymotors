@@ -1395,13 +1395,41 @@ app.get('/database_products',async function(req, res, next){
 
 
 app.get('/count_products',async function(req, res, next){
+   var q = url.parse(req.url, true).query;
+  // console.log(q.make)
  res.locals.udata = req.session.udata;
+ 
+ if(q.onesearchad == 'All'){
+   var make;
+   var mcount;
+   var model;
+   var varient;
+   var query = 'SELECT make, count(make) as make_count FROM tbl_products Where make like "%'+ q.make +'%" group by make';
+   // console.log(query);
+     make = await database.query(query, [] );
 
- if(req.query.onesearchad == 'All'){
-
-   var query = 'SELECT COUNT(*) as Count FROM tbl_products';
-    results = await database.query(query, [] );
+     var query = 'SELECT count(id) as cars FROM tbl_products Where make like "%'+ q.make +'%"';
+     mcount = await database.query(query, [] );
      
+    var query = 'SELECT model, count(model) as model_count FROM tbl_products Where model like "%'+ q.model +'%" group by model';
+     //console.log(query);
+    model = await database.query(query, [] );
+
+    var query = 'SELECT variant, count(variant) as variant_count FROM tbl_products Where variant like "%'+ q.aggregatedTrim +'%" group by variant';
+    varient = await database.query(query, [] );
+
+
+     var results = {
+         
+            make : make,
+            mcount : JSON.parse(mcount),
+            model : model,
+            varient : varient
+
+
+     }
+
+        //console.log(results);
        res.send(results); 
 
  }else{
