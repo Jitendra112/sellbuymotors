@@ -545,7 +545,7 @@ a.navbar-brand img {
         search_results()
     })
     $(document).on('change', '#make', function () {
-       // var allmake = $(this).val();
+        var allmake = $(this).val();
        //alert(allmake);
         $('#model').html('');
         $('#aggregatedTrim').html('');
@@ -1071,7 +1071,7 @@ $.get(base_url + '/database_products',formData , function (result) {
 
 /*-----------------------------------------------database filter products End-------------------------------------*/
 function countdbprod(cars ,formData){
-    
+   // alert(cars);
  var Totalcount;
  var base_url = window.location.origin;
 $.get(base_url + '/count_products',formData ,function(res){
@@ -1081,7 +1081,16 @@ $.get(base_url + '/count_products',formData ,function(res){
     var new_count = 0;
     var t
      var all_count = res.mcount[0].cars;
-    
+      // console.log(all_count);
+        if(all_count == 0){
+          
+        
+        $('#foundCar').text(cars);
+     }else{
+
+        $('#foundCar').text(all_count + cars);
+     }
+
     $.each(JSON.parse(res.make),function(key, value){
 
         
@@ -1100,9 +1109,16 @@ $.get(base_url + '/count_products',formData ,function(res){
     });
    
     
-     
+         // if(all_count == 0){
+            
+         //    console
+         //    $('#foundCar').text(str);
+         // }else{
+
+         //    $('#foundCar').text(all_count + cars);
+         // }
    //  console.log(res.model);  
-    $('#foundCar').text(all_count + cars)
+    
     
      Totalcount =parseInt(all_count + cars);
     

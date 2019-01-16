@@ -1405,15 +1405,18 @@ app.get('/count_products',async function(req, res, next){
    var model;
    var varient;
    var query = 'SELECT make, count(make) as make_count FROM tbl_products Where make like "%'+ q.make +'%" group by make';
-   // console.log(query);
+  
      make = await database.query(query, [] );
+        var query = 'SELECT count(id) as cars FROM tbl_products Where make like "%'+ q.make +'%"';
 
-     var query = 'SELECT count(id) as cars FROM tbl_products Where make like "%'+ q.make +'%"';
      mcount = await database.query(query, [] );
-     
+   //  console.log(query);
     var query = 'SELECT model, count(model) as model_count FROM tbl_products Where model like "%'+ q.model +'%" group by model';
      //console.log(query);
     model = await database.query(query, [] );
+
+     var query = 'SELECT count(id) as cars FROM tbl_products Where model like "%'+ q.model +'%"';
+     modelcount = await database.query(query, [] );
 
     var query = 'SELECT variant, count(variant) as variant_count FROM tbl_products Where variant like "%'+ q.aggregatedTrim +'%" group by variant';
     varient = await database.query(query, [] );
@@ -1424,6 +1427,7 @@ app.get('/count_products',async function(req, res, next){
             make : make,
             mcount : JSON.parse(mcount),
             model : model,
+            modelcount :JSON.parse(modelcount),
             varient : varient
 
 
