@@ -94,7 +94,7 @@ app.post('/uploads', async function(req, res, next){
 app.get('/get_images', async function(req, res, next){
 
       var query = 'SELECT * FROM  tbl_cars_images where product_id = '+req.query.id;
-      console.log(query)
+     // console.log(query)
       results = await database.query(query, [] );
       res.send(results); 
 
@@ -642,7 +642,7 @@ app.get('/featured_cars',async function(req, res, next){
  var inserted_id;
 app.post('/save_post',async function(req, res, next){
             
-    
+   
       var cl = {
           
               make_year: req.sanitize('make_year').escape().trim(),
@@ -667,16 +667,8 @@ app.post('/save_post',async function(req, res, next){
                                  owner: req.sanitize('owner').escape().trim(),
                                   car_type: req.sanitize('car_type').escape().trim(),
                                    price_expectation: req.sanitize('price_expect').escape().trim(),
-                                    car_description: req.sanitize('car_desc').escape().trim(),
-                                     car_comes: req.sanitize('car_comes').escape().trim(),
-                                      economy_perform: req.sanitize('car_eco').escape().trim(),
-                                       driver_convenience: req.sanitize('car_driver').escape().trim(),
-                                        safety: req.sanitize('car_safety').escape().trim(),
-                                         exterior_feat: req.sanitize('car_efeatures').escape().trim(),
-                                          interior_feat: req.sanitize('car_ifeatures').escape().trim(),
-                                           technical: req.sanitize('car_technical').escape().trim(),
-                                            dimensions: req.sanitize('car_dimensions').escape().trim(),
-             
+                                    service_history: req.sanitize('service_history').escape().trim(),
+                                      mot_due: req.sanitize('mot_due').escape().trim(),
         }
 
        
@@ -702,6 +694,75 @@ app.post('/save_post',async function(req, res, next){
                 }
            
 })
+
+
+/*----------------------------------------------GET Add Car Description--------------------------------------------------*/
+
+app.get('/car_description', function(req, res, next) {
+  res.locals.udata = req.session.udata;
+    res.render('sellbuy/car_description', {
+        title: 'Add content',
+        
+    }) 
+})
+
+
+/*----------------------------------------------GET Add Car Description End--------------------------------------------------*/
+
+
+/*-------------------------------------------User Image Upload Post--------------------------------------------------------------*/
+
+app.post('/add_description',async function(req, res, next){
+    res.locals.udata = req.session.udata;
+           
+         if(req.method == "POST"){
+         var post  = req.body;
+         var desc = post.car_desc;
+         var comes = post.car_comes;
+         var eco = post.car_eco;
+         var driver = post.car_driver;
+         var safety = post.car_safety;
+         var efeatures = post.car_efeatures;
+         var ifeatures = post.car_ifeatures;
+         var technical = post.car_technical;
+         var dimensions = post.car_dimensions;
+         var id = post.carid;
+         
+         
+             var query = 'Update `tbl_products` SET  `car_description` ="' + desc + '",`car_comes`="' + comes + '",`economy_perform`="' + eco + '",`driver_convenience`="' + driver + '",`safety`="' + safety + '",`exterior_feat`="' + efeatures + '",`interior_feat`="' + ifeatures + '", `technical`="' + technical + '", `dimensions`="' + dimensions + '"  Where id ="' + id + '"';
+            // console.log(query);
+              results = await database.query(query, [] );
+
+
+                if (results) {
+
+                   var sql = 'SELECT LAST_INSERT_ID() as id;'
+                   result = await database.query(sql);
+
+                    res.writeHead(200, {'Content-Type': 'application/json'});
+                    var obj = {success : 1 , message : 'Profile Updated Successfully!!', product_id:result}
+                    res.end(JSON.stringify(obj));
+                    
+                   } else {
+
+                    res.writeHead(200, {'Content-Type': 'application/json'});
+                    var obj = {success : 0 , message : 'Updation Failed!!'}
+                    res.end(JSON.stringify(obj));
+                    
+                }
+            
+      
+           
+            }else{
+          res.render('addcontent');
+         }
+               
+            });
+         
+   
+
+
+/*---------------------------------------------User Image Upload End----------------------------------------------------*/
 
 // Kuldeep Sir Scrapping Code<!--- Starts-->
 
