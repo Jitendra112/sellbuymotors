@@ -5,6 +5,20 @@
         padding-left: 0;
         margin: 0;
     }
+table {
+ /*font-family: arial, sans-serif;*/
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: white;
+}
     .demo .item{
         margin-bottom: 60px;
     }
@@ -132,49 +146,264 @@ ul.fpa-features-list li {
                         </div>
                         <div class="tab-pane fade" id="carcomes" role="tabpanel" aria-expanded="true">
                             <div class="border c-brd-light border-top-0">
-                                <div class="card-body pt-5"><p><%= locals.data[0].car_comes %></p>
-                                     </div>
+                                <div class="card-body pt-5"><p><% var str = locals.data[0].car_comes
+                                                                   var re = str.split(","); %>
+                                                                    <% if (re) { %>
+                                                                     <% var i=0  %>
+                                                                  <% re.forEach(function(){%>
+                                                                              <%= re[i++]  %><br>
+                                                                    <% }) %>
+                                                                     <% } %>           
+                                                               </p>
+                                     </div>                     
                                  </div>
                              </div>
                              <div class="tab-pane fade" id="ecomy" role="tabpanel" aria-expanded="true">
                             <div class="border c-brd-light border-top-0">
-                                <div class="card-body pt-5"><p><%= locals.data[0].economy_perform %></p>
+                                <div class="card-body pt-5">
+                                   <div style="overflow-x:auto;">
+                                  <table>
+
+                                      <tr>
+                                        <td>Urban mpg</td>
+                                        <td>No Data Available</td>
+                                        <td>Extra Urban mpg</td>
+                                         <td>No Data Available</td>
+
+                                      </tr>
+                                      
+                                      <tr>
+                                        <td>Average mpg</td>
+                                         <td>No Data Available</td>
+                                        <td>CO2 emissions</td>
+                                         <td><% var str = locals.data[0].co2_emission %>
+                                            <%= str.replace('&#x2F;','/') %></td>
+
+                                      </tr>
+                                      <tr>
+                                        <td>Annual Tax</td>
+                                        <td><%= locals.data[0].annual_tax %></td>
+                                        <td>Engine power</td>
+                                        <td>No Data Available</td>
+
+                                      </tr>
+                                    <!--   <tr>
+                                        <td>Engine Size</td>
+                                        <td><%= locals.data[0].engine_size %></td>
+                                       <!--  <td>Helen Bennett</td>
+                                        <td>No Data Available</td> -->
+
+                                     <!--  </tr> --> 
+                                      <tr>
+                                        <td>Acceleration</td>
+                                        <td><%= locals.data[0].acceleration %></td>
+                                         <td>Engine Size</td>
+                                        <td><%= locals.data[0].engine_size %></td>
+
+                                      </tr>
+                                      <tr>
+                                        <td>Drivetrain</td>
+                                        <td><%= locals.data[0].drive_train %></td>
+                                        <td>Top speed</td>
+                                        <td>No Data Available</td>
+
+                                      </tr>
+                                    </table>
+                                    </div>
+                                    </div>
+                                    </div>
+
+
                                      </div>
-                                 </div>
-                             </div>
+                                     
+                              
                               <div class="tab-pane fade" id="driver" role="tabpanel" aria-expanded="true">
                               <div class="border c-brd-light border-top-0">
-                                <div class="card-body pt-5"><p><%= locals.data[0].driver_convenience %></p>
+                                <div class="card-body pt-5">
+                                     <div style="overflow-x:auto;">
+                                  <table>
+
+                                      <tr>
+                                        
+                                        <td><% var str = locals.data[0].driver_convenience
+                                              var re = str.split(","); %>
+                                               <% if (re) { %>
+                                               <% var i=0  %>
+                                               <% re.forEach(function(){%>
+                                                <%= re[i++]  %><br>
+                                                 <% }) %>
+                                                  <% } %>           
+                                                 </td>
+                                      
+                                       
+                                      </tr>
+                                      
+                                     
+                                    </table>
+                                    </div>
                                      </div>
                                  </div>
                              </div>
                              <div class="tab-pane fade" id="safety" role="tabpanel" aria-expanded="true">
                               <div class="border c-brd-light border-top-0">
-                                <div class="card-body pt-5"><p><%= locals.data[0].safety %></p>
+                                <div class="card-body pt-5">
+                                     <div style="overflow-x:auto;">
+                                  <table>
+
+                                      <tr>
+                                        <td><% var str = locals.data[0].safety
+                                              var re = str.split(","); %>
+                                               <% if (re) { %>
+                                               <% var i=0  %>
+                                               <% re.forEach(function(){%>
+                                                <%= re[i++]  %><br>
+                                                 <% }) %>
+                                                  <% } %>  </td>
+                                      </tr>
+                                      
+                                     
+                                    </table>
+                                    </div>
                                      </div>
                                  </div>
                              </div>
                               <div class="tab-pane fade" id="extre" role="tabpanel" aria-expanded="true">
                               <div class="border c-brd-light border-top-0">
-                                <div class="card-body pt-5"><p><%= locals.data[0].exterior_feat %></p>
+                                <div class="card-body pt-5">
+
+                                     <div style="overflow-x:auto;">
+                                  <table>
+
+                                      <tr>
+                                        <td><% var str = locals.data[0].exterior_feat
+                                              var re = str.split(","); %>
+                                               <% if (re) { %>
+                                               <% var i=0  %>
+                                               <% re.forEach(function(){%>
+                                                <%= re[i++]  %><br>
+                                                 <% }) %>
+                                                  <% } %>  </td>
+                                      </tr>
+                                      
+                                     
+                                    </table>
+                                    </div>
                                      </div>
                                  </div>
                              </div>
                              <div class="tab-pane fade" id="intre" role="tabpanel" aria-expanded="true">
                               <div class="border c-brd-light border-top-0">
-                                <div class="card-body pt-5"><p><%= locals.data[0].interior_feat %></p>
+                                <div class="card-body pt-5">
+
+                                      <div style="overflow-x:auto;">
+                                  <table>
+
+                                      <tr>
+                                        <td><% var str = locals.data[0].interior_feat
+                                              var re = str.split(","); %>
+                                               <% if (re) { %>
+                                               <% var i=0  %>
+                                               <% re.forEach(function(){%>
+                                                <%= re[i++]  %><br>
+                                                 <% }) %>
+                                                  <% } %>  </td>
+                                      </tr>
+                                      
+                                     
+                                    </table>
+                                    </div>
                                      </div>
                                  </div>
                              </div>
                              <div class="tab-pane fade" id="technical" role="tabpanel" aria-expanded="true">
                               <div class="border c-brd-light border-top-0">
-                                <div class="card-body pt-5"><p><%= locals.data[0].technical %></p>
+                                <div class="card-body pt-5">
+                                     <div style="overflow-x:auto;">
+                                  <table>
+
+                                      <tr>
+                                        <td><% var str = locals.data[0].technical
+                                              var re = str.split(","); %>
+                                               <% if (re) { %>
+                                               <% var i=0  %>
+                                               <% re.forEach(function(){%>
+                                                <%= re[i++]  %><br>
+                                                 <% }) %>
+                                                  <% } %>  </td>
+                                      </tr>
+                                      
+                                     
+                                    </table>
+                                    </div>
                                      </div>
                                  </div>
                              </div>
                               <div class="tab-pane fade" id="dimension" role="tabpanel" aria-expanded="true">
                               <div class="border c-brd-light border-top-0">
                                 <div class="card-body pt-5"><p><%= locals.data[0].dimensions %></p>
+                                     <div style="overflow-x:auto;">
+                                  <table>
+
+                                      <tr>
+                                        <td>Height</td>
+                                        <td>No Data Available</td>
+                                        <td>Height (inc. roof rails)</td>
+                                         <td>No Data Available</td>
+
+                                      </tr>
+                                      
+                                      <tr>
+                                        <td>Length</td>
+                                         <td>No Data Available</td>
+                                        <td>Wheelbase</td>
+                                         <td>No Data Available</td>
+
+                                      </tr>
+                                      <tr>
+                                        <td>Width</td>
+                                        <td>No Data Available</td>
+                                        <td>Width (inc. mirrors)</td>
+                                        <td>No Data Available</td>
+
+                                      </tr>
+                        
+                                      <tr>
+                                        <td>Fuel tank</td>
+                                        <td>No Data Available</td>
+                                         <td>Gross vehicle weight</td>
+                                         <td>No Data Available</td>
+
+                                      </tr>
+                                      <tr>
+                                        <td>Luggage capacity (seats up)</td>
+                                        <td>No Data Available</td>
+                                        <td>Luggage capacity (seats down)</td>
+                                        <td>No Data Available</td>
+
+                                      </tr>
+                                       <tr>
+                                        <td>Max loading weight</td>
+                                        <td>No Data Available</td>
+                                        <td>Max roof load</td>
+                                        <td>No Data Available</td>
+
+                                      </tr>
+                                       <tr>
+                                        <td>Max towing weight (braked)</td>
+                                        <td>No Data Available</td>
+                                        <td>Max towing weight (not braked)</td>
+                                        <td>No Data Available</td>
+
+                                      </tr>
+                                       <tr>
+                                        <td>Minimum kerb weight</td>
+                                        <td>No Data Available</td>
+                                        <td>Turning circle</td>
+                                        <td>No Data Available</td>
+
+                                      </tr>
+                                    </table>
+                                    </div>
                                      </div>
                                  </div>
                              </div>
