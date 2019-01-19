@@ -610,8 +610,9 @@ app.get('/all_product',async function(req, res, next){
           
 
   var query = 'SELECT tbl_products.*,tbl_cars_images.image_name,tbl_user.user_name,tbl_user.email,tbl_user.phone,tbl_user.web,tbl_user.profile_image,tbl_user.dealer from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id INNER JOIN tbl_user ON tbl_user.id=tbl_cars_images.user_id where tbl_cars_images.product_id ="' +req.query.id + '" GROUP BY tbl_cars_images.image_name';
+ // console.log(query);
      results = await database.query(query, [] );
-       //console.log(results);
+  //    console.log(results);
      res.render('sellbuy/all_cars', {
      title: 'Add content',
      data: JSON.parse(results)
@@ -725,12 +726,27 @@ app.post('/add_description',async function(req, res, next){
          var efeatures = post.car_efeatures;
          var ifeatures = post.car_ifeatures;
          var technical = post.car_technical;
-         var dimensions = post.car_dimensions;
+         var height = post.heightt;
+         var height2 = post.height_all;
+         var length = post.length_all;
+         var wheel = post.wheelbase;
+         var width = post.width_all;
+         var width_mirror = post.width_mirror;
+         var tank = post.tank_capacity;
+         var vehicle = post.vehicle_weight;
+         var up = post.capacity_up;
+         var down = post.capacity_down;
+         var loading = post.max_loading;
+         var roof = post.max_roof;
+         var braked = post.weight_braked;
+         var not = post.not_braked;
+         var kreb = post.kreb_weight;
+          var circle = post.turning_circle;
          var id = post.carid;
          
          
-             var query = 'Update `tbl_products` SET  `car_description` ="' + desc + '",`car_comes`="' + comes + '",`economy_perform`="' + eco + '",`driver_convenience`="' + driver + '",`safety`="' + safety + '",`exterior_feat`="' + efeatures + '",`interior_feat`="' + ifeatures + '", `technical`="' + technical + '", `dimensions`="' + dimensions + '"  Where id ="' + id + '"';
-            // console.log(query);
+             var query = 'Update `tbl_products` SET  `car_description` ="' + desc + '",`car_comes`="' + comes + '",`economy_perform`="' + eco + '",`driver_convenience`="' + driver + '",`safety`="' + safety + '",`exterior_feat`="' + efeatures + '",`interior_feat`="' + ifeatures + '", `technical`="' + technical + '", `height`="' + height + '", `height_roof`="' + height2 + '", `length`="' + length + '", `wheel_base`="' + wheel + '", `width`="' + width + '", `width_with_mirror`="' + width_mirror + '", `tank_capacity`="' + tank + '", `vehicle_weight`="' + vehicle + '", `luggage_capacity_up`="' + up + '", `luggage_capacity_down`="' + down + '", `max_loading_weight`="' + loading + '", `max_roof_load`="' + roof + '", `towing_weight_braked`="' + braked + '", `towing_weight`="' + not + '", `min_kreb_weight`="' + kreb + '", `turning_circle`="' + circle + '"  Where id ="' + id + '"';
+          //  console.log(query);
               results = await database.query(query, [] );
 
 

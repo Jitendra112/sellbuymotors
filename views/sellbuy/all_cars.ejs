@@ -146,14 +146,14 @@ ul.fpa-features-list li {
                         </div>
                         <div class="tab-pane fade" id="carcomes" role="tabpanel" aria-expanded="true">
                             <div class="border c-brd-light border-top-0">
-                                <div class="card-body pt-5"><p><% var str = locals.data[0].car_comes
-                                                                   var re = str.split(","); %>
-                                                                    <% if (re) { %>
-                                                                     <% var i=0  %>
-                                                                  <% re.forEach(function(){%>
-                                                                              <%= re[i++]  %><br>
-                                                                    <% }) %>
-                                                                     <% } %>           
+                                <div class="card-body pt-5"><p><%var str = locals.data[0].car_comes%>
+                                                                 <%var re = str.split(",");%>
+                                                                    <%if (re) {%>
+                                                                     <%var i=0 %>
+                                                                  <%re.forEach(function(){%>
+                                                                              <%= re[i++]%><br>
+                                                                    <%})%>
+                                                                     <%}%>           
                                                                </p>
                                      </div>                     
                                  </div>
@@ -176,8 +176,8 @@ ul.fpa-features-list li {
                                         <td>Average mpg</td>
                                          <td>No Data Available</td>
                                         <td>CO2 emissions</td>
-                                         <td><% var str = locals.data[0].co2_emission %>
-                                            <%= str.replace('&#x2F;','/') %></td>
+                                         <td><%var str = locals.data[0].co2_emission%>
+                                            <%= str.replace('&#x2F;','/')%></td>
 
                                       </tr>
                                       <tr>
@@ -187,23 +187,23 @@ ul.fpa-features-list li {
                                         <td>No Data Available</td>
 
                                       </tr>
-                                    <!--   <tr>
+                                      <tr>
                                         <td>Engine Size</td>
                                         <td><%= locals.data[0].engine_size %></td>
-                                       <!--  <td>Helen Bennett</td>
-                                        <td>No Data Available</td> -->
+                                      <td>Brochure Engine size</td>
+                                     <td>No Data Available</td> 
 
-                                     <!--  </tr> --> 
+                                   </tr> 
                                       <tr>
                                         <td>Acceleration</td>
-                                        <td><%= locals.data[0].acceleration %></td>
+                                        <td><%= locals.data[0].acceleration%></td>
                                          <td>Engine Size</td>
-                                        <td><%= locals.data[0].engine_size %></td>
+                                        <td><%= locals.data[0].engine_size%></td>
 
                                       </tr>
                                       <tr>
                                         <td>Drivetrain</td>
-                                        <td><%= locals.data[0].drive_train %></td>
+                                        <td><%= locals.data[0].drive_train%></td>
                                         <td>Top speed</td>
                                         <td>No Data Available</td>
 
@@ -225,14 +225,14 @@ ul.fpa-features-list li {
 
                                       <tr>
                                         
-                                        <td><% var str = locals.data[0].driver_convenience
-                                              var re = str.split(","); %>
-                                               <% if (re) { %>
-                                               <% var i=0  %>
-                                               <% re.forEach(function(){%>
-                                                <%= re[i++]  %><br>
-                                                 <% }) %>
-                                                  <% } %>           
+                                        <td><%var str = locals.data[0].driver_convenience%>
+                                             <%var re = str.split(",");%>
+                                               <%if (re) {%>
+                                               <%var i=0%>
+                                               <%re.forEach(function(){%>
+                                                <%= re[i++]%><br>
+                                                 <%})%>
+                                                  <%}%>           
                                                  </td>
                                       
                                        
@@ -251,14 +251,14 @@ ul.fpa-features-list li {
                                   <table>
 
                                       <tr>
-                                        <td><% var str = locals.data[0].safety
-                                              var re = str.split(","); %>
-                                               <% if (re) { %>
-                                               <% var i=0  %>
-                                               <% re.forEach(function(){%>
-                                                <%= re[i++]  %><br>
-                                                 <% }) %>
-                                                  <% } %>  </td>
+                                        <td><%var str = locals.data[0].safety%>
+                                            <%var re = str.split(",");%>
+                                               <%if (re) {%>
+                                               <%var i=0%>
+                                               <%re.forEach(function(){%>
+                                                <%= re[i++]%><br>
+                                                 <%})%>
+                                                  <%}%>  </td>
                                       </tr>
                                       
                                      
@@ -275,14 +275,14 @@ ul.fpa-features-list li {
                                   <table>
 
                                       <tr>
-                                        <td><% var str = locals.data[0].exterior_feat
-                                              var re = str.split(","); %>
-                                               <% if (re) { %>
-                                               <% var i=0  %>
-                                               <% re.forEach(function(){%>
-                                                <%= re[i++]  %><br>
-                                                 <% }) %>
-                                                  <% } %>  </td>
+                                        <td><%var str = locals.data[0].exterior_feat%>
+                                             <%var re = str.split(",");%>
+                                               <%if (re) {%>
+                                               <%var i=0%>
+                                               <%re.forEach(function(){%>
+                                                <%= re[i++]%><br>
+                                                 <%})%>
+                                                  <%}%>  </td>
                                       </tr>
                                       
                                      
@@ -299,14 +299,14 @@ ul.fpa-features-list li {
                                   <table>
 
                                       <tr>
-                                        <td><% var str = locals.data[0].interior_feat
-                                              var re = str.split(","); %>
-                                               <% if (re) { %>
-                                               <% var i=0  %>
-                                               <% re.forEach(function(){%>
-                                                <%= re[i++]  %><br>
-                                                 <% }) %>
-                                                  <% } %>  </td>
+                                        <td><%var str = locals.data[0].interior_feat%>
+                                             <%var re = str.split(",");%>
+                                               <%if (re) {%>
+                                               <%var i=0;%>
+                                               <%re.forEach(function(){%>
+                                                <%= re[i++]%><br>
+                                                 <%})%>
+                                                  <%}%>  </td>
                                       </tr>
                                       
                                      
@@ -322,9 +322,9 @@ ul.fpa-features-list li {
                                   <table>
 
                                       <tr>
-                                        <td><% var str = locals.data[0].technical
-                                              var re = str.split(","); %>
-                                               <% if (re) { %>
+                                        <td><%var str = locals.data[0].technical%>
+                                             <%var re = str.split(",");%>
+                                               <%if (re) { %>
                                                <% var i=0  %>
                                                <% re.forEach(function(){%>
                                                 <%= re[i++]  %><br>
@@ -340,73 +340,63 @@ ul.fpa-features-list li {
                              </div>
                               <div class="tab-pane fade" id="dimension" role="tabpanel" aria-expanded="true">
                               <div class="border c-brd-light border-top-0">
-                                <div class="card-body pt-5"><p><%= locals.data[0].dimensions %></p>
+                                <div class="card-body pt-5">
                                      <div style="overflow-x:auto;">
-                                  <table>
+                            <table>
+                            <tr>
+                            <td>Height</td>
+                            <td><% if(locals.data[0].height == ''){ %><%= 'No Detail Available' %><% }else{ %><%= locals.data[0].height %>  <% } %></td>
 
-                                      <tr>
-                                        <td>Height</td>
-                                        <td>No Data Available</td>
-                                        <td>Height (inc. roof rails)</td>
-                                         <td>No Data Available</td>
-
-                                      </tr>
-                                      
-                                      <tr>
-                                        <td>Length</td>
-                                         <td>No Data Available</td>
-                                        <td>Wheelbase</td>
-                                         <td>No Data Available</td>
-
-                                      </tr>
-                                      <tr>
-                                        <td>Width</td>
-                                        <td>No Data Available</td>
-                                        <td>Width (inc. mirrors)</td>
-                                        <td>No Data Available</td>
-
-                                      </tr>
-                        
-                                      <tr>
-                                        <td>Fuel tank</td>
-                                        <td>No Data Available</td>
-                                         <td>Gross vehicle weight</td>
-                                         <td>No Data Available</td>
-
-                                      </tr>
-                                      <tr>
-                                        <td>Luggage capacity (seats up)</td>
-                                        <td>No Data Available</td>
-                                        <td>Luggage capacity (seats down)</td>
-                                        <td>No Data Available</td>
-
-                                      </tr>
-                                       <tr>
-                                        <td>Max loading weight</td>
-                                        <td>No Data Available</td>
-                                        <td>Max roof load</td>
-                                        <td>No Data Available</td>
-
-                                      </tr>
-                                       <tr>
-                                        <td>Max towing weight (braked)</td>
-                                        <td>No Data Available</td>
-                                        <td>Max towing weight (not braked)</td>
-                                        <td>No Data Available</td>
-
-                                      </tr>
-                                       <tr>
-                                        <td>Minimum kerb weight</td>
-                                        <td>No Data Available</td>
-                                        <td>Turning circle</td>
-                                        <td>No Data Available</td>
-
-                                      </tr>
-                                    </table>
-                                    </div>
-                                     </div>
-                                 </div>
+                            <td>Height (inc. roof rails)</td>
+             <td><%if (locals.data[0].height_roof == ''){%><%= 'No Detail Available'%><%}else{%><%= locals.data[0].height_roof %><%}%></td>
+                            </tr>
+                            <tr>
+                            <td>Length</td>
+                            <td><% if(locals.data[0].length == ''){ %><%= 'No Detail Available' %><% }else{ %><%= locals.data[0].length %><% } %></td>
+                            <td>Wheelbase</td>
+                            <td><% if(locals.data[0].wheel_base == ''){ %><%= 'No Detail Available' %><% }else{ %><%= locals.data[0].wheel_base %>  <% } %></td>
+                            </tr>
+                            <tr>
+                            <td>Width</td>
+                            <td><% if(locals.data[0].width == ''){ %><%= 'No Detail Available' %><% }else{ %><%= locals.data[0].width %> <% } %></td>
+                            <td>Width (inc. mirrors)</td>
+                            <td><% if(locals.data[0].width_with_mirror == ''){ %><%= 'No Detail Available' %><% }else{ %><%= locals.data[0].width_with_mirror %><% } %></td>
+                            </tr>
+                            <tr>
+                            <td>Fuel tank capacity</td>
+                            <td><% if(locals.data[0].tank_capacity == ''){ %><%= 'No Detail Available' %><% }else{ %><%= locals.data[0].tank_capacity %> <% } %></td>
+                            <td>Gross vehicle weight</td>
+                            <td><% if(locals.data[0].vehicle_weight == ''){ %><%= 'No Detail Available' %><% }else{ %><%= locals.data[0].vehicle_weight %> <% } %></td>
+                            </tr>
+                            <tr>
+                            <td>Luggage capacity (seats up)</td>
+                            <td><% if(locals.data[0].luggage_capacity_up == ''){ %><%= 'No Detail Available' %><% }else{ %><%= locals.data[0].luggage_capacity_up %> <% } %></td>
+                            <td>Luggage capacity (seats down)</td>
+                             <td><% if(locals.data[0].luggage_capacity_down == ''){ %><%= 'No Detail Available' %><% }else{ %><%= locals.data[0].luggage_capacity_down %> <% } %></td>
+                            </tr>
+                            <tr>
+                            <td>Max loading weight</td>
+                            <td><% if(locals.data[0].max_loading_weight == ''){ %><%= 'No Detail Available' %><% }else{ %><%= locals.data[0].max_loading_weight %> <% } %></td>
+                            <td>Max roof load</td>
+                            <td><% if(locals.data[0].max_roof_load == ''){ %><%= 'No Detail Available' %><% }else{ %><%= locals.data[0].max_roof_load %> <% } %></td>
+                            </tr>
+                            <tr>
+                            <td>Max towing weight (braked)</td>
+                            <td><% if(locals.data[0].towing_weight_braked == ''){ %><%= 'No Detail Available' %><% }else{ %><%= locals.data[0].towing_weight_braked %> <% } %></td>
+                            <td>Max towing weight (not braked)</td>
+                            <td><% if(locals.data[0].towing_weight == ''){ %><%= 'No Detail Available' %><% }else{ %><%= locals.data[0].towing_weight %> <% } %></td>
+                            </tr>
+                            <tr>
+                            <td>Minimum kerb weight</td>
+                            <td><% if(locals.data[0].min_kreb_weight == ''){ %><%= 'No Detail Available' %><% }else{ %><%= locals.data[0].min_kreb_weight %> <% } %></td></td>
+                            <td>Turning circle</td>
+                             <td><% if(locals.data[0].turning_circle == ''){ %><%= 'No Detail Available' %><% }else{ %><%= locals.data[0].turning_circle %> <% } %></td>
+                            </tr>
+                            </table>
+                            </div>
                              </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -439,7 +429,7 @@ ul.fpa-features-list li {
                              <li class="list-group-item"><%= locals.data[0].mileage %></li>
                              <li class="list-group-item"><%= locals.data[0].engine_size %></li>
                              <li class="list-group-item"><%= locals.data[0].gear_box %></li>
-                             <li class="list-group-item"><%= locals.data[0].fuel_type %></li>
+                             <li class="list-group-item"><%var str = locals.data[0].fuel_type%><%= str.replace('&#x2F;','/')%></li>
                              <li class="list-group-item"><%= locals.data[0].doors %></li>
                              <li class="list-group-item"><%= locals.data[0].seats %></li>
 <!--                            <?php

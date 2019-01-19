@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 19, 2019 at 04:02 PM
+-- Generation Time: Jan 19, 2019 at 08:46 PM
 -- Server version: 5.7.24-0ubuntu0.18.04.1
 -- PHP Version: 7.0.32-0ubuntu0.16.04.1
 
@@ -33,52 +33,6 @@ CREATE TABLE `tbl_cars_images` (
   `image_name` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_cars_images`
---
-
-INSERT INTO `tbl_cars_images` (`id`, `user_id`, `product_id`, `image_name`, `created_at`) VALUES
-(1, 48, 1, 'IMG_1547457947252', '2019-01-14 09:25:47'),
-(2, 48, 1, 'IMG_1547457964256', '2019-01-14 09:26:04'),
-(3, 48, 2, 'IMG_1547528655400', '2019-01-15 05:04:15'),
-(4, 48, 2, 'IMG_1547528662274', '2019-01-15 05:04:22'),
-(5, 48, 2, 'IMG_1547528667937', '2019-01-15 05:04:27'),
-(6, 48, 2, 'IMG_1547528674601', '2019-01-15 05:04:34'),
-(7, 48, 2, 'IMG_1547528681009', '2019-01-15 05:04:41'),
-(8, 48, 2, 'IMG_1547528689262', '2019-01-15 05:04:49'),
-(9, 48, 4, 'IMG_1547530326792', '2019-01-15 05:32:06'),
-(10, 48, 4, 'IMG_1547530332650', '2019-01-15 05:32:12'),
-(11, 48, 4, 'IMG_1547530341807', '2019-01-15 05:32:21'),
-(12, 48, 4, 'IMG_1547530350052', '2019-01-15 05:32:30'),
-(13, 48, 4, 'IMG_1547530355727', '2019-01-15 05:32:35'),
-(14, 48, 4, 'IMG_1547530363578', '2019-01-15 05:32:43'),
-(15, 48, 5, 'IMG_1547530856744', '2019-01-15 05:40:56'),
-(16, 48, 5, 'IMG_1547530862775', '2019-01-15 05:41:02'),
-(17, 48, 5, 'IMG_1547530867781', '2019-01-15 05:41:07'),
-(18, 48, 5, 'IMG_1547530874960', '2019-01-15 05:41:14'),
-(19, 48, 5, 'IMG_1547530881922', '2019-01-15 05:41:21'),
-(20, 48, 5, 'IMG_1547530888437', '2019-01-15 05:41:28'),
-(21, 48, 5, 'IMG_1547530907147', '2019-01-15 05:41:47'),
-(22, 48, 6, 'IMG_1547531667630', '2019-01-15 05:54:27'),
-(23, 48, 6, 'IMG_1547531672935', '2019-01-15 05:54:32'),
-(24, 48, 6, 'IMG_1547531680544', '2019-01-15 05:54:40'),
-(25, 48, 6, 'IMG_1547531685950', '2019-01-15 05:54:45'),
-(26, 48, 6, 'IMG_1547531692577', '2019-01-15 05:54:52'),
-(27, 48, 6, 'IMG_1547531699561', '2019-01-15 05:54:59'),
-(30, 48, 24, 'IMG_1547806918653', '2019-01-18 10:21:58'),
-(31, 48, 24, 'IMG_1547806925298', '2019-01-18 10:22:05'),
-(32, 48, 24, 'IMG_1547806930659', '2019-01-18 10:22:10'),
-(33, 48, 24, 'IMG_1547806937070', '2019-01-18 10:22:17'),
-(34, 48, 24, 'IMG_1547806943499', '2019-01-18 10:22:23'),
-(35, 48, 24, 'IMG_1547806950672', '2019-01-18 10:22:30'),
-(36, 48, 24, 'IMG_1547806965857', '2019-01-18 10:22:45'),
-(37, 48, 26, 'IMG_1547812985886', '2019-01-18 12:03:06'),
-(38, 48, 35, 'IMG_1547893109935', '2019-01-19 10:18:29'),
-(39, 48, 35, 'IMG_1547893116027', '2019-01-19 10:18:36'),
-(40, 48, 35, 'IMG_1547893122885', '2019-01-19 10:18:42'),
-(41, 48, 35, 'IMG_1547893130504', '2019-01-19 10:18:50'),
-(42, 48, 35, 'IMG_1547893136089', '2019-01-19 10:18:56');
 
 -- --------------------------------------------------------
 
@@ -366,7 +320,7 @@ CREATE TABLE `tbl_products` (
   `acceleration` varchar(30) NOT NULL,
   `gear_box` varchar(50) NOT NULL,
   `drive_train` varchar(30) NOT NULL,
-  `co2_emission` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `co2_emission` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `doors` varchar(10) NOT NULL,
   `seats` varchar(10) NOT NULL,
   `insurance_group` varchar(20) NOT NULL,
@@ -376,7 +330,7 @@ CREATE TABLE `tbl_products` (
   `car_type` varchar(50) NOT NULL,
   `price_expectation` varchar(20) NOT NULL,
   `service_history` varchar(50) NOT NULL,
-  `mot_due` varchar(20) DEFAULT NULL,
+  `mot_due` varchar(20) NOT NULL,
   `car_description` varchar(1500) DEFAULT NULL,
   `car_comes` varchar(1000) DEFAULT NULL,
   `economy_perform` varchar(1000) DEFAULT NULL,
@@ -385,7 +339,22 @@ CREATE TABLE `tbl_products` (
   `exterior_feat` varchar(1000) DEFAULT NULL,
   `interior_feat` varchar(1000) DEFAULT NULL,
   `technical` varchar(1000) DEFAULT NULL,
-  `dimensions` varchar(1000) DEFAULT NULL,
+  `height` varchar(50) DEFAULT NULL,
+  `height_roof` varchar(50) DEFAULT NULL,
+  `length` varchar(50) DEFAULT NULL,
+  `wheel_base` varchar(50) DEFAULT NULL,
+  `width` varchar(50) DEFAULT NULL,
+  `width_with_mirror` varchar(50) DEFAULT NULL,
+  `tank_capacity` varchar(50) DEFAULT NULL,
+  `vehicle_weight` varchar(50) DEFAULT NULL,
+  `luggage_capacity_up` varchar(50) DEFAULT NULL,
+  `luggage_capacity_down` varchar(50) DEFAULT NULL,
+  `max_loading_weight` varchar(50) DEFAULT NULL,
+  `max_roof_load` varchar(50) DEFAULT NULL,
+  `towing_weight_braked` varchar(50) DEFAULT NULL,
+  `towing_weight` varchar(50) DEFAULT NULL,
+  `min_kreb_weight` varchar(50) DEFAULT NULL,
+  `turning_circle` varchar(50) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -4579,7 +4548,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_cars_images`
 --
 ALTER TABLE `tbl_cars_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 --
 -- AUTO_INCREMENT for table `tbl_countries`
 --
@@ -4589,7 +4558,7 @@ ALTER TABLE `tbl_countries`
 -- AUTO_INCREMENT for table `tbl_products`
 --
 ALTER TABLE `tbl_products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 --
 -- AUTO_INCREMENT for table `tbl_states`
 --

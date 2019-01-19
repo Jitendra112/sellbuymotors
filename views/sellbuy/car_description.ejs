@@ -1,4 +1,10 @@
 <%- include ../sellbuylayouts/header.ejs %>
+<!-- <style>
+    .btn-primary {
+   
+    top: 761px;
+}
+</style> -->
 <section>
     <div class="background-image-maker gradient gradient-lr"></div>
     <div class="holder-image">
@@ -51,28 +57,24 @@
                         <div class="row">
                              
                             
-                              <div class="col-12 col-sm-6 col-lg-4">
+                              <div class="col-6 col-sm-6 col-lg-4">
                                  <label class="c-dark">Car Description</label>
                                
                                      <div class="form-group position-relative">
-                                       <textarea name="car_desc" rows="2" cols="97" class="mobilesss">
-                                       
-
-                                       </textarea>
+                                       <textarea name="car_desc" rows="2" cols="97" class="mobilesss"></textarea>
 
                                     </div>
                                 
-                            </div>
-                            <div id="mydiv"></div>
-                            <div class="col-12 col-sm-6 col-lg-4">
+                            
+                                <div id="mydiv"></div>
                                  <label class="c-dark">This Car Comes With</label>
                                 
                                      <div class="form-group position-relative">
                                        <textarea name="car_comes" rows="2" cols="97" class="mobilesss"></textarea>
                                     
                                 </div>
-                            </div>
-
+                          
+                                 
                           <!--  <div class="col-12 col-sm-6 col-lg-4">
                                  <label class="c-dark">Economy & performance</label>
                                
@@ -81,40 +83,40 @@
                                    
                                 </div>
                             </div> -->
-                           <div class="col-12 col-sm-6 col-lg-4">
+                          
                                  <label class="c-dark">Driver Convenience</label>
                                 
                                      <div class="form-group position-relative">
                                        <textarea name="car_driver" rows="2" cols="97" class="mobilesss"></textarea>
                                     </div>
                                 
-                            </div>
+                          
 
-                            <div class="col-12 col-sm-6 col-lg-4">
+                           
                                  <label class="c-dark">Safety</label>
                                
                                      <div class="form-group position-relative">
                                        <textarea name="car_safety" rows="2" cols="97" class="mobilesss"></textarea>
                                     </div>
                                 
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-4">
+                           
+                          
                                  <label class="c-dark">Exterior Features</label>
                                 
                                       <div class="form-group position-relative">
                                        <textarea name="car_efeatures" rows="2" cols="97" class="mobilesss"></textarea>
                                     </div>
                                 
-                            </div>
-                           <div class="col-12 col-sm-6 col-lg-4">
+                           
+                           
                                  <label class="c-dark">Interior Features</label>
                                 
                                       <div class="form-group position-relative">
                                        <textarea name="car_ifeatures" rows="2" cols="97" class="mobilesss"></textarea>
                                     </div>
-                                
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-4">
+                              
+                            
+                            
                                  <label class="c-dark">Technical</label>
                               
                                       <div class="form-group position-relative">
@@ -124,12 +126,55 @@
                             </div>
                            <div class="col-12 col-sm-6 col-lg-4">
                                  <label class="c-dark">Dimensions</label>
-                               
+                                      <ul>
                                       <div class="form-group position-relative">
-                                       <textarea name="car_dimensions" rows="2" cols="97" class="mobilesss"></textarea>
-                                    </div>
-                                
-                            </div>
+                                      <lable>Height</lable>
+                                      <input type ="text" name="heightt" class="mobilesss" />
+                                      
+                                      <lable>Height (inc. roof rails)</lable>
+                                       <input type ="text" name="height_all" class="mobilesss" />
+                                       <lable>Length</lable>
+                                       <input type ="text" name="length_all" class="mobilesss" />
+                                       <lable>Wheelbase</lable>
+                                       <input type ="text" name="wheelbase" class="mobilesss" />
+                                       <lable>Width</lable>
+                                       <input type ="text" name="width_all" class="mobilesss" />
+                                       <lable>Width (inc. mirrors)</lable>
+                                       <input type ="text" name="width_mirror" class="mobilesss" />
+                                       <lable>Fuel tank capacity</lable>
+                                       <input type ="text" name="tank_capacity" class="mobilesss" />
+                                       <lable>Gross vehicle weight</lable>
+                                       <input type ="text" name="vehicle_weight" class="mobilesss" />
+                                       <lable>Luggage capacity (seats up)</lable>
+                                       <input type ="text" name="capacity_up" class="mobilesss" />
+                                       <lable>Luggage capacity (seats down)</lable>
+                                       <input type ="text" name="capacity_down" class="mobilesss" />
+                                       <lable>Max loading weight</lable>
+                                       <input type ="text" name="max_loading" class="mobilesss" />
+                                      </div>
+                                  </div>
+                                  </ul>
+                                         
+                                            
+                                          <div class="col-6 col-sm-6 col-lg-4">
+                                            <label> Max roof load</label>
+                                           
+                                          <input type ="text" name="max_roof" class="mobilesss" />
+                                      
+                                   
+                                       <lable>Max towing weight (braked)</lable>
+                                       <input type ="text" name="weight_braked" class="mobilesss" />
+                                       <lable>Max towing weight (not braked)</lable>
+                                       <input type ="text" name="not_braked" class="mobilesss" />
+                                       <lable>Minimum kerb weight</lable>
+                                       <input type ="text" name="kreb_weight" class="mobilesss" />
+                                       <lable>Turning circle</lable>
+                                       <input type ="text" name="turning_circle" class="mobilesss" />
+
+                                    
+                                    
+                                  </div>
+                            
                        
                            
                             <div class="col-12 col-sm-4 col-lg-2 ml-auto mt-3 mt-sm-0">

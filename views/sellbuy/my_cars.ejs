@@ -125,7 +125,7 @@ margin: -8px 0 0 0;
                           <li><%= cl.body_type %></li>
                            <li><%= cl.mileage %></li>
                            <li><%= cl.engine_size %></li>
-                            <li><%= cl.fuel_type %></li>
+                            <li><%var str = cl.fuel_type%><%= str.replace('&#x2F;','/')%></li>
                             <li><%= cl.gear_box %></li>
                             <li><%= cl.owner %></li>
                         </ul>
