@@ -21,20 +21,20 @@
                 <th>Brand Name</th>
                 <th>Model Name</th>
                 <th style="width:30%">Car Image</th>
-                
+                <th>Delete</th>
                 
             </tr>
         </thead>
         <tbody>
           <% if (locals.data) { %>
               <% locals.data.forEach(function(cls,index){  %>
-            <tr>
+            <tr id="delets<%= cls.id %>">
                  
                 <td><%= index + 1 %></td>
                 <td><%= cls.make %></td>
                 <td><%= cls.model %></td>
                 <td><img src="/uploads/<%= cls.image_name %>" style="width:30%"></td>
-               <!--  <td><a href="/admin/Details">View Details</a></td> -->
+                <td><a href="#" title="Delete"><i class="fa fa-trash" data-id="<%= cls.id %>"></i></a></td>
                 
             </tr>
                <% }) %>
@@ -48,8 +48,37 @@
  
 
  <%- include ../adminlayouts/footer.ejs %>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
   <script>
     $(document).ready(function() {
     $('#example').DataTable();
-} );
+});
+   $(document).on('click','.fa-trash',function(e){
+  var base_url = window.location.origin;
+  e.preventDefault();
+   var x = confirm("Are You Sure!!");
+  if(x == true){
+    var a =$(this)
+  var id = $(this).data('id');
+  
+  var url = base_url + '/admin/delete';
+ 
+  $.post(url, {id: id}, function (response) {
+               
+               if(response.success == 1){
+                toastr.success(response.message);
+               $('#delets'+a.data('id')).remove()
+               
+              }else{
+
+                 toastr.error(response.message);
+                 
+              }
+          }, 'json');
+
+}else{
+
+  return false;
+}
+});  
   </script>

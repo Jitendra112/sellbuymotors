@@ -1,6 +1,11 @@
 <%- include ../sellbuylayouts/header.ejs %>
 <!-- End Header-->        <!-- Page Inner-->
-  
+  <style>
+      #loading{
+        position: fixed;
+        z-index: 99;
+    }
+  </style>
         <section>
             <div class="background-image-maker gradient gradient-lr"></div>
             <div class="holder-image">
@@ -122,8 +127,8 @@
                                         <a href="/sellcar" class="btn btn-secondary btn-md btn-block text-uppercase">Back</a>
 
                                     </div>
-                                     <div class="col-12 col-sm-4 col-lg-2 ml-auto mt-3 mt-sm-0" id="image_uplod">
-                                        <button type="submit" class="btn btn-primary btn-md btn-block text-uppercase">Upload Image</button>  
+                                     <div class="col-12 col-md-5 col-xl-6 align-self-center" id="loading" style="display:none;top: 70%;right: 33%;">
+                                    <img src="/images/preloader.gif" style="height:100% ;width:100%"/>
                                     </div>
                                      </form>
                                     <div class="col-12 col-sm-4 col-lg-2 ml-auto mt-3 mt-sm-0" id="public">
@@ -153,7 +158,7 @@
              myvar = urlparam[1];
         }
 
-          html+='<input type="file" name="userPhoto" class="custom-file-input" id="file_id">';
+          html+='<input type="file" name="userPhoto" class="custom-file-input" onchange="mySubmit(this.form)" id="file_id">';
           html+='<input type="hidden" name="carid" value="' + urlparam[1] + '"/>';
           html+='<h5 class="mb-2 c-light"><i class="fa fa-plus"></i></h5>';
           html+='<span id="myspan"> Add Photo</span>';
@@ -166,8 +171,13 @@
     GetParameterValues();
  </script> 
  <script>
+  function mySubmit(theForm) {
+        $('#uploadform').submit();
+
+    }
+
   $(document).on('submit','#uploadform' ,function(e) {
-    
+      $('#loading').css('display', 'block')
        e.preventDefault();
         var formData = new FormData(this);  
        // alert(formData);
@@ -180,8 +190,7 @@
         contentType:false,
         processData:false,                      
         success:function(data){
-           //   alert(data.message)
-         //console.log(data);
+         $('#loading').css('display', 'none')
          if(data.success == 1){
 
            toastr.success(data.message)
@@ -206,7 +215,7 @@ function get_images(){
 // alert(myvar);
   var html = '';
   $.get('/get_images?id='+ myvar ,function(res){
-
+       console.log(res.image);
     $.each(res,function(key,val){
       html += '<div class="col-md-3" id="image_get"><img src="/uploads/'+ val.image_name + '" height="100px" width="100px"></div>'
     })

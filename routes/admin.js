@@ -177,10 +177,17 @@ app.get('/Cars',async function(req, res, next) {
  if(g) { 
        var query = "SELECT tbl_products.*,tbl_cars_images.image_name from tbl_products INNER JOIN tbl_cars_images ON tbl_cars_images.product_id = tbl_products.id GROUP BY tbl_cars_images.product_id";
         results = await database.query(query, [] );
+         if(results.length > 0 ){
         res.render('admin/all_cars', {
         title: 'Add content',
         data: JSON.parse(results)
      }) 
+       }else{
+    res.render('admin/no_allcars', {
+         title: 'All cars',
+         
+       });
+    }  
   } else{
         res.render('admin/index', {
         title: 'Add content',
@@ -267,7 +274,47 @@ app.get('/UsedCars',async function(req, res, next) {
 /*--------------------------------------- Display All Used Cars End--------------------------------------*/
 
 
+/*--------------------------------------- Delete Cars--------------------------------------*/
 
+
+
+app.post('/delete',async function(req, res, next) {
+       
+       res.locals.udata = req.session.udata;
+       var g = res.locals.udata;
+
+ if(g) { 
+
+      if(req.method == "POST"){
+         var post  = req.body;
+         var id = post.id;
+         var query = "SELECT * FROM tbl_cars_images WHERE product_id = ?";
+          results = await database.query(query, [id] );
+          var myJSON = JSON.parse(results);
+          myJSON.forEach((v) => {
+ 
+          var filePath = 'assets/uploads/'+v.image_name;
+           fs.unlinkSync(filePath);
+            });
+           var query = "DELETE tbl_products,tbl_cars_images FROM tbl_products,tbl_cars_images WHERE tbl_products.id = tbl_cars_images.product_id AND tbl_products.id ='"+ id +"'"; 
+           results = await database.query(query, [] );
+            if (results) {
+              res.writeHead(200, {'Content-Type': 'application/json'});
+              var obj = {success : 1 , message : 'Product Removed Successfully!!'}
+              res.end(JSON.stringify(obj));
+             } else {                
+             
+                res.writeHead(200, {'Content-Type': 'application/json'});
+                var obj = {success : 0 , message : 'Product Can not Removed!!'}
+                res.end(JSON.stringify(obj));
+             }
+               
+
+ }
+ }
+})
+
+/*---------------------------------------Delete Cars End--------------------------------------*/
 
 
 

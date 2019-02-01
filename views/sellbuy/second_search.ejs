@@ -1071,112 +1071,72 @@ $.get(base_url + '/database_products',formData , function (result) {
 
 /*-----------------------------------------------database filter products End-------------------------------------*/
 function countdbprod(cars ,formData){
-   // alert(cars);
  var Totalcount;
  var base_url = window.location.origin;
-$.get(base_url + '/count_products',formData ,function(res){
-   // console.log(res.make);
-    var make_list = $('#make').html()
-    var str
-    var new_count = 0;
-    var t
-     var all_count = res.mcount[0].cars;
-      // console.log(all_count);
+    $.get(base_url + '/count_products',formData ,function(res){
+        var make_list = $('#make').html()
+        var str
+        var new_count = 0;
+        var t
+        var all_count = res.mcount[0].cars;
         if(all_count == 0){
-          
-        
-        $('#foundCar').text(cars);
-     }else{
+           $('#foundCar').text(cars);
+        }else{
+            $('#foundCar').text(all_count + cars);
+        }
 
-        $('#foundCar').text(all_count + cars);
-     }
-
-    $.each(JSON.parse(res.make),function(key, value){
-
-        
-       $('<div>'+make_list + '</div>').find('option').each(function (i, elem) {
-            // console.log($(this).val())
-            if(value.make == $(this).val()){
-                t = $(this)
-                str = $(this).text()
-                str = str.replace(str.substring(0,str.indexOf("(")),'').replace(',','').replace('(','').replace(')','');
-                new_count = parseInt(str) + parseInt(value.make_count)
-                console.log(new_count + '--' +value.make  + ' make matched add' + str + ' + ' + value.make_count)
-                $("#make option[value='" + $(this).val() + "']").text(value.make + '( '+ new_count + ')');
-            }
+        $.each(JSON.parse(res.make),function(key, value){
+           $('<div>'+make_list + '</div>').find('option').each(function (i, elem) {
+                // console.log($(this).val())
+                if(value.make == $(this).val()){
+                    t = $(this)
+                    str = $(this).text()
+                    str = str.replace(str.substring(0,str.indexOf("(")),'').replace(',','').replace('(','').replace(')','');
+                    new_count = parseInt(str) + parseInt(value.make_count)
+                    console.log(new_count + '--' +value.make  + ' make matched add' + str + ' + ' + value.make_count)
+                    $("#make option[value='" + $(this).val() + "']").text(value.make + '( '+ new_count + ')');
+                }
+            });
         });
 
-    });
-   
-    
-         // if(all_count == 0){
-            
-         //    console
-         //    $('#foundCar').text(str);
-         // }else{
-
-         //    $('#foundCar').text(all_count + cars);
-         // }
-   //  console.log(res.model);  
-    
-    
-     Totalcount =parseInt(all_count + cars);
-    
-      var limit = 25;
-      var count = Math.ceil(Totalcount / limit);
-     // alert(count);
-      var page = $('#page').val();
-
-      if(page > 2 ){
-
-         start_rec = page - 1;
-
-      }else{
-
-          start_rec = 1;
-      }
+        Totalcount =parseInt(all_count + cars);
+        console.log(Totalcount + 'these are total products')
+        var limit = 25;
+        var count = Math.ceil(Totalcount / limit);
+        var page = $('#page').val();
+        if(page > 2 ){
+            start_rec = page - 1;
+        }
+        else
+        {
+            start_rec = 1;
+        }
         var end_rec;
-
-     
-      end_rec = parseInt(start_rec) + 6;
-      var  html = '';
-       if(start_rec > 1){
-      
-       html += '<li class="page-item d-none d-sm-inline-block" ><a class="page-link pagepre" data-id="'+ (page-2)+'"><<</a></li>';
-
-       }
-       
-       var i;
-    
-       var active;
-       for(i=start_rec; i < end_rec; i++){
-        if(i == page){
-             active = 'Superactive';
-         }else{
-            active = ''
-         }
+        end_rec = parseInt(start_rec) + 6;
+        var  html = '';
+        if(start_rec > 1){
+           html += '<li class="page-item d-none d-sm-inline-block" ><a class="page-link pagepre" data-id="'+ (page-2)+'"><<</a></li>';
+        }
+        var i;
+        var active;
+        for(i=start_rec; i < end_rec; i++){
+            if(i == page){
+                active = 'Superactive';
+            }else{
+                active = ''
+            }
+            if (i > count)
+               break; 
+            html += '<li class="page-item d-none d-sm-inline-block"><a class="page-link pageLink '+ active +'">' + i + '</a></li>';
+        }
          
-          if (i > count)
-           break; 
-           
-         html += '<li class="page-item d-none d-sm-inline-block"><a class="page-link pageLink '+ active +'">' + i + '</a></li>';
+        if(end_rec < count){
+            var newpage = parseInt(page) + 1;
+            html += '<li class="page-item d-none d-sm-inline-block" ><a class="page-link pagepost" data-id="'+ newpage +'" >>></a></li>';
         }
-     
-         if(end_rec < count){
-          
-          var newpage = parseInt(page) + 1;
-         html += '<li class="page-item d-none d-sm-inline-block" ><a class="page-link pagepost" data-id="'+ newpage +'" >>></a></li>';
-
-        }
-    
-       $('#pagination').html(html)
-}, 'json');
+        
+        // $('#pagination').html(html)
+    }, 'json');
 }
-
-
-
-
-
- 
 
 </script>

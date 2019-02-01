@@ -51,7 +51,7 @@ app.post('/uploads', async function(req, res, next){
 	       var car_id = post.carid;
      
           var file = req.files.userPhoto;
-       //  console.log(file.size);
+        
           
 	      	var img_name='IMG_'+ Date.now();
           //console.log(img_name)
